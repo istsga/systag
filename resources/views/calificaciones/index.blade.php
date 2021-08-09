@@ -24,7 +24,7 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-check"></i></span></div>
-                                        <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademicos') is-invalid @enderror">
+                                        <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror">
                                             <option value="" class="form-control  ">Seleccionar</option>
                                             @foreach ($periodacademicos as $periodacademico)
                                                 <option  value="{{$periodacademico->id}}"
@@ -32,7 +32,7 @@
                                                     >{{$query.''.$periodacademico->periodo}}</option>
                                             @endforeach
                                         </select>
-                                        @error ('periodacademicos') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
+                                        @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
                                         <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
                                     </div>
 
@@ -46,7 +46,6 @@
                                                 <i class=" text-primary fas fa-layer-group"></i></span></div>
                                             <select name="asignacione_id" id="asignacione_id" class=" form-control ">
                                                 <option class="form-control" value="">Seleccionar</option>
-
                                                 @foreach ($asignaciones as $asignacione)
                                                     <option  value="{{$asignacione->id}}"
                                                         {{$queryAsignacione==$asignacione->id ? 'selected' : '' }}
@@ -76,11 +75,11 @@
                                             </select>
                                             <button class="btn btn-primary ml-1 " type="submit"> Ver Estudiantes </button>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
 

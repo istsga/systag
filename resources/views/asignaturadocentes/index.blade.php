@@ -16,6 +16,7 @@
                     @endcan
                 </div>
 
+                @if (Count($asignaturadocentes) > 0)
                 <div class="card-header d-flex justify-content-between aling-items-end">
                     <form class="col-lg-12 px-0 my-2 my-lg-0 no-waves-effect">
                         <div class="input-group">
@@ -82,6 +83,9 @@
                 {{ $asignaturadocentes->links() }}
               </nav>
             </div>
+            @else
+                <em class=" mt-2 mb-2 ml-3 text-muted">No tienes registros.</em>
+            @endif
         </div>
     </div>
 </div>
