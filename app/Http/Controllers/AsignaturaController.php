@@ -25,7 +25,7 @@ class AsignaturaController extends Controller
         $query=trim($request->get('search'));
         $pre=Prerequisito::
             join('asignaturas','asignaturas.id','=','prerequisitos.preasignatura_id')
-            ->select(DB::raw('prerequisitos.asignatura_id,  (GROUP_CONCAT(asignaturas.nombre SEPARATOR "|" )) as prerequisitos'))
+            ->select(DB::raw('prerequisitos.asignatura_id,  (GROUP_CONCAT(asignaturas.nombre SEPARATOR "-" )) as prerequisitos'))
             ->groupBy('prerequisitos.asignatura_id');
 
         $asignaturas = Asignatura::
