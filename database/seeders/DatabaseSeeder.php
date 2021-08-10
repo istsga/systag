@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             DocenteSeeder::class,
             ConvalidacioneSeeder::class,
             MatriculaSeeder::class,
-            //AsignaturadocenteSeeder::class,
+            AsignaturadocenteSeeder::class,
             HorarioSeeder::class,
             CalificacioneSeeder::class,
             SuspensoSeeder::class,

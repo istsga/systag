@@ -124,6 +124,8 @@ Route::resource('certificadoperiodos', CertificadoperiodoController::class)->onl
  Route::get('/getAsignacionescal/{id}', [CalificacioneController::class,'getAsignacionescal'])->name('getAsignacionescal');
  Route::get('/getAsignaturascal/{id}', [CalificacioneController::class, 'getAsignaturascal'])->name('getAsignaturascal');
  Route::get('/getEstudiantescal/{id}', [CalificacioneController::class, 'getEstudiantescal'])->name('getEstudiantescal');
+//  Route::get('/getAsignacionesfiltro/{id}', [CalificacioneController::class, 'getAsignacionesfiltro'])->name('getAsignacionesfiltro');
+//  Route::get('/getAsignaturasfiltro/{id}', [CalificacioneController::class, 'getAsignaturasfiltro'])->name('getAsignaturasfiltro');
 
  //Suspensos
  Route::get('/getAsignacionessus/{id}', [SuspensoController::class,'getAsignacionessus'])->name('getAsignacionessus');

@@ -36,4 +36,18 @@ class Calificacione extends Model
     }
 
 
+    //Scope
+    // public function scopeAllowed($query)
+    // {
+    //     if( auth()->user()->can('view', $this))
+    //     {
+    //        return $query;
+    //     }
+    //     $dni=auth()->user()->dni;
+    //     $docente=Docente::where('dni',$dni)->first();
+    //     //dd($estudiante->id);
+    //     return $query->where('docente_id', $docente->id);
+    // }
+
+
 }

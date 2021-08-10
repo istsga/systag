@@ -12,7 +12,7 @@ class SuspensoPolicy
 
     public function before(User $user)
     {
-        if ($user->hasRole('Administrador'))
+        if ($user->hasRole('Docente'))
         {
             return true;
         }
@@ -38,7 +38,7 @@ class SuspensoPolicy
      */
     public function view(User $user, Suspenso $suspenso)
     {
-        return $user->hasPermissionTo('Ver suspensos');
+        return $user->hasRole('Administrador') || $user->hasPermissionTo('Ver suspensos');
     }
 
     /**
@@ -49,7 +49,7 @@ class SuspensoPolicy
      */
     public function create(User $user)
     {
-        return $user->hasPermissionTo('Crear suspensos');
+        return $user->hasRole('Docente');
     }
 
     /**
@@ -61,7 +61,7 @@ class SuspensoPolicy
      */
     public function update(User $user, Suspenso $suspenso)
     {
-        return $user->hasPermissionTo('Actualizar suspensos');
+        return $user->hasRole('Docente');
     }
 
     /**
@@ -73,7 +73,7 @@ class SuspensoPolicy
      */
     public function delete(User $user, Suspenso $suspenso)
     {
-        return $user->hasPermissionTo('Eliminar suspensos');
+        return $user->hasRole('Docente');
     }
 
     /**

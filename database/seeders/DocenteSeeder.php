@@ -51,6 +51,24 @@ class DocenteSeeder extends Seeder
             'tipocontrato_id'       => '2',
         ]);
 
+        Docente::create([
+            'tipo_identificacion'   => '1',
+            'dni'                   => '0456208000',
+            'nombre'                => 'Segundo',
+            'apellido'              =>  'Chavez',
+            'email'                 =>  'segundochavez@gmail.com',
+            'titulo_academico'      => 'Ingeniero',
+            'abreviatura'           => 'Ing.',
+            'fecha_ingreso'         => '2020-12-29',
+            'telefono_fijo'         => '3856900',
+            'telefono_movil'        => '0978988699',
+            'provincia_id'          => '06',
+            'cantone_id'            => '43',
+            'calle'                 => '10 de Agosto',
+            'estado'                =>'1',
+            'tipocontrato_id'       => '2',
+        ]);
+
         //CONTABILIDAD
         Docente::create([
             'tipo_identificacion'   => '1',
@@ -163,22 +181,5 @@ class DocenteSeeder extends Seeder
             'tipocontrato_id'       => '2',
         ]);
 
-        Docente::create([
-            'tipo_identificacion'   => '1',
-            'dni'                   => '0456208000',
-            'nombre'                => 'Segundo',
-            'apellido'              =>  'Chavez',
-            'email'                 =>  'segundochavez@gmail.com',
-            'titulo_academico'      => 'Ingeniero',
-            'abreviatura'           => 'Ing.',
-            'fecha_ingreso'         => '2020-12-29',
-            'telefono_fijo'         => '3856900',
-            'telefono_movil'        => '0978988699',
-            'provincia_id'          => '06',
-            'cantone_id'            => '43',
-            'calle'                 => '10 de Agosto',
-            'estado'                =>'1',
-            'tipocontrato_id'       => '2',
-        ]);
     }
 }

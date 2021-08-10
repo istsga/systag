@@ -23,43 +23,6 @@ class MatriculaSeeder extends Seeder
         $matricula->save();
         $matricula->asignaturas()->attach([ 1,2,3,4,5,6]);
 
-
-        $matricula = new matricula;
-        $matricula->estudiante_id      = '2';
-        $matricula->asignacione_id     = '2';
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->tipo               = rand(1,3);
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '3';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 1,2,3,4,5,6 ]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '4';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 1,2,3,4,5,6 ]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '5';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 1,2,3,4,5,6 ]);
-
         $matricula = new matricula;
         $matricula->asignacione_id     = '1';
         $matricula->estudiante_id      = '6';
@@ -78,6 +41,45 @@ class MatriculaSeeder extends Seeder
         $matricula->save();
         $matricula->asignaturas()->attach([ 1,2,3,4,5,6 ]);
 
+
+        $matricula = new matricula;
+        $matricula->estudiante_id      = '2';
+        $matricula->asignacione_id     = '2';
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->tipo               = rand(1,3);
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '3';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12 ]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '4';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12 ]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '5';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12 ]);
+
+
+
         $matricula = new matricula;
         $matricula->asignacione_id     = '2';
         $matricula->estudiante_id      = '8';
@@ -85,7 +87,88 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 1,2,3,4,5,6 ]);
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12 ]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '12';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '13';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '14';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '15';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '16';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '17';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '18';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '19';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
+
+        $matricula = new matricula;
+        $matricula->asignacione_id     = '2';
+        $matricula->estudiante_id      = '20';
+        $matricula->tipo   = rand(1,3);
+        $matricula->fecha_matricula    = '2020-12-19';
+        $matricula->condicion          = '1';
+        $matricula->save();
+        $matricula->asignaturas()->attach([ 7,8,9,10,11,12]);
 
         //CONTABILIDAD
         $matricula = new matricula;
@@ -116,95 +199,13 @@ class MatriculaSeeder extends Seeder
         $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '12';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '13';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '14';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '15';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '16';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '17';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '18';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '19';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '2';
-        $matricula->estudiante_id      = '20';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2020-12-19';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
-
-        //ENFERMERIA
-        $matricula = new matricula;
         $matricula->asignacione_id     = '3';
         $matricula->estudiante_id      = '21';
         $matricula->tipo   = rand(1,3);
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -213,7 +214,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -222,7 +223,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -231,7 +232,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -240,7 +241,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -249,7 +250,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -258,7 +259,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -267,7 +268,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -276,7 +277,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -285,7 +286,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -294,7 +295,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -303,7 +304,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -312,7 +313,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -321,7 +322,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '3';
@@ -330,9 +331,9 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
-        //ENFERMERIA A
+
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
         $matricula->estudiante_id      = '36';
@@ -340,7 +341,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -349,7 +350,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -358,7 +359,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -367,7 +368,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -376,7 +377,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -385,7 +386,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -394,7 +395,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -403,7 +404,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -412,7 +413,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -421,7 +422,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -430,7 +431,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '4';
@@ -439,7 +440,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2020-12-19';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([ 57,58,59,60,61,62]);
+        $matricula->asignaturas()->attach([ 29,30,31,32,33,34]);
 
         //FERMERIA B
         $matricula = new matricula;

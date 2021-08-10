@@ -143,7 +143,7 @@ function cambiaAsignaciones(select) {
             var option = document.createElement('option');
             option.value = resp.data[i].asignacione_id;
             console.log(resp.data[i]);
-            option.text = resp.data[i].periodoAcademico+' '+resp.data[i].nombre +' '+resp.data[i].nombrePeriodo +' '+resp.data[i].nombreSeccion +' '+resp.data[i].nombreParalelo;
+            option.text = resp.data[i].periodoAcademico+' '+resp.data[i].nombre +' | '+resp.data[i].nombrePeriodo +' | '+resp.data[i].nombreSeccion +' | '+resp.data[i].nombreParalelo;
             //console.log('pasoy',asignaciones.options[i].value,'-',{{old("asignacione_id")}});
             if(asignaciones.options[i].value == "{{ old("asignacione_id") }}")
             {

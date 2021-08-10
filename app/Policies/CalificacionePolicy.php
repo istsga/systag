@@ -12,7 +12,7 @@ class CalificacionePolicy
 
     public function before(User $user)
     {
-        if ($user->hasRole('Administrador'))
+        if ($user->hasRole('Docente'))
         {
             return true;
         }
@@ -38,7 +38,8 @@ class CalificacionePolicy
      */
     public function view(User $user, Calificacione $calificacione)
     {
-        return $user->dni === $calificacione->docente_id  || $user->hasPermissionTo('Ver calificaciones');
+        return $user->hasRole('Administrador') ||$user->hasPermissionTo('Ver calificaciones');
+        //return $user->dni === $calificacione->docente_id  || $user->hasPermissionTo('Ver calificaciones');
     }
 
     /**
@@ -49,7 +50,8 @@ class CalificacionePolicy
      */
     public function create(User $user)
     {
-        return $user->hasPermissionTo('Crear calificaciones');
+        return $user->hasRole('Docente');
+        //return $user->hasPermissionTo('Crear calificaciones');
     }
 
     /**
@@ -61,7 +63,8 @@ class CalificacionePolicy
      */
     public function update(User $user, Calificacione $calificacione)
     {
-        return $user->hasPermissionTo('Actualizar calificaciones');
+        return $user->hasRole('Docente');
+        //return $user->hasPermissionTo('Actualizar calificaciones');
     }
 
     /**
@@ -73,7 +76,8 @@ class CalificacionePolicy
      */
     public function delete(User $user, Calificacione $calificacione)
     {
-        return $user->hasPermissionTo('Eliminar calificaciones');
+        return $user->hasRole('Docente');
+        //return $user->hasPermissionTo('Eliminar calificaciones');
     }
 
     /**

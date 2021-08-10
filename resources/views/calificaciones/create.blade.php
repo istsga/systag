@@ -24,7 +24,7 @@
                         <div class="form-group col-lg-5">
                             <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted  small">PERIODO ACADÉMICO</label>
                             <div class="input-group">
-                                <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademicos') is-invalid @enderror"  onchange="periodoAsignacion();">
+                                <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror"  onchange="calificacionPeriodo();">
                                     <option value="" class="form-control  "> == Seleccionar == </option>
                                     @foreach ($periodacademicos as $periodacademico)
                                     <option  value="{{$periodacademico->id}}"
@@ -32,7 +32,7 @@
                                         >{{$query.''.$periodacademico->periodo}}</option>
                                         @endforeach
                                 </select>
-                                @error ('periodacademicos') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
+                                @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
                                 <div class="input-group-prepend "><span class=" input-group-text">
                                     <i class=" text-primary fas fa-calendar-check"></i></span></div>
                             </div>
@@ -41,7 +41,7 @@
                         <div class="col-lg-7">
                             <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA | PERIODO | SECCIÓN | PARALELO  </label>
                             <div class="input-group">
-                                <select name="asignacione_id" id="asignacione_id" class=" form-control @error('asignacione_id') is-invalid @enderror" onchange="cambioAsignacion();">
+                                <select name="asignacione_id" id="asignacione_id" class=" form-control @error('asignacione_id') is-invalid @enderror" onchange="calificacionAsignacion();">
                                     <option class="form-control" value=""> == Seleccionar == </option>
                                 </select>
                                 <div class="input-group-prepend "><span class=" input-group-text">
@@ -53,7 +53,7 @@
                             <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS
                             </label>
                             <div class="input-group">
-                                <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror" onchange="cambioEstudiante();">
+                                <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror" onchange="calificacionEstudiante();">
                                     <option class="form-control" value=""> == Seleccionar == </option>
                                 </select>
                                 <div class="input-group-prepend "><span class=" input-group-text">
@@ -213,7 +213,7 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/axios.min.js')}}"></script>
 <script src="{{asset('js/select2.full.min.js')}}"></script>
-<script type="text/javascript">
+<script>
 
 
 // calcula el promedio de notas
@@ -275,9 +275,9 @@ function Unidades(num){
  return "";
 }
 
-periodoAsignacion();
+//periodoAsignacion();
 
-function periodoAsignacion(){
+function calificacionPeriodo(){
     var asignaciones = document.getElementById("asignacione_id");
     for (let i = asignaciones.options.length; i >= 0; i--) {
         asignaciones.remove(i);
@@ -292,6 +292,7 @@ function periodoAsignacion(){
             for (i = 0; i < Object.keys(resp.data).length; i++) {
             var option = document.createElement('option');
             option.value = resp.data[i].id;
+            console.log(option.text = resp.data[i].id);
             option.text = resp.data[i].id+' '+resp.data[i].nombre+' | '+resp.data[i].nombrePeriodo+' | '+resp.data[i].nombreSeccion+' | '+resp.data[i].nombreParalelo;
             // if(asignaciones.options[i].value == "{{ old("asignacione_id") }}")
             // {
@@ -309,7 +310,7 @@ function periodoAsignacion(){
 }
 
 
-function cambioAsignacion(){
+function calificacionAsignacion(){
     var asignaturas = document.getElementById("asignatura_id");
     for (let i = asignaturas.options.length; i >= 0; i--) {
         asignaturas.remove(i);
@@ -329,7 +330,7 @@ function cambioAsignacion(){
       .catch(function (error) {console.log(error);})
 }
 
-function cambioEstudiante(){
+function calificacionEstudiante(){
     var estudiantes = document.getElementById("matricula_id");
     for (let i = estudiantes.options.length; i >= 0; i--) {
         estudiantes.remove(i);

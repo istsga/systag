@@ -22,19 +22,19 @@ class CalificacioneController extends Controller
      */
     public function index(Request $request)
     {
-        //$this->authorize('view', Calificacione::class);
 
         $query=trim($request->get('periodacademico_id'));
         $queryAsignatura=trim($request->get('asignatura_id'));
         $queryAsignacione=trim($request->get('asignacione_id'));
 
-        $periodacademicos = Periodacademico::
-            allowed()
-            ->get();
+        $periodacademicos = Periodacademico::get();
+            // allowed()
+            // ->get();
 
         $calificaciones = Calificacione::
             where('asignacione_id', $queryAsignacione)
             ->where('asignatura_id', $queryAsignatura)
+            //->allowed()
             ->get();
 
         $asignaturas = Asignatura_matricula::
@@ -72,9 +72,9 @@ class CalificacioneController extends Controller
         $queryAsignatura=trim($request->get('asignatura_id'));
         $queryAsignacione=trim($request->get('asignacione_id'));
 
-        $periodacademicos = Periodacademico::
-            allowed()
-            ->get();
+        $periodacademicos = Periodacademico::get();
+            // allowed()
+            // ->get();
 
         $asignaciones = [];
 
