@@ -64,7 +64,7 @@
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                 <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-star  mr-3"></i> NOTAS </font>
 
-                    <a class=" btn btn-primary " href="{{route('pdfconsolidado', $estudiante_id.'_'.$periodo_id)}}"> <i class=" font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
+                    <a class=" btn btn-primary " href="{{route('reporteCalificacionperiodo', $estudiante_id.'_'.$periodo_id)}}"> <i class=" font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
 
             </div>
 

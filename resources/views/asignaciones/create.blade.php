@@ -7,12 +7,6 @@
     <div class="fade-in">
         <div class="row justify-content-center ">
               <div class="col-lg-8">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary">
                         <h4 class=" text-light"><i class="fas fa-clone mr-3"></i> <span class="text-value">ASIGNACIÓN</span> </h4>
@@ -26,7 +20,7 @@
                                     <label for="periodacademicos" class="col-form-label font-weight-bold text-dark text-muted">Periodo Académico
                                         <span class="text-primary">*</span></label>
                                     <div class="input-group">
-                                        <select name="periodacademicos" id="periodacademicos" class="form-control @error('periodacademicos') is-invalid @enderror"  onchange="cambia_carreras(this)">
+                                        <select name="periodacademicos" id="periodacademico_id" class="form-control @error('periodacademicos') is-invalid @enderror"  onchange="cambia_carreras(this)">
                                             <option value="" class="form-control "> == Seleccionar ­­­­­­== </option>
                                             @foreach ($periodacademicos as $periodacademico)
                                                 <option  value="{{$periodacademico->id}}"
@@ -45,7 +39,7 @@
                                         <span class="text-primary">*</span></label>
                                     <div class="input-group">
                                         <select  name="carreras" id="carrera_id" class="form-control @error('carreras') is-invalid @enderror" onchange="cambia_periodo(this)" >
-                                            <option value="" class="form-control "> == Seleccionar == </option>
+                                            {{-- Data --}}
                                         </select>
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-graduation-cap"></i></span></div>
@@ -118,47 +112,39 @@
 </main>
 <script>
 
-cambia_carreras('');
+cambia_carreras();
 function cambia_carreras(select){
     const carreras = @json($carreras);
-    //console.log(carreras);
-
-    periodacademico = document.getElementById('periodacademicos').value;
-    //console.log(periodacademico);
-
-
+    periodacademico = document.getElementById('periodacademico_id').value;
     const result = carreras.filter(carreras => carreras.periodacademico_id === Number(periodacademico));
-   // console.log(result);
-
-
     if (periodacademico != 0) {
 
         num_carreras = result.length;
-
         document.getElementById("carrera_id").length = num_carreras;
         console.log(num_carreras);
         for(i=0;i<num_carreras;i++){
             carrera_id.options[i].value=result[i].carrera_id;
             carrera_id.options[i].text=result[i].nombre;
+            //console.log(carrera_id.options[i].value, "{{ old("carrera_id") }}");
             if(carrera_id.options[i].value == "{{ old("carrera_id") }}")
             {
-                carrera_id.options[i].selected= true;
+                carrera_id.options[i].value.selected= true;
             }
 
         }
     }else{
 
         document.getElementById("carrera_id").length  = 1;
-
         carrera_id.options[0].value = "Seleccionar";
-        carrera_id.options[0].text = "== Seleccionar ==";
+        carrera_id.options[0].text = "== Seleccionar periodo académico ==";
 
         document.getElementById("periodo_id").length  = 1;
         periodo_id.options[0].value = "Seleccionar";
         periodo_id.options[0].text = "== Seleccionar ==";
     }
 
-    carrera_id.options[0].selected = true;
+    //cambia_periodo();
+    //carrera_id.options[0].selected = true;
 }
 
 function cambia_periodo(){

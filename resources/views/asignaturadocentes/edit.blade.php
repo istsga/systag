@@ -24,22 +24,23 @@
                                 <div class="row">
 
                                     <div class="form-group col-lg-12 ">
-                                        <label for="asignacione_id" class="col-form-label font-weight-bold text-muted">Carrera | Periodo | Sección
+                                        <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA |  PERIODO | SECCION | PARALELO
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
-                                            <select name="asignacione_id" id="asigperiodo"  class="form-control @error('asignacione_id') is-invalid @enderror ">
-                                                <option class="form-control" value="">Seleccionar</option>
+                                            <select name="asignacione_id" id="asigperiodo"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="transformarAsignaturas();">
+                                                <option class="form-control" value=""> == Seleccionar == </option>
                                                 @foreach ($asignaciones as $asignacione)
                                                 <option  value="{{$asignacione->id}}"
-                                                    {{old('asignaciones', $asignacione->asignacione_id)==$asignacione->id ? 'selected' : '' }}
-                                                    >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} ,
-                                                    {{$asignacione->carreras->pluck('nombre')->implode(', ')}},
-                                                    {{$asignacione->periodo->nombre}},
-                                                    {{$asignacione->seccione->nombre}},
+                                                    {{old('asignacione_id', $asignaturadocente->asignacione_id)==$asignacione->id ? 'selected' : '' }}
+                                                    >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} |
+                                                    {{$asignacione->carreras->pluck('nombre')->implode(', ')}} |
+                                                    {{$asignacione->periodo->nombre}} |
+                                                    {{$asignacione->seccione->nombre}} |
                                                     {{$asignacione->paralelo->nombre}}
                                                 </option>
                                                 @endforeach
+
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-check"></i></span></div>
@@ -51,12 +52,8 @@
                                         <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignaturas
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
-                                            <select name="asignatura_id" id="id_asignatura"  class="form-control @error('asignatura_id') is-invalid @enderror">
-                                                {{-- @foreach ($asignaturas as $asignatura)
-                                                <option  value="{{$asignatura->id}}"
-                                                    {{old('asignaturas')==$asignatura->id ? 'selected' : '' }}
-                                                    >{{$asignatura->nombre}}</option>
-                                                @endforeach --}}
+                                            <select name="asignatura_id" id="asignaturatrans"  class="form-control @error('asignatura_id') is-invalid @enderror">
+                                                {{-- Data --}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-folder"></i></span></div>
@@ -72,8 +69,8 @@
                                                 <option class="form-control" value=""> == Seleccionar == </option>
                                                 @foreach ($docentes as $docente)
                                                 <option  value="{{$docente->id}}"
-                                                    {{old('docentes')==$docente->id ? 'selected' : '' }}
-                                                    >{{$docente->nombre}}</option>
+                                                    {{old('docente_id', $asignaturadocente->docente_id)==$docente->id ? 'selected' : '' }}
+                                                    >{{$docente->nombre}} {{$docente->apellido}}</option>
                                                     @endforeach
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
@@ -100,6 +97,7 @@
 
 @push('scripts')
 
+<script src="{{asset('js/axios.min.js')}}"></script>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/select2.full.min.js')}}"></script>
 <script>
@@ -112,6 +110,45 @@ $(function () {
 
 });
 
+    transformarAsignaturas();
+
+    function transformarAsignaturas(select){
+
+        var asignaturas = document.getElementById("asignaturatrans");
+        for (let i = asignaturas.options.length; i >= 0; i--) {
+            asignaturas.remove(i);
+        }
+
+        var id = document.getElementById('asigperiodo').value;
+        if(id){
+            axios.get('/getAsignaturasdis/'+id)
+            .then((resp)=>{
+                var asignaturas = document.getElementById("asignaturatrans");
+                for (i = 0; i < Object.keys(resp.data).length; i++) {
+                var option = document.createElement('option');
+                option.value = resp.data[i].id;
+                option.text = resp.data[i].nombre;
+
+                //resp.data[i].id.selected= (resp.data[i].id == asignaturas) ? true : false;
+
+                if(resp.data[i].id == "{{ old("asignatura_id") }}")
+                    {
+                        option.selected= true;
+                    }
+                asignaturas.append(option);
+                }
+                if(Object.keys(resp.data).length==0){
+                    document.getElementById("asignaturatrans").length  = 1
+                    asignaturas.options[0].text = " == Asignaturas distribuidas == "
+                }
+            })
+            .catch(function (error) {console.log(error);})
+        } else{
+            document.getElementById("asignaturatrans").length  = 1
+            asignaturas.options[0].value =""
+            asignaturas.options[0].text = " == Selecionar carrera == "
+        }
+    }
 </script>
 @endpush
 

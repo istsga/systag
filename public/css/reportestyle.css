@@ -1,66 +1,62 @@
-/*ESTILOS GENERALES PARA REPORTES*/
-body{
-  font-family: sans-serif;
-}
 @page {
-  margin: 160px 35px;
-}
-header {
-  position: fixed;
-  left: 0px;
-  top: -130px;
-  right: 0px;
-  height: 100px;
-  background-color: #4A9C40;
-  text-align: center;
-  color: #ffffff;
+    margin: 35px 45px;
+    font-size: 1em;
 }
 
-.container {
-  display: flex;
-  flex-direction: wrap;
+body {
+    font-family: sans-serif;
+    margin-top: 3.5cm;
+    margin-bottom: 3cm;
+}
+
+header {
+    position: fixed;
+    top: 0cm;
+    left: 0cm;
+    right: 0cm;
+    height: 2.7cm;
+    background-color: #4A9C40;
+    color: white;
+    text-align: center;
+    line-height: 30px;
 }
 
 .logo img{
-  margin-top: 5px;
-  margin-left: 5px;
-  width: 105px;
-  height: 120px;
-  float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 105px;
+    height: 120px;
+    float: left;
+  }
+
+.title h3{
+    padding-top: 4px;
+  }
+  .title h4{
+    margin-top: -20px;
 }
 
-.title{
-  padding-top: 25px;
-}
-
-header h1{
-  margin: 10px 0;
-}
-header h3{
-  margin: 0 0 10px 0;
-}
-
-header h4{
-  margin: 0 0 10px 0;
-}
 
 footer {
-  position: fixed;
-  left: 0px;
-  bottom: -105px;
-  right: 0px;
-  height: 20px;
-  border-top: 2px solid #4A9C40;
+    position: fixed;
+    bottom: 0cm;
+    left: 0cm;
+    right: 0cm;
+    height: 2cm;
+    border-top: 2px solid #4A9C40;
+    color: white;
+    text-align: center;
+    line-height: 35px;
 }
-/* footer .page:after {
-  content: counter(page);
-} */
+
 footer table {
-  width: 100%;
+    margin-top: -10px;
+    width: 100%;
 }
+
 footer p {
-  text-align: right;
   font-size: 13px;
+  margin-top: -5px;
   color: #424242;
 }
 footer .izq {
@@ -69,131 +65,21 @@ footer .izq {
   color: #424242;
 }
 
+footer .izq-1 {
+  text-align: left;
+  font-size: 13px;
+  margin-top: -25px;
+  color: #424242;
+}
+
 footer .drcho {
   text-align: right;
+  margin-top: 5px;
   margin-right: -5px;
   font-size: 13px;
   color: #424242;
 }
 
-/*ESTILOS PARA TABLAS*/
-table {
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th {
-  text-align: center;
-  font-size:14px;
-  white-space: nowrap;
-  overflow-x: auto;
-}
-
-td {
-  text-align: left;
-  padding-left: 5px;
-  font-size:12px;
-  white-space: nowrap;
-  overflow-x: auto;
-}
-
-.content
-{
-  margin-top: -25px;
-  margin-bottom: -2cm;
-}
-
-/*ESTILOS MATRICULAS*/
-
-.wrap-m
-{
-  width:99%;
-  white-space: pre-wrap;
-  text-align: justify;
-  height:auto;
-}
-
-/*ESTILOS PASE DE PERIODO*/
-
-.wrap-p
-{
-  width:99%;
-  white-space: pre-wrap;
-  text-align: justify;
-  /* border:1px solid tomato; */
-  height:auto;
-}
-
-.text-1{
-  font-size: 16px;
-  margin-top: 15px;
-  text-align: justify;
-}
-
-.text-2{
-  font-size: 16px;
-  margin-top: 15px;
-  text-align: right;
-}
-
-/*ESTILOS HORARIOS*/
-.wrap-h
-{
-  width:99%;
-  white-space: pre-wrap;
-  text-align: justify;
-  height:auto;
-}
-
-.wrap-h1
-{
-  width:99%;
-  white-space: pre-wrap;
-  text-align: justify;
-  height:auto;
-}
-
-/*ESTILOS CONSOLIDADO*/
-.wrap-c
-{
-  width:99%;
-  white-space: pre-wrap;
-  text-align: justify;
-  border:1px solid tomato;
-  height:auto;
-}
-
-/*RECORD ACADEMICO*/
-.record
-{
-  margin-top: 20px;
-  width:100%;
-  position: absolute;
-}
-/* .record-items
-{
-  max-width: 345px;
-  position:relative;
-  margin-top: 15px;
-  display: inline-block;
-  position: relative;
-  text-align: center;
-} */
-
-.record-items b
-{
-  margin: 5px 0px 0px 0px;
-  font-size: 13px;
-}
-
-.record-items p
-{
-  margin: 5px 0px 5px 0px;
-  font-weight: bold;
-  font-size: 11px;
-  text-align: left;
-}
 
 
 

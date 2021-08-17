@@ -16,6 +16,7 @@
                             <a class=" btn btn-primary " href="{{route('secciones.create')}}"> <i class=" font-weight-bold fas fa-plus mr-1"></i>Agregar</a>
                         @endcan
                     </div>
+                    @if (count($secciones) > 0)
                     <div class="card-table  table-responsive">
                         <table class="table table-hover  table-bordered align-middle">
                             <thead class="thead-light">
@@ -53,6 +54,9 @@
                             </tbody>
                         </table>
                     </div>
+                    @else
+                        <em class=" mt-2 mb-2 ml-3 text-muted">No tienes registros.</em>
+                    @endif
                 </div>
             </div>
         </div>

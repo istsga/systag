@@ -20,12 +20,13 @@ class AsignaturaController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('view', Asignatura::class);
+        $this->authorize('view', new Asignatura);
 
         $query=trim($request->get('search'));
         $pre=Prerequisito::
             join('asignaturas','asignaturas.id','=','prerequisitos.preasignatura_id')
-            ->select(DB::raw("prerequisitos.asignatura_id,  GROUP_CONCAT(asignaturas.nombre , ' | ') as prerequisitos"))
+            ->select(DB::raw("prerequisitos.asignatura_id,  GROUP_CONCAT(asignaturas.nombre Separator  ' | ') as prerequisitos"))
+            //->select(DB::raw("prerequisitos.asignatura_id,  GROUP_CONCAT(asignaturas.nombre,  ' | ') as prerequisitos"))
             ->groupBy('prerequisitos.asignatura_id');
 
         $asignaturas = Asignatura::

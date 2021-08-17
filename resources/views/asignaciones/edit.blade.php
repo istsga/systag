@@ -119,7 +119,7 @@
 </div>
 </main>
 <script>
- cambia_carreras('');
+ cambia_carreras();
 function cambia_carreras(select){
     const carreras = @json($carreras);
     periodacademico = document.getElementById('periodacademicos').value;
@@ -137,7 +137,7 @@ function cambia_carreras(select){
         document.getElementById("carrera_id").length  = 1;
 
         carrera_id.options[0].value = "Seleccionar";
-        carrera_id.options[0].text = "Seleccionar";
+        carrera_id.options[0].text = " == Seleccionar == ";
     }
 
     carrera_id.options[0].selected = true;
@@ -155,8 +155,6 @@ function editar_periodo(){
             periodo_id.options[i].text=result[i].nombre;
         }
 }
-
 </script>
-
 
  @endsection

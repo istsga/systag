@@ -14,7 +14,7 @@ class ParaleloController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', Paralelo::class);
+        $this->authorize('view', new Paralelo);
         $paralelos = Paralelo::all();
         return view('paralelos.index', compact('paralelos'));
     }

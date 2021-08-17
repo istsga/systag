@@ -17,7 +17,8 @@ class PeriodacademicoController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', Periodacademico::class);
+        $this->authorize('view', new Periodacademico);
+
         $periodacademicos = Periodacademico::with('carreras')
         ->latest('id')
         ->paginate();

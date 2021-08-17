@@ -1,0 +1,56 @@
+
+.c-nombre{
+    font-size: 16px;
+    margin-top: -5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.c-nombre p{
+    margin-top: -10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.informacion{
+    margin-top: 35px;
+}
+
+.informacion p{
+    margin-top: -5px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.informacion span{
+    font-weight: normal;
+    padding-left: 36px;
+}
+
+.informacion-1{
+    width: 66%;
+    font-size: 12px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.informacion-2{
+    width: 33%;
+    font-size: 12px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.firma-d{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 204px;
+
+}

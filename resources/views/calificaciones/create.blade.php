@@ -28,9 +28,10 @@
                                     <option value="" class="form-control  "> == Seleccionar == </option>
                                     @foreach ($periodacademicos as $periodacademico)
                                     <option  value="{{$periodacademico->id}}"
-                                        {{$query==$periodacademico->id ? 'selected' : '' }}
+                                        {{-- {{old('estudiante_id')==$estudiante->id ? 'selected' : '' }} --}}
+                                        {{old('periodacademico_id')==$periodacademico->id ? 'selected' : '' }}
                                         >{{$query.''.$periodacademico->periodo}}</option>
-                                        @endforeach
+                                    @endforeach
                                 </select>
                                 @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
                                 <div class="input-group-prepend "><span class=" input-group-text">
@@ -42,7 +43,7 @@
                             <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA | PERIODO | SECCIÓN | PARALELO  </label>
                             <div class="input-group">
                                 <select name="asignacione_id" id="asignacione_id" class=" form-control @error('asignacione_id') is-invalid @enderror" onchange="calificacionAsignacion();">
-                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                    {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                 </select>
                                 <div class="input-group-prepend "><span class=" input-group-text">
                                     <i class=" text-primary fas fa-layer-group"></i></span></div>
@@ -54,7 +55,7 @@
                             </label>
                             <div class="input-group">
                                 <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror" onchange="calificacionEstudiante();">
-                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                    {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                 </select>
                                 <div class="input-group-prepend "><span class=" input-group-text">
                                     <i class=" text-primary fas fa-book"></i></span></div>
@@ -275,7 +276,7 @@ function Unidades(num){
  return "";
 }
 
-//periodoAsignacion();
+calificacionPeriodo();
 
 function calificacionPeriodo(){
     var asignaciones = document.getElementById("asignacione_id");
@@ -294,12 +295,17 @@ function calificacionPeriodo(){
             option.value = resp.data[i].id;
             console.log(option.text = resp.data[i].id);
             option.text = resp.data[i].id+' '+resp.data[i].nombre+' | '+resp.data[i].nombrePeriodo+' | '+resp.data[i].nombreSeccion+' | '+resp.data[i].nombreParalelo;
-            // if(asignaciones.options[i].value == "{{ old("asignacione_id") }}")
-            // {
-            //     asignaciones.options[i].selected= true;
-            // }
+            console.log('paso 1');
+            console.log(resp.data[i].id, "{{ old("asignacione_id") }}" );
+            console.log('paso 2');
+            if(resp.data[i].id == "{{ old("asignacione_id") }}")
+            {
+                option.selected= true;
+            }
+
             asignaciones.appendChild(option);
             }
+            calificacionAsignacion();
         })
         .catch(function (error) {console.log(error);})
       } else{
@@ -324,8 +330,14 @@ function calificacionAsignacion(){
           var option = document.createElement('option');
           option.value = resp.data[i].asignatura_id;
           option.text = resp.data[i].nombre;
+
+          if(resp.data[i].asignatura_id == "{{ old("asignatura_id") }}")
+            {
+                option.selected= true;
+            }
           asignaturas.appendChild(option);
         }
+        calificacionEstudiante()
       })
       .catch(function (error) {console.log(error);})
 }
@@ -346,6 +358,10 @@ function calificacionEstudiante(){
           var option = document.createElement('option');
           option.value = resp.data[i].estudiante_id;
           option.text = resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni;
+          if(resp.data[i].estudiante_id == "{{ old("matricula_id") }}")
+            {
+                option.selected= true;
+            }
           estudiantes.appendChild(option);
         }
       })

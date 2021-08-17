@@ -52,7 +52,7 @@
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
                                             <select name="asignatura_id" id="asignaturatrans"  class="form-control @error('asignatura_id') is-invalid @enderror">
-                                                <option value=""> == Selecionar == </option>
+                                                {{-- <option value=""> == Selecionar == </option> --}}
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-folder"></i></span></div>
@@ -71,8 +71,6 @@
                                                     {{old('docentes')==$docente->id ? 'selected' : '' }}
                                                     >{{$docente->nombre}} {{$docente->apellido}}, {{$docente->dni}} </option>
                                                 @endforeach
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-chalkboard-teacher"></i></span></div>
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-user"></i></span></div>
@@ -80,7 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                     </div>
                     <div class="card-footer border-0 d-flex justify-content-between aling-items-end bg-light">
                         <button class=" col-sm-3 border btn btn-primary" type="submit">Guardar</button>
@@ -110,34 +108,43 @@ $(function () {
 
 });
 
-function transformarAsignaturas(select){
+    transformarAsignaturas();
 
-    var asignaturas = document.getElementById("asignaturatrans");
-    for (let i = asignaturas.options.length; i >= 0; i--) {
-        asignaturas.remove(i);
+    function transformarAsignaturas(select){
+
+        var asignaturas = document.getElementById("asignaturatrans");
+        for (let i = asignaturas.options.length; i >= 0; i--) {
+            asignaturas.remove(i);
+        }
+
+        var id = document.getElementById('asigperiodo').value;
+        if(id){
+            axios.get('/getAsignaturasdis/'+id)
+            .then((resp)=>{
+                var asignaturas = document.getElementById("asignaturatrans");
+                for (i = 0; i < Object.keys(resp.data).length; i++) {
+                var option = document.createElement('option');
+                option.value = resp.data[i].id;
+                option.text = resp.data[i].nombre;
+                if(resp.data[i].id == "{{ old("asignatura_id") }}")
+                    {
+                        option.selected= true;
+                    }
+                asignaturas.append(option);
+                }
+                if(Object.keys(resp.data).length==0){
+                    document.getElementById("asignaturatrans").length  = 1
+                    asignaturas.options[0].text = " == Asignaturas distribuidas == "
+                }
+            })
+            .catch(function (error) {console.log(error);})
+        } else{
+            document.getElementById("asignaturatrans").length  = 1
+            asignaturas.options[0].value =""
+            asignaturas.options[0].text = " == Selecionar carrera == "
+        }
+
     }
-
-    var id = document.getElementById('asigperiodo').value;
-    if(id){
-        axios.get('/getAsignaturasdis/'+id)
-        .then((resp)=>{
-            var asignaturas = document.getElementById("asignaturatrans");
-            for (i = 0; i < Object.keys(resp.data).length; i++) {
-            var option = document.createElement('option');
-            option.value = resp.data[i].id;
-            option.text = resp.data[i].nombre;
-            asignaturas.append(option);
-            }
-        })
-        .catch(function (error) {console.log(error);})
-    } else{
-        document.getElementById("asignaturatrans").length  = 1
-        asignaturas.options[0].value = ""
-        asignaturas.options[0].text = "Selecionar"
-    }
-
-}
-
 </script>
 @endpush
 

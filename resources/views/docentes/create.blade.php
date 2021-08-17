@@ -290,6 +290,7 @@ function cambia_cantones(select){
         for(i=0;i<num_cantones;i++){
             cantone_id.options[i].value=result[i].id;
             cantone_id.options[i].text=result[i].canton;
+
             if(cantone_id.options[i].value == "{{ old("cantone_id") }}")
             {
                 cantone_id.options[i].selected= true;

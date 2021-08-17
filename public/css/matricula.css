@@ -1,0 +1,54 @@
+.m-nombre{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -20px;
+}
+.m-nombre p{
+ margin: 3px;
+}
+
+.item-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.item-container table th {
+    padding: 1px;
+    font-size: 13px;
+}
+
+.item-container table td {
+    padding: 1px;
+    font-weight: bold;
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+.item-container table td span {
+    font-weight: normal;
+}
+
+.wrap-m
+{
+  width:99%;
+  white-space: pre-wrap;
+  text-align: justify;
+  height:auto;
+  font-weight: normal;
+}
+.firma{
+    text-align: center;
+    margin-top: -60px;
+}
+.firma p{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.firma span{
+    padding-left: 500px important;
+}
+
+
+

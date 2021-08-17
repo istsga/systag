@@ -16,7 +16,7 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', Carrera::class);
+        $this->authorize('view', new Carrera);
         $carreras = Carrera::latest('id')
             ->paginate();
         return view('carreras.index', compact('carreras'));

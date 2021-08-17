@@ -17,7 +17,7 @@ class ReporteController extends Controller
         //MATRICULAS
         public function reporteMatricula($id)
         {
-            $this->authorize('view', Matricula::class);
+            $this->authorize('view', new Matricula);
             $matricula = Matricula::findOrFail($id);
 
             //realizar convalidacion
@@ -79,6 +79,24 @@ class ReporteController extends Controller
                 ->get();
             $pdf = PDF::loadView('reportes.reporteSuspenso',['suspensos'=>$suspensos]);
             return $pdf->stream('Reporte Suspenso.pdf', compact('suspensos'));
+        }
+
+        //CALIFICACION X PERIODO
+        public function reporteCalificacionperiodo($id)
+        {
+            $datoNuevo=explode("_",$id);
+        $estudiante=$datoNuevo[0];
+        $periodo_id=$datoNuevo[1];
+
+       $calificaciones=Calificacione::
+        join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
+        ->where('calificaciones.estudiante_id',$estudiante)
+        ->where('asignaturas.periodo_id',$periodo_id)
+        ->get();
+
+        $pdf = PDF::loadView('reportes.reporteCalificacionperiodo', ['calificaciones'=>$calificaciones])
+            ->setPaper('a4', 'landscape');
+        return $pdf->stream('Calificación por periodo', compact('calificaciones'));
         }
 
 

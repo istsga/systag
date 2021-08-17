@@ -119,6 +119,34 @@
 <script src="{{asset('js/axios.min.js')}}"></script>
 <script>
 
+    cambia_periodo();
+    Prerequisitos();
+
+    function cambia_periodo(){
+        const carreras=@json($carreras);
+        const periodos=@json($periodos);
+        carrera=document.getElementById('carrera_id').value;
+        const resulte = carreras.filter(carreras => carreras.id === Number(carrera) );
+
+        if (carrera != 0) {
+            const result = periodos.filter(periodos => periodos.id <=resulte[0].numero_periodo);
+            document.getElementById("periodo_id").length = result.length;
+            for(i=0;i<result.length;i++){
+                periodo_id.options[i].value=result[i].id;
+                periodo_id.options[i].text=result[i].nombre;
+                periodo_id.options[i].selected= (periodo_id.options[i].value == carrera) ? true : false;
+                if(periodo_id.options[i].value == "{{ old("periodo_id") }}")
+                {
+                    periodo_id.options[i].selected= true;
+                }
+            }
+        }else{
+        document.getElementById("periodo_id").length  = 1
+        periodo_id.options[0].value = ""
+        periodo_id.options[0].text = " == Seleccionar carrera == "
+        }
+    }
+
 function Prerequisitos(){
         var asignaturas = document.getElementById("preasignatura_id");
         for (let i = asignaturas.options.length; i >= 0; i--) {
@@ -139,21 +167,29 @@ function Prerequisitos(){
     .catch(function (error) {console.log(error);})
 }
 
-function cambia_periodo(){
-    const carreras=@json($carreras);
-    const periodos=@json($periodos);
-    especialidad_id=document.getElementById('carrera_id').value;
-    console.log(carreras, especialidad_id);
-    const resulte = carreras.filter(carreras => carreras.id === Number(especialidad_id) );
-    console.log(resulte);
-    const result = periodos.filter(periodos => periodos.id <=resulte[0].numero_periodo);
+function Prerequisitos(){
+        var asignaturas = document.getElementById("preasignatura_id");
+        for (let i = asignaturas.options.length; i >= 0; i--) {asignaturas.remove(i);}
 
-    document.getElementById("periodo_id").length = result.length;
-    for(i=0;i<result.length;i++){
-            periodo_id.options[i].value=result[i].id;
-            periodo_id.options[i].text=result[i].nombre;
+        var id = document.getElementById('carrera_id').value;
+        if (id){
+        axios.get('/getPrerequisitos/'+id)
+        .then((resp)=>{
+                var asignaturas = document.getElementById("preasignatura_id");
+                for (i = 0; i < Object.keys(resp.data).length; i++) {
+                var option = document.createElement('option');
+                option.value = resp.data[i].id;
+                option.text = resp.data[i].nombre;
+                asignaturas.appendChild(option);
+                }
+            })
+            .catch(function (error) {console.log(error);})
+        }else{
+            document.getElementById("preasignatura_id").length  = 1
+            asignaturas.options[0].value =""
+            asignaturas.options[0].text = " == Seleccionar carrera =="
         }
-}
+    }
 
 </script>
 @endpush

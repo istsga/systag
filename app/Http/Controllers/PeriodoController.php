@@ -14,7 +14,7 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', Periodo::class);
+        $this->authorize('view', new Periodo);
         $periodos = Periodo::all();
         return view('periodos.index', compact('periodos'));
     }

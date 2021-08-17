@@ -14,7 +14,7 @@ class SeccioneController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', Seccione::class);
+        $this->authorize('view', new Seccione);
         $secciones = Seccione::all();
         return view('secciones.index', compact('secciones'));
     }

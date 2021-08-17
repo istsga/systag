@@ -140,7 +140,7 @@ class HorarioController extends Controller
         $i=0;
         while($i<count($dia_semana)){
             $detalle_horario=new Detallehorario();
-            $detalle_horario->horario_id=9;
+            $detalle_horario->horario_id=$horarios->id;
             $detalle_horario->dia_semana=$dia_semana[$i];
             $detalle_horario->hora_inicio=$hora_inicio[$i];
             $detalle_horario->hora_final=$hora_final[$i];

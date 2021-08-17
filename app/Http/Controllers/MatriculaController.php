@@ -28,7 +28,7 @@ class MatriculaController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('view', Matricula::class);
+        $this->authorize('view', new Matricula);
 
         $query=trim($request->get('search'));
         // $matriculas = Matricula::allowed()

@@ -20,7 +20,7 @@ class ConvalidacioneController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', Convalidacione::class);
+        $this->authorize('view', new Convalidacione);
         $convalidaciones = Convalidacione::latest('id')
             ->paginate();
         return view('convalidaciones.index', compact('convalidaciones'));

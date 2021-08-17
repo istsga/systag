@@ -23,7 +23,7 @@ class EstudianteController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('create', Estudiante::class);
+        $this->authorize('view', new Estudiante);
         $query=trim($request->get('search'));
         $estudiantes = Estudiante::
             where('estudiantes.dni','LIKE','%'.$query.'%')

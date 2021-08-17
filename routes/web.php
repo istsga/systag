@@ -101,6 +101,7 @@ Route::resource('horarios', HorarioController::class);
 Route::get('reportes-matriculas/{id}/data', [ReporteController::class, 'reporteMatricula'])->name('reporteMatricula');
 Route::get('reportes-horarios/{id}/data', [ReporteController::class, 'reporteHorarioE'])->name('reporteHorarioE');
 Route::get('reportes-calificaciones/{id}/data', [ReporteController::class, 'reporteCalificacion'])->name('reporteCalificacion');
+Route::get('reportes-calificacionperiodos/{id}/data', [ReporteController::class, 'reporteCalificacionperiodo'])->name('reporteCalificacionperiodo');
 
 
 //INSTRUCCIONES
@@ -109,6 +110,7 @@ Route::resource('egresados', EgresadoController::class)->only(['index']);
 Route::resource('userinstrucciones', UserinstruccioneController::class)->only(['index']);
 Route::resource('recordacademicos', RecordacademicoController::class)->only(['index']); //Incluye reporte PDF
 Route::resource('certificadoperiodos', CertificadoperiodoController::class)->only(['index']); //Incluye reporte PDF
+
 
 //PETICIONES ASINCRONAS
  //Usuarios

@@ -4,12 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reporte de Notas</title>
+    <title>Acta de Calificaciones</title>
     <link href="{{public_path('css/reportestyle.css')}}" rel="stylesheet">
+    <link href="{{public_path('css/calificacion.css')}}" rel="stylesheet">
 </head>
 <body>
   <header>
-    <div class="container">
       <div class="logo">
         <img src="{{ public_path('assets/brand/logo3.png') }}">
       </div>
@@ -17,8 +17,6 @@
         <h3>INSTITUTO SUPERIOR TECNOLÓGICO "SAN GABRIEL"</h3>
         <h4>Registro Institucional 224 SENESCYT</h4>
       </div>
-    </div>
-
   </header>
 
   <footer>
@@ -41,109 +39,73 @@
     </table>
   </footer>
 
-  <div class="content">
-      <p style="text-align: center;"><strong>ACTA DE CALIFICACIONES</strong></p>
-      <p style="text-align: center; margin-top: -10px "> <strong> Periodo Académico: {{$calificaciones[0]->asignacione->periodacademicos->pluck('periodo')->implode(', ')}} </strong> </p>
+ <div class="c-nombre">
+    <p><strong>ACTA DE CALIFICACIONES</strong></p>
+    <p> <strong> Periodo Académico: {{$calificaciones[0]->asignacione->periodacademicos->pluck('periodo')->implode(', ')}} </strong> </p>
+ </div>
+    <div class="informacion">
+        <div class="informacion-1">
+            <p>CARRERA: <span>
+                {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}} </span></p>
+            <p>SECCIÓN:<span style="padding-left: 45px"> {{$calificaciones[0]->asignacione->seccione->nombre}} </span></p>
+            <p>No de HORAS: <span style="padding-left: 11px">{{$calificaciones[0]->asignatura->hora}} HORAS </span></p>
+        </div>
+        <div class="informacion-2">
+            <p>PERIODO:<span style="padding-left: 73px"> {{$calificaciones[0]->asignacione->periodo->nombre}} </span></p>
+            <p>PARALELO: <span style="padding-left: 63px">{{$calificaciones[0]->asignacione->paralelo->nombre}} </span></p>
+            <p>FECHA DE ENTREGA: <span style="padding-left: 2px"> {{$calificaciones[0]->date}} 2021/05/08 </span></p>
+        </div>
+        <p style="margin-top: -18px">ASIGNATURA: <span style="padding-left: 15px">
+            {{$calificaciones[0]->asignatura->nombre}}</span></p>
+        <p>PROFESOR: <span style="padding-left: 28px"> manus
+                  {{-- {{$calificaciones[0]->asignatura->docentes->pluck('nombre')->implode(', ')}} --}}
+                  {{-- {{$calificaciones[0]->asignatura->docentes->pluck('apellido')->implode(', ')}} --}}
+              </span></p>
+    </div>
 
-      <table>
-        <tr>
-            <th colspan="6"></th>
-        </tr>
-        <tr>
-          <td style="font-size: 11px; text-transform: uppercase" colspan="4"> <span style="font-weight: bold"> ESPECIALIDAD: </span>
-              &nbsp; {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}
-            </td>
-          <td style="font-size: 11px; text-transform: uppercase" colspan="2"><span style="font-weight: bold">PERIODO: </span>
-            &nbsp; {{$calificaciones[0]->asignacione->periodo->nombre}}
-            </td>
-        </tr>
-        <tr>
-          <td style="font-size: 11px; padding-top: 5px; text-transform: uppercase" colspan="4"> <span style="font-weight: bold">SECCIÓN:</span>
-              &nbsp; {{$calificaciones[0]->asignacione->seccione->nombre}}
-            </td>
-          <td style="font-size: 11px; padding-top: 5px; text-transform: uppercase" colspan="2"><span style="font-weight: bold"> PARALELO:</span>
-            &nbsp; {{$calificaciones[0]->asignacione->paralelo->nombre}}
-            </td>
-        </tr>
-        <tr>
-          {{-- {{$asignatura_nombre}} --}}
-          <td style="font-size: 11px; padding-top: 5px; text-transform: uppercase" colspan="4"><span style="font-weight: bold">ASIGNATURA:</span>
-              &nbsp; {{$calificaciones[0]->asignatura->nombre}}
-            </td>
-          <td style="font-size: 11px; padding-top: 5px" colspan="2"><span style="font-weight: bold">No de HORAS:</span>
-            &nbsp; {{$calificaciones[0]->asignatura->hora}} HORAS
-            </td>
-        </tr>
-
-        <tr>
-          <td style="font-size: 11px; padding-top: 5px; text-transform: uppercase" colspan="4"> <span style="font-weight: bold">PROFESOR:</span>
-              {{-- &nbsp; {{$calificaciones[0]->asignatura->docentes->pluck('nombre')->implode(', ')}} --}}
-                    {{-- {{$calificaciones[0]->asignatura->docentes->pluck('apellido')->implode(', ')}} --}}
-            </td>
-          <td style="font-size: 11px; padding-top: 5px" colspan="2"> <span style="font-weight: bold">
-            FECHA DE ENTREGA:</span>  &nbsp; {{$calificaciones[0]->date}}
-          </td>
-        </tr>
-
-      </table>
-
-      <table style="margin-top:30px" border="1" >
+    <table border = "1">
         <thead>
-          <tr>
-            <th rowspan="2" style=" padding:2px; text-align: center; font-size: 8px">No</th>
-            <th rowspan="2" colspan= "10" style="padding:2px; text-align: center; font-size: 9px">NOMBRE DEL ALUMNO</th>
-            <th rowspan="2" colspan="2" style="padding:2px; text-align: center; font-size: 7px">Docencia</th>
-            <th rowspan="2" colspan="2" style="padding:2px; text-align: center; font-size: 7px">Experiment <br>Aplicación</th>
-            <th rowspan="2" colspan="2" style="padding:2px; text-align: center; font-size: 7px">Trabajo  <br>Autónomo</th>
-            <th rowspan="2" colspan="2" style="padding:2px; text-align: center; font-size: 7px">SUMA</th>
-            <th rowspan="2" colspan="2" style="padding:2px; text-align: center; font-size: 7px">PROMEDIO <br>DECIMAL</th>
-            <th rowspan="2" colspan="2" style="padding:2px; text-align: center; font-size: 7px">EXAMEN <br>PRINCIPAL</th>
-            <th rowspan="2" colspan="2" style="padding:2px; text-align: center; font-size: 7px">PROMEDIO <br>FINAL</th>
-            <th rowspan="2" colspan="2" style="padding:2px; text-align: center; font-size: 7px">PROMEDIO <br>LETRAS</th>
-            <th colspan="2"  style=" padding:2px; text-align: center; font-size: 7px">ASISTENCIA</th>
-            <th rowspan="2" colspan="3" style="padding:2px; text-align: center; font-size: 7px">OBSERVACIÓN</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th  style=" padding:2px; text-align: center; font-size: 7px">No.</th>
-            <th  style=" padding:2px; text-align: center; font-size: 7px">No %</th>
-          </tr>
-
-          @foreach ($calificaciones as $index => $calificacione)
-          <tr>
-              <td style=" text-align: center; margin-left: -5px; padding:0; font-size: 9px">{{$index+1}}</td>
-              <td colspan= "10" style=" padding:2px; font-size: 9px">{{$calificacione->estudiante->nombre}} {{$calificacione->estudiante->apellido}} </td>
-              <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->docencia}}</td>
-              <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->experimento_aplicacion}}</td>
-              <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->trabajo_autonomo}}</td>
-              <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->suma}}</td>
-              <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->promedio_decimal}}</td>
-              <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->examen_principal}}</td>
-              <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->promedio_final}}</td>
-              <td colspan="2" style="padding:2px; text-align: center; font-size: 8px">{{$calificacione->promedio_letra}}</td>
-              <td style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->numero_asistencia}}</td>
-              <td style="padding:2px; text-align: center; font-size: 8px">{{$calificacione->porcentaje_asistencia}}</td>
-              <td colspan="3" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->observacion}}</td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-
-      <table style="margin-top: 75px">
-        <thead>
-          <tr>
-            <th style="text-align: left">
-              {{-- {{$calificaciones[0]->asignatura->docentes->pluck('abreviatura')->implode(' ')}}
-              {{$calificaciones[0]->asignatura->docentes->pluck('nombre')->implode(', ')}}
-              {{$calificaciones[0]->asignatura->docentes->pluck('apellido')->implode(', ')}} </th> <br> --}}
-          </tr>
-        </thead>
-        <tbody>
             <tr>
-              {{-- <th style="text-align: left">{{$calificaciones[0]->asignatura->docentes->pluck('dni')->implode(', ')}} </th> --}}
+                <th style=" padding:2px; text-align: center; font-size: 8px">No</th>
+                <th  colspan= "10" style="padding:2px; text-align: center; font-size: 9px">NOMBRE DEL ALUMNO</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">Docencia</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">Experiment <br>Aplicación</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">Trabajo  <br>Autónomo</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">SUMA</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">PROMEDIO <br>DECIMAL</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">EXAMEN <br>PRINCIPAL</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">PROMEDIO <br>FINAL</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">PROMEDIO <br>LETRAS</th>
+                <th  colspan="2" style="padding:2px; text-align: center; font-size: 7px">ASISTENCIA <br>No | %</th>
+                <th  colspan="3" style="padding:2px; text-align: center; font-size: 7px">OBSERVACIÓN</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach ($calificaciones as $index => $calificacione)
+                <tr>
+                    <td style=" text-align: center; margin-left: -5px; padding:0; font-size: 9px">{{$index+1}}</td>
+                    <td colspan= "10" style=" padding:2px; font-size: 9px">{{$calificacione->estudiante->nombre}} {{$calificacione->estudiante->apellido}} </td>
+                    <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->docencia}}</td>
+                    <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->experimento_aplicacion}}</td>
+                    <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->trabajo_autonomo}}</td>
+                    <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->suma}}</td>
+                    <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->promedio_decimal}}</td>
+                    <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->examen_principal}}</td>
+                    <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->promedio_final}}</td>
+                    <td colspan="2" style="padding:2px; text-align: center; font-size: 8px">{{$calificacione->promedio_letra}}</td>
+                    <td colspan="2" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->numero_asistencia}} | {{$calificacione->porcentaje_asistencia}}</td>
+                    <td colspan="3" style=" padding:2px; text-align: center; font-size: 8px">{{$calificacione->observacion}}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
-  </div>
+
+    <table style="page-break-inside: auto; text-transform: uppercase; font-size: 12px; ">
+        <tr>
+            <th style=" text-align: left; padding-top:65px">ING. Wilima Adfriaño <br>
+                DNI: 0604429696 <br> PROFESOR
+            </th>
+        </tr>
+    </table>
+
 </body>

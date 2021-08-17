@@ -44,10 +44,10 @@
                             @foreach ($asignaturadocentes as $asignaturadocente)
                             <tr>
                             <td class="text-center align-middle" >{{$asignaturadocente->id}} </td>
-                            <td class="align-middle" >{{$asignaturadocente->asignacione->periodacademicos->pluck('periodo')->implode(', ')}}
-                                 {{$asignaturadocente->asignacione->carreras->pluck('nombre')->implode(', ')}}
-                                 {{$asignaturadocente->asignacione->periodo->nombre}}
-                                 {{$asignaturadocente->asignacione->seccione->nombre}}
+                            <td class="align-middle" >{{$asignaturadocente->asignacione->periodacademicos->pluck('periodo')->implode(', ')}} |
+                                 {{$asignaturadocente->asignacione->carreras->pluck('nombre')->implode(', ')}} |
+                                 {{$asignaturadocente->asignacione->periodo->nombre}} |
+                                 {{$asignaturadocente->asignacione->seccione->nombre}} |
                                  {{$asignaturadocente->asignacione->paralelo->nombre}}</td>
                             <td class="align-middle">{{$asignaturadocente->nombre}} {{$asignaturadocente->apellido}}</td>
                             <td class="align-middle">{{$asignaturadocente->asignatura_nombre}}</td>

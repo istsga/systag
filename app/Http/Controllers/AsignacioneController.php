@@ -21,7 +21,7 @@ class AsignacioneController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('view', Asignacione::class);
+        $this->authorize('view', new Asignacione);
             $query=trim($request->get('search'));
             $asignaciones = Asignacione::
                 where('asignaciones.id','LIKE','%'.$query.'%')

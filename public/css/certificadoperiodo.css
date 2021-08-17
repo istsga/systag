@@ -1,0 +1,91 @@
+.c-nombre{
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -10px;
+}
+.c-nombre p{
+ margin: 8px;
+}
+
+.info-estudiante{
+    margin-top: 25px;
+    text-align: justify;
+    font-size: 14px;
+}
+
+.info-estudiante span{
+    font-weight: bold;
+}
+
+.p-estudiante{
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.p-estudiante p{
+    margin: 5px 0px;
+    font-weight: bold;
+}
+
+.p-estudiante span{
+    font-weight: normal;
+    margin-left: 30px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    text-align: center;
+    font-size: 11px;
+}
+
+table td {
+    text-align: center;
+    font-size: 10px;
+    padding-left: 5px;
+}
+
+.wrap-c{
+    width:99%;
+    white-space: pre-wrap;
+    text-align: justify;
+    height:auto;
+    font-weight: normal;
+}
+
+.promedio{
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.fecha{
+    text-align: right;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.fecha span{
+    font-weight: normal;
+}
+
+.firma-1{
+    font-size: 13px;
+}
+
+.firma {
+    font-size: 13px;
+    margin-top: 75px;
+}
+
+.firma span{
+    font-weight: bold;
+}
+
+
+
+
