@@ -16,48 +16,6 @@
                         <form class="form-horizontal" method="POST"  action="{{ route('horarios.store')}} ">
                             @csrf
                             <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="asignaturaHorario(this)">
-                                            <option class="form-control" value=""> == Seleccionar == </option>
-                                            @foreach ($asignaciones as $asignacione)
-                                                <option  value="{{$asignacione->id}}"
-                                                    {{old('asignacione_id')==$asignacione->id ? 'selected' : '' }}
-                                                    >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} ,
-                                                    {{$asignacione->carreras->pluck('nombre')->implode(', ')}},
-                                                    {{$asignacione->periodo->nombre}},
-                                                    {{$asignacione->seccione->nombre}},
-                                                    {{$asignacione->paralelo->nombre}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-check"></i></span></div>
-                                        @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-lg-6 ">
-                                    <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignatura
-                                        <span class="text-primary">*</span></label>
-                                    <div class="input-group">
-                                        <select  name="asignatura_id" id="asignatura_id" class="form-control @error('asignatura_id') is-invalid @enderror  ">
-                                            {{-- <option value="" class="form-control "> == Seleccionar == </option>
-                                            @foreach ($asignaturas as $asignatura)
-                                                <option  value="{{$asignatura->id}}"
-                                                {{old('asignatura_id')==$asignatura->id ? 'selected' : '' }}
-                                                >{{$asignatura->nombre}}</option>
-                                            @endforeach --}}
-                                        </select>
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary far fa-folder"></i></span></div>
-                                        @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
-                                    </div>
-                                </div>
-
                                 <div class="form-group col-lg-4">
                                     <label for="fecha_inicio" class="col-form-label font-weight-bold text-muted">Fecha de inicio
                                         <span class="text-primary">*</span>
@@ -110,17 +68,45 @@
                                     </div>
                                 </div>
 
-
-                                <div class="form-group col-lg-4">
-                                    <label for="cantidad_hora" class="col-form-label font-weight-bold text-muted">Hora
+                                <div class="form-group col-lg-8">
+                                    <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN | PARALELO
                                         <span class="text-primary">*</span>
                                     </label>
                                     <div class="input-group">
-                                        <input type="number" class="form-control @error('cantidad_hora') is-invalid @enderror"
-                                        name="cantidad_hora" value="{{old('cantidad_hora')}}" placeholder="1">
+                                        <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="asignaturaHorario(this)">
+                                            <option class="form-control" value=""> == Seleccionar == </option>
+                                            @foreach ($asignaciones as $asignacione)
+                                                <option  value="{{$asignacione->id}}"
+                                                    {{old('asignacione_id')==$asignacione->id ? 'selected' : '' }}
+                                                    >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} |
+                                                    {{$asignacione->carreras->pluck('nombre')->implode(', ')}} |
+                                                    {{$asignacione->periodo->nombre}} |
+                                                    {{$asignacione->seccione->nombre}} |
+                                                    {{$asignacione->paralelo->nombre}}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                         <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-calendar-day"></i></span></div>
-                                        @error ('cantidad_hora') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                            <i class=" text-primary fas fa-check"></i></span></div>
+                                        @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-8">
+                                    <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignatura
+                                        <span class="text-primary">*</span></label>
+                                    <div class="input-group">
+                                        <select  name="asignatura_id" id="asignatura_id" class="form-control @error('asignatura_id') is-invalid @enderror  ">
+                                            {{-- <option value="" class="form-control "> == Seleccionar == </option>
+                                            @foreach ($asignaturas as $asignatura)
+                                                <option  value="{{$asignatura->id}}"
+                                                {{old('asignatura_id')==$asignatura->id ? 'selected' : '' }}
+                                                >{{$asignatura->nombre}}</option>
+                                            @endforeach --}}
+                                        </select>
+                                        <div class="input-group-prepend "><span class=" input-group-text">
+                                            <i class=" text-primary far fa-folder"></i></span></div>
+                                        @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
                                     </div>
                                 </div>
 
@@ -129,10 +115,10 @@
                                         <span class="text-primary">*</span></label>
                                     <div class="input-group">
                                         <select  name="orden" id="orden" class="form-control @error('orden') is-invalid @enderror  ">
-                                            <option value="" class="form-control "> == Seleccionar == </option>
-                                            <option value="1" class="form-control ">Primeras</option>
-                                            <option value="2" class="form-control ">Segundas</option>
-                                            <option value="3" class="form-control ">Terceras</option>
+                                            <option class="form-control "> == Seleccionar == </option>
+                                            <option value="1" class="form-control">1</option>
+                                            <option value="2" class="form-control">2</option>
+                                            <option value="3" class="form-control">3</option>
                                         </select>
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-sort-amount-up-alt"></i></span></div>
@@ -185,19 +171,23 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-lg-2" style="margin-top: 35px">
-                                    <a onclick="agregarHorario();" class="btn btn-block btn-primary text-white" title="Agregar horario">Agregar</a>
+                                <div class="form-group col-lg-12">
+                                    <a onclick="agregarHorario();" class="btn btn-primary col-lg-2 text-white" title="Agregar horario">Agregar</a>
+                                    <hr class="bg-secondary" style=" border-top: dotted 1px">
                                 </div>
+
+
 
                                 <div class="card-table  table-responsive">
                                     <table class="table table-hover  table-bordered align-middle" id="detalles">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
-                                                <th><font style="vertical-align: inherit;">DÍA</font></font></th>
-                                                <th class="text-center"><font style="vertical-align: inherit;">Hora de Inicio</font></font></th>
-                                                <th class="text-center"><font style="vertical-align: inherit;">Hora Final</font></font></th>
-                                                <th class="text-center"><font style="vertical-align: inherit;">Acción</font></font></th>
+                                                <th class="text-center"><font>Nro</font></th>
+                                                <th class="align-middle"><font>DÍA</font></font></th>
+                                                <th class="align-middle"><font>Asignatura</font></font></th>
+                                                <th class="text-center align-middle"><font>Hora de Inicio</font></font></th>
+                                                <th class="text-center align-middle"><font>Hora Final</font></font></th>
+                                                <th class="text-center align-middle"><font>Acción</font></font></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -270,6 +260,7 @@ function agregarHorario(){
      //DescidArticulo=$("#idArticulo option:selected").text();
       //Asignatura_id=$("#asignatura_id").val();
       Dia_semana=$("#dia_semana option:selected").text();
+      Asignatura_id=$("#asignatura_id").val();
       Hora_inicio=$("#hora_inicio").val();
       Hora_final=$("#hora_final").val();
       //var id = document.getElementById('nota_final').value;
@@ -277,6 +268,7 @@ function agregarHorario(){
       if(Dia_semana!=""){
             var fila='</tr><tr class="selected" id="fila'+cont+'"><td class="text-center"><input type="hidden" name="cont" value="'+cont+'">'+cont+
                 '</td><td><input type="hidden" name="Dia_semana[]" value="'+Dia_semana+'">'+Dia_semana+
+                '</td><td><input type="hidden" name="Asignatura_id[]" value="'+Asignatura_id+'">'+Asignatura_id+
                 '</td><td class="text-center"><input type="hidden" name="Hora_inicio[]" value="'+Hora_inicio+'">'+Hora_inicio+
                 '</td><td class="text-center"><input type="hidden" name="Hora_final[]" value="'+Hora_final+'">'+Hora_final+
                 '</td><td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');">X</button></td>';

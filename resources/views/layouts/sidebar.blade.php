@@ -75,8 +75,8 @@
 
           {{-- @can('view', new App\Models\Horariodocente) --}}
             <li class="c-sidebar-nav-item">
-              {{-- <a class="c-sidebar-nav-link" href="{{route('horariodocentes.index')}}"> --}}
-                <span class="c-sidebar-nav-icon  fas fa-user-clock"></span> Horario de docente
+              <a class="c-sidebar-nav-link" href="{{route('horarioclases.index')}}">
+                <span class="c-sidebar-nav-icon  fas fa-user-clock ml-n4"></span> Horario de clases
               </a>
             </li>
           {{-- @endcan --}}

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <div class="card card-accent-primary shadow-lg" id="filtro" style="display: none">
+                <div class="card card-accent-primary shadow-lg">
                     <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                         <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-calendar-alt mr-3"></i> HORARIOS </font>
                         @can('create', new App\Models\Horario)
@@ -71,33 +71,31 @@
                     <table class="table table-hover  table-bordered align-middle">
                         <thead class="thead-light">
                             <tr>
-                                <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
-                                <th><font style="vertical-align: inherit;">Periodo</font></th>
-                                <th><font style="vertical-align: inherit;">Sección | Paralelo</font></th>
-                                <th><font style="vertical-align: inherit;">Materia</font></th>
-                                <th><font style="vertical-align: inherit;">Docente</font></th>
-                                <th><font style="vertical-align: inherit;">F. Inicio</font></th>
-                                <th><font style="vertical-align: inherit;">F. Fin</font></th>
-                                <th><font style="vertical-align: inherit;">Examen Principal</font></th>
-                                <th><font style="vertical-align: inherit;">Examen Suspensión</font></th>
-                                <th class="text-center"><font style="vertical-align: inherit;">Acción</font></th>
+                                <th class="text-center align-middle"><font>Nro</font></th>
+                                <th class="align-middle"><font>Periodo | Sección | Paralelo</font></th>
+                                <th class="align-middle"><font >Asignatura</font></th>
+                                <th class="align-middle"><font >Docente</font></th>
+                                <th class="align-middle"><font >F. Inicio</font></th>
+                                <th class="align-middle"><font >F. Fin</font></th>
+                                <th class="align-middle"><font >Examen Principal</font></th>
+                                <th class="align-middle"><font >Examen Suspensión</font></th>
+                                <th class="text-center align-middle"><font>Acción</font></th>
                             </tr>
                         </thead>
                         <tbody>
 
                         @foreach ($horarios as $index => $horario)
                             <tr>
-                                <td class="text-center" >{{$index+1}} </td>
-                                <td >{{$horario->asignacione->periodo->nombre}}</td>
-                                <td >{{$horario->asignacione->seccione->nombre}} | {{$horario->asignacione->paralelo->nombre}}</td>
-                                <td >{{$horario->asignatura->nombre}} </td>
-                                <td >{{$horario->nombredocente}} {{$horario->apellidodocente}}</td>
+                                <td class="text-center align-middle" >{{$index+1}} </td>
+                                <td class="align-middle">{{$horario->asignacione->periodo->nombre}} | {{$horario->asignacione->seccione->nombre}} | {{$horario->asignacione->paralelo->nombre}}</td>
+                                <td class="align-middle">{{$horario->asignatura->nombre}} </td>
+                                <td class="align-middle">{{$horario->nombredocente}} {{$horario->apellidodocente}}</td>
                                 {{-- <td >{{$horario->asignatura->docentes->pluck('nombre')->implode(', ')}} {{$horario->asignatura->docentes->pluck('apellido')->implode(', ')}} </td> --}}
-                                <td >{{$horario->fecha_inicio}}  </td>
-                                <td >{{$horario->fecha_final}}  </td>
-                                <td >{{$horario->fecha_examen}}  </td>
-                                <td >{{$horario->fecha_suspension}}  </td>
-                                <td>
+                                <td class="align-middle">{{$horario->fecha_inicio}}  </td>
+                                <td class="align-middle">{{$horario->fecha_final}}  </td>
+                                <td class="align-middle">{{$horario->fecha_examen}}  </td>
+                                <td class="align-middle">{{$horario->fecha_suspension}}  </td>
+                                <td class="align-middle">
                                     <div class=" form-inline justify-content-center px-4 ">
 
                                         @can('update', $horario)
@@ -135,20 +133,4 @@
 </main>
 @endsection
 
-@push('scripts')
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script>
-        const estudiante = @json($estudiante);
-        filtros();
-        function filtros(){
-            //$estudiante=true
-            if(estudiante){
-                $("#filtro").hide();
-            }else
-            {
-                $("#filtro").show();
-            }
-        }
-    </script>
-@endpush
 

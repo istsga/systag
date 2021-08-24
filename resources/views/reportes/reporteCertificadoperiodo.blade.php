@@ -90,7 +90,7 @@
         </div>
 
         <div class="fecha">
-            <p>Fecha: <span>Riobamba, 28 de Marzo de 2019</span></p>
+            <p>Fecha: <span>Riobamba, {{now()->format('d-m-Y')}}</span></p>
         </div>
 
         <div class="firma-1">

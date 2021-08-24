@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Asignatura;
 use App\Models\Calificacione;
 use App\Models\Convalidacione;
+use App\Models\Docente;
 use App\Models\Estudiante;
 use App\Models\Horario;
 use App\Models\Matricula;
@@ -64,8 +65,12 @@ class ReporteController extends Controller
                 where('asignacione_id', $asignacione_id)
                 ->where('asignatura_id', $queryAsignatura)
                 ->get();
+            $docente = Docente::join('asignatura_docente','asignatura_docente.docente_id','=','docentes.id')
+                ->where('asignatura_docente.asignacione_id',$asignacione_id)
+                ->where('asignatura_docente.asignatura_id',$queryAsignatura)
+                ->first();
 
-            $pdf = PDF::loadView('reportes.reporteCalificacion',['calificaciones'=>$calificaciones]);
+            $pdf = PDF::loadView('reportes.reporteCalificacion',['calificaciones'=>$calificaciones, 'docente'=>$docente]);
             return $pdf->stream(' Reporte Calificacion.pdf');
         }
 
@@ -77,7 +82,13 @@ class ReporteController extends Controller
             $suspensos = Suspenso::
                 where('asignacione_id',$asignacione_id)
                 ->get();
-            $pdf = PDF::loadView('reportes.reporteSuspenso',['suspensos'=>$suspensos]);
+                $docente = Docente::join('asignatura_docente','asignatura_docente.docente_id','=','docentes.id')
+                ->where('asignatura_docente.asignacione_id',$asignacione_id)
+                ->first();
+
+                //dd($docente);
+
+            $pdf = PDF::loadView('reportes.reporteSuspenso',['suspensos'=>$suspensos, 'docente'=>$docente]);
             return $pdf->stream('Reporte Suspenso.pdf', compact('suspensos'));
         }
 

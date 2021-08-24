@@ -48,7 +48,7 @@
         <div class="data-student">
             <p>Estudiante: <span>{{$estudiante->nombre}} {{$estudiante->apellido}}</span> </p>
             <p>Carrera:<span style="padding-left: 45px">desarrollo sofware</span></p>
-            <p>Fecha inicio: <span>enero julio</span></p>
+            <p>Fecha de inicio: <span>{{$matricula->fecha_matricula}}</span></p>
         </div>
 
         <div class="item-container">
@@ -64,172 +64,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($asignaturas as $index=> $asignatura)
-                  @if($asignatura->periodo_id==1)
+                @foreach ($calificaciones as $index=> $calificacione)
+                  {{-- @if($asignatura->periodo_id==1) --}}
                   <tr>
                     <td >{{$index+1}}</td>
-                    <td >050247</td>
+                    <td >{{$calificacione->cod_asignatura}}</td>
                     <td colspan="6">
-                      <div class="wrap-3"> {{$asignatura->nombre}}</div>
+                      <div class="wrap-3"> {{$calificacione->nombre}}</div>
                     </td>
-                    <td>8</td>
-                    <td>Aprobado, Exonerado</td>
+                    <td>{{$calificacione->promedio_final}}</td>
+                    <td>{{$calificacione->estado}}</td>
                   </tr>
-                  @endif
+                  {{-- @endif --}}
                 @endforeach
                 </tbody>
             </table>
-
         </div>
-        <div class="item-container">
-            <p> Arbril Marzo 2021 &nbsp; | <span> I Periodo </span></p>
-            <table border="1">
-                <thead>
-                  <tr>
-                    <th >No</th>
-                    <th >Código</th>
-                    <th  colspan="6">Asignatura</th>
-                    <th >Calificación</th>
-                    <th >Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @foreach ($asignaturas as $index=> $asignatura)
-                  @if($asignatura->periodo_id==1)
-                  <tr>
-                    <td >{{$index+1}}</td>
-                    <td >050247</td>
-                    <td colspan="6">
-                      <div class="wrap-3"> {{$asignatura->nombre}}</div>
-                    </td>
-                    <td>8</td>
-                    <td>Aprobado, Exonerado</td>
-                  </tr>
-                  @endif
-                @endforeach
-                </tbody>
-            </table>
-
-        </div>
-        <div class="item-container">
-            <p> Arbril Marzo 2021 &nbsp; | <span> I Periodo </span></p>
-            <table border="1">
-                <thead>
-                  <tr>
-                    <th >No</th>
-                    <th >Código</th>
-                    <th  colspan="6">Asignatura</th>
-                    <th >Calificación</th>
-                    <th >Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @foreach ($asignaturas as $index=> $asignatura)
-                  @if($asignatura->periodo_id==1)
-                  <tr>
-                    <td >{{$index+1}}</td>
-                    <td >050247</td>
-                    <td colspan="6">
-                      <div class="wrap-3"> {{$asignatura->nombre}}</div>
-                    </td>
-                    <td>8</td>
-                    <td>Aprobado, Exonerado</td>
-                  </tr>
-                  @endif
-                @endforeach
-                </tbody>
-            </table>
-
-        </div>
-        <div class="item-container">
-            <p> Arbril Marzo 2021 &nbsp; | <span> I Periodo </span></p>
-            <table border="1">
-                <thead>
-                  <tr>
-                    <th >No</th>
-                    <th >Código</th>
-                    <th  colspan="6">Asignatura</th>
-                    <th >Calificación</th>
-                    <th >Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @foreach ($asignaturas as $index=> $asignatura)
-                  @if($asignatura->periodo_id==1)
-                  <tr>
-                    <td >{{$index+1}}</td>
-                    <td >050247</td>
-                    <td colspan="6">
-                      <div class="wrap-3"> {{$asignatura->nombre}}</div>
-                    </td>
-                    <td>8</td>
-                    <td>Aprobado, Exonerado</td>
-                  </tr>
-                  @endif
-                @endforeach
-                </tbody>
-            </table>
-
-        </div>
-        <div class="item-container">
-            <p> Arbril Marzo 2021 &nbsp; | <span> I Periodo </span></p>
-            <table border="1">
-                <thead>
-                  <tr>
-                    <th >No</th>
-                    <th >Código</th>
-                    <th  colspan="6">Asignatura</th>
-                    <th >Calificación</th>
-                    <th >Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @foreach ($asignaturas as $index=> $asignatura)
-                  @if($asignatura->periodo_id==1)
-                  <tr>
-                    <td >{{$index+1}}</td>
-                    <td >050247</td>
-                    <td colspan="6">
-                      <div class="wrap-3"> {{$asignatura->nombre}}</div>
-                    </td>
-                    <td>8</td>
-                    <td>Aprobado, Exonerado</td>
-                  </tr>
-                  @endif
-                @endforeach
-                </tbody>
-            </table>
-
-        </div>
-        <div class="item-container">
-            <p> Arbril Marzo 2021 &nbsp; | <span> I Periodo </span></p>
-            <table border="1">
-                <thead>
-                  <tr>
-                    <th >No</th>
-                    <th >Código</th>
-                    <th  colspan="6">Asignatura</th>
-                    <th >Calificación</th>
-                    <th >Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                @foreach ($asignaturas as $index=> $asignatura)
-                  @if($asignatura->periodo_id==1)
-                  <tr>
-                    <td >{{$index+1}}</td>
-                    <td >050247</td>
-                    <td colspan="6">
-                      <div class="wrap-3"> {{$asignatura->nombre}}</div>
-                    </td>
-                    <td>8</td>
-                    <td>Aprobado, Exonerado</td>
-                  </tr>
-                  @endif
-                @endforeach
-                </tbody>
-            </table>
-
         </div>
 
     </div>

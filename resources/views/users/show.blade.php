@@ -25,7 +25,7 @@
                         <li class="header-link-item d-flex align-items-center active"> <i class="fas fa-home ml-4 mr-2 d-none d-md-block"></i> <a class=" mr-2  text-dark" href="{{route('users.show', auth()->user())}}">Inicio</a> </li>
                         <li class="header-link-item border-left d-flex align-items-center"> <i class=" fas fa-user ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="#">Friends</a> </li>
                         <li class="header-link-item border-left d-flex align-items-center"> <i class="fas fa-star ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="#">Asignaturas</a> </li>
-                        <li class="header-link-item border-left d-flex align-items-center"> <i class="fas fa-user ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="#">Horarios</a> </li>
+                        <li class="header-link-item border-left d-flex align-items-center"> <i class="fas fa-calendar ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="{{route('horarioclases.index', auth()->user())}}">Mi horario</a> </li>
                         <li class="header-link-item border-left d-flex align-items-center"> <i class="fas fa-user-circle ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="/profile">Avatar</a> </li>
                       </ul>
                     </div>
@@ -57,7 +57,7 @@
                 </div>
               </div>
 
-              <div class="col-sm-4">
+              {{-- <div class="col-sm-4">
                 <div class="card  shadow-lg">
                     <div class="card-header bg-primary">
                       <h4 class=" text-light"><i class="fas fa-user"></i> <span class="text-value">ROLES</span> </h4>
@@ -102,9 +102,9 @@
                    @endforelse
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
-              <div class="lg-8">
+              <div class="col-lg-8">
                   @yield('profile')
               </div>
 

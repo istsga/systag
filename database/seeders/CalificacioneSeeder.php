@@ -33,41 +33,6 @@ class CalificacioneSeeder extends Seeder
             'observacion'            => 'APROBADO',
         ]);
 
-        // Calificacione::create([
-        //     'asignacione_id'        => '1',
-        //     'asignatura_id'         => '5',
-        //     'estudiante_id'         => '1',
-        //     'docencia'              =>  '10',
-        //     'experimento_aplicacion' => '8',
-        //     'trabajo_autonomo'       => '8',
-        //     'suma'                   => '28',
-        //     'promedio_decimal'       =>  '9.00',
-        //     'examen_principal'       =>  '9',
-        //     'promedio_final'         =>   '9',
-        //     'promedio_letra'         =>  'NUEVE',
-        //     'numero_asistencia'      => '60',
-        //     'porcentaje_asistencia'  => '60%',
-        //     'observacion'            => 'APROBADO',
-        // ]);
-
-        Calificacione::create([
-            'asignacione_id'        => '1',
-            'asignatura_id'         => '4',
-            'estudiante_id'         => '1',
-            'docencia'              =>  '10',
-            'experimento_aplicacion' => '8',
-            'trabajo_autonomo'       => '8',
-            'suma'                   => '28',
-            'promedio_decimal'       =>  '9.00',
-            'examen_principal'       =>  '9',
-            'promedio_final'         =>   '9',
-            'promedio_letra'         =>  'NUEVE',
-            'numero_asistencia'      => '60',
-            'porcentaje_asistencia'  => '60%',
-            'observacion'            => 'APROBADO',
-        ]);
-
-
         Calificacione::create([
             'asignacione_id'        => '1',
             'asignatura_id'         => '1',

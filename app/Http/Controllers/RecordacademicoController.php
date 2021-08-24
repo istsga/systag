@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asignatura;
+use App\Models\Calificacione;
 use App\Models\Estudiante;
 use App\Models\Matricula;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -29,7 +30,17 @@ class RecordacademicoController extends Controller
                 where('asignaturas.carrera_id',$matricula->asignacione->carreras->pluck('id')->implode(', '))
                 ->get();
 
-            $pdf = PDF::loadView('reportes.reporteRecordacademicos', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'asignaturas'=>$asignaturas]);
+            $calificaciones=Calificacione::
+                join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
+                ->selectRaw("calificaciones.*,asignaturas.*,if(promedio_final=10,'Exonerado',if(promedio_final<6.5,'Reprobado',if(promedio_final<9.5,'Aprobado','Error'))) as estado")
+                ->where('calificaciones.estudiante_id',$estudiante_id)
+                ->get();
+
+
+
+            //dd($calificaciones);
+
+            $pdf = PDF::loadView('reportes.reporteRecordacademicos', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'asignaturas'=>$asignaturas, 'calificaciones'=>$calificaciones]);
             return $pdf->stream('Reporte Record Academico.pdf', compact('pdf'));
 
         }

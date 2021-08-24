@@ -34,7 +34,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center align-middle"><font>Nro</font></th>
-                                <th class=" align-middle"><font>Periodo Acádemico</font></th>
+                                <th class=" align-middle small font-weight-bold"><font>CARRERA | PERIODO | SESCIÓN | PARALELO</font></th>
                                 <th class=" align-middle"><font>Docente</font></th>
                                 <th class=" align-middle"><font>Asignatura</font></th>
                                 <th class=" text-center align-middle"><font>Acción</font></th>

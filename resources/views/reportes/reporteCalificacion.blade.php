@@ -21,22 +21,23 @@
 
   <footer>
     <table>
-      <tr>
-        <td>
-            <p class="izq">
-              Dirección: Loja entre Villarroel y Olmedo <br>
-              Correo electronico: <a href="sangabrielriobamba@hotmail.com">sangabrielriobamba@hotmail.com</a>
+        <tr>
+          <td>
+              <p class="izq">
+                Dirección: Loja entre Villarroel y Olmedo
+              </p>
+              <p class="izq-1">
+                Correo electronico: <a href="sangabrielriobamba@hotmail.com">sangabrielriobamba@hotmail.com</a>
+              </p>
+          </td>
+          <td>
+            <p class="drcho">
+              Página web: <a href="www.sangabrielriobamba.edu.ec">www.sangabrielriobamba.edu.ec</a> <br>
+              &nbsp;
             </p>
-        </td>
-        <td>
-          <p class="drcho">
-            Página web: <a href="www.sangabrielriobamba.edu.ec">www.sangabrielriobamba.edu.ec</a> <br>
-            &nbsp;
-          </p>
-        </td>
-
-      </tr>
-    </table>
+          </td>
+        </tr>
+      </table>
   </footer>
 
  <div class="c-nombre">
@@ -48,19 +49,18 @@
             <p>CARRERA: <span>
                 {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}} </span></p>
             <p>SECCIÓN:<span style="padding-left: 45px"> {{$calificaciones[0]->asignacione->seccione->nombre}} </span></p>
-            <p>No de HORAS: <span style="padding-left: 11px">{{$calificaciones[0]->asignatura->hora}} HORAS </span></p>
+            <p>No de HORAS: <span style="padding-left: 11px">{{$calificaciones[0]->asignatura->cantidad_hora}}  </span></p>
         </div>
         <div class="informacion-2">
             <p>PERIODO:<span style="padding-left: 73px"> {{$calificaciones[0]->asignacione->periodo->nombre}} </span></p>
             <p>PARALELO: <span style="padding-left: 63px">{{$calificaciones[0]->asignacione->paralelo->nombre}} </span></p>
-            <p>FECHA DE ENTREGA: <span style="padding-left: 2px"> {{$calificaciones[0]->date}} 2021/05/08 </span></p>
+            <p>FECHA DE ENTREGA: <span style="padding-left: 2px"> {{now()->format('d-m-Y')}} </span></p>
         </div>
         <p style="margin-top: -18px">ASIGNATURA: <span style="padding-left: 15px">
             {{$calificaciones[0]->asignatura->nombre}}</span></p>
-        <p>PROFESOR: <span style="padding-left: 28px"> manus
-                  {{-- {{$calificaciones[0]->asignatura->docentes->pluck('nombre')->implode(', ')}} --}}
-                  {{-- {{$calificaciones[0]->asignatura->docentes->pluck('apellido')->implode(', ')}} --}}
-              </span></p>
+        <p>PROFESOR: <span style="padding-left: 28px">
+            {{$docente->nombre}} {{$docente->apellido}} </span></p>
+
     </div>
 
     <table border = "1">
@@ -102,8 +102,8 @@
 
     <table style="page-break-inside: auto; text-transform: uppercase; font-size: 12px; ">
         <tr>
-            <th style=" text-align: left; padding-top:65px">ING. Wilima Adfriaño <br>
-                DNI: 0604429696 <br> PROFESOR
+            <th style=" text-align: left; padding-top:65px">{{$docente->abreviatura}} {{$docente->nombre}} {{$docente->apellido}} <br>
+                DNI {{$docente->dni}}  <br> PROFESOR
             </th>
         </tr>
     </table>

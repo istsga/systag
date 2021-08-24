@@ -16,10 +16,9 @@ class CreateHorariosTable extends Migration
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
             $table->foreignId('asignacione_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('asignatura_id')->constrained()->cascadeOnDelete();
+            //$table->foreignId('asignatura_id')->constrained()->cascadeOnDelete();
             $table->date('fecha_inicio');
             $table->date('fecha_final');
-            $table->integer('cantidad_hora');
             $table->date('fecha_examen');
             $table->date('fecha_suspension');
             $table->enum('orden', ["1", "2", "3"]);

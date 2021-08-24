@@ -1,0 +1,59 @@
+.informacion{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: -15px;
+}
+
+.informacion span{
+    font-weight: normal;
+    padding-left: 15px;
+}
+
+.informacion-1{
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+}
+
+.informacion-2{
+    width: 48%;
+    display: inline-block;
+    text-align: right;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 9px;
+    text-align: center;
+    padding: 2px;
+}
+
+table td{
+    font-size: 10px;
+    text-align: center;
+    padding: 2px;
+}
+
+.wrap-h{
+    text-align: justify;
+    width:99%;
+    white-space: pre-wrap;
+    height:auto
+}
+
+.wrap-h1
+{
+  width:99%;
+  white-space: pre-wrap;
+  text-align: justify;
+  height:auto;
+}

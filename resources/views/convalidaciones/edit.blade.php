@@ -50,12 +50,12 @@
                                             <option class="form-control" value=""> == Seleccionar == </option>
                                             @foreach ($carreras as $carrera)
                                             <option  value="{{$carrera->id}}"
-                                                {{old('carrera_id')==$carrera->id ? 'selected' : '' }}
+                                                {{old('carrera_id', $convalidacione->carrera_id)==$carrera->id ? 'selected' : '' }}
                                                 >{{$carrera->nombre}} </option>
                                                 @endforeach
                                         </select>
                                         <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-user"></i></span></div>
+                                            <i class=" text-primary fas fa-graduation-cap"></i></span></div>
                                         @error ('carrera_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                                             @endforeach
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
-                                        <i class=" text-primary fas fa-user"></i></span></div>
+                                        <i class=" text-primary fas fa-folder"></i></span></div>
                                         @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input type="number"  class="form-control @error('nota_final') is-invalid @enderror"
-                                            name="nota_final" id="nota_final" value="{{old('nota_final')}}" onchange="validar()">
+                                            name="nota_final" id="nota_final" value="{{old('nota_final')}}" onchange="validar()" placeholder="7">
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-star"></i></span></div>
                                         @error ('nota_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror

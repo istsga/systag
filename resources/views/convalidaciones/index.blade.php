@@ -46,7 +46,7 @@
                                 <td class="text-center align-middle" >{{$convalidacione->id}} </td>
                                 <td class="align-middle">{{$convalidacione->estudiante->nombre}} {{$convalidacione->estudiante->apellido}} </td>
                                 <td class="align-middle">{{$convalidacione->asignatura->nombre}}</td>
-                                <td class="align-middle">{{$convalidacione->nota_final}}</td>
+                                <td class="text-center align-middle">{{$convalidacione->nota_final}}</td>
 
                                 <td class="align-middle">
                                     <div class=" form-inline justify-content-center px-4 ">

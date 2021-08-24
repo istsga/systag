@@ -38,8 +38,8 @@ class HorarioController extends Controller
             ->join('asignacione_carrera','asignacione_carrera.asignacione_id','=','horarios.asignacione_id')
             //->join('asignatura_docente','asignatura_docente.asignatura_id','=','horarios.asignatura_id')
             ->join('asignatura_docente',function($join){
-                $join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
-                    ->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
+                //$join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
+                $join->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
             })
             ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
             ->where('asignacione_periodacademico.periodacademico_id',$query)
@@ -63,14 +63,15 @@ class HorarioController extends Controller
                 })
 
             ->join('asignatura_docente',function($join){
-                $join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
-                    ->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
+                //$join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
+                $join->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
             })
             ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
 
-            ->joinSub($asinaturas_mat, 'asinaturas_mat', function ($join) {
-                $join->on('horarios.asignatura_id', '=', 'asinaturas_mat.asignatura_id');
-            })
+            // ->joinSub($asinaturas_mat, 'asinaturas_mat', function ($join) {
+            //     $join->on('horarios.asignatura_id', '=', 'asinaturas_mat.asignatura_id');
+            // })
+
             ->allowed2()
             //->where('estudiante_id',$estudiante_id)
 
@@ -135,6 +136,7 @@ class HorarioController extends Controller
         $this->authorize('create', new Horario);
         $horarios = Horario::create($request->validated());
         $dia_semana=$request->get('Dia_semana');
+        $asignatura_id=$request->get('Asignatura_id');
         $hora_inicio=$request->get('Hora_inicio');
         $hora_final=$request->get('Hora_final');
         $i=0;
@@ -142,6 +144,7 @@ class HorarioController extends Controller
             $detalle_horario=new Detallehorario();
             $detalle_horario->horario_id=$horarios->id;
             $detalle_horario->dia_semana=$dia_semana[$i];
+            $detalle_horario->asignatura_id=$asignatura_id[$i];
             $detalle_horario->hora_inicio=$hora_inicio[$i];
             $detalle_horario->hora_final=$hora_final[$i];
             //dd($detalle_horario);
