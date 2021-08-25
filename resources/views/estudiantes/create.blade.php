@@ -32,7 +32,7 @@
                                     <h5 class="text-dark font-weight-bold"> <em>INFORMACIÓN PERSONAL</em> </h5>
                                 </div>
                                 <div class="row mt-2">
-                                    <div class="col-lg-4  ">
+                                    <div class="col-lg-4">
                                         <div class="form-group  ">
                                             <div class="profile-header-container  ">
                                                 <div class="profile-header-img d-flex justify-content-center ">

@@ -19,6 +19,7 @@ class CreateCarrerasTable extends Migration
             $table->string('nombre')->unique();
             $table->string('titulo')->unique();
             $table->integer('numero_periodo');
+            $table->string('logo');
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });

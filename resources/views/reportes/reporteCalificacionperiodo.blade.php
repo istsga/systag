@@ -14,8 +14,11 @@
           <img src="{{ public_path('assets/brand/logo3.png') }}">
       </div>
       <div class="title">
-          <h3>INSTITUTO SUPERIOR TECNOLÓGICO "SAN GABRIEL"</h3>
-          <h4>Registro Institucional 224 SENESCYT</h4>
+          <h3>INSTITUTO SUPERIOR TECNOLÓGICO <br> "SAN GABRIEL"</h3>
+          <p> Carrera de {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}</p>
+      </div>
+      <div class="logo-carrera">
+        <img src="storage/{{$calificaciones[0]->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
       </div>
   </header>
 

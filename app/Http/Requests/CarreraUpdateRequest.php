@@ -35,6 +35,7 @@ class CarreraUpdateRequest extends FormRequest
                 'required','min:6', 'max:60', 'string',
                 Rule::unique('carreras')->ignore( $this->route('carrera')->id )],
             'numero_periodo' => ['required', 'digits_between: 1,10'],
+            'logo' => 'required|image|mimes:jpeg,png,jpg|max:1024',
             'condicion' => ['required', 'boolean:1,0'],
         ];
 

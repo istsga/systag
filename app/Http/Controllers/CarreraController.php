@@ -6,6 +6,7 @@ use App\Models\Carrera;
 use Illuminate\Http\Request;
 use App\Http\Requests\CarreraStoreRequest;
 use App\Http\Requests\CarreraUpdateRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CarreraController extends Controller
 {
@@ -41,8 +42,11 @@ class CarreraController extends Controller
      */
     public function store(CarreraStoreRequest $request)
     {
-        $this->authorize('create', Carrera::class);
-        Carrera::create($request->validated());
+        $this->authorize('create', new Carrera);
+
+        $carrera = new Carrera($request->validated());
+        $carrera->logo = $request->file('logo')->store('images', 'public');
+        $carrera->save();
         return redirect()->route('carreras.index')->with('status', 'Agregado con éxito');
     }
 
@@ -68,7 +72,20 @@ class CarreraController extends Controller
     public function update(CarreraUpdateRequest $request, Carrera $carrera)
     {
         $this->authorize('update', $carrera);
-        $carrera->update($request->validated());
+
+        if( $request->hasFile('logo'))
+        {
+            //Elimina logo anterior
+            Storage::delete('public/'.$carrera->logo);
+            $carrera->fill( $request->validated());
+            $carrera->logo = $request->file('logo')->store('images', 'public');
+            $carrera->save();
+
+        } else
+        {
+            $carrera->update( array_filter($request->validated()));
+        }
+
         return redirect()->route('carreras.index')->with('status', 'Actualizado con éxito.');
     }
 
@@ -81,6 +98,7 @@ class CarreraController extends Controller
     public function destroy(Carrera $carrera)
     {
         $this->authorize('delete', $carrera);
+        Storage::delete('public/'.$carrera->logo);
         $carrera->delete();
         return redirect()->route('carreras.index')->with('status', 'Eliminado con éxito');
     }

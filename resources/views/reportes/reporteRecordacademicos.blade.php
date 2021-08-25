@@ -10,12 +10,15 @@
 </head>
 <body>
     <header>
-        <div class="logo">
+          <div class="logo">
             <img src="{{ public_path('assets/brand/logo3.png') }}">
           </div>
           <div class="title">
-            <h3>INSTITUTO SUPERIOR TECNOLÓGICO "SAN GABRIEL"</h3>
-            <h4>Registro Institucional 224 SENESCYT</h4>
+            <h3>INSTITUTO SUPERIOR TECNOLÓGICO <br> "SAN GABRIEL"</h3>
+            <p>Carrera de {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}} </p>
+          </div>
+          <div class="logo-carrera">
+            <img src="storage/{{$calificaciones[0]->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
           </div>
     </header>
     <footer>
@@ -47,8 +50,8 @@
 
         <div class="data-student">
             <p>Estudiante: <span>{{$estudiante->nombre}} {{$estudiante->apellido}}</span> </p>
-            <p>Carrera:<span style="padding-left: 45px">desarrollo sofware</span></p>
-            <p>Fecha de inicio: <span>{{$matricula->fecha_matricula}}</span></p>
+            <p>Carrera:<span style="padding-left: 39px"> {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}</span></p>
+            <p>Fecha de inicio: <span style="padding-left: 5px">{{$matricula->fecha_matricula}}</span></p>
         </div>
 
         <div class="item-container">

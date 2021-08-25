@@ -12,7 +12,7 @@
                         <h4 class=" text-light"><i class="fas fa-graduation-cap  mr-3"></i> <span class="text-value">CARRERA</span> </h4>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" method="POST"  action="{{ route('carreras.update', $carrera)}} ">
+                        <form class="form-horizontal" method="POST"  action="{{ route('carreras.update', $carrera)}}" enctype="multipart/form-data">
                             @csrf @method('PUT')
                             <div class="row">
                                 <div class="form-group col-lg-5">
@@ -81,6 +81,20 @@
                                         @error ('condicion') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                     </div>
                                 </div>
+
+                                <div class="form-group col-lg-5 mt-4 ">
+                                    <div class="profile-header-container  ">
+                                        <div class="profile-header-img d-flex justify-content-center ">
+                                            <img src="/storage/{{$carrera->logo}}" style="border: solid #3D9970 1px" class="imagenPrevisualizacion rounded-circle" width="113px" height="113px" id="imagenPrevisualizacion">
+                                        </div>
+                                        <div class="custom-file mt-2">
+                                            <input type="file" id="seleccionArchivos" aria-describedby="inputGroupFileAddon01" class="form-control  custom-file-input mt-2 @error('logo') is-invalid @enderror"
+                                            name="logo" value="{{old('logo')}}" placeholder="Logo Carrera" >
+                                            <label class="custom-file-label" for="inputGroupFile01">Seleccionar logo </label>
+                                            @error ('logo') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                             </div>
                             <div class="card-footer border-0 d-flex justify-content-between aling-items-end bg-light">
@@ -94,4 +108,18 @@
     </div>
 </div>
 </main>
+<script>
+    const $seleccionArchivos = document.querySelector("#seleccionArchivos"),
+        $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
+        $seleccionArchivos.addEventListener("change", () => {
+            const archivos = $seleccionArchivos.files;
+            if (!archivos || !archivos.length) {
+            $imagenPrevisualizacion.src = "";
+            return;
+            }
+            const primerArchivo = archivos[0];
+            const objectURL = URL.createObjectURL(primerArchivo);
+            $imagenPrevisualizacion.src = objectURL;
+    });
+</script>
 @endsection

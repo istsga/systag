@@ -11,10 +11,7 @@
 
                 <div class="card card-accent-primary shadow-lg">
                     <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
-                        <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-calendar-alt mr-3"></i> HORARIOS </font>
-                        {{-- @can('create', new App\Models\Horario)
-                            <a class=" btn btn-primary " href="{{route('horarios.create')}}"> <i class=" font-weight-bold fas fa-plus mr-1"></i>Agregar</a>
-                        @endcan --}}
+                        <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-calendar-alt mr-3"></i> HORARIO DE CLASES </font>
                     </div>
 
                     <form action="">
@@ -27,11 +24,11 @@
                                             <i class=" text-primary fas fa-calendar-check"></i></span></div>
                                         <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademicos') is-invalid @enderror">
                                             <option value="" class="form-control  ">Seleccionar</option>
-                                            {{-- @foreach ($periodacademicos as $periodacademico)
+                                            @foreach ($periodacademicos as $periodacademico)
                                                 <option  value="{{$periodacademico->id}}"
                                                     {{$query==$periodacademico->id ? 'selected' : '' }}
                                                     >{{$query.'+'.$periodacademico->periodo}}</option>
-                                            @endforeach --}}
+                                            @endforeach
                                         </select>
                                         @error ('periodacademicos') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
                                         <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
@@ -45,13 +42,19 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-layer-group"></i></span></div>
-                                            <select name="carrera_id" id="carrera_id" class=" form-control ">
+                                            <select name="asignacione_id" id="asignacione_id" class=" form-control ">
                                                 <option class="form-control" value="">Seleccionar</option>
-                                                    {{-- @foreach ($carreras as $carrera)
-                                                        <option  value="{{$carrera->id}}"
-                                                        {{$queryCarrera==$carrera->id ? 'selected' : '' }}
-                                                        >{{$carrera->id}} {{$carrera->nombre}}</option>
-                                                    @endforeach --}}
+
+                                                @foreach ($asignaciones as $asignacione)
+                                                <option  value="{{$asignacione->id}}"
+                                                    {{$queryAsignacione==$asignacione->id ? 'selected' : '' }}
+                                                    >{{$asignacione->id}} {{$asignacione->carreras->pluck('nombre')->implode(', ')}}
+                                                    {{$asignacione->periodo->nombre}}
+                                                    {{$asignacione->seccione->nombre}} -
+                                                    {{$asignacione->paralelo->nombre}}
+                                                </option>
+                                                @endforeach
+
                                             </select>
                                             <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> Ver Horarios</button>
                                         </div>
@@ -64,7 +67,7 @@
             </div>
             <div class="col-md-12">
                <div class="card card-accent-primary shadow-lg">
-                {{-- @if (count($horarios) > 0) --}}
+                @if (count($horarios) > 0)
                 <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                     <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-calendar-alt mr-3"></i> HORARIO DE CLASE </font>
                         {{-- <a class=" btn btn-primary " href="{{route('reporteHorarioE', $query.'_'.$queryCarrera)}}"> <i class=" font-weight-bold fas fa-file-pdf mr-1"></i>Reporte PDF</a> --}}
@@ -82,22 +85,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($horarios as $horario)
                             <tr>
-                                <td class="text-center table-secondary align-middle text-dark">8:30 a <br>9:30 </td>
-                                <td class=" table-secondary  align-middle text-dark">Asignatura 1  <hr class=" mt-2 mb-1 bg-primary"><span class="text-muted small">Profesor:</span> </td>
-                                <td class="table-secondary align-middle text-dark ">Asignatura 2  <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor:</span> </td>
-                                <td class="table-secondary align-middle text-dark ">Asignatura 3  <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor:</span> </td>
-                                <td class="table-secondary align-middle text-dark ">Asignatura 4  <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor:</span> </td>
-                                <td class="table-secondary align-middle text-dark ">Asignatura 5 <hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor:</span> </td>
+                                <td class="text-center table-secondary align-middle text-dark">{{$horario->hora_inicio}} <br> {{$horario->hora_final}} </td>
+                                <td class=" table-secondary  align-middle text-dark">{{$horario->lunesnombreasignatura}}  <hr class=" mt-2 mb-1 bg-primary"><span class="text-muted small">Profesor: {{$horario->lunesnombredocente}} {{$horario->lunesapellidodocente}}</span> </td>
+                                <td class="table-secondary align-middle text-dark ">{{$horario->martesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor: {{$horario->martesnombredocente}} {{$horario->martesapellidodocente}}</span> </td>
+                                <td class="table-secondary align-middle text-dark ">{{$horario->miercolesnombreasignatura}}  <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horario->miercolesnombredocente}} {{$horario->miercolesapellidodocente}}</span> </td>
+                                <td class="table-secondary align-middle text-dark ">{{$horario->juevesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horario->juevesnombredocente}} {{$horario->juevesapellidodocente}}</span> </td>
+                                <td class="table-secondary align-middle text-dark ">{{$horario->viernesnombreasignatura}}<hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor: {{$horario->viernesnombredocente}} {{$horario->viernesapellidodocente}}</span> </td>
                             </tr>
-                            <tr>
-                                <td class="text-center table-secondary align-middle text-dark">8:30 a <br>9:30 </td>
-                                <td class=" table-secondary  align-middle text-dark">Asignatura 1  <hr class=" mt-2 mb-1 bg-primary"><span class=" text-muted small">Profesor:</span> </td>
-                                <td class="table-secondary align-middle text-dark ">Asignatura 2  <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor:</span> </td>
-                                <td class="table-secondary align-middle text-dark ">Asignatura 3  <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor:</span> </td>
-                                <td class="table-secondary align-middle text-dark ">Asignatura 4  <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor:</span> </td>
-                                <td class="table-secondary align-middle text-dark ">Asignatura 5 <hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor:</span> </td>
-                            </tr>
+                            @endforeach
+
                     </table>
                 </div>
                 <div class="col-lg-12">
@@ -105,22 +103,22 @@
                     <hr class="bg-secondary" style=" border-top: dotted 1px">
                     <div class="row">
                         <div class="form-group col-lg-3 align-middle">
-                            <p class="font-weight-bold text-muted"> Inicio : <span class="font-weight-normal"> 19-08-2021</span></p>
+                            <p class="font-weight-bold text-muted"> Inicio : <span class="font-weight-normal"> {{$horario->fecha_inicio}}</span></p>
                         </div>
                         <div class="form-group col-lg-3 align-middle">
-                            <p class="font-weight-bold text-muted"> Final : <span class="font-weight-normal"> 19-08-2021</span></p>
+                            <p class="font-weight-bold text-muted"> Final : <span class="font-weight-normal"> {{ $horario->fecha_final}}</span></p>
                         </div>
                         <div class="form-group col-lg-3 align-middle">
-                            <p class="font-weight-bold text-muted">Examen Principal : <span class="font-weight-normal"> 19-08-2021</span></p>
+                            <p class="font-weight-bold text-muted">Examen Principal : <span class="font-weight-normal"> {{$horario->fecha_examen}}</span></p>
                         </div>
                         <div class="form-group col-lg-3 ">
-                            <p class="font-weight-bold text-muted">Examen Suspensión : <span class="font-weight-normal"> 19-08-2021</span></p>
+                            <p class="font-weight-bold text-muted">Examen Suspensión : <span class="font-weight-normal"> {{$horario->fecha_suspension}}</span></p>
                         </div>
                     </div>
                 </div>
-                {{-- @else
+                @else
                         <em class=" mt-2 mb-2 ml-3 text-muted">No tienes registros.</em>
-                @endif --}}
+                @endif
                </div>
             </div>
         </div>

@@ -10,7 +10,7 @@ class Carrera extends Model
     use HasFactory;
 
     protected $fillable = [
-        'codigo', 'nombre', 'titulo', 'numero_periodo', 'condicion'
+        'codigo', 'nombre', 'titulo', 'numero_periodo', 'logo', 'condicion'
     ];
 
     public function asignaturas()
