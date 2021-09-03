@@ -71,7 +71,7 @@
                                  </div>
                                 @endif
 
-                                <em> Itsga se enviará una contraseña al correo electrónico registrado</em>
+                                <em> SYSTAG  enviará una contraseña al correo electrónico registrado</em>
                                 <div class="form-actions mt-4 mb-3">
                                     <button class=" col-4 btn btn-primary" type="submit">Guardar</button>
                                 </div>

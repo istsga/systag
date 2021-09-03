@@ -24,7 +24,7 @@
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-check"></i></span></div>
                                         <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror" onchange="filtroAsignaciones();">
-                                            <option value="" class="form-control  ">Seleccionar</option>
+                                            <option value="" class="form-control  "> == Seleccionar == </option>
                                             @foreach ($periodacademicos as $periodacademico)
                                                 <option  value="{{$periodacademico->id}}"
                                                     {{$query==$periodacademico->id ? 'selected' : '' }}
@@ -44,7 +44,7 @@
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-layer-group"></i></span></div>
                                             <select name="asignacione_id" id="asignacione_id" class=" form-control" onchange="filtroAsignaturas();">
-                                                <option class="form-control" value="">Seleccionar</option>
+                                                <option class="form-control" value=""> == Seleccionar == </option>
                                                 @foreach ($asignaciones as $asignacione)
                                                     <option  value="{{$asignacione->id}}"
                                                         {{$queryAsignacione==$asignacione->id ? 'selected' : '' }}
@@ -65,7 +65,7 @@
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-book"></i></span></div>
                                             <select name="asignatura_id" id="asignatura_id" class=" form-control">
-                                                <option class="form-control" value="">Seleccionar</option>
+                                                <option class="form-control" value=""> == Seleccionar == </option>
                                                 @foreach ($asignaturas as $asignatura)
                                                     <option  value="{{$asignatura->asignatura_id}}"
                                                         {{$queryAsignatura==$asignatura->asignatura_id ? 'selected' : '' }}

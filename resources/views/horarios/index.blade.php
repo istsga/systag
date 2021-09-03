@@ -26,7 +26,7 @@
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-check"></i></span></div>
                                         <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademicos') is-invalid @enderror">
-                                            <option value="" class="form-control  ">Seleccionar</option>
+                                            <option value="" class="form-control  "> == Seleccionar ==</option>
                                             @foreach ($periodacademicos as $periodacademico)
                                                 <option  value="{{$periodacademico->id}}"
                                                     {{$query==$periodacademico->id ? 'selected' : '' }}
@@ -46,7 +46,7 @@
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-layer-group"></i></span></div>
                                             <select name="carrera_id" id="carrera_id" class=" form-control ">
-                                                <option class="form-control" value="">Seleccionar</option>
+                                                <option class="form-control" value=""> == Seleccionar == </option>
                                                     @foreach ($carreras as $carrera)
                                                         <option  value="{{$carrera->id}}"
                                                         {{$queryCarrera==$carrera->id ? 'selected' : '' }}

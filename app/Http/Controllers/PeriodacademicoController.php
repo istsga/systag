@@ -32,7 +32,7 @@ class PeriodacademicoController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Periodacademico::class);
+        $this->authorize('create', new Periodacademico);
         $carreras = Carrera::where('condicion', 1)->get();
         return view('periodacademicos.create', compact( 'carreras'));
     }
@@ -45,7 +45,7 @@ class PeriodacademicoController extends Controller
      */
     public function store(PeriodacademicoStoreRequest $request)
     {
-        $this->authorize('create', Periodacademico::class);
+        $this->authorize('create', new Periodacademico);
         $periodacademico = Periodacademico::create($request->validated());
         //Asignar Carreras
         $periodacademico->carreras()->sync($request->get('carreras'));

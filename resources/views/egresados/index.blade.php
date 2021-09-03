@@ -12,10 +12,41 @@
             </div>
             <div class="card-body">
                 <form class="col-lg-12 px-0 my-2 my-lg-0 no-waves-effect">
-                    <div class="input-group">
-                        <input type="search" name="search" class="form-control" placeholder="Buscar..." aria-label="Buscar..." aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary btn-gradient waves-effect waves-light" type="submit"><span class="gradient"><font style="vertical-align: inherit;">Buscar</font></span></button>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label for="periodacademicos" class="col-form-label font-weight-bold text-dark text-muted">Periodo Académico
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend "><span class=" input-group-text">
+                                    <i class=" text-primary fas fa-calendar-check"></i></span></div>
+                                <select name="periodacademico_id" class="form-control">
+                                    <option value="" class="form-control "> == Seleccionar ­­­­­­== </option>
+                                    @foreach ($periodacademicos as $periodacademico)
+                                        <option  value="{{$periodacademico->id}}"
+                                            {{$query_peraca==$periodacademico->id ? 'selected' : '' }}
+                                            >{{$query_peraca.'+'.$periodacademico->periodo}}</option>
+                                    @endforeach
+                                </select>
+                                    <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA |  PERIODO | SECCION | PARALELO
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-prepend "><span class=" input-group-text">
+                                    <i class=" text-primary fas fa-layer-group"></i></span></div>
+                                <select name="carrera_id" id="carrera_id" class=" form-control ">
+                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                        @foreach ($carreras as $carrera)
+                                            <option  value="{{$carrera->id}}"
+                                            {{$queryCarrera==$carrera->id ? 'selected' : '' }}
+                                            >{{$carrera->id}} {{$carrera->nombre}}</option>
+                                        @endforeach
+                                </select>
+                                <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -23,6 +54,7 @@
         </div>
 
         <div class="card card-accent-primary shadow-lg">
+            @if (count($alumnos) > 0)
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                 <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-user mr-3"></i> ALUMNOS </font>
                     <a class=" btn btn-primary " href="#"> <i class=" font-weight-bold fas fa-file-pdf mr-1"></i>Reporte PDF</a>
@@ -36,14 +68,21 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach ($alumnos as $index =>  $alumno)
+                        @if($alumno->egresado==true)
                         <tr>
-                        <td class="text-center align-middle" ># </td>
-                        <td class="align-middle" >Diego Guapi </td>
+                        <td class="text-center align-middle" >{{$index+1}} </td>
+                        <td class="align-middle" >{{$alumno->estudiante->nombre}} {{$alumno->estudiante->apellido}}</td>
+                        </tr>
+                        @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>
-
-            <em class=" mt-2 mb-2 ml-3 text-muted">No tienes registros.</em>
+            @else
+                    <em class=" mt-2 mb-2 ml-3 text-muted">No tienes registros.</em>
+            @endif
        </div>
     </div>
 </div>

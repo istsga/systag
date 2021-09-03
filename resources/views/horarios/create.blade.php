@@ -22,7 +22,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input type="date" class="form-control @error('fecha_inicio') is-invalid @enderror"
-                                        name="fecha_inicio" value="{{old('fecha_inicio')}}">
+                                        name="fecha_inicio" id="fecha_inicio" value="{{old('fecha_inicio')}}" onchange="validarFecha();">
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                         @error ('fecha_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -297,5 +297,10 @@ function eliminar(index){
   //filtroAsignaturas();
 
 }
+// function validarFecha(){
+//     var ini
+//     fecha_inicio=$("#fecha_inicio").val();
+//     console.log(fecha_inicio);
+// }
 </script>
 @endpush

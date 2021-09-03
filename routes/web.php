@@ -99,6 +99,7 @@ Route::resource('horarios', HorarioController::class);
 //REPORTES PDF
 Route::get('reportes-matriculas/{id}/data', [ReporteController::class, 'reporteMatricula'])->name('reporteMatricula');
 Route::get('reportes-horarios/{id}/data', [ReporteController::class, 'reporteHorarioE'])->name('reporteHorarioE');
+Route::get('reportes-horarioclase/{id}/data', [ReporteController::class, 'reporteHorarioClase'])->name('reporteHorarioClase');
 Route::get('reportes-calificaciones/{id}/data', [ReporteController::class, 'reporteCalificacion'])->name('reporteCalificacion');
 Route::get('reportes-suspensos/{id}/data', [ReporteController::class, 'reporteSuspenso'])->name('reporteSuspenso');
 Route::get('reportes-calificacionperiodos/{id}/data', [ReporteController::class, 'reporteCalificacionperiodo'])->name('reporteCalificacionperiodo');

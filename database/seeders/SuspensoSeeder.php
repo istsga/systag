@@ -17,8 +17,8 @@ class SuspensoSeeder extends Seeder
         //ESTUDIANTES SUSPENSO APROBADO
         Suspenso::create([
             'asignacione_id'    => '1',
-            'asignatura_id'     => '5',
-            'estudiante_id'     => '6',
+            'asignatura_id'     => '4',
+            'estudiante_id'     => '4',
             'promedio_final'    =>  '5',
             'examen_suspenso'   => '9',
             'suma'              => '14',
@@ -26,6 +26,31 @@ class SuspensoSeeder extends Seeder
             'promedio_letra'    =>  'SIETE',
             'observacion'       =>   'APROBADO',
         ]);
+
+        Suspenso::create([
+            'asignacione_id'    => '1',
+            'asignatura_id'     => '5',
+            'estudiante_id'     => '5',
+            'promedio_final'    =>  '5',
+            'examen_suspenso'   => '9',
+            'suma'              => '14',
+            'promedio_numero'   =>  '7',
+            'promedio_letra'    =>  'SIETE',
+            'observacion'       =>   'APROBADO',
+        ]);
+
+        Suspenso::create([
+            'asignacione_id'    => '1',
+            'asignatura_id'     => '5',
+            'estudiante_id'     => '3',
+            'promedio_final'    =>  '5',
+            'examen_suspenso'   => '9',
+            'suma'              => '14',
+            'promedio_numero'   =>  '7',
+            'promedio_letra'    =>  'SIETE',
+            'observacion'       =>   'APROBADO',
+        ]);
+
         Suspenso::create([
             'asignacione_id'    => '1',
             'asignatura_id'     => '5',

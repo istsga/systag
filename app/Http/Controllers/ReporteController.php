@@ -31,6 +31,13 @@ class ReporteController extends Controller
             return $pdf->stream('Reporte Matricula.pdf',compact('matricula'));
         }
 
+        //HORARIO DE CLASE
+        public function reporteHorarioClase($id){
+            $pdf = PDF::loadView('reportes.reporteHorarioclase')
+                ->setPaper('a4', 'landscape');
+            return $pdf->stream(' Reporte Horario de Clase.pdf');
+        }
+
         // HORARIOS POR ESPECIALIDAD
         public function reporteHorarioE($dato)
         {

@@ -27,10 +27,10 @@ class PeriodacademicoStoreRequest extends FormRequest
         $date = $date->format('Y-m-d');
 
          $rules = [
-             'estado' => ['required' ],
              'periodo' => ['required', 'unique:periodacademicos', 'string', 'min:3', 'max:50' ],
-             'fecha_inicio' => ['required', 'date', 'after_or_equal:'.$date],
-             'fecha_final' => ['required', 'date', 'after:fecha_inicio' ],
+             'estado' => ['required' ],
+             'fecha_inicio' => ['required',  'date', 'unique:periodacademicos', 'after_or_equal:'.$date],
+             'fecha_final' => ['required', 'date',  'unique:periodacademicos', 'after:fecha_inicio' ],
              'carreras'=>['required', 'exists:carreras,id'],
          ];
 

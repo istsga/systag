@@ -55,7 +55,16 @@
         </div>
 
         <div class="item-container">
-            <p> Arbril Marzo 2021 &nbsp; | <span> I Periodo </span></p>
+            @for ($i=1;$i<=$calificaciones->max('periodo_id');$i++)
+
+            {{-- <p>Verificar bien al funcionamiento</p> --}}
+                @foreach ($calificaciones as $index=> $calificacione)
+                    @if($calificacione->periodo_id==$i)
+                    <p> {{$calificacione->asignacione->periodacademicos->pluck('periodo')->implode(', ')}} &nbsp; | <span> {{$periodos[$i-1]->nombre}} </span></p>
+                    @break
+                    @endif
+                @endforeach
+
             <table border="1">
                 <thead>
                   <tr>
@@ -68,7 +77,7 @@
                 </thead>
                 <tbody>
                 @foreach ($calificaciones as $index=> $calificacione)
-                  {{-- @if($asignatura->periodo_id==1) --}}
+                  @if($calificacione->periodo_id==$i)
                   <tr>
                     <td >{{$index+1}}</td>
                     <td >{{$calificacione->cod_asignatura}}</td>
@@ -78,10 +87,13 @@
                     <td>{{$calificacione->promedio_final}}</td>
                     <td>{{$calificacione->estado}}</td>
                   </tr>
-                  {{-- @endif --}}
+                  @endif
                 @endforeach
                 </tbody>
             </table>
+            @endfor
+
+
         </div>
         </div>
 

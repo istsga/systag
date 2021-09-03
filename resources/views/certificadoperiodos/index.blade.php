@@ -24,7 +24,7 @@
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-user"></i></span></div>
                                         <select name="estudiante_id" id="info_estudiante" class=" form-control @error('estudiante_id') is-invalid @enderror">
-                                            <option class="form-control" value="">Seleccionar</option>
+                                            <option class="form-control" value=""> == Seleccionar == </option>
                                             @foreach ($estudiantes as $estudiante)
                                                 <option  value="{{$estudiante->id}}"
                                                     {{$estudiante_id == $estudiante->id ? 'selected' : '' }}
@@ -41,7 +41,7 @@
                                     <div class="input-group-prepend  "><span class=" input-group-text bg-primary  text-light">
                                         Periodo</span></div>
                                     <select name="periodo_id" id="periodo_id" class=" form-control ">
-                                        <option class="form-control" value="">Seleccionar</option>
+                                        <option class="form-control" value=""> == Seleccionar == </option>
                                         @foreach ($periodos as $periodo)
                                             <option  value="{{$periodo->id}}"
                                                 >{{$periodo->id}} {{$periodo->nombre}}</option>

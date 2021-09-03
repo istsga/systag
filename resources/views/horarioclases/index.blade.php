@@ -23,11 +23,11 @@
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-check"></i></span></div>
                                         <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademicos') is-invalid @enderror">
-                                            <option value="" class="form-control  ">Seleccionar</option>
+                                            <option value="" class="form-control  "> == Seleccionar == </option>
                                             @foreach ($periodacademicos as $periodacademico)
                                                 <option  value="{{$periodacademico->id}}"
                                                     {{$query==$periodacademico->id ? 'selected' : '' }}
-                                                    >{{$query.'+'.$periodacademico->periodo}}</option>
+                                                    >{{$periodacademico->periodo}}</option>
                                             @endforeach
                                         </select>
                                         @error ('periodacademicos') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
@@ -43,14 +43,14 @@
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-layer-group"></i></span></div>
                                             <select name="asignacione_id" id="asignacione_id" class=" form-control ">
-                                                <option class="form-control" value="">Seleccionar</option>
+                                                <option class="form-control" value=""> == Seleccionar == </option>
 
                                                 @foreach ($asignaciones as $asignacione)
                                                 <option  value="{{$asignacione->id}}"
                                                     {{$queryAsignacione==$asignacione->id ? 'selected' : '' }}
-                                                    >{{$asignacione->id}} {{$asignacione->carreras->pluck('nombre')->implode(', ')}}
-                                                    {{$asignacione->periodo->nombre}}
-                                                    {{$asignacione->seccione->nombre}} -
+                                                    >{{$asignacione->carreras->pluck('nombre')->implode(', ')}} |
+                                                    {{$asignacione->periodo->nombre}} |
+                                                    {{$asignacione->seccione->nombre}} |
                                                     {{$asignacione->paralelo->nombre}}
                                                 </option>
                                                 @endforeach
@@ -88,11 +88,30 @@
                             @foreach ($horarios as $horario)
                             <tr>
                                 <td class="text-center table-secondary align-middle text-dark">{{$horario->hora_inicio}} <br> {{$horario->hora_final}} </td>
-                                <td class=" table-secondary  align-middle text-dark">{{$horario->lunesnombreasignatura}}  <hr class=" mt-2 mb-1 bg-primary"><span class="text-muted small">Profesor: {{$horario->lunesnombredocente}} {{$horario->lunesapellidodocente}}</span> </td>
-                                <td class="table-secondary align-middle text-dark ">{{$horario->martesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor: {{$horario->martesnombredocente}} {{$horario->martesapellidodocente}}</span> </td>
-                                <td class="table-secondary align-middle text-dark ">{{$horario->miercolesnombreasignatura}}  <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horario->miercolesnombredocente}} {{$horario->miercolesapellidodocente}}</span> </td>
-                                <td class="table-secondary align-middle text-dark ">{{$horario->juevesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horario->juevesnombredocente}} {{$horario->juevesapellidodocente}}</span> </td>
-                                <td class="table-secondary align-middle text-dark ">{{$horario->viernesnombreasignatura}}<hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor: {{$horario->viernesnombredocente}} {{$horario->viernesapellidodocente}}</span> </td>
+                                @foreach ($horarios1 as $horario1)
+                                @if($horario->hora_inicio==$horario1->hora_inicio and $horario->hora_final==$horario1->hora_final)
+
+                                @if($horario1->lunesnombreasignatura)
+                                <td class=" table-secondary  align-middle text-dark">{{$horario1->lunesnombreasignatura}}  <hr class=" mt-2 mb-1 bg-primary"><span class="text-muted small">Profesor: {{$horario1->lunesnombredocente}} {{$horario1->lunesapellidodocente}}</span> </td>
+                                @endif
+                                @if($horario1->martesnombreasignatura)
+                                <td class="table-secondary align-middle text-dark ">{{$horario1->martesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor: {{$horario1->martesnombredocente}} {{$horario1->martesapellidodocente}}</span> </td>
+                                @endif
+                                @if($horario1->miercolesnombreasignatura)
+                                <td class="table-secondary align-middle text-dark ">{{$horario1->miercolesnombreasignatura}}  <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horario1->miercolesnombredocente}} {{$horario1->miercolesapellidodocente}}</span> </td>
+                                @endif
+
+                                @if($horario1->juevesnombreasignatura )
+                                <td class="table-secondary align-middle text-dark ">{{$horario1->juevesnombreasignatura }} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horario1->juevesnombredocente}} {{$horario1->juevesapellidodocente}}</span> </td>
+
+                                @endif
+
+                                @if($horario1->viernesnombreasignatura )
+                                <td class="table-secondary align-middle text-dark ">{{$horario1->viernesnombreasignatura}}<hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor: {{$horario1->viernesnombredocente}} {{$horario1->viernesapellidodocente}}</span> </td>
+                                @endif
+
+                                @endif
+                                @endforeach
                             </tr>
                             @endforeach
 

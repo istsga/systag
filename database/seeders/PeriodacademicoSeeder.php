@@ -36,5 +36,26 @@ class PeriodacademicoSeeder extends Seeder
             'fecha_final'      => '2022_11_20',
         ])->carreras()->attach(['1', '2', '3', '4']);
 
+        Periodacademico::create([
+            'estado'            => '1',
+            'periodo'           => 'Noviembre 2021 - Marzo 2022',
+            'fecha_inicio'      => '2021_03_11',
+            'fecha_final'      => '2022_03_20',
+        ])->carreras()->attach(['1', '2', '3', '4']);
+
+        Periodacademico::create([
+            'estado'            => '1',
+            'periodo'           => 'Marzo 2022 - Agosto 2022',
+            'fecha_inicio'      => '2022_03_11',
+            'fecha_final'      => '2022_08_20',
+        ])->carreras()->attach(['1', '2', '3', '4']);
+
+        Periodacademico::create([
+            'estado'            => '1',
+            'periodo'           => 'Agosto 2022 - Diciembre 2022',
+            'fecha_inicio'      => '2022_08_11',
+            'fecha_final'      => '2022_12_20',
+        ])->carreras()->attach(['1', '2', '3', '4']);
+
     }
 }

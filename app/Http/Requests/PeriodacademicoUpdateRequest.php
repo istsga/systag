@@ -34,8 +34,10 @@ class PeriodacademicoUpdateRequest extends FormRequest
             'periodo'=> [
                 'required','min:3', 'max:50', 'string',
                 Rule::unique('periodacademicos')->ignore( $this->route('periodacademico')->id )],
-            'fecha_inicio' => ['required', 'date', 'after_or_equal:'.$date],
-            'fecha_final' => ['required', 'date', 'after:fecha_inicio' ],
+            'fecha_inicio' => ['required', 'date',
+                Rule::unique('periodacademicos')->ignore( $this->route('periodacademico')->id )],
+            'fecha_final' => ['required', 'date', 'after:fecha_inicio',
+                Rule::unique('periodacademicos')->ignore( $this->route('periodacademico')->id )],
             'carreras'=>['required', 'exists:carreras,id'],
         ];
 

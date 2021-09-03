@@ -3,8 +3,8 @@
 
         @if (substr($name, 0, 3)=='Ver')
             <br>
-        <div class="row text-capitalize font-weight-bold">
-        <label for=" ">  {{substr($name, 3, 20)}}</label>
+        <div class="row text-capitalize font-weight-bold ml-1">
+        <label for=" ">  {{substr($name, 3, 35)}}</label>
         </div>
         @endif
 
@@ -15,8 +15,5 @@
             ? 'checked' : ''}}
             >{{$name}}
         </label>
-
-        @if (substr($name, 0, 3)=='Ver')
-        @endif
     </div>
 @endforeach

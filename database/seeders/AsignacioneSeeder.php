@@ -100,5 +100,31 @@ class AsignacioneSeeder extends Seeder
         $asignacione->periodacademicos()->attach('3');
         $asignacione->carreras()->attach('2');
 
+        //RECORD ACADEMICO
+        $asignacione = new Asignacione;
+        $asignacione->periodo_id    = '3';
+        $asignacione->seccione_id   = '1';
+        $asignacione->paralelo_id   = '1';
+        $asignacione->save();
+        $asignacione->periodacademicos()->attach('4');
+        $asignacione->carreras()->attach('1');
+
+        $asignacione = new Asignacione;
+        $asignacione->periodo_id    = '4';
+        $asignacione->seccione_id   = '1';
+        $asignacione->paralelo_id   = '1';
+        $asignacione->save();
+        $asignacione->periodacademicos()->attach('5');
+        $asignacione->carreras()->attach('1');
+
+        $asignacione = new Asignacione;
+        $asignacione->periodo_id    = '5';
+        $asignacione->seccione_id   = '1';
+        $asignacione->paralelo_id   = '1';
+        $asignacione->save();
+        $asignacione->periodacademicos()->attach('6');
+        $asignacione->carreras()->attach('1');
+
+
     }
 }

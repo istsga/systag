@@ -25,7 +25,7 @@
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-user"></i></span></div>
                                             <select name="estudiante_id" id="record_estudiante" class=" form-control">
-                                                <option class="form-control" value="">Seleccionar</option>
+                                                <option class="form-control" value=""> == Seleccionar == </option>
                                                 @foreach ($estudiantes as $estudiante)
                                                     <option  value="{{$estudiante->id}}"
                                                         >{{$estudiante->nombre}} {{$estudiante->apellido}} - {{$estudiante->dni}}</option>

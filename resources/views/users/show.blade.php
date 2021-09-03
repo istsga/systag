@@ -50,59 +50,11 @@
                     </div>
 
                     <div class="form group pt-3">
-                      <strong class="font-weight-bold "> CEDULA/PASAPORTE: </strong> <p>{{$user->dni}} </p>
+                      <strong class="font-weight-bold "> CEDULA | PASAPORTE: </strong> <p>{{$user->dni}} </p>
                     </div>
-
                  </div>
                 </div>
               </div>
-
-              {{-- <div class="col-sm-4">
-                <div class="card  shadow-lg">
-                    <div class="card-header bg-primary">
-                      <h4 class=" text-light"><i class="fas fa-user"></i> <span class="text-value">ROLES</span> </h4>
-                    </div>
-                  <div class="card-body">
-
-                               @forelse ($user->roles as $role)
-                                <strong>{{$role->name}}</strong>
-
-                                @if ($role->permissions->count())
-                                <br>
-                                <small class="text-muted">
-                                    Permisos: <br> {{$role->permissions->pluck('name')->implode(', ')}}
-                                    </small>
-                                @endif
-
-                                @unless ($loop->last)
-                                    <hr>
-                                @endunless
-
-                                @empty
-                                <small class="text-muted">No tiene roles asignados</small>
-
-                               @endforelse
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="card shadow-lg">
-                    <div class="card-header bg-primary">
-                      <h4 class=" text-light"><i class="fas fa-user"></i> <span class="text-value">PERMISOS</span> </h4>
-                    </div>
-                  <div class="card-body">
-                    @forelse ($user->permissions as $permission)
-                    <strong>{{$permission->name}}</strong>
-
-                    @unless ($loop->last)
-                        <hr>
-                    @endunless
-                    @empty
-                        <small class="text-muted">No tiene permisos asignados</small>
-                   @endforelse
-                  </div>
-                </div>
-              </div> --}}
 
               <div class="col-lg-8">
                   @yield('profile')

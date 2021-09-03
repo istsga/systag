@@ -6,6 +6,8 @@ use App\Models\Asignatura;
 use App\Models\Calificacione;
 use App\Models\Estudiante;
 use App\Models\Matricula;
+use App\Models\Periodacademico;
+use App\Models\Periodo;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
@@ -35,12 +37,14 @@ class RecordacademicoController extends Controller
                 ->selectRaw("calificaciones.*,asignaturas.*,if(promedio_final=10,'Exonerado',if(promedio_final<6.5,'Reprobado',if(promedio_final<9.5,'Aprobado','Error'))) as estado")
                 ->where('calificaciones.estudiante_id',$estudiante_id)
                 ->get();
+            $periodacademicos = Periodacademico::all();
 
+            $periodos = Periodo::all();
 
 
             //dd($calificaciones);
 
-            $pdf = PDF::loadView('reportes.reporteRecordacademicos', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'asignaturas'=>$asignaturas, 'calificaciones'=>$calificaciones]);
+            $pdf = PDF::loadView('reportes.reporteRecordacademicos', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'asignaturas'=>$asignaturas, 'calificaciones'=>$calificaciones, 'periodacademicos'=>$periodacademicos, 'periodos'=>$periodos]);
             return $pdf->stream('Reporte Record Academico.pdf', compact('pdf'));
 
         }

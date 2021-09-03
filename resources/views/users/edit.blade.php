@@ -17,7 +17,7 @@
                     <form method="POST" enctype="multipart/form-data" action="{{route('users.update', $user)}} ">
                         @csrf @method('PUT')
                         <div class="form-group">
-                            <label for="dni" class="col-form-label font-weight-bold text-muted">Cédula/Pasaporte
+                            <label for="dni" class="col-form-label font-weight-bold text-muted">Cédula | Pasaporte
                                 <span class="text-primary">*</span></label>
                             <div class="input-group">
                                 <input type="text" class="form-control @error('dni') is-invalid @enderror"
@@ -62,7 +62,7 @@
                             </div>
                         </div>
 
-                        {{-- @if (auth()->user()) --}}
+                        @if (auth()->user()->id == $user->id)
 
                             <div class="form-group">
                                 <label for="password" class="col-form-label font-weight-bold text-muted">Contraseña</label>
@@ -87,8 +87,9 @@
                                     @error ('password_confirmation') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                 </div>
                             </div>
-
-                          {{-- @endif --}}
+                            @else
+                            <em> </em>
+                          @endif
 
                         <div class="form-actions mt-4">
                             <button class=" col-4 btn btn-primary" type="submit">Guardar</button>
@@ -97,7 +98,7 @@
                   </div>
                 </div>
               </div>
-
+              @role('Administrador')
               <div class="col-sm-5">
                 <div class="card  shadow-lg">
                     <div class="card-header bg-primary">
@@ -154,6 +155,7 @@
                   </div>
                 </div>
               </div>
+              @endrole
 
         </div>
     </div>

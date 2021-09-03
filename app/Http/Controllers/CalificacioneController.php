@@ -34,7 +34,7 @@ class CalificacioneController extends Controller
         $calificaciones = Calificacione::
             where('asignacione_id', $queryAsignacione)
             ->where('asignatura_id', $queryAsignatura)
-            //->allowed()
+            ->allowed()
             ->get();
 
         $asignaturas = Asignatura_matricula::
