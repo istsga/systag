@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="form-group col-lg-6">
-                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA |  PERIODO | SECCION | PARALELO
+                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA
                             </label>
                             <div class="input-group">
                                 <div class="input-group-prepend "><span class=" input-group-text">
@@ -57,7 +57,7 @@
             @if (count($alumnos) > 0)
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                 <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-user mr-3"></i> ALUMNOS </font>
-                    <a class=" btn btn-primary " href="#"> <i class=" font-weight-bold fas fa-file-pdf mr-1"></i>Reporte PDF</a>
+                    <a class=" btn btn-primary " href="{{route('reporteEgresado',  $query_peraca.'_'.$queryCarrera)}}"> <i class=" font-weight-bold fas fa-file-pdf mr-1"></i>Reporte PDF</a>
             </div>
             <div class="card-table table-responsive">
                 <table class="table table-hover  table-bordered align-middle">

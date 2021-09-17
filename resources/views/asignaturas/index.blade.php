@@ -84,6 +84,7 @@
             </div>
             @else
                     <em class=" mt-2 mb-2 ml-3 text-muted">No tienes registros.</em>
+                    <a class=" mt-2 mb-2 ml-3 btn  col-sm-1 border  btn-dark " href="{{route('asignaturas.index')}}">Regresar</a>
             @endif
         </div>
     </div>

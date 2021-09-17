@@ -7,7 +7,7 @@
     <ul class="c-sidebar-nav">
       <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="{{route('home')}}">
-          <i class="c-sidebar-nav-icon fas fa-tachometer-alt"></i>
+          <i class="c-sidebar-nav-icon fas fa-laptop"></i>
           Inicio
         </a>
       </li>
@@ -21,7 +21,7 @@
         </a>
         <ul class="c-sidebar-nav-dropdown-items ">
           @can('view', new App\Models\Docente)
-            <li class="c-sidebar-nav-item">
+            <li class="c-sidebar-nav-item ">
               <a class="c-sidebar-nav-link" href="{{route('docentes.index')}}">
                 <span class="c-sidebar-nav-icon  fas fa-user ml-n4"></span> Docentes
               </a>
@@ -51,9 +51,11 @@
 
           @can('view', new App\Models\Estudiante)
             <li class="c-sidebar-nav-item" >
+
               <a class="c-sidebar-nav-link" href="{{route('estudiantes.index')}}">
                 <span class="c-sidebar-nav-icon fas fa-user ml-n4"></span> Estudiantes
               </a>
+
             </li>
           @endcan
 
@@ -158,6 +160,14 @@
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
 
+            {{-- @can('view', new App\Models\Egresado) --}}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{route('estudiantenominas.index')}}">
+                <i class="c-sidebar-nav-icon fas fa-user-edit ml-n4"></i>
+                Nómina Estudiantes</strong>
+                </a>
+            </li>
+            {{-- @endcan --}}
             @can('view', new App\Models\Egresado)
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="{{route('egresados.index')}}" >

@@ -235,7 +235,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-4">
                                         <label for="tiposangre_id" class="col-form-label font-weight-bold text-muted ">Tipo de sangre
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
@@ -253,11 +253,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-4">
                                         <label for="discapacidad" class="col-form-label font-weight-bold text-muted ">Discapacidad
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
-                                            <select name="discapacidad" id="discapacidad" class="form-control " onchange="AddDiscapacidad();">
+                                            <select name="discapacidad" id="discapacidad" class="form-control " onchange="AddDiscapacidad(this)">
                                                 <option value="0" {{ old('discapacidad') == 0 ? 'selected' : '' }}>No</option>
                                                 <option value="1" {{ old('discapacidad') == 1 ? 'selected' : '' }}>Sí</option>
                                             </select>
@@ -266,7 +266,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row col-lg-6" id="InfoDiscapacidad" style="display:none" >
+                                    <div class="row col-lg-9" id="InfoDiscapacidad" style="display:none" >
                                         <div class="form-group col-lg-6 "  >
                                             <label for="tipo_discapacidad" class="col-form-label font-weight-bold text-muted ">Tipo de discapacidad
                                                 <span class="text-primary">*</span></label>
@@ -279,7 +279,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-lg-6">
+                                        <div class="form-group col-lg-5 ">
                                             <label for="porcentaje_discapacidad" class="col-form-label font-weight-bold text-muted">Porcentaje de discapacidad
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
@@ -622,17 +622,37 @@
 
 <script>
 
-AddNacionalidad();
-AddDiscapacidad();
-cambia_cantones();
-cambia_cantones1();
+    AddNacionalidad();
+    AddDiscapacidad();
+    cambia_cantones();
+    cambia_cantones1();
 
     //Nacionalidad
     function AddNacionalidad(){
         nacionalidad=document.getElementById('nacionalidad').value;
+
+        if(nacionalidad == ''){
+            canton_provincia.style.display='none';
+            lugar_nacimiento.style.display='none';
+        }
+
         if(nacionalidad == 'Ecuatoriana'){
+            lugar_nacimiento.style.display='none';
             canton_provincia.style.display='';
-        }else{
+        }
+
+        if(nacionalidad == 'Venezolana' ){
+            canton_provincia.style.display='none';
+            lugar_nacimiento.style.display='';
+        }
+
+        if(nacionalidad == 'Cubana' ){
+            canton_provincia.style.display='none';
+            lugar_nacimiento.style.display='';
+        }
+
+        if(nacionalidad == 'Otro' ){
+            canton_provincia.style.display='none';
             lugar_nacimiento.style.display='';
         }
     };

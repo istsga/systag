@@ -31,7 +31,7 @@
                                                         >{{$estudiante->nombre}} {{$estudiante->apellido}} - {{$estudiante->dni}}</option>
                                                 @endforeach
                                             </select>
-                                            <button class=" btn  btn-primary ml-1" type="submit" formtarget="_blank"> <i class="fas fa-print mr-2"> </i>Imprimir</button>
+                                            <button class=" btn  btn-outline-danger ml-1" type="submit" formtarget="_blank"> <i class="fas fa-print mr-2"> </i>Imprimir</button>
                                         </div>
 
                                     </div>

@@ -161,7 +161,7 @@
                                         </div>
 
                                         <div class="form-group col-lg-6">
-                                            <label for="cantone_id" class="col-form-label font-weight-bold tex-muted">Cantón
+                                            <label for="cantone_id" class="col-form-label font-weight-bold tex-muted text-muted">Cantón
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
                                                 <select name="cantone_id"  id="cantone_id"   class="form-control @error('cantone_id') is-invalid @enderror  ">
@@ -256,7 +256,7 @@
                                         <label for="miembro_hogar" class="col-form-label font-weight-bold text-muted">Discapacidad
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
-                                            <select name="discapacidad" id="mdfdiscapacidad" class="form-control @error('discapacidad') is-invalid @enderror " onchange="MdfDiscapacidad();">
+                                            <select name="discapacidad" id="discapacidad" class="form-control @error('discapacidad') is-invalid @enderror " onchange="MdfDiscapacidad();">
                                                 <option value="0" {{ old('discapacidad', $estudiante->discapacidad) == 0 ? 'selected' : '' }}>No</option>
                                                 <option value="1" {{ old('discapacidad', $estudiante->discapacidad) == 1 ? 'selected' : '' }}>Sí</option>
                                             </select>
@@ -266,13 +266,13 @@
                                         </div>
                                     </div>
 
-                                    <div class=" row col-lg-6" id="MdfDiscapacidad" style="display: none">
+                                    <div class=" row col-lg-6" id="Ediscapacidad" style="display: none">
                                         <div class="form-group col-lg-6">
                                             <label for="tipo_discapacidad" class="col-form-label font-weight-bold text-muted">Tipo de discapacidad
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
                                                 <input class="form-control @error('tipo_discapacidad') is-invalid @enderror"
-                                                name="tipo_discapacidad" value="{{old('tipo_discapacidad', $estudiante->tipo_discapacidad)}}">
+                                                name="tipo_discapacidad" value="{{old('tipo_discapacidad', $estudiante->tipo_discapacidad)}}" placeholder="Tipo">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-user-alt"></i></span></div>
                                                 @error ('tipo_discapacidad') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -632,18 +632,39 @@
 <script>
 
     MdfNacionalidad();
+    MdfDiscapacidad();
     cambia_cantones();
     cambia_cantones1();
 
     //Nacionalidad
     function MdfNacionalidad(){
             nacionalidad=document.getElementById('modifNacionalidad').value;
-            if(nacionalidad == 'Ecuatoriana'){
-                mfpcanton.style.display='';
-            } else {
-                mdflnacimiento.style.display='';
+
+            if(nacionalidad == ''){
+                mfpcanton.style.display='none';
+                mdflnacimiento.style.display='none';
             }
+
+        if(nacionalidad == 'Ecuatoriana'){
+            mdflnacimiento.style.display='none';
+            mfpcanton.style.display='';
         }
+
+        if(nacionalidad == 'Venezolana' ){
+            mfpcanton.style.display='none';
+            mdflnacimiento.style.display='';
+        }
+
+        if(nacionalidad == 'Cubana' ){
+            mfpcanton.style.display='none';
+            mdflnacimiento.style.display='';
+        }
+
+        if(nacionalidad == 'Otro' ){
+            mfpcanton.style.display='none';
+            mdflnacimiento.style.display='';
+        }
+    };
 
     //Cantones dinámmicos 1
     function cambia_cantones(select){
@@ -675,13 +696,13 @@
 
     //Discapacidad
     function MdfDiscapacidad(){
-        discapacidad = document.getElementById('mdfdiscapacidad').value;
+        discapacidad = document.getElementById('discapacidad').value;
         if(discapacidad == 0){
-            MdfDiscapacidad.style.display='none';
+            Ediscapacidad.style.display='none';
         }else{
-            MdfDiscapacidad.style.display='';
+            Ediscapacidad.style.display='';
         }
-    }
+    };
 
   //Cantones dinámicos 2
   function cambia_cantones1(select){

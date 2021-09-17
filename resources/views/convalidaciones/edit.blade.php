@@ -83,7 +83,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input type="number"  class="form-control @error('nota_final') is-invalid @enderror"
-                                            name="nota_final" id="nota_final" value="{{old('nota_final')}}" onchange="validar()" placeholder="7">
+                                            name="nota_final" id="nota_final" value="{{old('nota_final')}}" onchange="validar()" placeholder="Promedio">
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-star"></i></span></div>
                                         @error ('nota_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -106,7 +106,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        @foreach ($convalidaciondetalles as $cont =>  $convalidaciondetalle )
+                                            <tr id="fila{{$cont+1}}">
+                                                <td class="text-center">{{$cont+1}}</td>
+                                                <td>{{$convalidaciondetalle->nombre}}</td>
+                                                <td class="text-center">{{$convalidaciondetalle->nota_final}}</td>
+                                                <td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar({{$cont+1}});">X</button></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -185,7 +192,9 @@ function filtroAsignaturas(select){
 };
 
 //AGREGAR ASIGNATURAS
-var cont=1;
+const convalidaciones=@json($convalidaciondetalles);
+console.log(convalidaciones,convalidaciones.length,convalidaciones.length+1);
+var cont=convalidaciones.length+1;
 function agregarAsignatura(){
 
      //DescidArticulo=$("#idArticulo option:selected").text();

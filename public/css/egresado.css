@@ -1,0 +1,61 @@
+
+.e-nombre{
+    font-size: 16px;
+    margin-top: -20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.data-student{
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.data-student p {
+    font-size: 10px;
+    margin: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+.data-student p span {
+    font-weight: normal;
+    padding-left: 25px;
+    text-transform: uppercase;
+
+}
+
+.item-container p{
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.item-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.item-container table th {
+padding: 5px;
+font-size: 12px;
+}
+
+.item-container table td {
+padding: 5px;
+font-size: 12px;
+text-align: justify;
+}
+
+.wrap-3{
+  width:99%;
+  white-space: pre-wrap;
+  text-align: justify;
+}
+
+
+
+
+

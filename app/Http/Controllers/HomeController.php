@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrera;
+use App\Models\Docente;
+use App\Models\Estudiante;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +29,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('layouts.dashboard');
+        $carreras = Carrera::where('condicion', '1')->count();
+        $estudiantes = Estudiante::count();
+        $docentes = Docente::count();
+        $users = User::count();
+        $roles = Role::count();
+        $user = User::all();
+        $permisos = Permission::count();
+        return view('layouts.dashboard', compact('estudiantes', 'docentes', 'carreras', 'users', 'roles', 'permisos', 'user'));
     }
 }

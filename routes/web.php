@@ -25,6 +25,7 @@ use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ReporteController;
 
 use App\Http\Controllers\CalificacionperiodoController;
+use App\Http\Controllers\EstudiantenominaController;
 use App\Http\Controllers\EgresadoController;
 use App\Http\Controllers\UserinstruccioneController;
 use App\Http\Controllers\RecordacademicoController;
@@ -103,10 +104,12 @@ Route::get('reportes-horarioclase/{id}/data', [ReporteController::class, 'report
 Route::get('reportes-calificaciones/{id}/data', [ReporteController::class, 'reporteCalificacion'])->name('reporteCalificacion');
 Route::get('reportes-suspensos/{id}/data', [ReporteController::class, 'reporteSuspenso'])->name('reporteSuspenso');
 Route::get('reportes-calificacionperiodos/{id}/data', [ReporteController::class, 'reporteCalificacionperiodo'])->name('reporteCalificacionperiodo');
+Route::get('reportes-egresado/{id}/data', [ReporteController::class, 'reporteEgresado'])->name('reporteEgresado');
 
 
 //INSTRUCCIONES
 Route::resource('calificacionperiodos', CalificacionperiodoController::class)->only(['index']);
+Route::resource('estudiantenominas', EstudiantenominaController::class)->only(['index']);
 Route::resource('egresados', EgresadoController::class)->only(['index']);
 Route::resource('userinstrucciones', UserinstruccioneController::class)->only(['index']);
 Route::resource('recordacademicos', RecordacademicoController::class)->only(['index']); //Incluye reporte PDF

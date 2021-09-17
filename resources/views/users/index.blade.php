@@ -31,7 +31,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
-                                    <th><font style="vertical-align: inherit;">DNI</font></font></th>
+                                    <th><font style="vertical-align: inherit;">Cédula | Pasaporte</font></font></th>
                                     <th><font style="vertical-align: inherit;">Nombres y Apellidos</font></font></th>
                                     <th><font style="vertical-align: inherit;">Email</font></font></th>
                                     <th><font style="vertical-align: inherit;">Roles</font></font></th>
@@ -41,11 +41,11 @@
                             <tbody>
                                 @foreach ($users as $user)
                                 <tr>
-                                <td class="text-center" >{{$user->id}} </td>
-                                <td >{{$user->dni}} </td>
-                                <td >{{$user->nombre}} {{$user->apellido}}</td>
-                                <td >{{$user->email}} </td>
-                                <td >{{$user->getRoleNames()->implode(', ')}} </td>
+                                <td class="text-center align-middle" >{{$user->id}} </td>
+                                <td class="align-middle">{{$user->dni}} </td>
+                                <td class="align-middle">{{$user->nombre}} {{$user->apellido}}</td>
+                                <td class="align-middle">{{$user->email}} </td>
+                                <td class="align-middle">{{$user->getRoleNames()->implode(', ')}} </td>
 
                                 <td>
                                     <div class=" form-inline justify-content-center px-4 ">

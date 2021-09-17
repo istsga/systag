@@ -10,6 +10,7 @@ use App\Models\Matricula;
 use App\Models\Periodacademico;
 use App\Models\Suspenso;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class EgresadoController extends Controller
 {

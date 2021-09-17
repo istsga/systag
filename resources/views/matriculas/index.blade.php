@@ -34,7 +34,7 @@
                                     <th class="text-center align-middle"><font>Nro</font></th>
                                     <th class="align-middle"><font>ESTUDIANTE</font></th>
                                     <th class="align-middle"><font>Periodo Académico</font></th>
-                                    <th class="align-middle"><font>Especialidad</font></th>
+                                    <th class="align-middle"><font>Carrera</font></th>
                                     <th class="align-middle"><font>Periodo</font></th>
                                     <th class="align-middle"><font>Sección</font></th>
                                     <th class="align-middle"><font>Paralelo</font></th>

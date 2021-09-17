@@ -26,7 +26,6 @@ class AsignaturaController extends Controller
         $pre=Prerequisito::
             join('asignaturas','asignaturas.id','=','prerequisitos.preasignatura_id')
             ->select(DB::raw("prerequisitos.asignatura_id,  GROUP_CONCAT(asignaturas.nombre Separator  ' | ') as prerequisitos"))
-            //->select(DB::raw("prerequisitos.asignatura_id,  GROUP_CONCAT(asignaturas.nombre,  ' | ') as prerequisitos"))
             ->groupBy('prerequisitos.asignatura_id');
 
         $asignaturas = Asignatura::
@@ -35,9 +34,14 @@ class AsignaturaController extends Controller
             })
             ->where('asignaturas.nombre','LIKE','%'.$query.'%')
             ->orWhere('asignaturas.cod_asignatura','LIKE','%'.$query.'%')
+            // ->orWhere('periodos.nombre','LIKE','%'.$query.'%')
             ->select('asignaturas.*','pre.prerequisitos as prerequisitos')
             ->latest('id')
             ->paginate();
+
+
+                dd($asignaturas,);
+
         return view('asignaturas.index', compact('asignaturas'));
     }
 

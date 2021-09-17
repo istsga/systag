@@ -50,7 +50,7 @@
 
                                     <td class="align-middle" >{{$periodacademico->fecha_inicio}} </td>
                                     <td class="align-middle" >{{$periodacademico->fecha_final}} </td>
-                                    <td class="align-middle" >{{$periodacademico->carreras->pluck('nombre')->implode(' - ')}}</td>
+                                    <td class="align-middle" >{{$periodacademico->carreras->pluck('nombre')->implode(' | ')}}</td>
 
                                     <td class="align-middle">
                                         <div class=" form-inline justify-content-center">

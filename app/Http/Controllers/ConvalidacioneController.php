@@ -91,8 +91,11 @@ class ConvalidacioneController extends Controller
         $this->authorize('update', $convalidacione);
         $estudiantes = Estudiante::all();
         $asignaturas = Asignatura::all();
+        $convalidaciondetalles = Convalidacione::join('asignaturas','asignaturas.id','=','convalidaciones.asignatura_id')
+            ->where('convalidaciones.estudiante_id',$convalidacione->estudiante_id)
+            ->get();
         $carreras = Carrera::where('condicion', 1)->get();
-        return view('convalidaciones.edit', compact('convalidacione','estudiantes', 'asignaturas', 'carreras'));
+        return view('convalidaciones.edit', compact('convalidacione','estudiantes', 'asignaturas', 'carreras','convalidaciondetalles'));
     }
 
     /**
