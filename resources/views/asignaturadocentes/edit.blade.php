@@ -12,7 +12,7 @@
 <div class="container-fluid">
     <div class="fade-in">
         <div class="row justify-content-center ">
-            <div class="col-lg-8">
+            <div class="col-lg-9">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary">
                         <h4 class=" text-light"><i class="fas fa-book  mr-3"></i> <span class="text-value">ASIGNAR DOCENTES</span></h4>
@@ -20,7 +20,7 @@
                     <div class="card-body">
                             <form method="POST"  action="{{ route('asignaturadocentes.update', $asignaturadocente)}} ">
                                 @csrf @method('PUT')
-                            <div class=" col-lg-12">
+                            <div class=" card p-3">
                                 <div class="row">
 
                                     <div class="form-group col-lg-12 ">
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-sm-6 ">
+                                    <div class="form-group col-lg-6 ">
                                         <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignaturas
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">

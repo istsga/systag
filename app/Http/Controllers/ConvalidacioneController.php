@@ -21,9 +21,8 @@ class ConvalidacioneController extends Controller
     public function index()
     {
         $this->authorize('view', new Convalidacione);
-        $convalidaciones = Convalidacione::latest('id')
-            ->paginate();
-        return view('convalidaciones.index', compact('convalidaciones'));
+
+        return view('convalidaciones.index');
     }
 
     /**
@@ -112,12 +111,23 @@ class ConvalidacioneController extends Controller
         $asignatura=$request->get('Asignatura');
         $promedio=$request->get('Promedio');
         $i=0;
+        //dd($asignatura);
+        Convalidacione::where('estudiante_id',$request->get('estudiante_id'))
+            ->whereNotIn('asignatura_id',$asignatura)
+            ->delete();
+
         while($i<count($asignatura)){
             $convalidacion=new Convalidacione;
             $convalidacion->estudiante_id=$request->get('estudiante_id');;
             $convalidacion->asignatura_id=$asignatura[$i];
             $convalidacion->nota_final=$promedio[$i];
-            $convalidacion->update();
+            $convalidacioxx=Convalidacione::where('estudiante_id',$request->get('estudiante_id'))
+                ->where('asignatura_id',$asignatura[$i])->first();
+
+            if(!($convalidacioxx)){
+                $convalidacion->save();
+                //dd($asignatura[$i]); //$convalidacion->save();
+            }
             $i++;
         }
         return redirect()->route('convalidaciones.index')->with('status', 'Agregado con éxito.');

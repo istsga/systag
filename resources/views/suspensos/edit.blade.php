@@ -25,42 +25,50 @@
                 <form class="form-horizontal" method="POST"  action="{{ route('suspensos.update', $suspenso)}} ">
                     @csrf @method('PUT')
                 <div class="row">
-                    <div class=" form-group col-lg-12">
-                        <label for="asignacione_id" class="col-form-label font-weight-bold small text-muted">CARRERA | PERIODO | SECCIÓN | PARALELO
-                        </label>
-                        <div class="input-group">
-                            <div class="input-group-prepend "><span class=" input-group-text">
-                                <i class=" text-primary fas fa-check"></i></span></div>
-                                <label class="ml-3" >{{$suspenso->asignacione->periodacademicos->pluck('periodo')->implode(', ')}} |
-                                            {{$suspenso->asignacione->carreras->pluck('nombre')->implode(', ')}} |
-                                            {{$suspenso->asignacione->periodo->nombre}} |
-                                            {{$suspenso->asignacione->seccione->nombre}} |
-                                            {{$suspenso->asignacione->paralelo->nombre}}
-                                </label>
-                                <input class="invisible" type="text" name="asignacione_id" value="{{$suspenso->asignacione_id}}">
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-6">
-                            <label for="asignacione_id" class="col-form-label font-weight-bold small text-muted">ASIGNATURAS
+                    <div class="card col-lg-12 bg-light shadow-sm">
+                        <div class=" form-group ">
+                            <label for="asignacione_id" class="col-form-label font-weight-bold small text-muted">CARRERA | PERIODO | SECCIÓN | PARALELO
                             </label>
                             <div class="input-group">
                                 <div class="input-group-prepend "><span class=" input-group-text">
-                                    <i class=" text-primary fas fa-book"></i></span></div>
-                                    <label class="ml-3" for="">{{$suspenso->asignatura->nombre}}</label>
-                                    <input class="invisible " type="text" name="asignatura_id" value="{{$suspenso->asignatura_id}}">
+                                    <i class=" text-primary fas fa-check"></i></span></div>
+                                    <label class="ml-3" >{{$suspenso->asignacione->periodacademicos->pluck('periodo')->implode(', ')}} |
+                                                {{$suspenso->asignacione->carreras->pluck('nombre')->implode(', ')}} |
+                                                {{$suspenso->asignacione->periodo->nombre}} |
+                                                {{$suspenso->asignacione->seccione->nombre}} |
+                                                {{$suspenso->asignacione->paralelo->nombre}}
+                                    </label>
+                                    <input class="invisible" type="text" name="asignacione_id" value="{{$suspenso->asignacione_id}}">
                             </div>
+                        </div>
                     </div>
 
-                    <div class="form-group col-lg-6">
-                            <label for="matricula_id" class="col-form-label font-weight-bold small text-muted">ESTUDIANTES
-                            </label>
-                            <div class="input-group ">
-                                <div class="input-group-prepend "><span class=" input-group-text">
-                                    <i class=" text-primary fas fa-user"></i></span></div>
-                                    <label class="ml-3" for="">{{$suspenso->estudiante->nombre}} {{$suspenso->estudiante->apellido}}</label>
-                                    <input class="invisible" type="text" name="estudiante_id" value="{{$suspenso->estudiante_id}}">
-                            </div>
+                    <div class="card col-lg-6 bg-light shadow-sm">
+                        <div class="form-group ">
+                                <label for="asignacione_id" class="col-form-label font-weight-bold small text-muted">ASIGNATURAS
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                        <i class=" text-primary fas fa-book"></i></span></div>
+                                        <label class="ml-3" for="">{{$suspenso->asignatura->nombre}}</label>
+                                        <input class="invisible " type="text" name="asignatura_id" value="{{$suspenso->asignatura_id}}">
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="col"></div>
+
+                    <div class="card col-lg-5 bg-light shadow-sm">
+                        <div class="form-group ">
+                                <label for="matricula_id" class="col-form-label font-weight-bold small text-muted">ESTUDIANTES
+                                </label>
+                                <div class="input-group ">
+                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                        <i class=" text-primary fas fa-user"></i></span></div>
+                                        <label class="ml-3" for="">{{$suspenso->estudiante->nombre}} {{$suspenso->estudiante->apellido}}</label>
+                                        <input class="invisible" type="text" name="estudiante_id" value="{{$suspenso->estudiante_id}}">
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,62 +82,64 @@
                 </div>
 
                 <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="c-callout c-callout-primary"> <small class="text-muted"><font style="vertical-align: inherit;">NOTA FINAL</font></small>
-                            <div class="text-value-lg"><input type="number" value="{{old('promedio_final', $suspenso->promedio_final)}}"  name="promedio_final" id="promedio_final"  class="form-control @error('promedio_final') is-invalid @enderror"  step="0.01" oninput="calcular()">
-                            @error ('promedio_final') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
-                        </div>
+                    <div class="card shadow-sm">
+                        <div class="row m-2">
+                            <div class="col-lg-4">
+                                <div class="c-callout c-callout-primary"> <small class="text-muted"><font style="vertical-align: inherit;">NOTA FINAL</font></small>
+                                    <div class="text-value-lg"><input type="number" value="{{old('promedio_final', $suspenso->promedio_final)}}"  name="promedio_final" id="promedio_final"  class="form-control @error('promedio_final') is-invalid @enderror"  step="0.01" oninput="calcular()">
+                                    @error ('promedio_final') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="c-callout c-callout-primary"><small class="text-muted"><font style="vertical-align: inherit;">EXAMEN DE SUSPENSIÓN</font></small>
+                                    <div class="text-value-lg"><input type="number" value="{{old( 'examen_suspenso', $suspenso->examen_suspenso)}}"  name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" >
+                                    @error ('examen_suspenso') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
+                                </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-4">
+                                <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">SUMA</font></small>
+                                    <div class="text-value-lg"> <input type="number" value="{{old('suma', $suspenso->suma)}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light">
+                                        @error ('suma') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
-                    <div class="col-lg-4">
-                        <div class="c-callout c-callout-primary"><small class="text-muted"><font style="vertical-align: inherit;">EXAMEN DE SUSPENSIÓN</font></small>
-                            <div class="text-value-lg"><input type="number" value="{{old( 'examen_suspenso', $suspenso->examen_suspenso)}}"  name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" >
-                            @error ('examen_suspenso') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
-                        </div>
-                        </div>
-                    </div>
+                    <div class="card shadow-sm">
+                        <div class="row m-2">
+                            <div class="col-lg-4">
+                                <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">PROMEDIO EN DECIMALES</font></small>
+                                    <div class="text-value-lg"><input type="decimal" value="{{old('promedio_numero', $suspenso->promedio_numero)}}"  name="promedio_numero" id="promedio_numero" class="form-control @error('promedio_numero') is-invalid @enderror text-info bg-light">
+                                        @error ('promedio_numero') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="col-lg-4">
+                                <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">PROMEDIO EN LETRAS</font></small>
+                                        <div class="text-value-lg"><input type="text" name="promedio_letra" value="{{old('promedio_letra', $suspenso->promedio_letra)}}" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light ">
+                                        @error ('promedio_letra') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="col-lg-4">
-                        <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">SUMA</font></small>
-                            <div class="text-value-lg"> <input type="number" value="{{old('suma', $suspenso->suma)}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light">
-                                @error ('suma') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
+                            <div class="col-lg-4">
+                                <div class="c-callout c-callout-primary"><small class="text-muted"><font style="vertical-align: inherit;">OBSERVACIÓN</font></small>
+                                    <div class="text-value-lg"><input class="form-control @error('observacion') is-invalid @enderror" type="text" value="{{old('observacion', $suspenso->observacion)}}"  name="observacion" id="observacion" >
+                                    @error ('observacion') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
-
-                <hr class="mt-0">
-
-                <div class="row">
-
-                    <div class="col-lg-4">
-                        <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">PROMEDIO EN DECIMALES</font></small>
-                            <div class="text-value-lg"><input type="decimal" value="{{old('promedio_numero', $suspenso->promedio_numero)}}"  name="promedio_numero" id="promedio_numero" class="form-control @error('promedio_numero') is-invalid @enderror text-info bg-light">
-                                @error ('promedio_numero') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">PROMEDIO EN LETRAS</font></small>
-                                <div class="text-value-lg"><input type="text" name="promedio_letra" value="{{old('promedio_letra', $suspenso->promedio_letra)}}" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light ">
-                                @error ('promedio_letra') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="c-callout c-callout-primary"><small class="text-muted"><font style="vertical-align: inherit;">OBSERVACIÓN</font></small>
-                            <div class="text-value-lg"><input class="form-control @error('observacion') is-invalid @enderror" type="text" value="{{old('observacion', $suspenso->observacion)}}"  name="observacion" id="observacion" >
-                            @error ('observacion') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
-                        </div>
-                        </div>
-                    </div>
-                </div>
                 </div>
                 <div class="card-footer border-0 d-flex justify-content-between aling-items-end bg-light">
                     <button class=" col-sm-2 border btn btn-primary" type="submit">Guardar</button>

@@ -19,15 +19,11 @@ class AsignacioneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $this->authorize('view', new Asignacione);
-            $query=trim($request->get('search'));
-            $asignaciones = Asignacione::
-                where('asignaciones.id','LIKE','%'.$query.'%')
-                ->latest('id')
-                ->paginate();
-            return view('asignaciones.index', compact('asignaciones'));
+
+            return view('asignaciones.index');
     }
 
     /**

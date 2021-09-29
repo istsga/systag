@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asignatura;
+use App\Models\Calificacione;
 use App\Models\Certificadoperiodo;
 use App\Models\Estudiante;
 use App\Models\Matricula;
 use App\Models\Periodo;
+use App\Models\Suspenso;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
@@ -38,24 +40,30 @@ class CertificadoperiodoController extends Controller
                     where('matriculas.estudiante_id',$estudiante->id)
                     ->first();// Revisar debido a que se esta tomando solo primer registro.
 
-                $asignaturas=Asignatura::
-                join('asignatura_matricula','asignatura_matricula.asignatura_id','asignaturas.id')
-                ->leftJoin('calificaciones','calificaciones.asignatura_id','=','asignatura_matricula.asignatura_id')
-                ->select('asignaturas.id','asignaturas.nombre','calificaciones.promedio_final','calificaciones.promedio_letra','calificaciones.observacion')
+                $suspensos = Suspenso::where('suspensos.estudiante_id',$estudiante_id)
+                ->join('asignaturas','asignaturas.id','=','suspensos.asignatura_id')
+                ->where('asignaturas.periodo_id',$periodo_id)
+                ->select('asignatura_id','examen_suspenso', 'observacion');
 
-                ->where('asignatura_matricula.matricula_id', $matricula->id)
-                ->where('calificaciones.estudiante_id',$estudiante->id)
-                //->where('calificaciones.asignacione_id',$matricula->asignacione_id)
-                //->where('calificaciones.asignatura_id','asignatura_matricula.asignatura_id')
-                ->get();
+                $calificaciones=Calificacione::
+                    join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
+                    ->leftjoinSub($suspensos,'suspensos',function($join){
+                        $join->on('calificaciones.asignatura_id','=','suspensos.asignatura_id');
+                    })
+                    ->where('calificaciones.estudiante_id',$estudiante_id)
+                    ->where('asignaturas.periodo_id',$periodo_id)
+                    ->select('calificaciones.*','suspensos.examen_suspenso as suspensoNota', 'suspensos.observacion as observacionSuspenso' )
+                    ->get();
+
+                // Relacionar con suspenso revisar
                 $promedio=0;
                 $suma=0;
-                foreach($asignaturas as $asignatura){
-                    $suma+=$asignatura->promedio_final;
+                foreach($calificaciones as $calificacione){
+                    $suma+=$calificacione->promedio_final;
                 }
-                $promedio=number_format($suma / count($asignaturas), 2);
+                $promedio=number_format($suma / count($calificaciones), 2);
 
-                $pdf = PDF::loadView('reportes.reporteCertificadoperiodo', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'asignaturas'=>$asignaturas, 'promedio'=>$promedio]);
+                $pdf = PDF::loadView('reportes.reporteCertificadoperiodo', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'calificaciones'=>$calificaciones, 'promedio'=>$promedio]);
                 return $pdf->stream('Reporte Certificado Periodo.pdf', compact('estudiante'));
         }
 

@@ -14,14 +14,12 @@
                     </div>
                   <div class="card-body">
                       <div class="row">
-                          <div class="col-sm-12">
+                          <div class="card col-lg-11 ml-4 mt-2 shadow-sm">
 
                             <form method="POST"  action="{{ route('roles.store')}} ">
                                 @csrf
-
-                                @include('roles.form')
-
-                                <div class="form-actions mt-4">
+                                    @include('roles.form')
+                                <div class="form-actions ml-3 mb-3 ">
                                     <button class=" col-4 btn btn-primary" type="submit">Guardar</button>
                                 </div>
                             </form>

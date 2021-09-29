@@ -21,18 +21,10 @@ class EstudianteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $this->authorize('view', new Estudiante);
-        $query=trim($request->get('search'));
-        $estudiantes = Estudiante::
-            where('estudiantes.dni','LIKE','%'.$query.'%')
-            ->orWhere('estudiantes.email','LIKE','%'.$query.'%')
-            ->orWhere('estudiantes.nombre','LIKE','%'.$query.'%')
-            ->latest('id')
-            //->allowed()
-            ->paginate();
-        return view('estudiantes.index', compact('estudiantes'));
+        return view('estudiantes.index');
     }
 
     /**

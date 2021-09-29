@@ -14,91 +14,95 @@
                     <div class="card-body">
                         <form class="form-horizontal" method="POST"  action="{{ route('asignaturas.store')}} ">
                             @csrf
-                            <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <label for="carrera_id" class="col-form-label font-weight-bold text-muted">Carrera
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <select name="carrera_id" id="carrera_id"  class="form-control @error('carrera_id') is-invalid @enderror" onchange="Prerequisitos(); cambia_periodo(); ">
-                                            <option  class="form-control" value=""> == Seleccionar == </option>
-                                            @foreach ($carreras as $carrera)
-                                                <option  value="{{$carrera->id}}"
-                                                    {{old('carrera_id')==$carrera->id ? 'selected' : '' }}
-                                                    >{{$carrera->nombre}}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-graduation-cap"></i></span></div>
-                                        @error ('carrera_id') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                            <div class="card shadow-sm">
+                                <div class="row m-2">
+                                    <div class="form-group col-lg-6">
+                                        <label for="carrera_id" class="col-form-label font-weight-bold text-muted">Carrera
+                                            <span class="text-primary">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <select name="carrera_id" id="carrera_id"  class="form-control @error('carrera_id') is-invalid @enderror" onchange="Prerequisitos(); cambia_periodo(); ">
+                                                <option  class="form-control" value=""> == Seleccionar == </option>
+                                                @foreach ($carreras as $carrera)
+                                                    <option  value="{{$carrera->id}}"
+                                                        {{old('carrera_id')==$carrera->id ? 'selected' : '' }}
+                                                        >{{$carrera->nombre}}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-graduation-cap"></i></span></div>
+                                            @error ('carrera_id') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group col-lg-6">
-                                    <label for="periodo_id" class="col-form-label font-weight-bold text-muted">Periodo
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <select name="periodo_id" id="periodo_id" class="form-control @error('periodo_id') is-invalid @enderror ">
-                                            <option  class="form-control" value=""> == Seleccionar == </option>
-                                                {{-- Periodos --}}
-                                        </select>
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-table"></i></span></div>
-                                        @error ('periodo_id') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                    <div class="form-group col-lg-6">
+                                        <label for="periodo_id" class="col-form-label font-weight-bold text-muted">Periodo
+                                            <span class="text-primary">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <select name="periodo_id" id="periodo_id" class="form-control @error('periodo_id') is-invalid @enderror ">
+                                                <option  class="form-control" value=""> == Seleccionar == </option>
+                                                    {{-- Periodos --}}
+                                            </select>
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-table"></i></span></div>
+                                            @error ('periodo_id') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group col-lg-6">
-                                    <label for="cod_asignatura" class="col-form-label font-weight-bold text-muted">Código
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control @error('cod_asignatura') is-invalid @enderror"
-                                            name="cod_asignatura" value="{{old('cod_asignatura')}}" placeholder="Código">
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-qrcode"></i></span></div>
-                                        @error ('cod_asignatura') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                    <div class="form-group col-lg-3">
+                                        <label for="cod_asignatura" class="col-form-label font-weight-bold text-muted">Código
+                                            <span class="text-primary">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control @error('cod_asignatura') is-invalid @enderror"
+                                                name="cod_asignatura" value="{{old('cod_asignatura')}}" placeholder="Código">
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-qrcode"></i></span></div>
+                                            @error ('cod_asignatura') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group col-lg-6">
-                                    <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombre
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                            name="nombre" value="{{old('nombre')}}" placeholder="Asignatura">
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-file"></i></span></div>
-                                        @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                    <div class="form-group col-lg-3">
+                                        <label for="cantidad_hora" class="col-form-label font-weight-bold text-muted"> Nro. de horas
+                                            <span class="text-primary">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control @error('cantidad_hora') is-invalid @enderror"
+                                                name="cantidad_hora" value="{{old('cantidad_hora')}}" placeholder="Nro. horas">
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-clock"></i></span></div>
+                                            @error ('cantidad_hora') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group col-lg-6">
-                                    <label for="cantidad_hora" class="col-form-label font-weight-bold text-muted">Horas
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control @error('cantidad_hora') is-invalid @enderror"
-                                            name="cantidad_hora" value="{{old('cantidad_hora')}}" placeholder="50">
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-clock"></i></span></div>
-                                        @error ('cantidad_hora') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                    <div class="form-group col-lg-6">
+                                        <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombre
+                                            <span class="text-primary">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control @error('nombre') is-invalid @enderror"
+                                                name="nombre" value="{{old('nombre')}}" placeholder="Asignatura">
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-file"></i></span></div>
+                                            @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group col-lg-6">
-                                    <label for="preasignatura_id" class="col-form-label font-weight-bold small text-muted">PREREQUISITOS</label>
-                                    <div class="input-group">
-                                        <select name="preasignatura_id[]" id="preasignatura_id" class=" form-control @error('preasignatura_id') is-invalid @enderror" multiple>
-                                            {{-- Lista de asignaturas --}}
-                                        </select>
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-folder"></i></span></div>
-                                        @error ('preasignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                    <div class="card shadow-sm col-lg-6 m-3">
+                                        <div class="form-group ">
+                                            <label for="preasignatura_id" class="col-form-label font-weight-bold small text-muted">PREREQUISITOS</label>
+                                            <div class="input-group">
+                                                <select name="preasignatura_id[]" id="preasignatura_id" class=" form-control @error('preasignatura_id') is-invalid @enderror" multiple>
+                                                    {{-- Lista de asignaturas --}}
+                                                </select>
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-folder"></i></span></div>
+                                                @error ('preasignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            </div>
+                                            <em class="text-muted small">Pulsar Ctrl para seleccionar varias opciones</em>
+                                        </div>
                                     </div>
-                                    <em class="text-muted small">Pulsar Ctrl para seleccionar varias opciones</em>
                                 </div>
                             </div>
                     </div>

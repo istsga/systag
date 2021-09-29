@@ -19,15 +19,8 @@ class AsignaturadocenteController extends Controller
      */
     public function index(Request $request)
     {
-        $query=trim($request->get('search'));
-        $asignaturadocentes = Asignaturadocente::
-            join('docentes','docentes.id','=','asignatura_docente.docente_id')
-            ->join('asignaturas','asignaturas.id','=','asignatura_docente.asignatura_id')
-            ->select('asignatura_docente.*','docentes.nombre', 'docentes.apellido', 'asignaturas.nombre as asignatura_nombre')
-            ->latest('asignatura_docente.id')
-            ->allowed()
-            ->paginate();
-        return view('asignaturadocentes.index', compact('asignaturadocentes'));
+
+        return view('asignaturadocentes.index');
     }
 
     /**

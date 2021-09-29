@@ -25,8 +25,8 @@ class ConvalidacioneUpdateRequest extends FormRequest
     {
         $rules = [
             'estudiante_id' => ['required'],
-            'asignatura_id' => ['required'],
-            'nota_final' => ['required', 'numeric', 'between:7,10'],
+            //'asignatura_id' => ['required'],
+            //'nota_final' => ['required', 'numeric', 'between:7,10'],
         ];
 
         return $rules;

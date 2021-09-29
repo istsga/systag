@@ -6,20 +6,22 @@
     text-align: center;
 }
 
-.data-student{
-    margin-top: 10px;
-    margin-left: -10px;
+.data-egresados{
+    margin: auto;
+    width: 80%;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
-.data-student p {
-    font-size: 10px;
-    margin: 5px;
+.data-egresados p {
+    font-size: 12px;
+    margin: 10px;
     font-weight: bold;
     text-transform: uppercase;
 
 }
 
-.data-student p span {
+.data-egresados p span {
     font-weight: normal;
     padding-left: 25px;
     text-transform: uppercase;
@@ -34,7 +36,8 @@
 }
 
 .item-container table {
-    width: 100%;
+    width: 80%;
+    margin: auto;
     border-collapse: collapse;
 }
 
@@ -54,6 +57,7 @@ text-align: justify;
   white-space: pre-wrap;
   text-align: justify;
 }
+
 
 
 

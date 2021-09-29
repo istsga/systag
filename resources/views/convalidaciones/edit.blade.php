@@ -21,101 +21,108 @@
                     <form method="POST"  action="{{ route('convalidaciones.update', $convalidacione)}} ">
                         @csrf @method('PUT')
                         <div class="card-body">
-                            <div class="row">
-                                <div class="form-group col-lg-12 ">
-                                    <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Estudiante
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <select name="estudiante_id" id="estudianteConvalidar" class=" form-control @error('estudiante_id') is-invalid @enderror">
-                                            <option class="form-control" value=""> == Seleccionar ==</option>
-                                            @foreach ($estudiantes as $estudiante)
-                                            <option  value="{{$estudiante->id}}"
-                                                {{old('estudiante_id', $convalidacione->estudiante_id)==$estudiante->id ? 'selected' : '' }}
-                                                >{{$estudiante->nombre}} {{$estudiante->apellido}} - {{$estudiante->dni}}</option>
-                                                @endforeach
-                                        </select>
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-user"></i></span></div>
-                                        @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                            <div class="card shadow-sm">
+                                <div class="row m-4">
+                                    <div class="form-group col-lg-12 ">
+                                        <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Estudiante
+                                            <span class="text-primary">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <select name="estudiante_id" id="estudianteConvalidar" class=" form-control @error('estudiante_id') is-invalid @enderror">
+                                                <option class="form-control" value=""> == Seleccionar ==</option>
+                                                @foreach ($estudiantes as $estudiante)
+                                                <option  value="{{$estudiante->id}}"
+                                                    {{old('estudiante_id', $convalidacione->estudiante_id)==$estudiante->id ? 'selected' : '' }}
+                                                    >{{$estudiante->nombre}} {{$estudiante->apellido}} - {{$estudiante->dni}}</option>
+                                                    @endforeach
+                                            </select>
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-user"></i></span></div>
+                                            @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-lg-12 ">
+                                        <label for="carrera_id" class="col-form-label font-weight-bold text-muted">Carrera
+                                            <span class="text-primary">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <select name="carrera_id" id="carrera_id" class=" form-control @error('carrera_id') is-invalid @enderror" onchange="filtroAsignaturas();">
+                                                <option class="form-control" value=""> == Seleccionar == </option>
+                                                @foreach ($carreras as $carrera)
+                                                <option  value="{{$carrera->id}}"
+                                                    {{old('carrera_id', $convalidacione->carrera_id)==$carrera->id ? 'selected' : '' }}
+                                                    >{{$carrera->nombre}} </option>
+                                                    @endforeach
+                                            </select>
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-graduation-cap"></i></span></div>
+                                            @error ('carrera_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group col-lg-12 ">
-                                    <label for="carrera_id" class="col-form-label font-weight-bold text-muted">Carrera
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <select name="carrera_id" id="carrera_id" class=" form-control @error('carrera_id') is-invalid @enderror" onchange="filtroAsignaturas();">
-                                            <option class="form-control" value=""> == Seleccionar == </option>
-                                            @foreach ($carreras as $carrera)
-                                            <option  value="{{$carrera->id}}"
-                                                {{old('carrera_id', $convalidacione->carrera_id)==$carrera->id ? 'selected' : '' }}
-                                                >{{$carrera->nombre}} </option>
-                                                @endforeach
-                                        </select>
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-graduation-cap"></i></span></div>
-                                        @error ('carrera_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                <div class="card shadow-sm m-4">
+                                    <div class="row m-1">
+                                        <div class="form-group col-lg-6 ">
+                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Asignaturas
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror">
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    @foreach ($asignaturas as $asignatura)
+                                                    {{-- Lista de asignaturas --}}
+                                                    @endforeach
+                                            </select>
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-folder"></i></span></div>
+                                                @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-4">
+                                            <label for="nota_final" class="col-form-label font-weight-bold text-muted">Nota del Promedio
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="number"  class="form-control @error('nota_final') is-invalid @enderror"
+                                                    name="nota_final" id="nota_final" value="{{old('nota_final')}}" onchange="validar()" placeholder="Promedio">
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-star"></i></span></div>
+                                                @error ('nota_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-2" style="margin-top: 35px">
+                                            <a onclick="agregarAsignatura();" class="btn btn-block btn-primary text-white" title="Agregar asignatura">Agregar</a>
+                                        </div>
+
+                                        <div class="card-table  table-responsive m-3">
+                                            <table class="table table-hover  table-bordered align-middle" id="detalles">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
+                                                        <th><font style="vertical-align: inherit;">ASIGNATURA</font></font></th>
+                                                        <th class="text-center"><font style="vertical-align: inherit;">PROMEDIO FINAL</font></font></th>
+                                                        <th class="text-center"><font style="vertical-align: inherit;">ACCIÓN</font></font></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($convalidaciondetalles as $cont =>  $convalidaciondetalle )
+                                                        <tr id="fila{{$cont+1}}">
+                                                            <td class="text-center">{{$cont+1}}</td>
+                                                            <td><input type="hidden" name="Asignatura[]" value="{{$convalidaciondetalle->asignatura_id}}">{{$convalidaciondetalle->nombre}}</td>
+                                                            <td class="text-center"><input type="hidden" name="Promedio[]" value="{{$convalidaciondetalle->nota_final}}">{{$convalidaciondetalle->nota_final}}</td>
+                                                            <td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar({{$cont+1}});">X</button></td>
+                                                        </tr>
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="form-group col-lg-6 ">
-                                    <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Asignaturas
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror">
-                                            <option class="form-control" value=""> == Seleccionar == </option>
-                                            @foreach ($asignaturas as $asignatura)
-                                            {{-- Lista de asignaturas --}}
-                                            @endforeach
-                                    </select>
-                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                        <i class=" text-primary fas fa-folder"></i></span></div>
-                                        @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-lg-4">
-                                    <label for="nota_final" class="col-form-label font-weight-bold text-muted">Nota del Promedio
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="number"  class="form-control @error('nota_final') is-invalid @enderror"
-                                            name="nota_final" id="nota_final" value="{{old('nota_final')}}" onchange="validar()" placeholder="Promedio">
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                        <i class=" text-primary fas fa-star"></i></span></div>
-                                        @error ('nota_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-lg-2" style="margin-top: 35px">
-                                    <a onclick="agregarAsignatura();" class="btn btn-block btn-primary text-white" title="Agregar asignatura">Agregar</a>
-                                </div>
-                            </div>
-
-                            <div class="card-table  table-responsive">
-                                <table class="table table-hover  table-bordered align-middle" id="detalles">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
-                                            <th><font style="vertical-align: inherit;">ASIGNATURA</font></font></th>
-                                            <th class="text-center"><font style="vertical-align: inherit;">PROMEDIO FINAL</font></font></th>
-                                            <th class="text-center"><font style="vertical-align: inherit;">ACCIÓN</font></font></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($convalidaciondetalles as $cont =>  $convalidaciondetalle )
-                                            <tr id="fila{{$cont+1}}">
-                                                <td class="text-center">{{$cont+1}}</td>
-                                                <td>{{$convalidaciondetalle->nombre}}</td>
-                                                <td class="text-center">{{$convalidaciondetalle->nota_final}}</td>
-                                                <td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar({{$cont+1}});">X</button></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
                             </div>
 
                         </div>

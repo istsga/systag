@@ -16,7 +16,7 @@
     <meta name="description" content="Sistema Académico - Instituto San Gabriel">
     <meta name="author" content="Diego Guapi">
     <meta name="keyword" content="Sistema Académico - Instituto San Gabriel">
-    <title> @yield('title')  ITSGA </title>
+    <title> @yield('title')  ITSGA - Académico</title>
     <link rel="apple-touch-icon" sizes="57x57" href=" {{asset('assets/favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href=" {{asset('assets/favicon/apple-icon-60x60.png')}} ">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset('assets/favicon/apple-icon-72x72.png')}} ">
@@ -41,6 +41,9 @@
 
     <!-- Estilos secundarios-->
     @stack('styles')
+
+    <!-- Style Livewire-->
+    @livewireStyles
 
     <!-- Estilos principales-->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -129,7 +132,9 @@
     <!-- Script ícono-->
      <script src="{{asset('assets/js/all.min.js')}}"></script>
 
-     @stack('scripts')
+    <!-- Script Livewire-->
+    @livewireScripts
 
+     @stack('scripts')
   </body>
 </html>

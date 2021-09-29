@@ -10,10 +10,11 @@
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                 <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-user-graduate mr-3"></i> EGRESADOS </font>
             </div>
-            <div class="card-body">
-                <form class="col-lg-12 px-0 my-2 my-lg-0 no-waves-effect">
-                    <div class="row">
-                        <div class="form-group col-lg-6">
+            <div class="card-body bg-light">
+                <form action="">
+                    <div class="row m-2">
+                        <div class="card col-lg-5 bg-light m-2 shadow-sm">
+                        <div class="form-group p-2">
                             <label for="periodacademicos" class="col-form-label font-weight-bold text-dark text-muted">Periodo Académico
                             </label>
                             <div class="input-group">
@@ -30,22 +31,27 @@
                                     <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
                             </div>
                         </div>
+                        </div>
 
-                        <div class="form-group col-lg-6">
-                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA
-                            </label>
-                            <div class="input-group">
-                                <div class="input-group-prepend "><span class=" input-group-text">
-                                    <i class=" text-primary fas fa-layer-group"></i></span></div>
-                                <select name="carrera_id" id="carrera_id" class=" form-control ">
-                                    <option class="form-control" value=""> == Seleccionar == </option>
-                                        @foreach ($carreras as $carrera)
-                                            <option  value="{{$carrera->id}}"
-                                            {{$queryCarrera==$carrera->id ? 'selected' : '' }}
-                                            >{{$carrera->id}} {{$carrera->nombre}}</option>
-                                        @endforeach
-                                </select>
-                                <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
+                        <div class="col"></div>
+
+                        <div class="card col-lg-6 bg-light m-2 shadow-sm">
+                            <div class="form-group p-2">
+                                <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                        <i class=" text-primary fas fa-layer-group"></i></span></div>
+                                    <select name="carrera_id" id="carrera_id" class=" form-control ">
+                                        <option class="form-control" value=""> == Seleccionar == </option>
+                                            @foreach ($carreras as $carrera)
+                                                <option  value="{{$carrera->id}}"
+                                                {{$queryCarrera==$carrera->id ? 'selected' : '' }}
+                                                >{{$carrera->id}} {{$carrera->nombre}}</option>
+                                            @endforeach
+                                    </select>
+                                    <button class=" btn  btn-primary ml-1 " type="submit"> <i class="fas fa-eye"></i> Ver </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -57,7 +63,7 @@
             @if (count($alumnos) > 0)
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                 <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-user mr-3"></i> ALUMNOS </font>
-                    <a class=" btn btn-primary " href="{{route('reporteEgresado',  $query_peraca.'_'.$queryCarrera)}}"> <i class=" font-weight-bold fas fa-file-pdf mr-1"></i>Reporte PDF</a>
+                    <a class=" btn btn-primary " href="{{route('reporteEgresado',  $query_peraca.'_'.$queryCarrera)}}"> <i class="fas fa-print font-weight-bold mr-1"></i>Imprimir</a>
             </div>
             <div class="card-table table-responsive">
                 <table class="table table-hover  table-bordered align-middle">

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Asignatura;
 use App\Models\Calificacione;
+use App\Models\Convalidacione;
 use App\Models\Estudiante;
 use App\Models\Matricula;
 use App\Models\Periodacademico;
 use App\Models\Periodo;
+use App\Models\Suspenso;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
@@ -23,6 +25,7 @@ class RecordacademicoController extends Controller
         // $this->authorize('view', new recordacademico);
         $estudiantes = Estudiante::allowed()->get();
         $estudiante_id=$request->get('estudiante_id');
+
         if ($estudiante_id){
             $estudiante=Estudiante::findOrFail($estudiante_id);
             $matricula=Matricula::
@@ -32,23 +35,30 @@ class RecordacademicoController extends Controller
                 where('asignaturas.carrera_id',$matricula->asignacione->carreras->pluck('id')->implode(', '))
                 ->get();
 
+            $convalidaciones = Convalidacione::where('estudiante_id',$estudiante_id)
+                ->join('asignaturas','asignaturas.id','=','convalidaciones.asignatura_id')
+                ->get();
+
+            $suspensos = Suspenso::where('suspensos.estudiante_id',$estudiante_id)
+            ->join('asignaturas','asignaturas.id','=','suspensos.asignatura_id')
+            ->select('asignatura_id','examen_suspenso', 'observacion as observacionSuspenso');
+
             $calificaciones=Calificacione::
                 join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
-                ->selectRaw("calificaciones.*,asignaturas.*,if(promedio_final=10,'Exonerado',if(promedio_final<6.5,'Reprobado',if(promedio_final<9.5,'Aprobado','Error'))) as estado")
+                ->leftjoinSub($suspensos,'suspensos',function($join){
+                    $join->on('calificaciones.asignatura_id','=','suspensos.asignatura_id');
+                })
                 ->where('calificaciones.estudiante_id',$estudiante_id)
                 ->get();
-            $periodacademicos = Periodacademico::all();
 
+            $periodacademicos = Periodacademico::all();
             $periodos = Periodo::all();
 
-
-            //dd($calificaciones);
-
-            $pdf = PDF::loadView('reportes.reporteRecordacademicos', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'asignaturas'=>$asignaturas, 'calificaciones'=>$calificaciones, 'periodacademicos'=>$periodacademicos, 'periodos'=>$periodos]);
+            $pdf = PDF::loadView('reportes.reporteRecordacademicos', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'asignaturas'=>$asignaturas, 'calificaciones'=>$calificaciones,
+            'periodacademicos'=>$periodacademicos, 'periodos'=>$periodos, 'convalidaciones'=>$convalidaciones, 'suspensos'=>$suspensos ]);
             return $pdf->stream('Reporte Record Academico.pdf', compact('pdf'));
 
         }
-
 
         return view('recordacademicos.index', compact('estudiantes','estudiante_id'));
     }

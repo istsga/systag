@@ -26,7 +26,7 @@
 }
 
 .informacion-1{
-    width: 49%;
+    width: 70%;
     font-size: 12px;
     display: inline-block;
     text-transform: uppercase;
@@ -34,7 +34,7 @@
 }
 
 .informacion-2{
-    width: 50%;
+    width: 29%;
     font-size: 12px;
     display: inline-block;
     text-transform: uppercase;
@@ -46,20 +46,31 @@ table {
     border-collapse: collapse;
 }
 
+table th{
+    padding: 2px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 9px;
+}
+
 table td{
     padding: 4px;
-    font-size: 11px;
+    font-size: 9px;
+    text-align: center;
 }
 
 .wrap-cp{
     width:99%;
-    white-space: pre-wrap;
     text-align: justify;
 }
 
 .firma{
     font-size: 14px;
-    margin-top: 60px;
+    margin-top: 40px;
+}
+
+.firma span{
     font-weight: bold;
 }
+
 

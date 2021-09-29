@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12 mb-4">
                     <div class="card-header bg-light shadow-sm">
-                        <h4>Acceso Rápido</h4>
+                        <h4 class="text-muted">Acceso Rápido</h4>
                     </div>
                 </div>
 
@@ -16,29 +16,29 @@
                     <div class="card">
                         <div class="card-header bg-primary content-center">
                         <div class="c-icon c-icon-3xl text-white my-2">
-                            <i class="fas fa-graduation-cap mt-3"></i>
+                            <i class="fas fa-graduation-cap mt-3 text-light"></i>
                         </div>
                         </div>
-                        <div class="card-body row text-center">
+                        <div class="card-body row text-center bg-light ">
                         <div class="col">
                             <div class="text-uppercase  font-weight-bold">{{$carreras}}</div>
                             <div class=" text-uppercase   text-muted"> <h5 class="font-weight-bold"> Carreras</h5></div>
                         </div>
                         </div>
                         <div class="card-footer bg-primary content-center">
-                        <a href="{{route('carreras.create')}}" class="btn btn-block btn-primary font-weight-bold ">Agregar</a>
+                        <a href="{{route('carreras.create')}}" class="btn btn-block btn-primary font-weight-bold"> Agregar</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card">
+                    <div class="card ">
                         <div class="card-header bg-primary content-center">
                         <div class="c-icon c-icon-3xl text-white my-2">
-                            <i class="fas fa-user-graduate"></i>
+                            <i class="fas fa-user-graduate text-light"></i>
                         </div>
                         </div>
-                        <div class="card-body row text-center">
+                        <div class="card-body row text-center bg-light ">
                         <div class="col">
                             <div class="text-uppercase  font-weight-bold">{{$estudiantes}}</div>
                             <div class=" text-uppercase   text-muted"> <h5 class="font-weight-bold"> Estudiantes</h5></div>
@@ -54,10 +54,10 @@
                     <div class="card">
                         <div class="card-header bg-primary content-center">
                         <div class="c-icon c-icon-3xl text-white my-2">
-                            <i class="fas fa-chalkboard-teacher"></i>
+                            <i class="fas fa-chalkboard-teacher text-light"></i>
                         </div>
                         </div>
-                        <div class="card-body row text-center">
+                        <div class="card-body row text-center bg-light">
                         <div class="col">
                             <div class="text-uppercase font-weight-bold">{{$docentes}}</div>
                             <div class=" text-uppercase   text-muted"> <h5 class="font-weight-bold"> Docentes</h5></div>
@@ -75,10 +75,10 @@
                     <div class="card">
                         <div class="card-header bg-primary content-center">
                         <div class="c-icon c-icon-3xl text-white my-2">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-users text-light"></i>
                         </div>
                         </div>
-                        <div class="card-body row text-center">
+                        <div class="card-body row text-center bg-light">
                         <div class="col">
                             <div class="text-uppercase font-weight-bold">{{$users}}</div>
                             <div class=" text-uppercase   text-muted"> <h5 class="font-weight-bold"> Usuarios</h5></div>
@@ -94,10 +94,10 @@
                     <div class="card">
                         <div class="card-header bg-primary content-center">
                         <div class="c-icon c-icon-3xl text-white my-2">
-                            <i class="fas fa-user-shield"></i>
+                            <i class="fas fa-user-shield text-light"></i>
                         </div>
                         </div>
-                        <div class="card-body row text-center">
+                        <div class="card-body row text-center bg-light">
                         <div class="col">
                             <div class="text-uppercase font-weight-bold">{{$roles}}</div>
                             <div class=" text-uppercase   text-muted"> <h5 class="font-weight-bold"> Roles</h5></div>
@@ -113,10 +113,10 @@
                     <div class="card">
                         <div class="card-header bg-primary content-center">
                         <div class="c-icon c-icon-3xl text-white my-2">
-                            <i class="fas fa-key"></i>
+                            <i class="fas fa-key text-light"></i>
                         </div>
                         </div>
-                        <div class="card-body row text-center">
+                        <div class="card-body row text-center bg-light">
                         <div class="col">
                             <div class="text-uppercase font-weight-bold">{{$permisos}}</div>
                             <div class=" text-uppercase   text-muted"> <h5 class="font-weight-bold"> Permisos</h5></div>

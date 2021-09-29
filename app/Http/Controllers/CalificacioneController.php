@@ -156,9 +156,13 @@ class CalificacioneController extends Controller
 
         if($examen){
             if(round($promedio_final) >=7){
-                $descripcion = 'APROBADO';
+                if(round($promedio_final) == 10){
+                    $descripcion = 'EXONERADO';
+                }else{
+                    $descripcion = 'APROBADO';
+                }
             }else{
-                $descripcion = 'REPROBADO';
+                $descripcion = 'SUSPENSO';
                 //suspensos -graba automaicamente caundo esta reprobado
                     $suspensos = new Suspenso;
                     $suspensos->asignacione_id =  $request->get('asignacione_id');

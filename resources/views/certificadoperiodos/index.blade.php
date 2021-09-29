@@ -10,16 +10,16 @@
 <div class="container-fluid">
     <div class="fade-in">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card shadow-lg">
                 <div class="card-header bg-primary">
                     <font class="text-light"> <i class="font-weight-bold fas fa-certificate mr-3"></i> CERTIFICADO POR PERIODO</font>
                 </div>
                 <div class="card-body bg-light">
                     <form action="">
                     <div class="row">
-                        <label class="col-lg-12 font-weight-bold text-muted small">ESTUDIANTE</label>
-
-                            <div class="form-group col-lg-7">
+                        <div class="card col-lg-7 m-2 bg-light shadow-sm">
+                            <div class="form-group p-2">
+                                <label class="font-weight-bold text-muted small">ESTUDIANTE</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-user"></i></span></div>
@@ -35,9 +35,12 @@
                                         <button class=" btn btn-sm  btn-primary ml-1" type="submit"> <i class="fas fa-search"> </i></button>
                                 </div>
                             </div>
-
-                            <div class="form-group col-lg-5">
-                                <div class="input-group col-lg-10 float-right ">
+                        </div>
+                        <div class="col"></div>
+                        <div class="card col-lg-4 m-2 bg-light shadow-sm">
+                            <div class="form-group p-2">
+                                <label class="font-weight-bold text-muted small">PERIODO</label>
+                                <div class="input-group float-right ">
                                     <div class="input-group-prepend  "><span class=" input-group-text bg-primary  text-light">
                                         Periodo</span></div>
                                     <select name="periodo_id" id="periodo_id" class=" form-control ">
@@ -47,9 +50,10 @@
                                                 >{{$periodo->id}} {{$periodo->nombre}}</option>
                                         @endforeach
                                     </select>
-                                    <button class=" btn ml-1  btn-sm btn-primary" type="submit" formtarget="_blank"> <i class="fas fa-search"></i></button>
+                                    <button class=" btn ml-1 btn-primary" type="submit" formtarget="_blank"> <i class="fas fa-print"></i> Imprimir </button>
                                 </div>
                             </div>
+                        </div>
                     </div>
                     </form>
                 </div>

@@ -49,14 +49,13 @@
         </div>
 
         <div class="data-student">
-            <p>Estudiante: <span>{{$estudiante->nombre}} {{$estudiante->apellido}}</span> </p>
             <p>Carrera:<span style="padding-left: 39px"> {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}</span></p>
+            <p>Estudiante: <span>{{$estudiante->nombre}} {{$estudiante->apellido}}</span> </p>
             <p>Fecha de inicio: <span style="padding-left: 5px">{{$matricula->fecha_matricula}}</span></p>
         </div>
 
         <div class="item-container">
             @for ($i=1;$i<=$calificaciones->max('periodo_id');$i++)
-
             {{-- <p>Verificar bien al funcionamiento</p> --}}
                 @foreach ($calificaciones as $index=> $calificacione)
                     @if($calificacione->periodo_id==$i)
@@ -70,9 +69,11 @@
                   <tr>
                     <th >No</th>
                     <th >Código</th>
-                    <th  colspan="6">Asignatura</th>
+                    <th >Asignatura</th>
                     <th >Calificación</th>
                     <th >Estado</th>
+                    <th >Suspensión</th>
+                    <th >Observación</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,19 +82,35 @@
                   <tr>
                     <td >{{$index+1}}</td>
                     <td >{{$calificacione->cod_asignatura}}</td>
-                    <td colspan="6">
-                      <div class="wrap-3"> {{$calificacione->nombre}}</div>
+                    <td style="width: 260px">
+                        <div class="wrap-3"> {{$calificacione->nombre}}</div>
                     </td>
                     <td>{{$calificacione->promedio_final}}</td>
-                    <td>{{$calificacione->estado}}</td>
+                    <td>{{$calificacione->observacion}}</td>
+                    <td>{{$calificacione->examen_suspenso}}</td>
+                    <td>{{$calificacione->observacionSuspenso}}</td>
+                  </tr>
+                  @endif
+                @endforeach
+
+                @foreach ($convalidaciones as $index=> $convalidacione)
+                  @if($convalidacione->periodo_id==$i)
+                  <tr>
+                    <td >{{$index+1}}</td>
+                    <td >{{$convalidacione->cod_asignatura}}</td>
+                    <td >
+                      <div class="wrap-3"> {{$convalidacione->nombre}}</div>
+                    </td>
+                    <td>{{$convalidacione->nota_final}}</td>
+                    <td>CONVALIDADO</td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   @endif
                 @endforeach
                 </tbody>
             </table>
             @endfor
-
-
         </div>
         </div>
 

@@ -14,16 +14,18 @@
                     <div class="card-body">
                         <form class="form-horizontal" method="POST"  action="{{ route('secciones.update', $seccione )}} ">
                             @csrf @method('PUT')
-                            <div class="form-group">
-                                <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombre
-                                    <span class="text-primary">*</span>
-                                </label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                        name="nombre" value="{{old('nombre', $seccione->nombre)}}" placeholder="Diurno">
-                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                        <i class=" text-primary fas fa-file"></i></span></div>
-                                    @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                            <div class="card shadow-sm">
+                                <div class="form-group m-3">
+                                    <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombre
+                                        <span class="text-primary">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control @error('nombre') is-invalid @enderror"
+                                            name="nombre" value="{{old('nombre', $seccione->nombre)}}" placeholder="Diurno">
+                                        <div class="input-group-prepend "><span class=" input-group-text">
+                                            <i class=" text-primary fas fa-file"></i></span></div>
+                                        @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                    </div>
                                 </div>
                             </div>
                     </div>

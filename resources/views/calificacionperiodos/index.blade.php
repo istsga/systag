@@ -20,38 +20,43 @@
                     </div>
                     <form action="">
                         <div class="card-body bg-light">
-                            <h3 class="text-muted font-weight-bold small">ESTUDIANTE</h3>
-                            <div class="row">
-                                <div class="form-group col-lg-7">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-user"></i></span></div>
-                                        <select name="estudiante_id" id="nota_estudiante" class=" form-control @error('estudiante_id') is-invalid @enderror">
-                                            <option class="form-control" value=""> == Seleccionar == </option>
-                                            @foreach ($estudiantes as $estudiante)
-                                                <option  value="{{$estudiante->id}}"
-                                                    {{$estudiante_id == $estudiante->id ? 'selected' : '' }}
-                                                    >{{$estudiante->nombre}} {{$estudiante->apellido}} - {{$estudiante->dni}}</option>
-                                            @endforeach
-                                        </select>
-                                        @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                                        <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
+                            <div class="row m-2">
+                                <div class="card bg-light col-lg-7 m-2 shadow-sm">
+                                    <div class="form-group p-2">
+                                        <h3 class="text-muted font-weight-bold small">ESTUDIANTE</h3>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-user"></i></span></div>
+                                            <select name="estudiante_id" id="nota_estudiante" class=" form-control">
+                                                <option class="form-control" value=""> == Seleccionar == </option>
+                                                @foreach ($estudiantes as $estudiante)
+                                                    <option  value="{{$estudiante->id}}"
+                                                        {{$estudiante_id == $estudiante->id ? 'selected' : '' }}
+                                                        >{{$estudiante->nombre}} {{$estudiante->apellido}} - {{$estudiante->dni}}</option>
+                                                @endforeach
+                                            </select>
+                                            <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="form-group col-lg-5">
-                                    <div class="input-group col-lg-9 float-right ">
+                                <div class="col"></div>
+                                <div class="card bg-light col-lg-4 m-2 shadow-sm">
+                                <div class="form-group p-2">
+                                    <h3 class="text-muted font-weight-bold small">PERIODO</h3>
+                                    <div class="input-group ">
                                         <div class="input-group-prepend  "><span class=" input-group-text bg-primary  text-light">
                                             Periodo</span></div>
                                         <select name="periodo_id" id="periodo_id" class=" form-control ">
                                             <option class="form-control" value=""> == Seleccionar == </option>
                                             @foreach ($periodos as $periodo)
                                                 <option  value="{{$periodo->id}}"
-                                                    >{{$periodo->id}} {{$periodo->nombre}}</option>
+                                                    {{$periodo_id == $periodo->id ? 'selected' : '' }}
+                                                    >{{$periodo->nombre}}</option>
                                             @endforeach
                                         </select>
-                                        <button class=" btn ml-1  btn-sm btn-primary" type="submit"> <i class="fas fa-search"></i></button>
+                                        <button class=" btn ml-1  btn-primary" type="submit"> <i class="fas fa-eye"></i> Ver </button>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                 </form>
@@ -62,48 +67,69 @@
         <div class="col-lg-12">
             <div class="card shadow-lg ">
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
-                <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-star  mr-3"></i> NOTAS </font>
+                <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-star  mr-3"></i> NOTAS CONSOLIDADO POR PERIODO </font>
 
                     <a class=" btn btn-primary " href="{{route('reporteCalificacionperiodo', $estudiante_id.'_'.$periodo_id)}}"> <i class=" font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
 
             </div>
 
                 <div class="card-table  table-responsive">
-                    <table class="table table-hover  table-bordered">
-                        <thead class="thead-light ">
+                    <table class="table table-hover">
+                        <thead class="thead-light font-weight-bold small">
                             <tr class="align-middle">
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>No.</em></th>
-                                <th colspan="2" class="text-center align-middle font-weight-normal text-dark"><em>Asignatura</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Docencia</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Experimento <br> Aplicación</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Trabajo <br> Autónomo</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Suma</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Promedio <br> Decimal</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Examen <br> Principal</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Promedio <br> Final</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Suspensión</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Promedio <br>letras</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Asistencia</em></th>
-                                <th class="text-center align-middle font-weight-normal text-dark"><em>Observación</em></th>
+                                <th class="text-center align-middle">No.</th>
+                                <th colspan="2" class="text-center align-middle ">Asignatura</th>
+                                <th class="text-center align-middle">Docencia</th>
+                                <th class="text-center align-middle">Experimento <br> Aplicación</th>
+                                <th class="text-center align-middle">Trabajo <br> Autónomo</th>
+                                <th class="text-center align-middle">Suma</th>
+                                <th class="text-center align-middle">Promedio <br> Decimal</th>
+                                <th class="text-center align-middle">Examen <br> Principal</th>
+                                <th class="text-center align-middle">Promedio <br> Número</th>
+                                <th class="text-center align-middle">Promedio <br> Letras</th>
+                                <th class="text-center align-middle">Asistencia <br> (%) </th>
+                                <th class="text-center align-middle">Observación</th>
+                                <th class="text-center align-middle">Examen <br> Suspensión</th>
+                                <th class="text-center align-middle">Observación</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="small ">
                             @foreach ($calificaciones as $index => $calificacione)
 
                             <tr>
                                 <td class="text-center align-middle">{{$index+1}}</td>
-                                <td colspan="2">{{$calificacione->asignatura->periodo_id.'-'.$calificacione->asignatura->nombre}}</td>
+                                <td colspan="2" class="text-uppercase">{{$calificacione->asignatura->periodo_id.'-'.$calificacione->asignatura->nombre}}</td>
                                 <td class="text-center align-middle">{{$calificacione->docencia}}</td>
                                 <td class="text-center align-middle">{{$calificacione->experimento_aplicacion}}</td>
                                 <td class="text-center align-middle">{{$calificacione->trabajo_autonomo}}</td>
-                                <td class="text-center align-middle">{{$calificacione->suma}}</td>
+                                <td class="text-center align-middle font-weight-bold">{{$calificacione->suma}}</td>
                                 <td class="text-center align-middle">{{$calificacione->promedio_decimal}}</td>
                                 <td class="text-center align-middle">{{$calificacione->examen_principal}}</td>
-                                <td class="text-center align-middle">{{$calificacione->promedio_final}}</td>
-                                <td class="text-center align-middle">{{$calificacione->suspension}}</td>
+                                <td class="text-center align-middle font-weight-bold">{{$calificacione->promedio_final}}</td>
                                 <td class="text-center align-middle">{{$calificacione->promedio_letra}}</td>
                                 <td class="text-center align-middle">{{$calificacione->porcentaje_asistencia}}</td>
-                                <td class="text-center align-middle">{{$calificacione->observacion}}</td>
+
+                                <td class="text-center align-middle">
+                                    @if ($calificacione->observacion == 'APROBADO')
+                                    <span class="badge-primary p-1">APROBADO</span></td>
+                                    @endif
+                                    @if ($calificacione->observacion == 'SUSPENSO')
+                                        <span class="badge-warning p-1"> SUSPENSO</span>
+                                    @endif
+                                    @if ($calificacione->observacion == 'EXONERADO')
+                                        <span class="badge-info p-1"> EXONERADO</span>
+                                    @endif
+                                </td>
+
+                                <td class="text-center align-middle">{{$calificacione->suspensoNota}}</td>
+
+                                <td class="text-center align-middle">
+                                    @if ($calificacione->ObservacionSuspenso == 'APROBADO')
+                                        <span class="badge-primary p-1">APROBADO</span>
+                                    @elseif ($calificacione->ObservacionSuspenso == 'REPROBADO')
+                                        <span class="badge-danger p-1">REPROBADO</span>
+                                    @endif
+                                </td>
                             </tr>
 
                             @endforeach

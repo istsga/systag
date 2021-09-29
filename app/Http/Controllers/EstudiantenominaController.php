@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asignacione;
+use App\Models\Estudiante;
 use App\Models\Periodacademico;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class EstudiantenominaController extends Controller
 {
@@ -15,9 +18,29 @@ class EstudiantenominaController extends Controller
     public function index(Request $request)
     {
         $periodacademicos = Periodacademico::all();
-        $query_periodacademico=trim($request->get('periodacademico_id'));
 
-        return view('estudiantenominas.index', compact('periodacademicos', 'query_periodacademico'));
+        $periodacademico_id=$request->get('periodacademico_id');
+        $asignacione_id=$request->get('asignacione_id');
+
+        $asignaciones = Asignacione::
+        join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','asignaciones.id')
+        ->join('matriculas','matriculas.asignacione_id','=','asignaciones.id')
+        ->where('asignacione_periodacademico.periodacademico_id',$periodacademico_id)
+        ->select('asignaciones.*')
+        ->groupBy('asignaciones.id')
+        ->get();
+
+        if($asignacione_id){
+            $estudiantes = Estudiante::join('matriculas','matriculas.estudiante_id','=','estudiantes.id')
+                ->where('matriculas.asignacione_id',$asignacione_id)
+                ->select('dni','nombre','apellido')
+                ->get();
+            $asignacion=Asignacione::where('id',$asignacione_id)->first();
+            $pdf = PDF::loadView('reportes.reporteEstudiantenominas', ['estudiantes'=>$estudiantes, 'asignacion'=>$asignacion]);
+            return $pdf->stream('Reporte Certificado Periodo.pdf', compact('pdf'));
+        }
+
+        return view('estudiantenominas.index', compact('periodacademicos', 'periodacademico_id', 'asignacione_id', 'asignaciones'));
     }
 
     /**

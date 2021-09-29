@@ -15,10 +15,10 @@
           </div>
           <div class="title">
             <h3>INSTITUTO SUPERIOR TECNOLÓGICO <br> "SAN GABRIEL"</h3>
-            {{-- <p>Carrera de {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}} </p> --}}
+            <p>Carrera de {{$carreras->nombre}} </p>
           </div>
           <div class="logo-carrera">
-            {{-- <img src="storage/{{$calificaciones[0]->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera"> --}}
+            <img src="storage/{{$carreras->logo}}" alt="Logo Carrera">
           </div>
     </header>
     <footer>
@@ -48,23 +48,12 @@
             <p>EGRESADOS</p>
         </div>
 
-        <div class="data-student">
-            {{-- <p>Estudiante: <span>{{$estudiante->nombre}} {{$estudiante->apellido}}</span> </p> --}}
-            {{-- <p>Carrera:<span style="padding-left: 39px"> {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}</span></p> --}}
-            {{-- <p>Fecha de inicio: <span style="padding-left: 5px">{{$matricula->fecha_matricula}}</span></p> --}}
+        <div class="data-egresados">
+            <p>Carrera: <span style="margin-left:62px">{{$carreras->nombre}} </span> </p>
+            <p>Periodo Académico: <span style="margin-left:-10px">{{$periodo_academico}} </span> </p>
         </div>
 
         <div class="item-container">
-            {{-- @for ($i=1;$i<=$calificaciones->max('periodo_id');$i++) --}}
-
-            {{-- <p>Verificar bien al funcionamiento</p> --}}
-                {{-- @foreach ($calificaciones as $index=> $calificacione) --}}
-                    {{-- @if($calificacione->periodo_id==$i)
-                    <p> {{$calificacione->asignacione->periodacademicos->pluck('periodo')->implode(', ')}} &nbsp; | <span> {{$periodos[$i-1]->nombre}} </span></p>
-                    @break
-                    @endif
-                @endforeach --}}
-
             <table border="1">
                 <thead>
                   <tr>
@@ -84,8 +73,11 @@
                 </tbody>
             </table>
         </div>
+        <div class="firma">
+            <p>  Ing. Olga Villagran C. <br>
+            <span>SECRETARIA GENERAL </span> </p>
         </div>
-
+        </div>
     </div>
 </body>
 </html>

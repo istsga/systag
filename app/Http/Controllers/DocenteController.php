@@ -17,18 +17,9 @@ class DocenteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-
-        $query=trim($request->get('search'));
-        $docentes = Docente::
-              where('docentes.dni','LIKE','%'.$query.'%')
-            ->orWhere('docentes.nombre','LIKE','%'.$query.'%')
-            ->orWhere('docentes.email','LIKE','%'.$query.'%')
-            ->orderBy('id', 'desc')
-            ->allowed()
-            ->paginate();
-        return view('docentes.index', compact('docentes'));
+        return view('docentes.index');
     }
 
     /**

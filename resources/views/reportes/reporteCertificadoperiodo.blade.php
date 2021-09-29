@@ -67,6 +67,8 @@
                     <th rowspan="2" colspan="9">ASIGNATURAS</th>
                     <th colspan="4">PROMEDIO</th>
                     <th rowspan="2"  colspan="3">EQUIVALENCIA</th>
+                    <th rowspan="2"  colspan="3">SUSPENSIÓN</th>
+                    <th rowspan="2"  colspan="3">EQUIVALENCIA</th>
                 </tr>
             </thead>
             <tbody>
@@ -74,15 +76,17 @@
                     <th  colspan="2">NUMEROS</th>
                     <th  colspan="2">LETRAS</th>
                 </tr>
-                @foreach ($asignaturas as $asignatura)
+                @foreach ($calificaciones as $calificacione)
 
                     <tr>
                         <td colspan="9" >
-                        <div class="wrap-c">{{$asignatura->nombre}}</div>
+                        <div class="wrap-c">{{$calificacione->asignatura->nombre}}</div>
                         </td>
-                        <td  colspan="2">{{$asignatura->promedio_final}}</td>
-                        <td  colspan="2">{{$asignatura->promedio_letra}}</td>
-                        <td  colspan="3">{{$asignatura->observacion}}</td>
+                        <td  colspan="2">{{$calificacione->promedio_final}}</td>
+                        <td  colspan="2">{{$calificacione->promedio_letra}}</td>
+                        <td  colspan="3">{{$calificacione->observacion}}</td>
+                        <td  colspan="3">{{$calificacione->suspensoNota}}</td>
+                        <td  colspan="3">{{$calificacione->observacionSuspenso}}</td>
                     </tr>
                 @endforeach
             </tbody>

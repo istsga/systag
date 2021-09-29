@@ -21,101 +21,105 @@
                             <form method="POST"  action="{{ route('matriculas.update', $matricula)}} ">
                                 @csrf @method('PUT')
                             <div class=" col-lg-12">
-                                <div class="row">
+                                <div class="card shadow-sm">
+                                    <div class="row m-2">
 
-                                    <div class="form-group col-lg-6 ">
-                                        <label for="tipo" class="col-form-label font-weight-bold text-muted">Tipo de Matrícula
-                                            <span class="text-primary">*</span></label>
-                                        <div class="input-group">
-                                            <select name="tipo"  class=" prueba form-control @error('tipo') is-invalid @enderror ">
-                                                <option class="form-control" value=""> == Seleccionar == </option>
-                                                <option value="Ordinaria" {{ old('tipo', $matricula->tipo) == 'Ordinaria' ? 'selected' : '' }}>Ordinaria</option>
-                                                <option value="Extraordinaria" {{ old('tipo', $matricula->tipo) == 'Extraordinaria' ? 'selected' : '' }}>Extraordinaria</option>
-                                                <option value="Especial" {{ old('tipo', $matricula->tipo) == 'Especial' ? 'selected' : '' }}>Especial</option>
-                                            </select>
-                                            <div class="input-group-prepend "><span class=" input-group-text">
-                                                <i class=" text-primary fas fa-check"></i></span></div>
-                                            @error ('tipo') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                        <div class="form-group col-lg-6 ">
+                                            <label for="tipo" class="col-form-label font-weight-bold text-muted">Tipo de Matrícula
+                                                <span class="text-primary">*</span></label>
+                                            <div class="input-group">
+                                                <select name="tipo"  class=" prueba form-control @error('tipo') is-invalid @enderror ">
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    <option value="Ordinaria" {{ old('tipo', $matricula->tipo) == 'Ordinaria' ? 'selected' : '' }}>Ordinaria</option>
+                                                    <option value="Extraordinaria" {{ old('tipo', $matricula->tipo) == 'Extraordinaria' ? 'selected' : '' }}>Extraordinaria</option>
+                                                    <option value="Especial" {{ old('tipo', $matricula->tipo) == 'Especial' ? 'selected' : '' }}>Especial</option>
+                                                </select>
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-check"></i></span></div>
+                                                @error ('tipo') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group col-lg-12 ">
-                                        <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Estudiante
-                                            <span class="text-primary">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="estudiante_id" id="estudiante_id" class=" form-control @error('estudiante_id') is-invalid @enderror">
-                                                <option class="form-control" value=""> == Seleccionar == </option>
-                                                @foreach ($estudiantes as $estudiante)
-                                                <option  value="{{$estudiante->id}}"
-                                                    {{old('estudiante_id', $matricula->estudiante_id)==$estudiante->id ? 'selected' : '' }}
-                                                    >{{$estudiante->nombre}}, {{$estudiante->dni}}</option>
-                                                    @endforeach
-                                            </select>
-                                            <div class="input-group-prepend "><span class=" input-group-text">
-                                                <i class=" text-primary fas fa-user"></i></span></div>
-                                            @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                        <div class="form-group col-lg-6">
+                                            <label for="fecha_matricula" class="col-form-label font-weight-bold text-muted">Fecha
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control @error('fecha_matricula') is-invalid @enderror"
+                                                name="fecha_matricula" value="{{old('fecha_matricula', $matricula->fecha_matricula)}}">
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-calendar"></i></span></div>
+                                                @error ('fecha_matricula') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group col-lg-12 ">
-                                        <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA | PERIODO | SECCIÓN | PARALELO
-                                            <span class="text-primary">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="cambia_asignatura(this)">
-                                                <option class="form-control" value=""> == Seleccionar == </option>
-                                                {{-- @foreach ($asignaciones as $asignacione)
-                                                    <option  value="{{$asignacione->id}}"
-                                                        {{old('asignacione_id', $matricula->asignacione_id)==$asignacione->id ? 'selected' : '' }}
-                                                        >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} ,
-                                                         {{$asignacione->carreras->pluck('nombre')->implode(', ')}},
-                                                         {{$asignacione->periodo->nombre}},
-                                                         {{$asignacione->seccione->nombre}},
-                                                         {{$asignacione->paralelo->nombre}}
-                                                    </option>
-                                                @endforeach --}}
-                                            </select>
-                                            <div class="input-group-prepend "><span class=" input-group-text">
-                                                <i class=" text-primary fas fa-check"></i></span></div>
-                                            @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                        <div class="form-group col-lg-12 ">
+                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Estudiante
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <select name="estudiante_id" id="estudiante_id" class=" form-control @error('estudiante_id') is-invalid @enderror">
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    @foreach ($estudiantes as $estudiante)
+                                                    <option  value="{{$estudiante->id}}"
+                                                        {{old('estudiante_id', $matricula->estudiante_id)==$estudiante->id ? 'selected' : '' }}
+                                                        >{{$estudiante->nombre}}, {{$estudiante->dni}}</option>
+                                                        @endforeach
+                                                </select>
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-user"></i></span></div>
+                                                @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group col-sm-7 ">
-                                        <label for="asignaturas" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS
-                                            <span class="text-primary">*</span></label>
-                                        <div class="input-group">
-                                            <select name="asignaturas[]" id="asignaturas_id"  class="form-control @error('asignaturas') is-invalid @enderror" multiple>
-                                                <option class="form-control" value=""> == Selecionar == </option>
-                                                {{-- @foreach ($asignaturas as $asignatura)
-                                                <option  value="{{$asignatura->id}}"
-                                                    {{old('asignaturas')==$asignatura->id ? 'selected' : '' }}
-                                                    >{{$asignatura->nombre}}</option>
+                                        <div class="form-group col-lg-12 ">
+                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA | PERIODO | SECCIÓN | PARALELO
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="cambia_asignatura(this)">
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    {{-- @foreach ($asignaciones as $asignacione)
+                                                        <option  value="{{$asignacione->id}}"
+                                                            {{old('asignacione_id', $matricula->asignacione_id)==$asignacione->id ? 'selected' : '' }}
+                                                            >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} ,
+                                                            {{$asignacione->carreras->pluck('nombre')->implode(', ')}},
+                                                            {{$asignacione->periodo->nombre}},
+                                                            {{$asignacione->seccione->nombre}},
+                                                            {{$asignacione->paralelo->nombre}}
+                                                        </option>
                                                     @endforeach --}}
-                                            </select>
-                                            <div class="input-group-prepend "><span class=" input-group-text">
-                                                <i class=" text-primary fas fa-folder-open"></i></span></div>
-                                           @error ('asignaturas') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                </select>
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-check"></i></span></div>
+                                                @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="card col-lg-8 m-3">
+                                            <div class="form-group  ">
+                                                <div class="card-header">
+                                                    <label for="asignaturas" class="col-form-label font-weight-bold text-muted small"> == SELECCIONAR ASIGNATURAS ==
+                                                        <span class="text-primary">*</span></label>
+                                                </div>
+                                                <div class="input-group">
+                                                    <select name="asignaturas[]" id="asignaturas_id"  class="form-control @error('asignaturas') is-invalid @enderror" multiple>
+                                                        <option class="form-control" value=""> == Selecionar == </option>
+                                                        {{-- @foreach ($asignaturas as $asignatura)
+                                                        <option  value="{{$asignatura->id}}"
+                                                            {{old('asignaturas')==$asignatura->id ? 'selected' : '' }}
+                                                            >{{$asignatura->nombre}}</option>
+                                                            @endforeach --}}
+                                                    </select>
+                                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                                        <i class=" text-primary fas fa-folder-open"></i></span></div>
+                                                @error ('asignaturas') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group col-lg-5">
-                                        <label for="fecha_matricula" class="col-form-label font-weight-bold text-muted">Fecha
-                                            <span class="text-primary">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <input type="date" class="form-control @error('fecha_matricula') is-invalid @enderror"
-                                            name="fecha_matricula" value="{{old('fecha_matricula', $matricula->fecha_matricula)}}">
-                                            <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-calendar"></i></span></div>
-                                            @error ('fecha_matricula') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
-                                        </div>
-                                    </div>
-
                                 </div>
-
-                                </div>
+                            </div>
                     </div>
                     <div class="card-footer border-0 d-flex justify-content-between aling-items-end bg-light">
                         <button class=" col-sm-3 border btn btn-primary" type="submit">Guardar</button>

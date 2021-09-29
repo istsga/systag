@@ -16,182 +16,192 @@
             <div class="card-header bg-primary">
                 <font class=" text-light font-weight-bold "> <i class="font-weight-bold  fas fa-user  mr-3"></i> ESTUDIANTE </font>
             </div>
-            <div class="card-body">
+            <div class="card-body ">
                 <form class="form-horizontal" method="POST"  action="{{ route('calificaciones.store')}} ">
                     @csrf
                     <div class="row">
-
-                        <div class="form-group col-lg-5">
-                            <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted  small">PERIODO ACADÉMICO</label>
-                            <div class="input-group">
-                                <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror"  onchange="calificacionPeriodo();">
-                                    <option value="" class="form-control  "> == Seleccionar == </option>
-                                    @foreach ($periodacademicos as $periodacademico)
-                                    <option  value="{{$periodacademico->id}}"
-                                        {{-- {{old('estudiante_id')==$estudiante->id ? 'selected' : '' }} --}}
-                                        {{old('periodacademico_id')==$periodacademico->id ? 'selected' : '' }}
-                                        >{{$query.''.$periodacademico->periodo}}</option>
-                                    @endforeach
-                                </select>
-                                @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
-                                <div class="input-group-prepend "><span class=" input-group-text">
-                                    <i class=" text-primary fas fa-calendar-check"></i></span></div>
+                        <div class="card col-lg-5 shadow-sm bg-light shadow-sm">
+                            <div class="form-group ">
+                                <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted  small">PERIODO ACADÉMICO</label>
+                                <div class="input-group">
+                                    <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror"  onchange="calificacionPeriodo();">
+                                        <option value="" class="form-control  "> == Seleccionar == </option>
+                                        @foreach ($periodacademicos as $periodacademico)
+                                        <option  value="{{$periodacademico->id}}"
+                                            {{-- {{old('estudiante_id')==$estudiante->id ? 'selected' : '' }} --}}
+                                            {{old('periodacademico_id')==$periodacademico->id ? 'selected' : '' }}
+                                            >{{$query.''.$periodacademico->periodo}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
+                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                        <i class=" text-primary fas fa-calendar-check"></i></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col"></div>
+                        <div class="card col-lg-6 shadow-sm bg-light shadow-sm">
+                            <div class="form-group">
+                                <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA | PERIODO | SECCIÓN | PARALELO  </label>
+                                <div class="input-group">
+                                    <select name="asignacione_id" id="asignacione_id" class=" form-control @error('asignacione_id') is-invalid @enderror" onchange="calificacionAsignacion();">
+                                        {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
+                                    </select>
+                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                        <i class=" text-primary fas fa-layer-group"></i></span></div>
+                                    @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-7">
-                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA | PERIODO | SECCIÓN | PARALELO  </label>
-                            <div class="input-group">
-                                <select name="asignacione_id" id="asignacione_id" class=" form-control @error('asignacione_id') is-invalid @enderror" onchange="calificacionAsignacion();">
-                                    {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
-                                </select>
-                                <div class="input-group-prepend "><span class=" input-group-text">
-                                    <i class=" text-primary fas fa-layer-group"></i></span></div>
-                                @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                        <div class="card  col-lg-5 shadow-sm bg-light shadow-sm">
+                            <div class="form-group">
+                                <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS
+                                </label>
+                                <div class="input-group">
+                                    <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror" onchange="calificacionEstudiante();">
+                                        {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
+                                    </select>
+                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                        <i class=" text-primary fas fa-book"></i></span></div>
+                                    @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 mt-3">
-                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS
-                            </label>
-                            <div class="input-group">
-                                <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror" onchange="calificacionEstudiante();">
-                                    {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
-                                </select>
-                                <div class="input-group-prepend "><span class=" input-group-text">
-                                    <i class=" text-primary fas fa-book"></i></span></div>
-                                @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                            </div>
-                        </div>
-
-                        <div class=" mt-3 col-lg-7">
-                            <label for="matricula_id" class="col-form-label font-weight-bold text-muted small">ESTUDIANTES
-                            </label>
-                            <div class="input-group">
-                                <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror">
-                                    <option class="form-control" value=""> == Seleccionar == </option>
-                                </select>
-                                <div class="input-group-prepend "><span class=" input-group-text">
-                                    <i class=" text-primary fas fa-user"></i></span></div>
-                                @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                        <div class="col"></div>
+                        <div class="card col-lg-6 shadow-sm bg-light shadow-sm">
+                            <div class=" form-group">
+                                <label for="matricula_id" class="col-form-label font-weight-bold text-muted small">ESTUDIANTES
+                                </label>
+                                <div class="input-group">
+                                    <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror">
+                                        <option class="form-control" value=""> == Seleccionar == </option>
+                                    </select>
+                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                        <i class=" text-primary fas fa-user"></i></span></div>
+                                    @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                </div>
                             </div>
                         </div>
                     </div>
             </div>
         </div>
 
-            <div class="card">
+            <div class="card ">
 
                 <div class="card-header bg-primary  ">
                     <font class=" text-light font-weight-bold  "> <i class="font-weight-bold  fas fa-star  mr-3"></i> REGISTRO DE NOTAS </font>
                 </div>
 
-                <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-3 ">
-                        <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">DOCENCIA</font>
-                            <div class="text-value-lg">
-                                <input type="number" value="{{old( 'docencia', 0)}}"  name="docencia" id="docencia"  class="form-control  @error('docencia') is-invalid @enderror"  step="0.01" oninput="calcular()">
-                            @error ('docencia') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXPERIMENTO APLICACIÓN</font>
-                            <div class="text-value-lg">
-                                <input type="number" value="{{old( 'experimento_aplicacion', 0)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror" >
-                            @error ('experimento_aplicacion') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">TRABAJO AUTÓNOMO</font>
-                            <div class="text-value-lg">
-                                <input type="number" value="{{old( 'trabajo_autonomo', 0)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" >
-                            @error ('trabajo_autonomo') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXAMEN PRINCIPAL</font>
-                            <div class="text-value-lg">
-                                <input type="number" value="{{old('examen_principal')}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " >
-                            @error ('examen_principal') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <hr class="bg-dark" style=" border-top: dotted 1.2px">
-
-                <div class="row">
-
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">SUMA</font>
-                            <div class="text-value-lg">
-                                <input type="number" value="{{old('suma')}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light" readonly>
-                                @error ('suma') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO EN DECIMALES</font>
-                            <div class="text-value-lg">
-                                <input type="decimal" value="{{old('promedio_decimal')}}"  name="promedio_decimal" id="promedio_decimal" class="form-control @error('promedio_decimal') is-invalid @enderror text-info bg-light" readonly>
-                                @error ('promedio_decimal') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO FINAL (entero)</font>
+                <div class="card-body ">
+                <div class="card shadow-sm">
+                    <div class="row m-2">
+                        <div class="col-lg-3 ">
+                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">DOCENCIA</font>
                                 <div class="text-value-lg">
-                                    <input type="number" name="promedio_final" id="promedio_final" class="form-control @error('promedio_final') is-invalid @enderror text-info bg-light" readonly>
-                                @error ('promedio_final') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                    <input type="number" value="{{old( 'docencia', 0)}}"  name="docencia" id="docencia"  class="form-control  @error('docencia') is-invalid @enderror"  step="0.01" oninput="calcular()">
+                                @error ('docencia') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO EN LETRAS</font>
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXPERIMENTO APLICACIÓN</font>
                                 <div class="text-value-lg">
-                                    <input type="text" name="promedio_letra" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light " readonly>
-                                @error ('promedio_letra') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                    <input type="number" value="{{old( 'experimento_aplicacion', 0)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror" >
+                                @error ('experimento_aplicacion') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
+                            </div>
                         </div>
+
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">TRABAJO AUTÓNOMO</font>
+                                <div class="text-value-lg">
+                                    <input type="number" value="{{old( 'trabajo_autonomo', 0)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" >
+                                @error ('trabajo_autonomo') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXAMEN PRINCIPAL</font>
+                                <div class="text-value-lg">
+                                    <input type="number" value="{{old('examen_principal')}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " >
+                                @error ('examen_principal') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <hr class="bg-dark" style=" border-top: dotted 1.2px">
+                {{-- <hr class="bg-dark" style=" border-top: dotted 1.2px"> --}}
+                <div class="card shadow-sm">
+                    <div class="row m-2">
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">SUMA</font>
+                                <div class="text-value-lg">
+                                    <input type="number" value="{{old('suma')}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light" readonly>
+                                    @error ('suma') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">NÚMERO ASISTENCIA</font>
-                            <div class="text-value-lg">
-                                <input type="text" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
-                            @error ('numero_asistencia') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO EN DECIMALES</font>
+                                <div class="text-value-lg">
+                                    <input type="decimal" value="{{old('promedio_decimal')}}"  name="promedio_decimal" id="promedio_decimal" class="form-control @error('promedio_decimal') is-invalid @enderror text-info bg-light" readonly>
+                                    @error ('promedio_decimal') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO FINAL (entero)</font>
+                                    <div class="text-value-lg">
+                                        <input type="number" name="promedio_final" id="promedio_final" class="form-control @error('promedio_final') is-invalid @enderror text-info bg-light" readonly>
+                                    @error ('promedio_final') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO EN LETRAS</font>
+                                    <div class="text-value-lg">
+                                        <input type="text" name="promedio_letra" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light " readonly>
+                                    @error ('promedio_letra') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                    </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">PORCENTAJE ASISTENCIA</font>
-                            <div class="text-value-lg">
-                                <input type="text" name="porcentaje_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
-                            @error ('porcentaje_asistencia') <span class="invalid-feedback" role="alert"><em class="small">{{$message}}</span> </em> @enderror
+                </div>
+                {{-- <hr class="bg-dark" style=" border-top: dotted 1.2px"> --}}
+                <div class="card shadow-sm">
+                    <div class="row m-2">
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">NÚMERO ASISTENCIA</font>
+                                <div class="text-value-lg">
+                                    <input type="text" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
+                                @error ('numero_asistencia') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-3">
-                        <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">OBSERVACIÓN</font>
-                            <div class="text-value-lg">
-                                <input class="form-control @error('observacion') is-invalid @enderror text-info bg-light" type="text"  name="observacion" id="observacion"  readonly>
-                            @error ('observacion') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">PORCENTAJE ASISTENCIA</font>
+                                <div class="text-value-lg">
+                                    <input type="text" name="porcentaje_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
+                                @error ('porcentaje_asistencia') <span class="invalid-feedback" role="alert"><em class="small">{{$message}}</span> </em> @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">OBSERVACIÓN</font>
+                                <div class="text-value-lg">
+                                    <input class="form-control @error('observacion') is-invalid @enderror text-info bg-light" type="text"  name="observacion" id="observacion"  readonly>
+                                @error ('observacion') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
+                                </div>
                             </div>
                         </div>
                     </div>

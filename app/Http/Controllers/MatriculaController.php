@@ -30,11 +30,7 @@ class MatriculaController extends Controller
     {
         $this->authorize('view', new Matricula);
 
-        $query=trim($request->get('search'));
-        // $matriculas = Matricula::allowed()
-        $matriculas = Matricula::latest('id')
-        ->paginate();
-        return view('matriculas.index', compact('matriculas'));
+        return view('matriculas.index');
     }
 
     /**

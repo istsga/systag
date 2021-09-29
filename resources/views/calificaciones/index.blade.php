@@ -18,61 +18,66 @@
                     <form action="">
                         <div class="card-body bg-light">
                             <div class="row">
-                                <div class="form-group col-lg-5">
-                                    <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted  small">PERIODO ACADÉMICO</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-calendar-check"></i></span></div>
-                                        <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror" onchange="filtroAsignaciones();">
-                                            <option value="" class="form-control  "> == Seleccionar == </option>
-                                            @foreach ($periodacademicos as $periodacademico)
-                                                <option  value="{{$periodacademico->id}}"
-                                                    {{$query==$periodacademico->id ? 'selected' : '' }}
-                                                    >{{$query.''.$periodacademico->periodo}}</option>
-                                            @endforeach
-                                        </select>
-                                        @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
-                                        <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group col-lg-7">
-                                        <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">CARRERA | PERIODO | SECCIÓN | PARALELO
-                                        </label>
+                                <div class="card col-lg-5 bg-light m-2 shadow-sm">
+                                    <div class="form-group p-2">
+                                        <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted  small">PERIODO ACADÉMICO</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend "><span class=" input-group-text">
-                                                <i class=" text-primary fas fa-layer-group"></i></span></div>
-                                            <select name="asignacione_id" id="asignacione_id" class=" form-control" onchange="filtroAsignaturas();">
-                                                <option class="form-control" value=""> == Seleccionar == </option>
-                                                @foreach ($asignaciones as $asignacione)
-                                                    <option  value="{{$asignacione->id}}"
-                                                        {{$queryAsignacione==$asignacione->id ? 'selected' : '' }}
-                                                        >{{$asignacione->id}} {{$asignacione->carreras->pluck('nombre')->implode(', ')}}
-                                                        {{$asignacione->periodo->nombre}}
-                                                        {{$asignacione->seccione->nombre}} -
-                                                        {{$asignacione->paralelo->nombre}}
-                                                    </option>
+                                                <i class=" text-primary fas fa-calendar-check"></i></span></div>
+                                            <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror" onchange="filtroAsignaciones();">
+                                                <option value="" class="form-control  "> == Seleccionar == </option>
+                                                @foreach ($periodacademicos as $periodacademico)
+                                                    <option  value="{{$periodacademico->id}}"
+                                                        {{$query==$periodacademico->id ? 'selected' : '' }}
+                                                        >{{$query.''.$periodacademico->periodo}}</option>
                                                 @endforeach
                                             </select>
+                                            @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
                                             <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col"></div>
+                                <div class="card col-lg-6 bg-light m-2 shadow-sm">
+                                    <div class="form-group p-2 ">
+                                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">CARRERA | PERIODO | SECCIÓN | PARALELO
+                                            </label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-layer-group"></i></span></div>
+                                                <select name="asignacione_id" id="asignacione_id" class=" form-control" onchange="filtroAsignaturas();">
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    @foreach ($asignaciones as $asignacione)
+                                                        <option  value="{{$asignacione->id}}"
+                                                            {{$queryAsignacione==$asignacione->id ? 'selected' : '' }}
+                                                            >{{$asignacione->id}} {{$asignacione->carreras->pluck('nombre')->implode(', ')}}
+                                                            {{$asignacione->periodo->nombre}}
+                                                            {{$asignacione->seccione->nombre}} -
+                                                            {{$asignacione->paralelo->nombre}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
+                                            </div>
+                                    </div>
                                 </div>
 
-                                <div class="col-lg-8">
-                                        <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS </label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend "><span class=" input-group-text">
-                                                <i class=" text-primary fas fa-book"></i></span></div>
-                                            <select name="asignatura_id" id="asignatura_id" class=" form-control">
-                                                <option class="form-control" value=""> == Seleccionar == </option>
-                                                @foreach ($asignaturas as $asignatura)
-                                                    <option  value="{{$asignatura->asignatura_id}}"
-                                                        {{$queryAsignatura==$asignatura->asignatura_id ? 'selected' : '' }}
-                                                        >{{$queryAsignacione.'-'.$asignatura->nombre}}</option>
-                                                @endforeach
-                                            </select>
-                                            <button class="btn btn-primary ml-1 " type="submit"> Ver Estudiantes </button>
+                                <div class=" card col-lg-5 bg-light m-2 shadow-sm">
+                                    <div class="form-group p-2">
+                                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS </label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-book"></i></span></div>
+                                                <select name="asignatura_id" id="asignatura_id" class=" form-control">
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    @foreach ($asignaturas as $asignatura)
+                                                        <option  value="{{$asignatura->asignatura_id}}"
+                                                            {{$queryAsignatura==$asignatura->asignatura_id ? 'selected' : '' }}
+                                                            >{{$queryAsignacione.'-'.$asignatura->nombre}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <button class="btn btn-primary ml-1 " type="submit"> <i class="fas fa-eye-slash"> </i>  Ver </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +92,7 @@
                 @if (count($calificaciones) > 0)
                 <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                     <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-user mr-3"></i> ALUMNOS </font>
-                        <a class=" btn btn-primary " href="{{route('reporteCalificacion', $queryAsignacione.'_'.$queryAsignatura)}}" target="_blank"> <i class=" font-weight-bold fas fa-file-pdf mr-1"></i>Reporte PDF</a>
+                        <a class=" btn btn-primary " href="{{route('reporteCalificacion', $queryAsignacione.'_'.$queryAsignatura)}}" target="_blank"> <i class="font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
                 </div>
                 <div class="card-table  table-responsive">
                     <table class="table table-hover  table-bordered align-middle">

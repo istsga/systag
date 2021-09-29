@@ -21,8 +21,8 @@
                     <form method="POST"  action="{{ route('matriculas.store')}} ">
                         @csrf
                     <div class="card-body">
-
-                            <div class="row">
+                        <div class="card shadow-sm">
+                            <div class="row m-2">
 
                                 <div class="form-group col-lg-6 ">
                                     <label for="tipo" class="col-form-label font-weight-bold text-muted">Tipo de Matrícula
@@ -37,6 +37,19 @@
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-check"></i></span></div>
                                         @error ('tipo') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label for="fecha_matricula" class="col-form-label font-weight-bold text-muted">Fecha
+                                        <span class="text-primary">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control @error('fecha_matricula') is-invalid @enderror"
+                                        name="fecha_matricula" value="{{old('fecha_matricula')}}">
+                                        <div class="input-group-prepend "><span class=" input-group-text">
+                                            <i class=" text-primary fas fa-calendar"></i></span></div>
+                                        @error ('fecha_matricula') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                     </div>
                                 </div>
 
@@ -73,34 +86,26 @@
 
                                 </div>
 
-                                <div class="form-group col-lg-7">
-                                    <label for="asignaturas" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS
-                                        <span class="text-primary">*</span></label>
-                                        <div class="input-group">
-                                        <select name="asignaturas[]" id="asignaturas" class=" form-control @error('asignaturas') is-invalid @enderror" multiple>
-                                            <option class="form-control" value=""> == Selecionar == </option>
-                                                {{-- Data --}}
-                                        </select>
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-folder-open"></i></span></div>
-                                        @error ('asignaturas') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                <div class="card col-lg-8 m-3 shadow-sm">
+                                    <div class="form-group ">
+                                        <div class="card-header">
+                                            <label for="asignaturas" class="col-form-label font-weight-bold text-muted small"> == SELECCIONAR ASIGNATURAS ==
+                                                <span class="text-primary">*</span></label>
                                         </div>
-                                </div>
-
-                                <div class="form-group col-lg-5">
-                                    <label for="fecha_matricula" class="col-form-label font-weight-bold text-muted">Fecha
-                                        <span class="text-primary">*</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="date" class="form-control @error('fecha_matricula') is-invalid @enderror"
-                                        name="fecha_matricula" value="{{old('fecha_matricula')}}">
-                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-calendar"></i></span></div>
-                                        @error ('fecha_matricula') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                            <div class="input-group">
+                                            <select name="asignaturas[]" id="asignaturas" class=" form-control @error('asignaturas') is-invalid @enderror" multiple>
+                                                <option class="form-control" value=""> == Selecionar == </option>
+                                                    {{-- Data --}}
+                                            </select>
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                <i class=" text-primary fas fa-folder-open"></i></span></div>
+                                            @error ('asignaturas') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            </div>
                                     </div>
                                 </div>
 
                             </div>
+                        </div>
                     </div>
                     <div class="card-footer border-0 d-flex justify-content-between aling-items-end bg-light">
                     <button class=" col-sm-3 border btn btn-primary" type="submit">Guardar</button>

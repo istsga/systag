@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Calificacione;
 use App\Models\Estudiante;
 use App\Models\Periodo;
+use App\Models\Suspenso;
 use Illuminate\Http\Request;
 
 class CalificacionperiodoController extends Controller
@@ -25,11 +26,22 @@ class CalificacionperiodoController extends Controller
             ->select('periodos.id','periodos.nombre')
             ->where('matriculas.estudiante_id',$estudiante_id)
             ->get();
+
+        $suspensos = Suspenso::where('suspensos.estudiante_id',$estudiante_id)
+        ->join('asignaturas','asignaturas.id','=','suspensos.asignatura_id')
+        ->where('asignaturas.periodo_id',$periodo_id)
+        ->select('asignatura_id','examen_suspenso', 'observacion');
+
         $calificaciones=Calificacione::
             join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
+            ->leftjoinSub($suspensos,'suspensos',function($join){
+                $join->on('calificaciones.asignatura_id','=','suspensos.asignatura_id');
+            })
             ->where('calificaciones.estudiante_id',$estudiante_id)
             ->where('asignaturas.periodo_id',$periodo_id)
+            ->select('calificaciones.*','suspensos.examen_suspenso as suspensoNota', 'suspensos.observacion as ObservacionSuspenso' )
             ->get();
+        // dd($calificaciones);
 
         return view('calificacionperiodos.index', compact('estudiantes', 'periodos', 'estudiante_id', 'calificaciones', 'periodo_id' ));
     }

@@ -34,11 +34,16 @@
         @error ('display_name') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
     </div>
 </div>
-<div class="form-group">
-    <label for="name" class="col-form-label font-weight-bold">
-        Asignar permisos
-    </label>
-    <div class="col-md-8 mt-2">
-            @include('users.partials.permissionCheckbox', ['model'=>$role])
+
+<div class="card shadow-sm m-3">
+    <div class="form-group">
+        <div class="card-header">
+            <label for="name" class="col-form-label font-weight-bold small text-muted">
+               ==  ASIGNAR PERMISOS ==
+            </label>
+        </div>
+        <div class="col-md-8 mt-2">
+                @include('users.partials.permissionCheckbox', ['model'=>$role])
+        </div>
     </div>
 </div>

@@ -54,17 +54,17 @@ class CalificacioneSeeder extends Seeder
             'asignacione_id'        => '1',
             'asignatura_id'         => '1',
             'estudiante_id'         => '3',
-            'docencia'              =>  '8',
-            'experimento_aplicacion' => '8',
-            'trabajo_autonomo'       => '8',
-            'suma'                   => '24',
-            'promedio_decimal'       =>  '8.00',
-            'examen_principal'       =>  '8',
-            'promedio_final'         =>   '8',
+            'docencia'              =>  '10',
+            'experimento_aplicacion' => '10',
+            'trabajo_autonomo'       => '10',
+            'suma'                   => '30',
+            'promedio_decimal'       =>  '10.00',
+            'examen_principal'       =>  '10',
+            'promedio_final'         =>   '10',
             'promedio_letra'         =>  'OCHO',
             'numero_asistencia'      => '70',
             'porcentaje_asistencia'  => '70%',
-            'observacion'            => 'APROBADO',
+            'observacion'            => 'EXONERADO',
         ]);
 
         Calificacione::create([
@@ -195,13 +195,13 @@ class CalificacioneSeeder extends Seeder
             'experimento_aplicacion' => '8',
             'trabajo_autonomo'       => '8',
             'suma'                   => '24',
-            'promedio_decimal'       =>  '8.00',
+            'promedio_decimal'       =>  '6.00',
             'examen_principal'       =>  '8',
-            'promedio_final'         =>   '8',
-            'promedio_letra'         =>  'OCHO',
+            'promedio_final'         =>   '6',
+            'promedio_letra'         =>  'SIES',
             'numero_asistencia'      => '70',
             'porcentaje_asistencia'  => '70%',
-            'observacion'            => 'APROBADO',
+            'observacion'            => 'SUSPENSO',
         ]);
 
         Calificacione::create([
@@ -350,12 +350,12 @@ class CalificacioneSeeder extends Seeder
             'trabajo_autonomo'       => '8',
             'suma'                   => '28',
             'promedio_decimal'       =>  '9.00',
-            'examen_principal'       =>  '9',
-            'promedio_final'         =>   '9',
-            'promedio_letra'         =>  'NUEVE',
+            'examen_principal'       =>  '5',
+            'promedio_final'         =>   '5',
+            'promedio_letra'         =>  'CINCO',
             'numero_asistencia'      => '60',
             'porcentaje_asistencia'  => '60%',
-            'observacion'            => 'APROBADO',
+            'observacion'            => 'SUSPENSO',
         ]);
 
         Calificacione::create([
@@ -525,7 +525,7 @@ class CalificacioneSeeder extends Seeder
             'promedio_letra'         =>  'NUEVE',
             'numero_asistencia'      => '60',
             'porcentaje_asistencia'  => '60%',
-            'observacion'            => 'REPROBADO',
+            'observacion'            => 'SUSPENSO',
         ]);
 
         Calificacione::create([
@@ -628,7 +628,7 @@ class CalificacioneSeeder extends Seeder
             'promedio_letra'         =>  'CINCO',
             'numero_asistencia'      => '60',
             'porcentaje_asistencia'  => '60%',
-            'observacion'            => 'REPROBADO',
+            'observacion'            => 'SUSPENSO',
         ]);
 
         Calificacione::create([
@@ -645,7 +645,7 @@ class CalificacioneSeeder extends Seeder
             'promedio_letra'         =>  'CINCO',
             'numero_asistencia'      => '60',
             'porcentaje_asistencia'  => '60%',
-            'observacion'            => 'REPROBADO',
+            'observacion'            => 'SUSPENSO',
         ]);
 
 

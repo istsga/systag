@@ -6,7 +6,6 @@
 <div class="container-fluid">
     <div class="fade-in">
         @include('partials.success')
-
         <div class="row">
             <div class="col-md-12">
                 <div class="card shadow-lg">
@@ -16,76 +15,9 @@
                             <a class=" btn btn-primary " href="{{route('asignaturas.create')}}"> <i class=" font-weight-bold fas fa-plus mr-1"></i>Agregar</a>
                         @endcan
                     </div>
-
-                    @if (count($asignaturas) > 0)
-                    <div class="card-header d-flex justify-content-between aling-items-end">
-                            <form class="col-lg-12 px-0 my-2 my-lg-0 no-waves-effect">
-                                <div class="input-group">
-                                    <input name="search" type="search" class="form-control" placeholder="Buscar..." aria-label="Buscar..." aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary btn-gradient waves-effect waves-light" type="submit"><span class="gradient"><font style="vertical-align: inherit;">Buscar</font></span></button>
-                                    </div>
-                                </div>
-                            </form>
-                    </div>
-                    <div class="card-table  table-responsive">
-                        <table class="table table-hover  table-bordered align-middle">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="text-center align-middle"><font>Nro</font></th>
-                                    <th class="align-middle"><font>Carrera</font></th>
-                                    <th class="align-middle"><font>Periodo</font></th>
-                                    <th class="align-middle"><font>Código</font></th>
-                                    <th class="align-middle"><font>Nombre</font></th>
-                                    <th class="align-middle"><font>Horas</font></th>
-                                    <th class="text-center"><font>Acción</font></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($asignaturas as $asignatura)
-                                <tr>
-                                <td class="text-center align-middle" >{{$asignatura->id}} </td>
-                                <td class="align-middle">{{$asignatura->carrera->nombre}} </td>
-                                <td class="align-middle">{{$asignatura->periodo->nombre}} </td>
-                                <td class="align-middle">{{$asignatura->cod_asignatura}} </td>
-                                <td class="align-middle">{{$asignatura->nombre}} <br> <span class="text-muted small"> PREREQUISITOS | {{($asignatura->prerequisitos) ? $asignatura->prerequisitos : 'Ninguno' }} </span> </td>
-                                <td class="align-middle">{{$asignatura->cantidad_hora}} </td>
-
-
-                                <td class="align-middle">
-                                    <div class=" form-inline justify-content-center px-4 ">
-                                        @can('update', $asignatura)
-                                            <a class=" btn btn-sm   btn-primary mr-3 mt-2" href="{{route('asignaturas.edit', $asignatura)}}"><i class="fas fa-pencil-alt"></i></a>
-                                        @endcan
-
-                                        @can('delete', $asignatura)
-                                            <form class="mr-3 mt-2 " method="POST"
-                                                action="{{route('asignaturas.destroy', $asignatura )}}">
-                                                @csrf @method('DELETE')
-
-                                                <button class=" btn btn-sm btn-danger"
-                                                    onclick="return confirm('¿Estas Seguro de Eliminar?.')">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                            </form>
-                                        @endcan
-                                    </div>
-                                </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <livewire:asignaturas-tabla></livewire:asignaturas-tabla>
                 </div>
-
-                    <nav class="d-flex justify-content-end">
-                        {{ $asignaturas->links() }}
-                    </nav>
             </div>
-            @else
-                    <em class=" mt-2 mb-2 ml-3 text-muted">No tienes registros.</em>
-                    <a class=" mt-2 mb-2 ml-3 btn  col-sm-1 border  btn-dark " href="{{route('asignaturas.index')}}">Regresar</a>
-            @endif
         </div>
     </div>
 </div>

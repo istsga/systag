@@ -17,15 +17,24 @@ use Illuminate\Http\Request;
 
 class ReporteController extends Controller
 {
-        //MATRICULAS
+        //REPORTE DE MATRICULAS
         public function reporteMatricula($id)
         {
             $this->authorize('view', new Matricula);
-            $matricula = Matricula::findOrFail($id);
+            $matricula = Matricula::
+                join('asignaciones','asignaciones.id','=','matriculas.asignacione_id')
+                ->join('periodos','periodos.id','=','asignaciones.periodo_id')
+                ->where('matriculas.id',$id)
+                ->first();
 
             //realizar convalidacion
             $estudiante=$matricula->estudiante_id;
-            $convalidacion = Convalidacione::where('estudiante_id',$estudiante)->get();
+            $convalidacion = Convalidacione::
+                join('asignaturas','asignaturas.id','=','convalidaciones.asignatura_id')
+                ->where('convalidaciones.estudiante_id',$estudiante)
+                ->where('asignaturas.periodo_id',$matricula->periodo_id)
+                ->get();
+            //dd($convalidacion);
 
             //dd($convalidacion->asignatura->nombre);
 
@@ -33,14 +42,14 @@ class ReporteController extends Controller
             return $pdf->stream('Reporte Matricula.pdf',compact('matricula'));
         }
 
-        //HORARIO DE CLASE
+        // REPORTE DE HORARIO DE CLASE
         public function reporteHorarioClase($id){
             $pdf = PDF::loadView('reportes.reporteHorarioclase')
                 ->setPaper('a4', 'landscape');
             return $pdf->stream(' Reporte Horario de Clase.pdf');
         }
 
-        // HORARIOS POR ESPECIALIDAD
+        // REPORTE DE HORARIOS POR ESPECIALIDAD
         public function reporteHorarioE($dato)
         {
             $this->authorize('view', new horario);
@@ -59,7 +68,7 @@ class ReporteController extends Controller
             return $pdf->stream('Reporte Horario.pdf', compact('horarios'));
         }
 
-        //CALIFICACIONES
+        //REPORTE DE CALIFICACIONES
         public function reporteCalificacion($dato)
         {
             $this->authorize('view', new Calificacione);
@@ -83,7 +92,7 @@ class ReporteController extends Controller
             return $pdf->stream(' Reporte Calificacion.pdf');
         }
 
-        //SUSPENSO
+        //REPORTE DE SUSPENSO
         public function reporteSuspenso($id)
         {
             $this->authorize('view', new suspenso);
@@ -101,25 +110,35 @@ class ReporteController extends Controller
             return $pdf->stream('Reporte Suspenso.pdf', compact('suspensos'));
         }
 
-        //CALIFICACION X PERIODO
+        // REPORTE DE CALIFICACION X PERIODO
         public function reporteCalificacionperiodo($id)
         {
             $datoNuevo=explode("_",$id);
-        $estudiante=$datoNuevo[0];
+        $estudiante_id=$datoNuevo[0];
         $periodo_id=$datoNuevo[1];
 
-       $calificaciones=Calificacione::
-        join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
-        ->where('calificaciones.estudiante_id',$estudiante)
+
+        $suspensos = Suspenso::where('suspensos.estudiante_id',$estudiante_id)
+        ->join('asignaturas','asignaturas.id','=','suspensos.asignatura_id')
         ->where('asignaturas.periodo_id',$periodo_id)
-        ->get();
+        ->select('asignatura_id','examen_suspenso', 'observacion');
+
+        $calificaciones=Calificacione::
+            join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
+            ->leftjoinSub($suspensos,'suspensos',function($join){
+                $join->on('calificaciones.asignatura_id','=','suspensos.asignatura_id');
+            })
+            ->where('calificaciones.estudiante_id',$estudiante_id)
+            ->where('asignaturas.periodo_id',$periodo_id)
+            ->select('calificaciones.*','suspensos.examen_suspenso as suspensoNota', 'suspensos.observacion as observacionSuspenso' )
+            ->get();
 
         $pdf = PDF::loadView('reportes.reporteCalificacionperiodo', ['calificaciones'=>$calificaciones])
             ->setPaper('a4', 'landscape');
         return $pdf->stream('Calificación por periodo', compact('calificaciones'));
         }
 
-        //EGRESADOS
+        // REPORTE DE EGRESADOS
         public function reporteEgresado($dato)
         {
             $datoNuevo=explode("_",$dato);
@@ -144,14 +163,10 @@ class ReporteController extends Controller
                 $alumno->egresado=$this->esEgresado($alumno->estudiante_id,$malla,$periodo_academico->fecha_final);
             }
 
-            $carreras = Carrera::
-            join('carrera_periodacademico','carrera_periodacademico.carrera_id','=','carreras.id')
-            ->select('carreras.id','carreras.nombre')
-            ->where('carrera_periodacademico.periodacademico_id',$query_peraca)
-            ->get();
 
+            $carreras=Carrera::findOrFail($queryCarrera);
 
-            $pdf = PDF::loadView('reportes.reporteEgresado', ['alumnos'=>$alumnos]);
+            $pdf = PDF::loadView('reportes.reporteEgresado', ['alumnos'=>$alumnos,'periodo_academico'=>$periodo_academico->periodo, 'carreras'=>$carreras]);
             return $pdf->stream('Egresados', compact('alumnos'));
 
         }
@@ -162,7 +177,7 @@ class ReporteController extends Controller
             foreach ($malla as $asignatura){
                 $aprobado=Calificacione::where('estudiante_id',$estudiante_id)
                     ->where('asignatura_id',$asignatura->id)
-                    ->where('observacion','APROBADO')
+                    ->whereIn('observacion',['APROBADO','EXONERADO'])
                     ->where('created_at','<=',$fecha_final_periodo)
                     ->first();
 

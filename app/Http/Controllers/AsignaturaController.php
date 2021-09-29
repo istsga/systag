@@ -18,31 +18,11 @@ class AsignaturaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $this->authorize('view', new Asignatura);
 
-        $query=trim($request->get('search'));
-        $pre=Prerequisito::
-            join('asignaturas','asignaturas.id','=','prerequisitos.preasignatura_id')
-            ->select(DB::raw("prerequisitos.asignatura_id,  GROUP_CONCAT(asignaturas.nombre Separator  ' | ') as prerequisitos"))
-            ->groupBy('prerequisitos.asignatura_id');
-
-        $asignaturas = Asignatura::
-            leftJoinSub($pre,'pre',function($join){
-                $join->on('pre.asignatura_id','=','asignaturas.id');
-            })
-            ->where('asignaturas.nombre','LIKE','%'.$query.'%')
-            ->orWhere('asignaturas.cod_asignatura','LIKE','%'.$query.'%')
-            // ->orWhere('periodos.nombre','LIKE','%'.$query.'%')
-            ->select('asignaturas.*','pre.prerequisitos as prerequisitos')
-            ->latest('id')
-            ->paginate();
-
-
-                dd($asignaturas,);
-
-        return view('asignaturas.index', compact('asignaturas'));
+        return view('asignaturas.index');
     }
 
     /**
