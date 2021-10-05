@@ -113,15 +113,20 @@ class HorarioclaseController extends Controller
             ->get();
         }
 
-        $carreras = Carrera::
-            join('carrera_periodacademico','carrera_periodacademico.carrera_id','=','carreras.id')
-            //->join('asignacione_carrera','asignacione_carrera.carrera_id','=','carreras.id')
-            ->select('carreras.id','carreras.nombre')
-            ->where('carrera_periodacademico.periodacademico_id',$query)
+        // $carreras = Carrera::
+        //     join('carrera_periodacademico','carrera_periodacademico.carrera_id','=','carreras.id')
+        //     //->join('asignacione_carrera','asignacione_carrera.carrera_id','=','carreras.id')
+        //     ->select('carreras.id','carreras.nombre')
+        //     ->where('carrera_periodacademico.periodacademico_id',$query)
+        //     ->get();
+
+            $asignaciones = Asignacione::
+            join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','asignaciones.id')
+            ->where('asignacione_periodacademico.periodacademico_id',$query)
+            ->select('asignaciones.*')
             ->get();
 
-        $asignaciones = Asignacione::all();
-        return view('horarioclases.index', compact('horarios', 'horarios1', 'asignaciones', 'periodacademicos', 'carreras',  'query','estudiante', 'queryAsignacione' ));
+        return view('horarioclases.index', compact('horarios', 'horarios1', 'asignaciones', 'periodacademicos',  'query','estudiante', 'queryAsignacione' ));
 
     }
 

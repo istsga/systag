@@ -28,7 +28,7 @@
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
-                                            <select name="estudiante_id" id="estudianteConvalidar" class=" form-control @error('estudiante_id') is-invalid @enderror">
+                                            <select name="estudiante_id" id="estudiante_id" class=" form-control @error('estudiante_id') is-invalid @enderror">
                                                 <option class="form-control" value=""> == Seleccionar ==</option>
                                                 @foreach ($estudiantes as $estudiante)
                                                 <option  value="{{$estudiante->id}}"
@@ -64,16 +64,14 @@
 
                                 <div class="card shadow-sm m-4">
                                     <div class="row m-1">
-                                        <div class="form-group col-lg-6 ">
+                                        <div class="form-group col-lg-7 ">
                                             <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Asignaturas
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
                                                 <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror">
-                                                    <option class="form-control" value=""> == Seleccionar == </option>
-                                                    @foreach ($asignaturas as $asignatura)
+                                                    <option class="form-control" value=""> == Seleccionar carrera para editar asignatura == </option>
                                                     {{-- Lista de asignaturas --}}
-                                                    @endforeach
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-folder"></i></span></div>
@@ -81,50 +79,23 @@
                                             </div>
                                         </div>
 
+                                        <div class="col"></div>
+
                                         <div class="form-group col-lg-4">
                                             <label for="nota_final" class="col-form-label font-weight-bold text-muted">Nota del Promedio
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
                                                 <input type="number"  class="form-control @error('nota_final') is-invalid @enderror"
-                                                    name="nota_final" id="nota_final" value="{{old('nota_final')}}" onchange="validar()" placeholder="Promedio">
+                                                    name="nota_final" id="nota_final" value="{{old('nota_final', $convalidacione->nota_final)}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-star"></i></span></div>
                                                 @error ('nota_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                             </div>
                                         </div>
-
-                                        <div class="form-group col-lg-2" style="margin-top: 35px">
-                                            <a onclick="agregarAsignatura();" class="btn btn-block btn-primary text-white" title="Agregar asignatura">Agregar</a>
-                                        </div>
-
-                                        <div class="card-table  table-responsive m-3">
-                                            <table class="table table-hover  table-bordered align-middle" id="detalles">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                        <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
-                                                        <th><font style="vertical-align: inherit;">ASIGNATURA</font></font></th>
-                                                        <th class="text-center"><font style="vertical-align: inherit;">PROMEDIO FINAL</font></font></th>
-                                                        <th class="text-center"><font style="vertical-align: inherit;">ACCIÓN</font></font></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($convalidaciondetalles as $cont =>  $convalidaciondetalle )
-                                                        <tr id="fila{{$cont+1}}">
-                                                            <td class="text-center">{{$cont+1}}</td>
-                                                            <td><input type="hidden" name="Asignatura[]" value="{{$convalidaciondetalle->asignatura_id}}">{{$convalidaciondetalle->nombre}}</td>
-                                                            <td class="text-center"><input type="hidden" name="Promedio[]" value="{{$convalidaciondetalle->nota_final}}">{{$convalidaciondetalle->nota_final}}</td>
-                                                            <td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar({{$cont+1}});">X</button></td>
-                                                        </tr>
-                                                    @endforeach
-
-                                                </tbody>
-                                            </table>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="card-footer border-0 d-flex justify-content-between aling-items-end bg-light">
                         <button class=" col-sm-3 border btn btn-primary" type="submit">Guardar</button>
@@ -147,14 +118,8 @@
 
 <script>
 $(function () {
-    //Inicializa Select2 Estudiantes matricula normal
-
+    //Select2 estudiantes
     $('#estudiante_id').select2({
-      theme: 'bootstrap4'
-    });
-
-    //Inicializa Select2 Estudiantes convalidación
-    $('#estudianteConvalidar').select2({
       theme: 'bootstrap4'
     });
 
@@ -162,13 +127,7 @@ $(function () {
 
 
 function filtroAsignaturas(select){
-    //console.log('HOLA');
-    $dato=[];
-    for(var i=1;i<document.getElementById("detalles").rows.length;i++){
-        $dato[i]=document.getElementById('detalles').rows[i].cells[1].innerText;
-              console.log($dato);
-    }
-    console.log($dato);
+
     var asignaturas = document.getElementById("asignatura_id");
     for (let i = asignaturas.options.length; i >= 0; i--) {
         asignaturas.remove(i);
@@ -181,60 +140,23 @@ function filtroAsignaturas(select){
             var asignaturas = document.getElementById("asignatura_id");
             for (i = 0; i < Object.keys(resp.data).length; i++) {
                 var option = document.createElement('option');
-                if($dato.indexOf(resp.data[i].nombre)==-1){ //no encuentra en arreglo
                     option.value = resp.data[i].id;
                     option.text = resp.data[i].nombre;
+
+                    //verificar  la funcionalidad old
+                    if(resp.data[i].id == "{{ old("asignatura_id") }}")
+                    {
+                        option.selected= true;
+                    }
                     asignaturas.append(option);
-                }
             }
         })
         .catch(function (error) {console.log(error);})
     }else{
         document.getElementById("asignatura_id").length  = 1
         asignaturas.options[0].value = ""
-        asignaturas.options[0].text = "Vacío"
+        asignaturas.options[0].text = "== Seleccionar =="
     }
-
-
-};
-
-//AGREGAR ASIGNATURAS
-const convalidaciones=@json($convalidaciondetalles);
-console.log(convalidaciones,convalidaciones.length,convalidaciones.length+1);
-var cont=convalidaciones.length+1;
-function agregarAsignatura(){
-
-     //DescidArticulo=$("#idArticulo option:selected").text();
-      Asignatura_id=$("#asignatura_id").val();
-      Asignatura=$("#asignatura_id option:selected").text();
-      Promedio=$("#nota_final").val();
-      //var id = document.getElementById('nota_final').value;
-      console.log(Asignatura);
-      if(Asignatura!=""){
-            var fila='</tr><tr class="selected" id="fila'+cont+'"><td class="text-center"><input type="hidden" name="cont" value="'+cont+'">'+cont+'</td><td><input type="hidden" name="Asignatura[]" value="'+Asignatura_id+'">'+Asignatura+'</td><td class="text-center"><input type="hidden" name="Promedio[]" value="'+Promedio+'">'+Promedio+'</td><td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');">X</button></td>';
-            cont++;
-            //limpiar();
-            //evaluar();
-            $('#detalles').append(fila);
-      }else{
-            alert("Error al ingresar el detalle de Asignatura, revise los datos");
-    }
-    filtroAsignaturas();
-}
-
-function validar(){
-    nota=$('#nota_final').val();
-    if(Number(nota)<7 || Number(nota) >10){
-        alert('Nota fuera de rango (7,10)');
-    }
-}
-// Al presiona X elimina la fila
-function eliminar(index){
-  cont--;
-  $("#fila" + index).remove();
-  //evaluar();
-  filtroAsignaturas();
-
 }
 
 </script>

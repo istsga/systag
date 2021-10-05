@@ -189,12 +189,23 @@
                                                 <tr>
                                                     <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
                                                     <th><font style="vertical-align: inherit;">DÍA</font></font></th>
+                                                    <th><font style="vertical-align: inherit;">ASIGNATURA</font></font></th>
                                                     <th class="text-center"><font style="vertical-align: inherit;">Hora de Inicio</font></font></th>
                                                     <th class="text-center"><font style="vertical-align: inherit;">Hora Final</font></font></th>
                                                     <th class="text-center"><font style="vertical-align: inherit;">Acción</font></font></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($detallehorarios as $cont =>  $detallehorario )
+                                                <tr id="fila{{$cont+1}}">
+                                                    <td class="text-center">{{$cont+1}}</td>
+                                                    <td class="text-center"><input type="hidden" name="Dia_semana[]" value="{{$detallehorario->dia_semana}}">{{$detallehorario->dia_semana}}</td>
+                                                    <td><input type="hidden" name="Asignatura_id[]" value="{{$detallehorario->asignatura_id}}">{{$detallehorario->asignatura_id}}</td>
+                                                    <td class="text-center"><input type="hidden" name="Hora_inicio[]" value="{{$detallehorario->hora_inicio}}">{{$detallehorario->hora_inicio}}</td>
+                                                    <td class="text-center"><input type="hidden" name="Hora_final[]" value="{{$detallehorario->hora_final}}">{{$detallehorario->hora_final}}</td>
+                                                    <td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar({{$cont+1}});">X</button></td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -213,3 +224,70 @@
 </div>
 </main>
 @endsection
+
+@push('scripts')
+<script src="{{asset('js/axios.min.js')}}"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/select2.full.min.js')}}"></script>
+<script>
+
+    asignaturaHorario();
+    function asignaturaHorario(select){
+        var asignaturas = document.getElementById("asignatura_id");
+        for (let i = asignaturas.options.length; i >= 0; i--) {
+            asignaturas.remove(i);
+        }
+
+        var id = document.getElementById('asignacione_id').value;
+        if(id){
+            axios.get('/getAsignaturashor/'+id)
+            .then((resp)=>{
+                var asignaturas = document.getElementById("asignatura_id");
+                for (i = 0; i < Object.keys(resp.data).length; i++) {
+                var option = document.createElement('option');
+                option.value = resp.data[i].id;
+                option.text = resp.data[i].nombre;
+                asignaturas.append(option);
+                }
+            })
+            .catch(function (error) {console.log(error);})
+        } else{
+            document.getElementById("asignatura_id").length  = 1
+            asignaturas.options[0].value = ""
+            asignaturas.options[0].text = " == Selecionar == "
+        }
+    }
+
+//AGREGAR ASIGNATURAS
+var cont=1;
+function agregarHorario(){
+      Dia_semana=$("#dia_semana option:selected").text();
+      Asignatura_id=$("#asignatura_id").val();
+      Asignatura=$("#asignatura_id option:selected").text();
+      Hora_inicio=$("#hora_inicio").val();
+      Hora_final=$("#hora_final").val();
+      console.log(Dia_semana , Hora_inicio, Hora_final );
+      if(Dia_semana!=""){
+            var fila='</tr><tr class="selected" id="fila'+cont+'"><td class="text-center"><input type="hidden" name="cont" value="'+cont+'">'+cont+
+                '</td><td><input type="hidden" name="Dia_semana[]" value="'+Dia_semana+'">'+Dia_semana+
+                '</td><td><input type="hidden" name="Asignatura_id[]" value="'+Asignatura_id+'">'+Asignatura+
+                '</td><td class="text-center"><input type="hidden" name="Hora_inicio[]" value="'+Hora_inicio+'">'+Hora_inicio+
+                '</td><td class="text-center"><input type="hidden" name="Hora_final[]" value="'+Hora_final+'">'+Hora_final+
+                '</td><td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');">X</button></td>';
+            cont++;
+
+            console.log(fila);
+            $('#detalles').append(fila);
+      }else{
+            alert("Error al ingresar el detalle de Horario, revise los datos");
+    }
+
+}
+
+
+function eliminar(index){
+  cont--;
+  $("#fila" + index).remove();
+}
+</script>
+@endpush

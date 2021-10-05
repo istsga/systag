@@ -90,11 +90,8 @@ class ConvalidacioneController extends Controller
         $this->authorize('update', $convalidacione);
         $estudiantes = Estudiante::all();
         $asignaturas = Asignatura::all();
-        $convalidaciondetalles = Convalidacione::join('asignaturas','asignaturas.id','=','convalidaciones.asignatura_id')
-            ->where('convalidaciones.estudiante_id',$convalidacione->estudiante_id)
-            ->get();
         $carreras = Carrera::where('condicion', 1)->get();
-        return view('convalidaciones.edit', compact('convalidacione','estudiantes', 'asignaturas', 'carreras','convalidaciondetalles'));
+        return view('convalidaciones.edit', compact('convalidacione','estudiantes', 'asignaturas', 'carreras'));
     }
 
     /**
@@ -107,29 +104,7 @@ class ConvalidacioneController extends Controller
     public function update(ConvalidacioneUpdateRequest $request, Convalidacione $convalidacione)
     {
         $this->authorize('update', $convalidacione);
-
-        $asignatura=$request->get('Asignatura');
-        $promedio=$request->get('Promedio');
-        $i=0;
-        //dd($asignatura);
-        Convalidacione::where('estudiante_id',$request->get('estudiante_id'))
-            ->whereNotIn('asignatura_id',$asignatura)
-            ->delete();
-
-        while($i<count($asignatura)){
-            $convalidacion=new Convalidacione;
-            $convalidacion->estudiante_id=$request->get('estudiante_id');;
-            $convalidacion->asignatura_id=$asignatura[$i];
-            $convalidacion->nota_final=$promedio[$i];
-            $convalidacioxx=Convalidacione::where('estudiante_id',$request->get('estudiante_id'))
-                ->where('asignatura_id',$asignatura[$i])->first();
-
-            if(!($convalidacioxx)){
-                $convalidacion->save();
-                //dd($asignatura[$i]); //$convalidacion->save();
-            }
-            $i++;
-        }
+        $convalidacione->update($request->validated());
         return redirect()->route('convalidaciones.index')->with('status', 'Agregado con éxito.');
 
     }

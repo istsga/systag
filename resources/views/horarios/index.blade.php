@@ -47,13 +47,17 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-layer-group"></i></span></div>
-                                            <select name="carrera_id" id="carrera_id" class=" form-control ">
+                                            <select name="asignacione_id" id="asignacione_id" class=" form-control ">
                                                 <option class="form-control" value=""> == Seleccionar == </option>
-                                                    @foreach ($carreras as $carrera)
-                                                        <option  value="{{$carrera->id}}"
-                                                        {{$queryCarrera==$carrera->id ? 'selected' : '' }}
-                                                        >{{$carrera->id}} {{$carrera->nombre}}</option>
-                                                    @endforeach
+                                                @foreach ($asignaciones as $asignacione)
+                                                    <option  value="{{$asignacione->id}}"
+                                                        {{$queryAsignacione==$asignacione->id ? 'selected' : '' }}
+                                                        >{{$asignacione->carreras->pluck('nombre')->implode(', ')}} |
+                                                        {{$asignacione->periodo->nombre}} |
+                                                        {{$asignacione->seccione->nombre}} |
+                                                        {{$asignacione->paralelo->nombre}}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <button class=" btn  btn-primary ml-1 " type="submit"> <i class="fas fa-eye-slash"> </i> Ver  </button>
                                         </div>
@@ -68,14 +72,14 @@
                 @if (count($horarios) > 0)
                 <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                     <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-calendar-alt mr-3"></i> HORARIOS </font>
-                        <a class=" btn btn-primary " href="{{route('reporteHorarioE', $query.'_'.$queryCarrera)}}"> <i class=" font-weight-bold fas fa-file-pdf mr-1"></i>Reporte PDF</a>
+                        <a class=" btn btn-primary " href="{{route('reporteHorarioE', $query.'_'.$queryAsignacione)}}"> <i class=" font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
                 </div>
                 <div class="card-table  table-responsive">
                     <table class="table table-hover  table-bordered align-middle">
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center align-middle"><font>Nro</font></th>
-                                <th class="align-middle"><font>Periodo | Sección | Paralelo</font></th>
+                                {{-- <th class="align-middle"><font>Periodo | Sección | Paralelo</font></th> --}}
                                 <th class="align-middle"><font >Asignatura</font></th>
                                 <th class="align-middle"><font >Docente</font></th>
                                 <th class="align-middle"><font >F. Inicio</font></th>
@@ -90,9 +94,9 @@
                         @foreach ($horarios as $index => $horario)
                             <tr>
                                 <td class="text-center align-middle" >{{$index+1}} </td>
-                                <td class="align-middle">{{$horario->asignacione->periodo->nombre}} | {{$horario->asignacione->seccione->nombre}} | {{$horario->asignacione->paralelo->nombre}}</td>
-                                <td class="align-middle">{{$horario->asignatura->nombre}} </td>
-                                <td class="align-middle">{{$horario->nombredocente}} {{$horario->apellidodocente}}</td>
+                                {{-- <td class="align-middle">{{$horario->asignacione->carreras->pluck('nombre')->implode(',')}} | {{$horario->asignacione->periodo->nombre}} |  {{$horario->asignacione->seccione->nombre}} | {{$horario->asignacione->paralelo->nombre}}</td> --}}
+                                <td class="align-middle">{{$horario->nombreasignatura}} </td>
+                                <td class="align-middle"> {{$horario->nombredocente}} {{$horario->apellidodocente}} </td>
                                 {{-- <td >{{$horario->asignatura->docentes->pluck('nombre')->implode(', ')}} {{$horario->asignatura->docentes->pluck('apellido')->implode(', ')}} </td> --}}
                                 <td class="align-middle">{{$horario->fecha_inicio}}  </td>
                                 <td class="align-middle">{{$horario->fecha_final}}  </td>
@@ -107,7 +111,7 @@
 
                                         @can('delete', $horario)
                                             <form class="mr-3 mt-2 " method="POST"
-                                                action="{{route('horarios.destroy', $horario )}}">
+                                                action="{{route('horarios.destroy', $horario->id.'_'.$horario->asignatura_id  )}}">
                                                 @csrf @method('DELETE')
                                                 <button class=" btn btn-sm btn-danger"
                                                     onclick="return confirm('¿Estas Seguro de Eliminar?.')">

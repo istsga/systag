@@ -63,7 +63,7 @@ Route::middleware('role:Administrador')
 ->put('users/{user}/permisos', [UserPermisoController::class, 'update'])->name('users.permisos.update');
 
 Route::middleware('role:Administrador')
-->put('users/{user}/roles', 'UsersRolesController@update')->name('users.roles.update');
+->put('users/{user}/roles', [UserRoleController::class, 'update'])->name('users.roles.update');
 
 Route::resource('roles', RoleController::class)->except(['show']);
 Route::resource('permisos', PermisoController::class)->only(['index']);

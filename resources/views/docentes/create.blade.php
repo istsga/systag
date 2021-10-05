@@ -219,56 +219,47 @@
                             </div>
 
                             <div class="tab">
-                                    <div class="row m-2">
-                                        <div class="card col-lg-5 shadow-sm ">
-                                            <div class="col-lg-12 d-flex justify-content-center mt-3">
-                                                <h5 class="text-dark font-weight-bold"> TIPO DE CONTRATO</h5>
-                                            </div>
-                                            <div class="card mt-3 shadow-sm">
-                                                <div class="form-group m-3">
-                                                    <label for="tipocontrato_id" class="col-form-label font-weight-bold text-muted">Tipo de Contrato
-                                                        <span class="text-primary">*</span></label>
-                                                    <div class="input-group">
-                                                        <select name="tipocontrato_id"  class="form-control @error('tipocontrato_id') is-invalid @enderror">
-                                                            <option class="form-control" value=""> == Seleccionar == </option>
-                                                            @foreach ($tipocontratos as $tipocontrato)
-                                                            <option  value="{{$tipocontrato->id}}"
-                                                                {{old('tipocontrato_id')==$tipocontrato->id ? 'selected' : '' }}
-                                                                >{{$tipocontrato->nombre}}</option>
-                                                                @endforeach
-                                                        </select>
-                                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                                            <i class=" text-primary fas fa-file-alt"></i></span></div>
-                                                        @error ('tipocontrato_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2"></div>
-
-                                        <div class="card col-lg-5 shadow-sm">
-                                            <div class="d-flex justify-content-center mt-3">
-                                                <h5 class="text-dark font-weight-bold"> ESTADO DEL DOCENTE </h5>
-                                            </div>
-                                            <div class="card mt-3 shadow-sm">
-                                                <div class="for-group m-3">
-                                                    <label for="estado" class="col-form-label font-weight-bold text-muted">Estado
-                                                        <span class="text-primary">*</span>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <select name="estado" id="estado" class="form-control  @error('estado') is-invalid @enderror ">
-                                                            <option value="" > == Seleccionar == </option>
-                                                            <option value="1" >Activo</option>
-                                                            <option value="0" >Inactivo</option>
-                                                        </select>
-                                                        <div class="input-group-prepend "><span class=" input-group-text">
-                                                            <i class=" text-primary fas fa-lock"></i></span></div>
-                                                        @error ('estado') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
-                                                    </div>
-                                                </div>
+                                <div class="row m-2">
+                                    <div class="card col-lg-5">
+                                        <div class="form-group m-3">
+                                            <h5 class="text-dark font-weight-bold text-center"> TIPO DE CONTRATO</h5>
+                                            <label for="tipocontrato_id" class="col-form-label font-weight-bold text-muted">Tipo de Contrato
+                                                <span class="text-primary">*</span></label>
+                                            <div class="input-group">
+                                                <select name="tipocontrato_id"  class="form-control @error('tipocontrato_id') is-invalid @enderror">
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    @foreach ($tipocontratos as $tipocontrato)
+                                                    <option  value="{{$tipocontrato->id}}"
+                                                        {{old('tipocontrato_id')==$tipocontrato->id ? 'selected' : '' }}
+                                                        >{{$tipocontrato->nombre}}</option>
+                                                        @endforeach
+                                                </select>
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-file-alt"></i></span></div>
+                                                @error ('tipocontrato_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col"></div>
+                                    <div class="card col-lg-5">
+                                        <div class="for-group m-3">
+                                            <h5 class="text-dark font-weight-bold text-center"> ESTADO DEL DOCENTE </h5>
+                                            <label for="estado" class="col-form-label font-weight-bold text-muted">Estado
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <select name="estado" id="estado" class="form-control  @error('estado') is-invalid @enderror ">
+                                                    <option value="" > == Seleccionar == </option>
+                                                    <option value="1" >Activo</option>
+                                                    <option value="0" >Inactivo</option>
+                                                </select>
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-lock"></i></span></div>
+                                                @error ('estado') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                     </div>
                     <div class="card-footer border-0 d-flex justify-content-between aling-items-end bg-light ">
