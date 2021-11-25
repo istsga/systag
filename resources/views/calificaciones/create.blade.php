@@ -336,6 +336,7 @@ function calificacionAsignacion(){
       .then((resp)=>{
         var asignaturas = document.getElementById("asignatura_id");
         console.log(resp.data);
+
         for (i = 0; i < Object.keys(resp.data).length; i++) {
           var option = document.createElement('option');
           option.value = resp.data[i].asignatura_id;
@@ -346,6 +347,12 @@ function calificacionAsignacion(){
                 option.selected= true;
             }
           asignaturas.appendChild(option);
+        }
+        if(Object.keys(resp.data).length==0){
+            var option = document.createElement('option');
+            option.value = '';
+            option.text = 'No hay datos';
+            asignaturas.appendChild(option);
         }
         calificacionEstudiante()
       })

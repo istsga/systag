@@ -26,6 +26,7 @@ class CarreraFactory extends Factory
             'nombre'            => $this->faker->unique()->text(15),
             'titulo'            =>$this->faker->unique()->text(40),
             'numero_periodo'    =>$this->faker->randomDigit,
+            'logo'              =>$this->faker->randomDigit,
             'condicion'         =>$this->faker->boolean(),
         ];
     }

@@ -51,7 +51,7 @@ class RoleControllerTest extends TestCase
 
     public function test_roles_store()
     {
-        $this->withoutExceptionHandling();
+        //$this->withoutExceptionHandling();
         $user = User::factory()->create();
         $data =[
             'display_name' => 'Administrador',

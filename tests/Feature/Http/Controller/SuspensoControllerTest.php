@@ -31,7 +31,7 @@ class SuspensoControllerTest extends TestCase
     public function test_suspenso_create()
     {
         $user = User::factory()->create()
-                ->assignRole(Role::create(['name' => 'Administrador']));
+                ->assignRole(Role::create(['name' => 'Admnistrador']));
         $this
             ->actingAs($user)
             ->get('suspensos/create')

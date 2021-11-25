@@ -46,18 +46,20 @@ class CarreraControllerTest extends TestCase
             ->post('carreras', [])
             ->assertStatus(302)
             ->assertSessionHasErrors([
-                'codigo', 'nombre', 'titulo', 'numero_periodo', 'condicion'
+                'codigo', 'nombre', 'titulo', 'numero_periodo', 'condicion', 'logo'
             ]);
     }
 
     public function test_carrera_store()
     {
+        $this->withoutExceptionHandling();
         $data = [
             'codigo'            =>'DS01',
             'nombre'            =>'Desarrollo de Software',
             'titulo'            =>'Tecnólogo/a en Desarrollo de Software',
             'numero_periodo'    =>'5',
             'condicion'         => '1',
+            'logo'              => 'img',
         ];
         $user = User::factory()->create()
                 ->assignRole(Role::create(['name' => 'Administrador']));
@@ -90,7 +92,7 @@ class CarreraControllerTest extends TestCase
             ->put("carreras/$carrera->id", [])
             ->assertStatus(302)
             ->assertSessionHasErrors([
-                'codigo', 'nombre', 'titulo', 'numero_periodo', 'condicion'
+                'codigo', 'nombre', 'titulo', 'numero_periodo', 'condicion', 'logo'
             ]);
     }
 
@@ -106,6 +108,7 @@ class CarreraControllerTest extends TestCase
             'titulo'            =>'Tecnólogo en Desarrollo de Software',
             'numero_periodo'    =>'5',
             'condicion'         =>'1',
+            'logo'              =>'img',
         ];
          $this
             ->actingAs($user)
@@ -186,6 +189,5 @@ class CarreraControllerTest extends TestCase
             ->delete("carreras/$carrera->id")
             ->assertStatus(403);
     }
-
 
 }

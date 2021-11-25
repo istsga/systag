@@ -31,7 +31,7 @@ class RoleController extends Controller
         $this->authorize('create', $role = new Role);
         return view('roles.create',[
             'role'=> $role,
-            'permissions' => Permission::pluck('name', 'id')
+            'permissions' => Permission::orderBy('id' )->pluck('name', 'id')
            ]);
     }
 
@@ -61,7 +61,7 @@ class RoleController extends Controller
 
         return view('roles.edit', [
             'role' => $role,
-            'permissions' => Permission::pluck('name', 'id')
+            'permissions' => Permission::orderBy('id' )->pluck('name', 'id')
         ]);
     }
 
