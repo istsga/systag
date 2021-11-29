@@ -66,7 +66,7 @@
 
                         {{-- Verificar su funcionamiento --}}
                         {{-- @can('view', $estudiante) --}}
-                            <a class=" btn  btn-sm  btn-dark mr-3 mt-2" href="{{route('estudiantes.show', $estudiante)}}"><i class="fas fa-eye"></i></a>
+                            {{-- <a class=" btn  btn-sm  btn-dark mr-3 mt-2" href="{{route('estudiantes.show', $estudiante)}}"><i class="fas fa-eye"></i></a> --}}
                         {{-- @endcan --}}
 
                         @can('delete', $estudiante)
