@@ -78,7 +78,7 @@ class AsignacioneController extends Controller
         $this->authorize('update', $asignacione);
         $periodacademicos = Periodacademico::where('estado', 1)->get();
         $carreras =Carrera_periodacademico::
-           join('carreras','carreras.id','=','Carrera_periodacademico.carrera_id')
+           join('carreras','carreras.id','=','carrera_periodacademico.carrera_id')
            ->select('carrera_periodacademico.carrera_id','carreras.nombre','carrera_periodacademico.periodacademico_id', 'carreras.numero_periodo')
            ->get();
         $periodos = Periodo::all();
