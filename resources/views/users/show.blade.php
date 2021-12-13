@@ -9,7 +9,11 @@
           <div class="row">
             <div class="col-lg-12 bg-primary " style="height: 200px">
                   <div class="cover-body mt-5 ">
-                      <img style="border: solid #e5e6e7 5px" class="rounded-circle ml-3" width="115px" src="/uploads/avatars/{{auth()->user()->avatar }}" alt="perfil">
+                    @if (auth()->user()->avatar == null)
+                    <div class="ml-3"> <i class=" fas fa-user-circle fa-8x rounded-circle border" style="color: #375A64;"></i> </div>
+                    @else
+                        <img style="border: solid #34393f 5px" class="rounded-circle ml-3" width="115px" src="/uploads/avatars/{{auth()->user()->avatar }}" alt="perfil">
+                    @endif
                   </div>
             </div>
 

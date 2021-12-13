@@ -105,6 +105,7 @@ class MatriculaController extends Controller
         $asignacion=Asignacione::find($id);
         $asignacion_carrera=Asignacione_carrera::
             join('asignaciones','asignaciones.id','=','asignacione_carrera.asignacione_id')
+            ->where('asignacione_carrera.asignacione_id',$id)
             ->get();
 
             //convalidaciones
@@ -118,11 +119,12 @@ class MatriculaController extends Controller
             ->where('periodo_id',$asignacion->periodo_id)
             ->whereNotIn('id',$asig_convalidadas);
 
-        //calificacion del estudiante de asignaturas con prerequisito
+        // //calificacion del estudiante de asignaturas con prerequisito
         $calificacionesEstudiante = Calificacione::
         where('estudiante_id',$estudiante_id);
 
         //Prerequisito
+
         $prerequisito=Prerequisito::
             joinSub($asignaturas,'asignaturas',function($join){
                 $join->on('prerequisitos.asignatura_id','=','asignaturas.id');

@@ -134,5 +134,11 @@ class PermissionSeeder extends Seeder
         //calificaciones por periodo
         $certificadosperiodos =  Permission::create(['name'=> 'Ver certificados por periodo' ]);
 
+        //nomina de estudiantes
+        $nominaestudiantes =  Permission::create(['name'=> 'Ver nonima de estudiantes' ]);
+
+        //horario de clases
+        $horarioclases =  Permission::create(['name'=> 'Ver horario de clases' ]);
+
 }
 }

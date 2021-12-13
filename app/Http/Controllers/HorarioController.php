@@ -33,15 +33,15 @@ class HorarioController extends Controller
             // join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','horarios.asignacione_id')
             // ->join('asignacione_carrera','asignacione_carrera.asignacione_id','=','horarios.asignacione_id')
             join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
-            ->join('asignaturas','asignaturas.id','=','detalle_horarios.asignatura_id')
+            ->join('asignaturas','asignaturas.id','=','horarios.asignatura_id')
             ->join('asignatura_docente',function($join){
-                $join->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id')
-                    ->on('asignatura_docente.asignatura_id','=','detalle_horarios.asignatura_id');
+                $join->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
+                    //->on('asignatura_docente.asignatura_id','=','detalle_horarios.asignatura_id');
             })
             ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
-            ->groupBy('horarios.id','horarios.asignacione_id','horarios.fecha_inicio','horarios.fecha_final', 'horarios.fecha_examen', 'horarios.fecha_suspension', 'detalle_horarios.asignatura_id', 'asignaturas.nombre', 'docentes.nombre', 'docentes.apellido')
+            ->groupBy('horarios.id','horarios.asignacione_id','horarios.fecha_inicio','horarios.fecha_final', 'horarios.fecha_examen', 'horarios.fecha_suspension', 'asignaturas.nombre', 'horarios.asignatura_id', 'docentes.nombre', 'docentes.apellido')
             ->where('horarios.asignacione_id',$queryAsignacione)
-            ->select('horarios.id','horarios.asignacione_id','horarios.fecha_inicio','horarios.fecha_final', 'horarios.fecha_examen', 'horarios.fecha_suspension','asignaturas.nombre as nombreasignatura', 'docentes.nombre as nombredocente','docentes.apellido as apellidodocente', 'detalle_horarios.asignatura_id')
+            ->select('horarios.id','horarios.asignacione_id','horarios.fecha_inicio','horarios.fecha_final', 'horarios.fecha_examen', 'horarios.fecha_suspension',  'asignaturas.nombre as nombreasignatura','docentes.nombre as nombredocente','docentes.apellido as apellidodocente', 'horarios.asignatura_id')
             ->get();
 
            //dd($horarios);
@@ -103,7 +103,6 @@ class HorarioController extends Controller
         $this->authorize('create', new Horario);
         $horarios = Horario::create($request->validated());
         $dia_semana=$request->get('Dia_semana');
-        $asignatura_id=$request->get('Asignatura_id');
         $hora_inicio=$request->get('Hora_inicio');
         $hora_final=$request->get('Hora_final');
         $i=0;
@@ -111,7 +110,6 @@ class HorarioController extends Controller
             $detalle_horario=new Detallehorario();
             $detalle_horario->horario_id=$horarios->id;
             $detalle_horario->dia_semana=$dia_semana[$i];
-            $detalle_horario->asignatura_id=$asignatura_id[$i];
             $detalle_horario->hora_inicio=$hora_inicio[$i];
             $detalle_horario->hora_final=$hora_final[$i];
             //dd($detalle_horario);
@@ -162,15 +160,13 @@ class HorarioController extends Controller
         $horario->update($request->validated());
 
         $dia_semana=$request->get('Dia_semana');
-        $asignatura_id=$request->get('Asignatura_id');
         $hora_inicio=$request->get('Hora_inicio');
         $hora_final=$request->get('Hora_final');
         $i=0;
         while($i<count($dia_semana)){
             $detalle_horario=new Detallehorario();
-            $detalle_horario->horario_id=$horarios->id;
+            $detalle_horario->horario_id=$horario->id;
             $detalle_horario->dia_semana=$dia_semana[$i];
-            $detalle_horario->asignatura_id=$asignatura_id[$i];
             $detalle_horario->hora_inicio=$hora_inicio[$i];
             $detalle_horario->hora_final=$hora_final[$i];
             //dd($detalle_horario);

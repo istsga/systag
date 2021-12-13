@@ -86,12 +86,12 @@
                 </div>
             </div>
 
-            <div class="card card-accent-primary shadow-lg">
+            <div class="card card-accent-primary shadow-lg ">
 
                 @if (count($suspensos) > 0)
                 <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                     <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-user mr-3"></i> ALUMNOS </font>
-                        <a class=" btn btn-primary " href="{{route('reporteSuspenso', $queryAsignacione)}}"> <i class="font-weight-bold fas fa-print mr-1"></i> Imprimir</a>
+                        <a class=" btn btn-primary " href="{{route('reporteSuspenso', $queryAsignacione)}}" target="_blank"> <i class="font-weight-bold fas fa-print mr-1"></i> Imprimir</a>
                 </div>
                 <div class="card-table  table-responsive">
                     <table class="table table-hover  table-bordered align-middle">
@@ -99,19 +99,31 @@
                             <tr>
                                 <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
                                 <th><font style="vertical-align: inherit;">NOMBRES Y APELLIDOS</font></th>
-                                <th class="text-center"><font style="vertical-align: inherit;">Acción</font></th>
+                                <th class="text-center"><font style="vertical-align: inherit;">@role('Administrador') Acción edición @else  Acción @endrole</font></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($suspensos as $index => $suspenso)
                             <tr>
-                            <td class="text-center" >{{$index+1}} </td>
-                            <td >{{$suspenso->estudiante->nombre}} {{$suspenso->estudiante->apellido}}</td>
-                            <td>
-                                <div class=" form-inline justify-content-center px-4 ">
+                            <td class="text-center align-middle" >{{$index+1}} </td>
+                            <td class="align-middle">{{$suspenso->estudiante->nombre}} {{$suspenso->estudiante->apellido}}</td>
+                            <td class="align-middle">
+                                @role('Administrador')
+                                    <div class="px-4 mt-1 justify-content-center form-inline">
+                                        <select name="" id="" class="form-control col-lg-4 bg-light" onchange="autorizarEdicion(this, {{$suspenso->estudiante->id}});">
+                                            <option class="form-control" value=""> == Seleccionar == </option>
+                                            <option class="form-control" value="0"> == No Autorizado  == </option>
+                                            <option class="form-control" value="1"> == Autorizado == </option>
+                                        </select>
+                                    </div>
+                                @else
+                                    <div class=" form-inline justify-content-center px-4 ">
                                     @can('update', $suspenso)
-                                        <a class=" btn btn-sm  btn-primary mr-3 mt-2 " href="{{route('suspensos.edit', $suspenso)}}"><i class="fas fa-pencil-alt"></i></a>
+                                        @if($suspenso->estado_calificacion == 1)
+                                            <a class=" btn btn-sm  btn-primary mr-3 mt-2 " href="{{route('suspensos.edit', $suspenso)}}"><i class="fas fa-pencil-alt"></i></a>
+                                        @endif
                                     @endcan
+                                @endrole
 
                                     @can('delete', $suspenso)
                                         <form class="mr-3 mt-2 " method="POST"
@@ -142,3 +154,29 @@
 </div>
 </main>
 @endsection
+@push('scripts')
+<script src="{{asset('js/axios.min.js')}}"></script>
+<script>
+
+function autorizarEdicion(valor, estudiante_id){
+    console.log(valor.value);
+
+    var asignacione_id = document.getElementById('asignacione_id').value;
+    var asignatura_id = document.getElementById('asignatura_id').value;
+
+    axios.post('/autorizarSuspenso/'+asignacione_id+'_'+estudiante_id+'_'+asignatura_id)
+        .then((respuesta)=>{
+            console.log(respuesta)
+        }
+        ).catch((error)=>{
+            if(error.response){
+                console.log(error.response.data);
+            }
+    })
+
+}
+
+
+
+</script>
+@endpush

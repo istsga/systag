@@ -8,7 +8,7 @@
         @include('partials.success')
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-accent-primary shadow-lg">
+                <div class="card card-accent-primary shadow-lg ">
                     <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                         <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-star mr-3"></i> CALIFICACIONES </font>
                             @can('create', new App\Models\Calificacione)
@@ -24,7 +24,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-calendar-check"></i></span></div>
-                                            <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror" onchange="filtroAsignaciones();">
+                                            <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror">
                                                 <option value="" class="form-control  "> == Seleccionar == </option>
                                                 @foreach ($periodacademicos as $periodacademico)
                                                     <option  value="{{$periodacademico->id}}"
@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-            <div class="card card-accent-primary shadow-lg">
+            <div class="card card-accent-primary shadow-lg ">
 
                 @if (count($calificaciones) > 0)
                 <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
@@ -100,7 +100,7 @@
                             <tr>
                                 <th class="text-center align-middle "><font>Nro</font></th>
                                 <th class="align-middle"><font>NOMBRES Y APELLIDOS</font></th>
-                                <th class="text-center align-middle"><font>Acción</font></th>
+                                <th class="text-center align-middle"><font>@role('Administrador') Acción edición @else  Acción @endrole</font></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -110,10 +110,27 @@
                                 <td class="align-middle" >{{$calificacione->estudiante->nombre}} {{$calificacione->estudiante->apellido}}</td>
 
                                 <td class="align-middle">
-                                    <div class=" form-inline justify-content-center px-4 ">
-                                        @can('update', $calificacione)
-                                            <a class=" btn btn-sm  btn-primary mr-3 mt-2" href="{{route('calificaciones.edit', $calificacione)}}"><i class="fas fa-pencil-alt"></i></a>
-                                        @endcan
+
+                                        @role('Administrador')
+
+                                        {{-- <input type="text" onchange="actualizarEstado(this);"> --}}
+                                            <div class="px-4 mt-1 justify-content-center form-inline">
+                                                <select name="" id="" class="form-control col-lg-4 bg-light" onchange="actualizarEstado(this,{{$calificacione->estudiante->id}});">
+                                                    <option class="form-control" > == Seleccionar  == </option>
+                                                    <option class="form-control" value="0"> == No Autorizado  == </option>
+                                                    <option class="form-control" value="1"> == Autorizado == </option>
+                                                </select>
+                                            </div>
+
+                                        @else
+
+                                            <div class=" form-inline justify-content-center px-4 ">
+                                            @can('update', $calificacione)
+                                                @if($calificacione->estado_calificacion == 1)
+                                                <a class=" btn btn-sm  btn-primary mr-3 mt-2" href="{{route('calificaciones.edit', $calificacione)}}"><i class="fas fa-pencil-alt"></i></a>
+                                                @endif
+                                            @endcan
+                                        @endrole
 
                                         @can('delete', $calificacione)
                                             <form method="POST"
@@ -138,6 +155,7 @@
                 @endif
             </div>
 
+
         </div>
     </div>
 </div>
@@ -147,66 +165,27 @@
 <script src="{{asset('js/axios.min.js')}}"></script>
 <script>
 
-// filtroAsignaciones();
-// filtroAsignaturas();
+function actualizarEstado(valor,estudiante_id){
+    console.log(valor.value,estudiante_id);
 
-// function filtroAsignaciones(select){
-//     //console.log('HOLA');
-//     var asignaciones = document.getElementById("asignacione_id");
-//     for (let i = asignaciones.options.length; i >= 0; i--) {
-//         asignaciones.remove(i);
-//     }
+    var asignacione_id = document.getElementById('asignacione_id').value;
+    var asignatura_id = document.getElementById('asignatura_id').value;
 
-//     var id = document.getElementById('periodacademico_id').value;
-//     console.log (id);
-//     if(id){
-//         axios.get('/getAsignacionesfiltro/'+id)
-//         .then((resp)=>{
-//             var asignaciones = document.getElementById("asignacione_id");
-//             for (i = 0; i < Object.keys(resp.data).length; i++) {
-//             var option = document.createElement('option');
-//             option.value = resp.data[i].id;
-//             option.text = resp.data[i].nombre+' | '+resp.data[i].nombrePeriodo +' | '+resp.data[i].nombreSeccion +' | '+resp.data[i].nombreParalelo;;
-//             asignaciones.append(option);
-//             }
-//         })
-//         .catch(function (error) {console.log(error);})
-//     }else{
-//         document.getElementById("asignacione_id").length  = 1
-//         asignaciones.options[0].value = ""
-//         asignaciones.options[0].text = " == Seleccionar =="
-//     }
+    //var estudiante_id = document.getElementById('asignatura_id').value;
+    // var asignacione_id ='14'
+    // var estudiante_id = '101';
+    // var asignatura_id = '103';
 
-// }
-
-// function filtroAsignaturas(select){
-//     //console.log('HOLA');
-//     var asignaturas = document.getElementById("asignatura_id");
-//     for (let i = asignaturas.options.length; i >= 0; i--) {
-//         asignaturas.remove(i);
-//     }
-
-//     var id = document.getElementById('asignacione_id').value;
-//     console.log (id);
-//     if(id){
-//         axios.get('/getAsignaturasfiltro/'+id)
-//         .then((resp)=>{
-//             var asignaturas = document.getElementById("asignatura_id");
-//             for (i = 0; i < Object.keys(resp.data).length; i++) {
-//             var option = document.createElement('option');
-//             option.value = resp.data[i].id;
-//             option.text = resp.data[i].nombre;
-//             asignaturas.append(option);
-//             }
-//         })
-//         .catch(function (error) {console.log(error);})
-//     }else{
-//         document.getElementById("asignatura_id").length  = 1
-//         asignaturas.options[0].value = ""
-//         asignaturas.options[0].text = " == Seleccionar =="
-//     }
-
-//}
+    axios.post('/habilitarEstado/'+asignacione_id+'_'+estudiante_id+'_'+asignatura_id)
+        .then((respuesta)=>{
+            console.log(respuesta)
+        }
+        ).catch((error)=>{
+            if(error.response){
+                console.log(error.response.data);
+            }
+        })
+}
 
 </script>
 @endpush

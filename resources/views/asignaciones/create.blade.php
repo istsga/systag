@@ -134,6 +134,7 @@ function cambia_carreras(select){
             }
 
         }
+        cambia_periodo();
     }else{
 
         document.getElementById("carrera_id").length  = 1;

@@ -87,7 +87,11 @@
           </li>
 
           <li class="c-header-nav-item dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <div class="c-avatar"><img class="c-avatar-img" src="/uploads/avatars/{{auth()->user()->avatar }}" alt=" Logo User"></div>
+            @if (auth()->user()->avatar == null)
+                <div class="c-avatar"><i class=" fas fa-user-circle" style="font-size:34px; color: #375A64"></i> </div>
+            @else
+                <div class="c-avatar"><img class="c-avatar-img" src="/uploads/avatars/{{auth()->user()->avatar }}" alt=" Logo User"></div>
+            @endif
             </a>
             <div style="width: 375px" class="dropdown-menu mt-2 dropdown-menu-right pt-0 border-top-0 shadow-sm">
               <div class="dropdown-header mt-2   py-2 d-flex justify-content-between aling-items-end ">
@@ -101,7 +105,11 @@
               <div class="row mt-4">
                   <div style="width: 130px" class="text-center">
                     <div class=" mt-1">
-                        <img class="rounded-circle ml-4 " width="90px" src="/uploads/avatars/{{auth()->user()->avatar }}" alt=" Logo User">
+                        @if (auth()->user()->avatar == null)
+                            <div class="rounded-circle ml-4"><i class=" fas fa-user-circle fa-6x" style="color: #375A64"></i> </div>
+                        @else
+                            <img class="rounded-circle ml-4 " width="90px" src="/uploads/avatars/{{auth()->user()->avatar }}" alt=" Logo User">
+                        @endif
                     </div>
                   </div>
                   <div class="mb-4 ml-3 mt-3" style="width: 245px">

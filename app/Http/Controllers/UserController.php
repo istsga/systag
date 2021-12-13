@@ -170,10 +170,10 @@ class UserController extends Controller
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
 
 
-            if ($user->avatar !== 'default.png') {
+            // if ($user->avatar !== 'default.png') {
+            if ($user->avatar !== null) {
                 //$file = public_path('uploads/avatars/' . $user->avatar);
                 $file = 'uploads/avatars/' . $user->avatar;
-
 
                 if (\File::exists($file)) {
                     unlink($file);

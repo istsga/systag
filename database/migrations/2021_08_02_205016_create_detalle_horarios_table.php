@@ -16,7 +16,6 @@ class CreateDetalleHorariosTable extends Migration
         Schema::create('detalle_horarios', function (Blueprint $table) {
             $table->id();
             $table->foreignId('horario_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('asignatura_id')->constrained()->cascadeOnDelete();
             $table->enum('dia_semana', ["Lunes", "Martes", "Miércoles", "Jueves", 'Viernes']);
             $table->time('hora_inicio');
             $table->time('hora_final');

@@ -28,14 +28,30 @@ class SuspensoController extends Controller
         $queryAsignatura=trim($request->get('asignatura_id'));
         $queryAsignacione=trim($request->get('asignacione_id'));
 
-        $suspensos = Suspenso::
-            where('asignacione_id', $queryAsignacione)
-            ->where('asignatura_id', $queryAsignatura)
-            ->get();
-
         $periodacademicos = Periodacademico::get();
             // allowed()
             // ->get();
+        //Verificar solo trae 3 en vez de 4
+        // $suspensos = Suspenso::
+        //     where('asignacione_id', $queryAsignacione)
+        //     ->where('asignatura_id', $queryAsignatura)
+        //     ->get();
+
+        $suspensos = Suspenso::join('matriculas',function($join){
+            $join->on('matriculas.asignacione_id','=','suspensos.asignacione_id')
+                ->on('matriculas.estudiante_id','=','suspensos.estudiante_id');
+            })
+            ->join('asignatura_matricula',function($join){
+                $join->on('asignatura_matricula.matricula_id','=','matriculas.id')
+                    ->on('asignatura_matricula.asignatura_id','=','suspensos.asignatura_id');
+            })
+            ->select('suspensos.*','asignatura_matricula.estado_calificacion')
+            ->where('suspensos.asignacione_id', $queryAsignacione)
+            ->where('suspensos.asignatura_id', $queryAsignatura)
+            //->allowed()
+            ->get();
+
+
         $asignaciones = Asignacione::
             join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','asignaciones.id')
             ->join('asignatura_docente','asignatura_docente.asignacione_id','=','asignaciones.id')
@@ -141,6 +157,27 @@ class SuspensoController extends Controller
             ->select('matriculas.*','calificaciones.promedio_final','estudiantes.nombre','estudiantes.apellido','estudiantes.dni')
             ->get();
         return $matriculas;
+    }
+
+    //Habilitar edicion de suspensiones
+    public function autorizarSuspenso($dato)
+    {
+        //Capturar 3 datos para evitar la confucion de otros estudiates
+        $datoNuevo=explode("_",$dato);
+        $asignacione_id=$datoNuevo[0];
+        $estudiante_id=$datoNuevo[1];
+        $asignatura_id=$datoNuevo[2];
+
+        $matricula=Matricula::where('asignacione_id',$asignacione_id)
+            ->where('estudiante_id',$estudiante_id)->first();
+        if($matricula){
+            $matricula_detalle=Asignatura_matricula::where('matricula_id',$matricula->id)
+                ->where('asignatura_id',$asignatura_id)->first();
+            if($matricula_detalle){
+                $matricula_detalle->estado_calificacion = !$matricula_detalle->estado_calificacion;
+                $matricula_detalle->update();
+            }
+        }
     }
 
     /**

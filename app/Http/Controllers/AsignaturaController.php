@@ -57,13 +57,13 @@ class AsignaturaController extends Controller
         $asignatura = Asignatura::create($request->validated());
 
         $preasignatura=$request->get('preasignatura_id');
-
-        for ($i=0; $i < count($preasignatura); $i++) {
-            $pre  = new Prerequisito();
-            $pre->asignatura_id = $asignatura->id;
-            $pre->preasignatura_id = $preasignatura[$i];
-            $pre->save();
-        }
+        if($preasignatura)
+            for ($i=0; $i < count($preasignatura); $i++) {
+                $pre  = new Prerequisito();
+                $pre->asignatura_id = $asignatura->id;
+                $pre->preasignatura_id = $preasignatura[$i];
+                $pre->save();
+            }
 
         return redirect()->route('asignaturas.index')->with('status', 'Agregado con éxito');
     }

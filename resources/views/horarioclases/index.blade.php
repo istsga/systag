@@ -70,7 +70,7 @@
 
             </div>
             <div class="col-md-12">
-               <div class="card card-accent-primary shadow-lg">
+               <div class="card card-accent-primary shadow-lg bg-light">
                 @if (count($horarios) > 0)
                 <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                     <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-calendar-alt mr-3"></i> HORARIO DE CLASE </font>

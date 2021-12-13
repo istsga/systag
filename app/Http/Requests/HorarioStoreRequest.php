@@ -35,10 +35,7 @@ class HorarioStoreRequest extends FormRequest
 
         $rules = [
             'asignacione_id'        => ['required'],
-            //'asignatura_id'         => ['required', 'exists:asignaturas,id'],
-            // 'dia_semana'            => ['required', 'string'],
-            // 'hora_inicio'           => ['required'],
-            // 'hora_final'            => ['required'],
+            'asignatura_id'         => ['required', 'exists:asignaturas,id'],
             'fecha_inicio'          => ['required',  'date', 'after_or_equal:' .$inicio_periodo,'before_or_equal:' .$fin_periodo ],
             'fecha_final'           => ['required', 'date', 'after:fecha_inicio', 'after:' .$inicio_periodo,'before_or_equal:' .$fin_periodo],
             'fecha_examen'          => ['required', 'date', 'after:fecha_final', 'after:' .$inicio_periodo,'before_or_equal:' .$fin_periodo],

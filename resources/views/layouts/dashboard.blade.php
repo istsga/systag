@@ -132,18 +132,22 @@
 
         <div class="card bg-primary border-0 shadow-lg">
             <div class="row">
-              <div class="col-lg-12 bg-primary" >
-                    <div class=" col-lg-12  mt-5 mb-5 d-flex align-items-start ">
-                        <div class=" col-lg-1 ml-3">
-                            <img style="border: solid #e5e6e7 5px" class="rounded-circle " width="115px" src="/uploads/avatars/{{auth()->user()->avatar }}" alt="perfil">
+              <div class="col-lg-12 bg-primary " >
+                        <div class="row m-4">
+                            <div class=" col-lg-2 c-header-brand">
+                                @if (auth()->user()->avatar == null)
+                                    <div class="m-2"> <i class=" fas fa-user-circle fa-8x rounded-circle border" style="color: #375A64;"></i> </div>
+                                @else
+                                    <img style="border: solid #e5e6e7 3px" class="rounded-circle " width="115px" src="/uploads/avatars/{{auth()->user()->avatar }}" alt="perfil">
+                                @endif
+                            </div>
+                            <div class="col"></div>
+                            <div class="col-lg-9 m-2 text-center" >
+                                <p class=" display-4 text-light font-weight-bold">Bienvenido a SYSTAG</p>
+                                <h4 class=" text-uppercase text-light">{{auth()->user()->nombre }} {{auth()->user()->apellido }}</h4>
+                            </div>
                         </div>
-                        <div class="col-lg-11 mt-4" >
-                            <p class=" text-light font-weight-bold">BIENVENIDO A SYSTAG</p>
-                            <h5 style="margin-top: -10px" class="text-uppercase text-light">{{auth()->user()->nombre }} {{auth()->user()->apellido }}</h5>
-                        </div>
-                  </div>
-                 </div>
-              {{-- </div> --}}
+              </div>
 
               <div class="col-lg-12 bg-light" >
                 <div class="header-links mt-3 ml-3">

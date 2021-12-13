@@ -140,6 +140,11 @@ Route::resource('horarioclases', HorarioclaseController::class)->only(['index'])
  Route::get('/getEstudiantessus/{id}', [SuspensoController::class, 'getEstudiantessus'])->name('getEstudiantessus');
 
 
+ // autorizacion estados
+ Route::post('/habilitarEstado/{id}', [CalificacioneController::class,'habilitarEstado'])->name('habilitarEstado');
+ Route::post('/autorizarSuspenso/{id}', [SuspensoController::class,'autorizarSuspenso'])->name('autorizarSuspenso');
+
+
 
 
 

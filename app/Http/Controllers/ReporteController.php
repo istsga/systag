@@ -21,9 +21,11 @@ class ReporteController extends Controller
         public function reporteMatricula($id)
         {
             $this->authorize('view', new Matricula);
+
             $matricula = Matricula::
                 join('asignaciones','asignaciones.id','=','matriculas.asignacione_id')
                 ->join('periodos','periodos.id','=','asignaciones.periodo_id')
+                ->select('matriculas.*')
                 ->where('matriculas.id',$id)
                 ->first();
 

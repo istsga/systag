@@ -43,10 +43,10 @@
     <div class="informacion">
         <p style="font-size: 15px">HORARIO DE CLASES</p>
         <div class="informacion-1">
-            <p>CARRERA: <span>{{$horarios[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}</span></p>
+            {{-- <p>CARRERA: <span>{{$horarios[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}</span></p> --}}
         </div>
         <div class="informacion-2">
-            <p>PERIODO ACADÉMICO: <span>{{$horarios[0]->asignacione->periodacademicos->pluck('periodo')->implode(', ')}}</span></p>
+            {{-- <p>PERIODO ACADÉMICO: <span>{{$horarios[0]->asignacione->periodacademicos->pluck('periodo')->implode(', ')}}</span></p> --}}
         </div>
     </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asignacione;
 use App\Models\Estudiante;
+use App\Models\Estudiantenomina;
 use App\Models\Periodacademico;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -17,6 +18,8 @@ class EstudiantenominaController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('view', new Estudiantenomina);
+
         $periodacademicos = Periodacademico::all();
 
         $periodacademico_id=$request->get('periodacademico_id');

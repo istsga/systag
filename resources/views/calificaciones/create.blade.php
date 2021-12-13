@@ -75,7 +75,7 @@
                                 </label>
                                 <div class="input-group">
                                     <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror">
-                                        <option class="form-control" value=""> == Seleccionar == </option>
+                                        {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-user"></i></span></div>
@@ -84,6 +84,7 @@
                             </div>
                         </div>
                     </div>
+                    <em class="mt-2 "> Registro de notas permitido hasta 15 posterior de la fecha de suspensión establecida en el horario</em>
             </div>
         </div>
 
@@ -298,22 +299,21 @@ function calificacionPeriodo(){
         axios.get('/getAsignacionescal/'+id)
         .then((resp)=>{
             var asignaciones = document.getElementById("asignacione_id");
-            console.log(id);
-            console.log(Object.keys(resp.data).length);
             for (i = 0; i < Object.keys(resp.data).length; i++) {
             var option = document.createElement('option');
             option.value = resp.data[i].id;
-            console.log(option.text = resp.data[i].id);
             option.text = resp.data[i].id+' '+resp.data[i].nombre+' | '+resp.data[i].nombrePeriodo+' | '+resp.data[i].nombreSeccion+' | '+resp.data[i].nombreParalelo;
-            console.log('paso 1');
-            console.log(resp.data[i].id, "{{ old("asignacione_id") }}" );
-            console.log('paso 2');
             if(resp.data[i].id == "{{ old("asignacione_id") }}")
             {
                 option.selected= true;
             }
 
             asignaciones.appendChild(option);
+            }
+            if(Object.keys(resp.data).length==0){
+                document.getElementById("asignacione_id").length  = 1
+                asignaciones.options[0].value = ""
+                asignaciones.options[0].text = " == Selecionar == "
             }
             calificacionAsignacion();
         })
@@ -322,6 +322,7 @@ function calificacionPeriodo(){
         document.getElementById("asignacione_id").length  = 1
         asignaciones.options[0].value = ""
         asignaciones.options[0].text = " == Selecionar == "
+        calificacionAsignacion();
       }
 }
 
@@ -332,57 +333,76 @@ function calificacionAsignacion(){
         asignaturas.remove(i);
     }
     var id = document.getElementById('asignacione_id').value;
-    axios.get('/getAsignaturascal/'+id)
-      .then((resp)=>{
-        var asignaturas = document.getElementById("asignatura_id");
-        console.log(resp.data);
+    console.log(id);
+    if(id){
+        axios.get('/getAsignaturascal/'+id)
+        .then((resp)=>{
+            var asignaturas = document.getElementById("asignatura_id");
+            console.log(resp.data);
 
-        for (i = 0; i < Object.keys(resp.data).length; i++) {
-          var option = document.createElement('option');
-          option.value = resp.data[i].asignatura_id;
-          option.text = resp.data[i].nombre;
-
-          if(resp.data[i].asignatura_id == "{{ old("asignatura_id") }}")
-            {
-                option.selected= true;
-            }
-          asignaturas.appendChild(option);
-        }
-        if(Object.keys(resp.data).length==0){
+            for (i = 0; i < Object.keys(resp.data).length; i++) {
             var option = document.createElement('option');
-            option.value = '';
-            option.text = 'No hay datos';
+            option.value = resp.data[i].asignatura_id;
+            option.text = resp.data[i].nombre;
+
+            if(resp.data[i].asignatura_id == "{{ old("asignatura_id") }}")
+                {
+                    option.selected= true;
+                }
             asignaturas.appendChild(option);
-        }
-        calificacionEstudiante()
-      })
-      .catch(function (error) {console.log(error);})
+            }
+            if(Object.keys(resp.data).length==0){
+                var option = document.createElement('option');
+                option.value = '';
+                option.text = 'No hay datos';
+                asignaturas.appendChild(option);
+            }
+            calificacionEstudiante();
+        })
+        .catch(function (error) {console.log(error);})
+    }else{
+        document.getElementById("asignatura_id").length  = 1
+        asignaturas.options[0].value = ""
+        asignaturas.options[0].text = " == Selecionar == "
+        calificacionEstudiante();
+
+    }
 }
+
 
 function calificacionEstudiante(){
     var estudiantes = document.getElementById("matricula_id");
     for (let i = estudiantes.options.length; i >= 0; i--) {
         estudiantes.remove(i);
     }
-    var periodos_id = document.getElementById('periodacademico_id').value;
+
+    //var periodos_id = document.getElementById('periodacademico_id').value;
     var asignacion_id = document.getElementById('asignacione_id').value;
     var asignatura_id = document.getElementById('asignatura_id').value;
-    console.log('/getEstudiantescal/'+periodos_id+'_'+asignacion_id+'_'+asignatura_id);
-    axios.get('/getEstudiantescal/'+periodos_id+'_'+asignacion_id+'_'+asignatura_id)
-      .then((resp)=>{
-        var estudiantes = document.getElementById("matricula_id");
-        for (i = 0; i < Object.keys(resp.data).length; i++) {
-          var option = document.createElement('option');
-          option.value = resp.data[i].estudiante_id;
-          option.text = resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni;
-          if(resp.data[i].estudiante_id == "{{ old("matricula_id") }}")
-            {
-                option.selected= true;
+    //console.log('/getEstudiantescal/'+periodos_id+'_'+asignacion_id+'_'+asignatura_id);
+    if(asignatura_id){
+        axios.get('/getEstudiantescal/'+asignacion_id+'_'+asignatura_id)
+        .then((resp)=>{
+            var estudiantes = document.getElementById("matricula_id");
+            for (i = 0; i < Object.keys(resp.data).length; i++) {
+            var option = document.createElement('option');
+            option.value = resp.data[i].estudiante_id;
+            option.text = resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni;
+            if(resp.data[i].estudiante_id == "{{ old("matricula_id") }}")
+                {
+                    option.selected= true;
+                }
+            estudiantes.appendChild(option);
             }
-          estudiantes.appendChild(option);
-        }
-      })
-      .catch(function (error) {console.log(error);})
+        })
+        .catch(function (error) {console.log(error);})
+    }else{
+        document.getElementById("matricula_id").length  = 1
+        estudiantes.options[0].value = ""
+        estudiantes.options[0].text = " == Selecionar == "
+        //calificacionEstudiante();
+
+    }
 }
 
 </script>

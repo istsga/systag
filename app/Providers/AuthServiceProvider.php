@@ -33,6 +33,10 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Calificacione'              => 'App\Policies\CalificacionePolicy',
         'App\Models\Suspenso'                   => 'App\Policies\SuspensoPolicy',
 
+        //VISTAS
+        'App\Models\Estudiantenomina'            => 'App\Policies\EstudiantenominaPolicy',
+        'App\Models\Horarioclase'                => 'App\Policies\HorarioclasePolicy',
+
         //REPORTES
         'App\Models\Egresado'                   => 'App\Policies\EgresadoPolicy',
         'App\Models\Recordacademico'            => 'App\Policies\RecordacademicoPolicy',

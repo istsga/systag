@@ -93,10 +93,6 @@
                                                 @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="card p-3">
-                                    <div class="row">
 
                                         <div class="form-group col-lg-4 ">
                                             <label for="orden" class="col-form-label font-weight-bold text-muted">Orden
@@ -127,10 +123,16 @@
                                                     @endforeach --}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary far fa-folder"></i></span></div>
+                                                    <i class=" text-primary fas fa-folder"></i></span></div>
                                                 @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
                                             </div>
                                         </div>
+
+                                    </div>
+                                </div>
+                                <div class="card p-3">
+                                    <div class="row">
+
 
                                         <div class="form-group col-lg-4">
                                             <label for="dia_semana" class="col-form-label font-weight-bold text-muted small mt-1">DÍAS
@@ -187,7 +189,6 @@
                                                     <tr>
                                                         <th class="text-center"><font>Nro</font></th>
                                                         <th class="align-middle"><font>DÍA</font></font></th>
-                                                        <th class="align-middle"><font>Asignatura</font></font></th>
                                                         <th class="text-center align-middle"><font>Hora de Inicio</font></font></th>
                                                         <th class="text-center align-middle"><font>Hora Final</font></font></th>
                                                         <th class="text-center align-middle"><font>Acción</font></font></th>
@@ -239,6 +240,7 @@
                 }
             })
             .catch(function (error) {console.log(error);})
+            //agregarHorario();
         } else{
             document.getElementById("asignatura_id").length  = 1
             asignaturas.options[0].value = ""
@@ -262,15 +264,12 @@ var cont=1;
 function agregarHorario(){
 
       Dia_semana=$("#dia_semana option:selected").text();
-      Asignatura_id=$("#asignatura_id").val();
-      Asignatura=$("#asignatura_id option:selected").text();
       Hora_inicio=$("#hora_inicio").val();
       Hora_final=$("#hora_final").val();
       console.log(Dia_semana , Hora_inicio, Hora_final );
       if(Dia_semana!=""){
             var fila='</tr><tr class="selected" id="fila'+cont+'"><td class="text-center"><input type="hidden" name="cont" value="'+cont+'">'+cont+
                 '</td><td><input type="hidden" name="Dia_semana[]" value="'+Dia_semana+'">'+Dia_semana+
-                '</td><td><input type="hidden" name="Asignatura_id[]" value="'+Asignatura_id+'">'+Asignatura+
                 '</td><td class="text-center"><input type="hidden" name="Hora_inicio[]" value="'+Hora_inicio+'">'+Hora_inicio+
                 '</td><td class="text-center"><input type="hidden" name="Hora_final[]" value="'+Hora_final+'">'+Hora_final+
                 '</td><td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');">X</button></td>';

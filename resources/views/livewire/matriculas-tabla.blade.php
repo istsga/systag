@@ -54,10 +54,6 @@
                         @endcan
 
                         @can('view', $matricula)
-                            <a class=" btn  btn-sm  btn-dark mr-3 mt-2 " href="{{route('matriculas.show', $matricula)}}"><i class="fas fa-eye"></i></a>
-                        @endcan
-
-                        @can('view', $matricula)
                             <a class=" btn  btn-sm  btn-danger mr-3 mt-2 " href="{{route('reporteMatricula', $matricula->id)}}" target="_blank"><i class="fas fa-file-pdf"></i></a>
                         @endcan
 

@@ -15,12 +15,8 @@ class HorarioSeeder extends Seeder
     public function run()
     {
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
             'asignacione_id' => '2',
-            //'asignatura_id'  => '1',
+            'asignatura_id'  => '1',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',
@@ -29,12 +25,8 @@ class HorarioSeeder extends Seeder
         ]);
 
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
             'asignacione_id' => '2',
-            //'asignatura_id'  => '2',
+            'asignatura_id'  => '2',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',
@@ -43,12 +35,8 @@ class HorarioSeeder extends Seeder
         ]);
 
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
             'asignacione_id' => '1',
-            //'asignatura_id'  => '3',
+            'asignatura_id'  => '3',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',
@@ -57,12 +45,8 @@ class HorarioSeeder extends Seeder
         ]);
 
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
             'asignacione_id' => '2',
-            //'asignatura_id'  => '4',
+            'asignatura_id'  => '4',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',
@@ -71,12 +55,8 @@ class HorarioSeeder extends Seeder
         ]);
 
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
             'asignacione_id' => '2',
-            //'asignatura_id'  => '5',
+            'asignatura_id'  => '5',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',
@@ -85,12 +65,8 @@ class HorarioSeeder extends Seeder
         ]);
 
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
             'asignacione_id' => '2',
-            //'asignatura_id'  => '6',
+            'asignatura_id'  => '6',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',
@@ -101,12 +77,8 @@ class HorarioSeeder extends Seeder
 
         //ASIGNACIONE 2
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
             'asignacione_id' => '3',
-            //'asignatura_id'  => '7',
+            'asignatura_id'  => '7',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',
@@ -115,12 +87,8 @@ class HorarioSeeder extends Seeder
         ]);
 
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
-            'asignacione_id' => '3',
-            //'asignatura_id'  => '1',
+            'asignacione_id' => '2',
+            'asignatura_id'  => '11',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',
@@ -129,12 +97,8 @@ class HorarioSeeder extends Seeder
         ]);
 
         Horario::create([
-            // 'dia_semana'    => 'Lunes',
-            // 'hora_inicio'   => '8:00',
-            // 'hora_final'    => '8:00',
-            //'cantidad_hora' => '1',
-            'asignacione_id' => '3',
-            //'asignatura_id'  => '8',
+            'asignacione_id' => '2',
+            'asignatura_id'  => '8',
             'fecha_inicio'   => '2020-02-17',
             'fecha_examen'   => '2020-02-19',
             'fecha_suspension'  => '2020-02-22',

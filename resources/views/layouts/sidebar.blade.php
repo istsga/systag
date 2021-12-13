@@ -27,7 +27,8 @@
         <ul class="c-sidebar-nav-dropdown-items ">
           @can('view', new App\Models\Docente)
             <li class="c-sidebar-nav-item ">
-              <a class="c-sidebar-nav-link" href="{{route('docentes.index')}}">
+              <a class="c-sidebar-nav-link " href="{{route('docentes.index')}}">
+              {{-- <a class="c-sidebar-nav-link {{ request()->routeIs('docentes*') ? 'active' : '' }}" href="{{route('docentes.index')}}"> --}}
                 <span class="c-sidebar-nav-icon  fas fa-user ml-n4"></span> Docentes
               </a>
             </li>
@@ -80,13 +81,14 @@
             </li>
           @endcan
 
-          {{-- @can('view', new App\Models\Horariodocente) --}}
+
+          @can('view', new App\Models\Horarioclase)
             <li class="c-sidebar-nav-item">
               <a class="c-sidebar-nav-link" href="{{route('horarioclases.index')}}">
                 <span class="c-sidebar-nav-icon  fas fa-user-clock ml-n4"></span> Horario de clases
               </a>
             </li>
-          {{-- @endcan --}}
+          @endcan
 
         </ul>
       </li>
@@ -165,14 +167,15 @@
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
 
-            {{-- @can('view', new App\Models\Egresado) --}}
+            @can('view', new App\Models\Estudiantenomina)
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="{{route('estudiantenominas.index')}}">
                 <i class="c-sidebar-nav-icon fas fa-user-edit ml-n4"></i>
                 Nómina Estudiantes</strong>
                 </a>
             </li>
-            {{-- @endcan --}}
+            @endcan
+
             @can('view', new App\Models\Egresado)
             <li class="c-sidebar-nav-item">
                 <a class="c-sidebar-nav-link" href="{{route('egresados.index')}}" >

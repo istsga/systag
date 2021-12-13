@@ -12,6 +12,7 @@ use App\Models\Matricula;
 use App\Models\Periodacademico;
 use App\Models\Suspenso;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CalificacioneController extends Controller
 {
@@ -31,9 +32,17 @@ class CalificacioneController extends Controller
             // allowed()
             // ->get();
 
-        $calificaciones = Calificacione::
-            where('asignacione_id', $queryAsignacione)
-            ->where('asignatura_id', $queryAsignatura)
+        $calificaciones = Calificacione::join('matriculas',function($join){
+            $join->on('matriculas.asignacione_id','=','calificaciones.asignacione_id')
+                ->on('matriculas.estudiante_id','=','calificaciones.estudiante_id');
+            })
+            ->join('asignatura_matricula',function($join){
+                $join->on('asignatura_matricula.matricula_id','=','matriculas.id')
+                    ->on('asignatura_matricula.asignatura_id','=','calificaciones.asignatura_id');
+            })
+            ->select('calificaciones.*','asignatura_matricula.estado_calificacion')
+            ->where('calificaciones.asignacione_id', $queryAsignacione)
+            ->where('calificaciones.asignatura_id', $queryAsignatura)
             ->allowed()
             ->get();
 
@@ -55,6 +64,8 @@ class CalificacioneController extends Controller
             ->allowed()
             ->groupBy('asignaciones.id')
             ->get();
+
+            //dd($calificaciones);
 
         return view('calificaciones.index', compact('calificaciones', 'periodacademicos', 'asignaciones', 'query', 'asignaturas', 'queryAsignatura','queryAsignacione'));
     }
@@ -114,12 +125,20 @@ class CalificacioneController extends Controller
         join('matriculas','matriculas.id','=','asignatura_matricula.matricula_id')
         ->join('asignaturas','asignaturas.id','=','asignatura_matricula.asignatura_id')
         ->join('asignatura_docente','asignatura_docente.asignatura_id','=','asignatura_matricula.asignatura_id')
-        ->select('matriculas.asignacione_id','asignatura_matricula.asignatura_id','asignaturas.nombre')
+        //restrincion ingreso de notas por fechas
+        ->join('horarios',function($join){
+            $join->on('horarios.asignacione_id','=','matriculas.asignacione_id')
+                ->on('horarios.asignatura_id','=','asignaturas.id');
+        })
+        ->select('matriculas.asignacione_id','asignatura_matricula.asignatura_id','asignaturas.nombre','horarios.fecha_suspension')
         ->where('matriculas.asignacione_id',$id)
         ->where('asignatura_docente.asignacione_id',$id)
+         //restrincion ingreso de notas por fechas
+        ->where('horarios.fecha_suspension','>=',now()->addDays(-16)->format('Y-m-d'))
         ->allowed()
-        ->groupBy('matriculas.asignacione_id','asignatura_matricula.asignatura_id','asignaturas.nombre')
+        ->groupBy('matriculas.asignacione_id','asignatura_matricula.asignatura_id','asignaturas.nombre','horarios.fecha_suspension')
         ->get();
+       //dd($asignaturas);
         return($asignaturas);
     }
 
@@ -136,6 +155,27 @@ class CalificacioneController extends Controller
         ->where('asignatura_matricula.asignatura_id',$queryAsignatura)
         ->get();
         return ($matriculas);
+    }
+
+    //Habilitar edicion de calificaciones
+    public function habilitarEstado($dato)
+    {
+        //Capturar 3 datos para evitar la confucion de otros estudiates
+        $datoNuevo=explode("_",$dato);
+        $asignacione_id=$datoNuevo[0];
+        $estudiante_id=$datoNuevo[1];
+        $asignatura_id=$datoNuevo[2];
+
+        $matricula=Matricula::where('asignacione_id',$asignacione_id)
+            ->where('estudiante_id',$estudiante_id)->first();
+        if($matricula){
+            $matricula_detalle=Asignatura_matricula::where('matricula_id',$matricula->id)
+                ->where('asignatura_id',$asignatura_id)->first();
+            if($matricula_detalle){
+                $matricula_detalle->estado_calificacion = !$matricula_detalle->estado_calificacion;
+                $matricula_detalle->update();
+            }
+        }
     }
 
     /**
