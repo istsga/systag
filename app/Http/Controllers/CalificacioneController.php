@@ -154,6 +154,7 @@ class CalificacioneController extends Controller
         ->where('asignacione_id',$asignacione_id)
         ->where('asignatura_matricula.asignatura_id',$queryAsignatura)
         ->get();
+        //dd($matriculas);
         return ($matriculas);
     }
 

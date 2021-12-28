@@ -106,7 +106,7 @@
                         <div class="row m-2">
                         <div class="col-lg-4">
                             <div class="c-callout c-callout-info"> <font class="text-muted small font-weight-bold">NOTA FINAL</font>
-                                <div class="text-value-lg"><input type="number" value="{{--$matriculas[0]->promedio_final--}}"  name="promedio_final" id="promedio_final"  class="form-control @error('promedio_final') is-invalid @enderror"  step="0.01" oninput="calcular()">
+                                <div class="text-value-lg"><input type="number" value="{{--$matriculas[0]->promedio_final--}}"  name="promedio_final" id="promedio_final"  class="form-control @error('promedio_final') is-invalid @enderror"  step="0.01" oninput="calcular()" readonly >
                                 @error ('promedio_final') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                             </div>
                             </div>

@@ -27,7 +27,7 @@ class EstudianteStoreRequest extends FormRequest
             'tipo_identificacion' => ['required', 'boolean:1,0'],
             'nombre' => ['required', 'regex:/^[\pL\s\-]+$/u',  'min:3', 'max:30'],
             'apellido' => ['required', 'regex:/^[\pL\s\-]+$/u',  'min:3', 'max:30'],
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,svg|max:1024',
             'estadocivile_id' => ['required'],
             'fecha_nacimiento' => ['required', 'date'],
             'nacionalidad' => ['required', 'regex:/^[\pL\s\-]+$/u', 'min:5', 'max:30'],

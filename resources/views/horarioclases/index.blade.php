@@ -88,54 +88,47 @@
                                 <th class="text-center align-middle"><font >Viernes</font></th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            @foreach ($horarios as $horario)
+                            @foreach ($horarios1 as $horarios )
                             <tr>
-                                <td class="text-center table-secondary align-middle text-dark">{{$horario->hora_inicio}} <br> {{$horario->hora_final}} </td>
-                                @foreach ($horarios1 as $horario1)
-                                @if($horario->hora_inicio==$horario1->hora_inicio and $horario->hora_final==$horario1->hora_final)
+                                <td class="align-middle">{{$horarios->hora_inicio}} - {{$horarios->hora_final}} </td>
 
-                                @if($horario1->lunesnombreasignatura)
-                                <td class=" table-secondary  align-middle text-dark">{{$horario1->lunesnombreasignatura}}  <hr class=" mt-2 mb-1 bg-primary"><span class="text-muted small">Profesor: {{$horario1->lunesnombredocente}} {{$horario1->lunesapellidodocente}}</span> </td>
-                                @endif
-                                @if($horario1->martesnombreasignatura)
-                                <td class="table-secondary align-middle text-dark ">{{$horario1->martesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor: {{$horario1->martesnombredocente}} {{$horario1->martesapellidodocente}}</span> </td>
-                                @endif
-                                @if($horario1->miercolesnombreasignatura)
-                                <td class="table-secondary align-middle text-dark ">{{$horario1->miercolesnombreasignatura}}  <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horario1->miercolesnombredocente}} {{$horario1->miercolesapellidodocente}}</span> </td>
-                                @endif
+                                <td class="align-middle">{{$horarios->lunesnombreasignatura}} <hr class=" mt-2 mb-1 bg-primary"><span class="text-muted small">Profesor: {{$horarios->lunesnombredocente}} {{$horarios->lunesapellidodocente}}</span> </td>
 
-                                @if($horario1->juevesnombreasignatura )
-                                <td class="table-secondary align-middle text-dark ">{{$horario1->juevesnombreasignatura }} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horario1->juevesnombredocente}} {{$horario1->juevesapellidodocente}}</span> </td>
+                                <td class="align-middle">{{$horarios->martesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor: {{$horarios->martesnombredocente}} {{$horarios->martesapellidodocente}}</span> </td>
 
-                                @endif
-
-                                @if($horario1->viernesnombreasignatura )
-                                <td class="table-secondary align-middle text-dark ">{{$horario1->viernesnombreasignatura}}<hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor: {{$horario1->viernesnombredocente}} {{$horario1->viernesapellidodocente}}</span> </td>
-                                @endif
-
-                                @endif
-                                @endforeach
+                                {{-- @if ($horarios->miercolesnombreasignatura!= 0) --}}
+                                <td class="align-middle">{{$horarios->miercolesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horarios->miercolesnombredocente}} {{$horarios->miercolesapellidodocente}}</span> </td>
+                                {{-- @else
+                                <p>datos</p>
+                                @endif --}}
+                                <td class="align-middle">{{$horarios->juevesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horarios->juevesnombredocente}} {{$horarios->juevesapellidodocente}}</span> </td>
+                                <td class="align-middle">{{$horarios->viernesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor: {{$horarios->viernesnombredocente}} {{$horarios->viernesapellidodocente}}</span> </td>
                             </tr>
                             @endforeach
 
+                        </tbody>
                     </table>
                 </div>
                 <div class="col-lg-12">
-                    <p class="font-weight-bold text-muted">FECHA DE ACTIVIDADES ACADÉMICAS</p>
-                    <hr class="bg-secondary" style=" border-top: dotted 1px">
-                    <div class="row">
+                    {{-- <p class="font-weight-bold text-muted">FECHA DE ACTIVIDADES ACADÉMICAS</p> --}}
+                    <div class="row small font-weight-bold ">
                         <div class="form-group col-lg-3 align-middle">
-                            <p class="font-weight-bold text-muted"> Inicio : <span class="font-weight-normal"> {{$horario->fecha_inicio}}</span></p>
+                            @foreach ($horarios1 as $horario)
+                                {{$horario->fecha_inicio}}
+                                {{$horario->fecha_final}}
+                            @endforeach
+                            <p class="font-weight-bold text-muted"> FI = Fecha Inicio</p>
                         </div>
                         <div class="form-group col-lg-3 align-middle">
-                            <p class="font-weight-bold text-muted"> Final : <span class="font-weight-normal"> {{ $horario->fecha_final}}</span></p>
+                            <p class="font-weight-bold text-muted"> FF = Fecha Final </p>
                         </div>
                         <div class="form-group col-lg-3 align-middle">
-                            <p class="font-weight-bold text-muted">Examen Principal : <span class="font-weight-normal"> {{$horario->fecha_examen}}</span></p>
+                            <p class="font-weight-bold text-muted"> FEP = Fecha Examen Principal </p>
                         </div>
                         <div class="form-group col-lg-3 ">
-                            <p class="font-weight-bold text-muted">Examen Suspensión : <span class="font-weight-normal"> {{$horario->fecha_suspension}}</span></p>
+                            <p class="font-weight-bold text-muted">FEX = Fecha Examen Suspensión </p>
                         </div>
                     </div>
                 </div>

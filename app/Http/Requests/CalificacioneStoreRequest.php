@@ -23,10 +23,15 @@ class CalificacioneStoreRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $asignacione_id = $this->asignacione_id;
+        //dd($estudiante_id);
+
+       return [
             'asignacione_id' => ['required' ],
             'asignatura_id' => ['required' ],
+            //'firstName' => 'unique:people,firstName,NULL,id,lastName,' . $request->lastName,
             'estudiante_id' => ['required'],
+            //'estudiante_id'=>'required|unique:calificaciones,estudiante_id,NULL,id,asignacione_id,'.$asignacione_id,
             'docencia'                  => ['required', 'numeric','between:0,10'],
             'experimento_aplicacion'    => ['required', 'numeric','between:0,10'],
             'trabajo_autonomo'          => ['required', 'numeric','between:0,10'],
@@ -39,5 +44,6 @@ class CalificacioneStoreRequest extends FormRequest
             'porcentaje_asistencia'     => ['required', 'numeric','between:0,100'],
             'observacion'               => ['required'],
         ];
+
     }
 }

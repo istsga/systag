@@ -44,6 +44,7 @@
                                                         <input type="file" id="seleccionArchivos" aria-describedby="inputGroupFileAddon01" class="form-control custom-file-input mt-2 @error('foto') is-invalid @enderror"
                                                         name="foto" value="{{old('foto')}}" placeholder="Foto" >
                                                         <label class="custom-file-label" for="inputGroupFile01">Elegir imagen </label>
+                                                        <em class="small text-muted">Formato JPG, JPEG  |  Peso Max 1 MB</em>
                                                         @error ('foto') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
                                                     </div>
                                                 </div>

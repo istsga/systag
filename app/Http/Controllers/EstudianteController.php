@@ -34,7 +34,8 @@ class EstudianteController extends Controller
      */
     public function create(Request $request)
     {
-        $this->authorize('create', Estudiante::class);
+        $this->authorize('create', new Estudiante);
+        //$this->authorize('create', Estudiante::class);
         $query_canton=$request->get('direccion_cantone_id');
         if($query_canton)
             dd($query_canton);

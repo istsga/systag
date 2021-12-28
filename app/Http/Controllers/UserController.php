@@ -161,7 +161,7 @@ class UserController extends Controller
     public function update_avatar(Request $request){
 
         $request->validate([
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $user = User::find(Auth::user()->id);

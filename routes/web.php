@@ -52,99 +52,100 @@ use App\Http\Controllers\HorarioclaseController;
 // });
 
 
+
 Route::get('/', function () { return view('auth.login');})->middleware('guest');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('users', UserController::class);
-Route::get('profile', [UserController::class, 'profile']);
-Route::post('profile', [UserController::class, 'update_avatar']);
+Route::middleware(['auth'])->group(function () {
 
-Route::middleware('role:Administrador')
-->put('users/{user}/permisos', [UserPermisoController::class, 'update'])->name('users.permisos.update');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::resource('users', UserController::class);
+    Route::get('profile', [UserController::class, 'profile']);
+    Route::post('profile', [UserController::class, 'update_avatar']);
 
-Route::middleware('role:Administrador')
-->put('users/{user}/roles', [UserRoleController::class, 'update'])->name('users.roles.update');
+    Route::middleware('role:Administrador')
+    ->put('users/{user}/permisos', [UserPermisoController::class, 'update'])->name('users.permisos.update');
 
-Route::resource('roles', RoleController::class)->except(['show']);
-Route::resource('permisos', PermisoController::class)->only(['index']);
+    Route::middleware('role:Administrador')
+    ->put('users/{user}/roles', [UserRoleController::class, 'update'])->name('users.roles.update');
 
-Route::resource('carreras', CarreraController::class)->except(['show']);
-Route::resource('periodos', PeriodoController::class)->except(['show']);
-Route::resource('secciones', SeccioneController::class)->except(['show']);
-Route::resource('paralelos', ParaleloController::class)->except(['show']);
+    Route::resource('roles', RoleController::class)->except(['show']);
+    Route::resource('permisos', PermisoController::class)->only(['index']);
+    Route::resource('carreras', CarreraController::class)->except(['show']);
+    Route::resource('periodos', PeriodoController::class)->except(['show']);
+    Route::resource('secciones', SeccioneController::class)->except(['show']);
+    Route::resource('paralelos', ParaleloController::class)->except(['show']);
 
-Route::resource('asignaturas', AsignaturaController::class)->except(['show']);
-Route::get('/getPrerequisitos/{id}', [AsignaturaController::class, 'getPrerequisitos'])
-    ->name('getPrerequisitos');
+    Route::resource('asignaturas', AsignaturaController::class)->except(['show']);
+    Route::get('/getPrerequisitos/{id}', [AsignaturaController::class, 'getPrerequisitos'])
+        ->name('getPrerequisitos');
 
-Route::resource('periodacademicos', PeriodacademicoController::class)->except(['show']);
-Route::resource('asignaciones', AsignacioneController::class)->except(['show']);
-Route::resource('estudiantes', EstudianteController::class);
-Route::resource('docentes', DocenteController::class);
+    Route::resource('periodacademicos', PeriodacademicoController::class)->except(['show']);
+    Route::resource('asignaciones', AsignacioneController::class)->except(['show']);
+    Route::resource('estudiantes', EstudianteController::class)->except(['show']);
+    Route::resource('docentes', DocenteController::class)->except(['show']);
 
-Route::resource('convalidaciones', ConvalidacioneController::class);
-Route::get('/getConvalidaciones/{id}', [ConvalidacioneController::class, 'getConvalidaciones'])
-    ->name('getConvalidaciones');
+    Route::resource('convalidaciones', ConvalidacioneController::class);
+    Route::get('/getConvalidaciones/{id}', [ConvalidacioneController::class, 'getConvalidaciones'])
+        ->name('getConvalidaciones');
 
-Route::resource('matriculas', MatriculaController::class);
-Route::get('/getAsignaciones/{estudiante_id}', [MatriculaController::class, 'getAsignaciones'])
-    ->name('getAsignaciones');
-Route::get('/getAsignaturas/{id}/{estudiante_id}', [MatriculaController::class, 'getAsignaturas'])
-    ->name('getAsignaturas');
+    Route::resource('matriculas', MatriculaController::class);
+    Route::get('/getAsignaciones/{estudiante_id}', [MatriculaController::class, 'getAsignaciones'])
+        ->name('getAsignaciones');
+    Route::get('/getAsignaturas/{id}/{estudiante_id}', [MatriculaController::class, 'getAsignaturas'])
+        ->name('getAsignaturas');
 
-Route::resource('asignaturadocentes', AsignaturadocenteController::class);
-Route::resource('calificaciones', CalificacioneController::class);
-Route::resource('suspensos', SuspensoController::class);
-Route::resource('horarios', HorarioController::class);
+    Route::resource('asignaturadocentes', AsignaturadocenteController::class);
+    Route::resource('calificaciones', CalificacioneController::class);
+    Route::resource('suspensos', SuspensoController::class);
+    Route::resource('horarios', HorarioController::class);
 
-//REPORTES PDF
-Route::get('reportes-matriculas/{id}/data', [ReporteController::class, 'reporteMatricula'])->name('reporteMatricula');
-Route::get('reportes-horarios/{id}/data', [ReporteController::class, 'reporteHorarioE'])->name('reporteHorarioE');
-Route::get('reportes-horarioclase/{id}/data', [ReporteController::class, 'reporteHorarioClase'])->name('reporteHorarioClase');
-Route::get('reportes-calificaciones/{id}/data', [ReporteController::class, 'reporteCalificacion'])->name('reporteCalificacion');
-Route::get('reportes-suspensos/{id}/data', [ReporteController::class, 'reporteSuspenso'])->name('reporteSuspenso');
-Route::get('reportes-calificacionperiodos/{id}/data', [ReporteController::class, 'reporteCalificacionperiodo'])->name('reporteCalificacionperiodo');
-Route::get('reportes-egresado/{id}/data', [ReporteController::class, 'reporteEgresado'])->name('reporteEgresado');
-
-
-//INSTRUCCIONES
-Route::resource('calificacionperiodos', CalificacionperiodoController::class)->only(['index']);
-Route::resource('estudiantenominas', EstudiantenominaController::class)->only(['index']);
-Route::resource('egresados', EgresadoController::class)->only(['index']);
-Route::resource('userinstrucciones', UserinstruccioneController::class)->only(['index']);
-Route::resource('recordacademicos', RecordacademicoController::class)->only(['index']); //Incluye reporte PDF
-Route::resource('certificadoperiodos', CertificadoperiodoController::class)->only(['index']); //Incluye reporte PDF
-Route::resource('horarioclases', HorarioclaseController::class)->only(['index']);
+    //REPORTES PDF
+    Route::get('reportes-matriculas/{id}/data', [ReporteController::class, 'reporteMatricula'])->name('reporteMatricula');
+    Route::get('reportes-horarios/{id}/data', [ReporteController::class, 'reporteHorarioE'])->name('reporteHorarioE');
+    Route::get('reportes-horarioclase/{id}/data', [ReporteController::class, 'reporteHorarioClase'])->name('reporteHorarioClase');
+    Route::get('reportes-calificaciones/{id}/data', [ReporteController::class, 'reporteCalificacion'])->name('reporteCalificacion');
+    Route::get('reportes-suspensos/{id}/data', [ReporteController::class, 'reporteSuspenso'])->name('reporteSuspenso');
+    Route::get('reportes-calificacionperiodos/{id}/data', [ReporteController::class, 'reporteCalificacionperiodo'])->name('reporteCalificacionperiodo');
+    Route::get('reportes-egresado/{id}/data', [ReporteController::class, 'reporteEgresado'])->name('reporteEgresado');
 
 
-//PETICIONES ASINCRONAS
- //Usuarios
- Route::get('/getUsuarios/{id}', [UserController::class,'getUsuarios'])->name('getUsuarios');
-
- //Horarios
- Route::get('/getAsignaturashor/{id}', [HorarioController::class,'getAsignaturashor'])->name('getAsignaturashor');
-
- //Carga Horaria y Distributivo
- Route::get('/getAsignaturasdis/{id}', [AsignaturadocenteController::class,'getAsignaturasdis'])->name('getAsignaturasdis');
-
- //Calificacion
- Route::get('/getAsignacionescal/{id}', [CalificacioneController::class,'getAsignacionescal'])->name('getAsignacionescal');
- Route::get('/getAsignaturascal/{id}', [CalificacioneController::class, 'getAsignaturascal'])->name('getAsignaturascal');
- Route::get('/getEstudiantescal/{id}', [CalificacioneController::class, 'getEstudiantescal'])->name('getEstudiantescal');
-//  Route::get('/getAsignacionesfiltro/{id}', [CalificacioneController::class, 'getAsignacionesfiltro'])->name('getAsignacionesfiltro');
-//  Route::get('/getAsignaturasfiltro/{id}', [CalificacioneController::class, 'getAsignaturasfiltro'])->name('getAsignaturasfiltro');
-
- //Suspensos
- Route::get('/getAsignacionessus/{id}', [SuspensoController::class,'getAsignacionessus'])->name('getAsignacionessus');
- Route::get('/getAsignaturassus/{id}', [SuspensoController::class, 'getAsignaturassus'])->name('getAsignaturassus');
- Route::get('/getEstudiantessus/{id}', [SuspensoController::class, 'getEstudiantessus'])->name('getEstudiantessus');
+    //INSTRUCCIONES
+    Route::resource('calificacionperiodos', CalificacionperiodoController::class)->only(['index']);
+    Route::resource('estudiantenominas', EstudiantenominaController::class)->only(['index']);
+    Route::resource('egresados', EgresadoController::class)->only(['index']);
+    Route::resource('userinstrucciones', UserinstruccioneController::class)->only(['index']);
+    Route::resource('recordacademicos', RecordacademicoController::class)->only(['index']); //Incluye reporte PDF
+    Route::resource('certificadoperiodos', CertificadoperiodoController::class)->only(['index']); //Incluye reporte PDF
+    Route::resource('horarioclases', HorarioclaseController::class)->only(['index']);
 
 
- // autorizacion estados
- Route::post('/habilitarEstado/{id}', [CalificacioneController::class,'habilitarEstado'])->name('habilitarEstado');
- Route::post('/autorizarSuspenso/{id}', [SuspensoController::class,'autorizarSuspenso'])->name('autorizarSuspenso');
+    //PETICIONES ASINCRONAS
+    //Usuarios
+    Route::get('/getUsuarios/{id}', [UserController::class,'getUsuarios'])->name('getUsuarios');
+
+    //Horarios
+    Route::get('/getAsignaturashor/{id}', [HorarioController::class,'getAsignaturashor'])->name('getAsignaturashor');
+
+    //Carga Horaria y Distributivo
+    Route::get('/getAsignaturasdis/{id}', [AsignaturadocenteController::class,'getAsignaturasdis'])->name('getAsignaturasdis');
+
+    //Calificacion
+    Route::get('/getAsignacionescal/{id}', [CalificacioneController::class,'getAsignacionescal'])->name('getAsignacionescal');
+    Route::get('/getAsignaturascal/{id}', [CalificacioneController::class, 'getAsignaturascal'])->name('getAsignaturascal');
+    Route::get('/getEstudiantescal/{id}', [CalificacioneController::class, 'getEstudiantescal'])->name('getEstudiantescal');
+    //  Route::get('/getAsignacionesfiltro/{id}', [CalificacioneController::class, 'getAsignacionesfiltro'])->name('getAsignacionesfiltro');
+    //  Route::get('/getAsignaturasfiltro/{id}', [CalificacioneController::class, 'getAsignaturasfiltro'])->name('getAsignaturasfiltro');
+
+    //Suspensos
+    Route::get('/getAsignacionessus/{id}', [SuspensoController::class,'getAsignacionessus'])->name('getAsignacionessus');
+    Route::get('/getAsignaturassus/{id}', [SuspensoController::class, 'getAsignaturassus'])->name('getAsignaturassus');
+    Route::get('/getEstudiantessus/{id}', [SuspensoController::class, 'getEstudiantessus'])->name('getEstudiantessus');
 
 
+    // autorizacion estados
+    Route::post('/habilitarEstado/{id}', [CalificacioneController::class,'habilitarEstado'])->name('habilitarEstado');
+    Route::post('/autorizarSuspenso/{id}', [SuspensoController::class,'autorizarSuspenso'])->name('autorizarSuspenso');
+});
 
 
 

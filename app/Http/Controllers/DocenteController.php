@@ -59,8 +59,10 @@ class DocenteController extends Controller
      */
     public function show(Docente $docente)
     {
-        //
+        //return view('errors.404');
+
     }
+
 
     /**
      * Show the form for editing the specified resource.

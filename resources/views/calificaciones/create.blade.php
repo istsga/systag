@@ -109,7 +109,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXPERIMENTO APLICACIÓN</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'experimento_aplicacion', 0)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror" >
+                                    <input type="number" value="{{old( 'experimento_aplicacion', 0)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror" step="0.01">
                                 @error ('experimento_aplicacion') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">TRABAJO AUTÓNOMO</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'trabajo_autonomo', 0)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" >
+                                    <input type="number" value="{{old( 'trabajo_autonomo', 0)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" step="0.01" >
                                 @error ('trabajo_autonomo') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXAMEN PRINCIPAL</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old('examen_principal')}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " >
+                                    <input type="number" value="{{old('examen_principal')}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " step="0.01" >
                                 @error ('examen_principal') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -136,13 +136,12 @@
                     </div>
                 </div>
 
-                {{-- <hr class="bg-dark" style=" border-top: dotted 1.2px"> --}}
                 <div class="card shadow-sm">
                     <div class="row m-2">
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">SUMA</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old('suma')}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light" readonly>
+                                    <input type="number" value="{{old('suma')}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light" readonly step="0.01">
                                     @error ('suma') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -151,7 +150,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO EN DECIMALES</font>
                                 <div class="text-value-lg">
-                                    <input type="decimal" value="{{old('promedio_decimal')}}"  name="promedio_decimal" id="promedio_decimal" class="form-control @error('promedio_decimal') is-invalid @enderror text-info bg-light" readonly>
+                                    <input type="decimal" value="{{old('promedio_decimal')}}"  name="promedio_decimal" id="promedio_decimal" class="form-control @error('promedio_decimal') is-invalid @enderror text-info bg-light" readonly step="0.01">
                                     @error ('promedio_decimal') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -160,7 +159,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO FINAL (entero)</font>
                                     <div class="text-value-lg">
-                                        <input type="number" name="promedio_final" id="promedio_final" class="form-control @error('promedio_final') is-invalid @enderror text-info bg-light" readonly>
+                                        <input type="number" name="promedio_final" id="promedio_final" class="form-control @error('promedio_final') is-invalid @enderror text-info bg-light" readonly step="0.01">
                                     @error ('promedio_final') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                     </div>
                             </div>
@@ -176,7 +175,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <hr class="bg-dark" style=" border-top: dotted 1.2px"> --}}
                 <div class="card shadow-sm">
                     <div class="row m-2">
                         <div class="col-lg-3">
@@ -238,7 +236,8 @@ function calcular(){
     examen_principal=document.getElementById('examen_principal').value;
 
     var total=parseFloat(docencia)+parseFloat(experimento_aplicacion)+parseFloat(trabajo_autonomo);
-  document.getElementById("suma").value = total;
+    total=parseFloat(total).toFixed(2)
+    document.getElementById("suma").value = total;
 
   promedio=parseFloat(total).toFixed(2) / 3;
   promedio=parseFloat(promedio).toFixed(2)
@@ -246,22 +245,25 @@ function calcular(){
 
 
   promedio_final=(Number(promedio)+Number(examen_principal))/2;
+
   promedio_final=parseFloat(promedio_final).toFixed(0);
 
   if (total>0){
-    document.getElementById("promedio_final").value = promedio_final;
+    document.getElementById("promedio_final").value = parseFloat(promedio_final).toFixed(2);
     document.getElementById("promedio_letra").value = Unidades(parseInt(promedio_final));
-
-
   }
 
-  if (promedio_final<6.5){
-    document.getElementById("observacion").value='REPROBADO';
+  if (promedio_final<7){
+    document.getElementById("observacion").value='SUSPENSO';
   }else{
    document.getElementById("observacion").value="APROBADO";
   }
-  if(examen_principal<=0){
-    document.getElementById("observacion").value="EN CURSO";
+  if(promedio_final==10){
+    document.getElementById("observacion").value="EXONERADO";
+  }
+
+  if(promedio_final<=2){
+    document.getElementById("observacion").value="REPROBADO";
   }
 
 }

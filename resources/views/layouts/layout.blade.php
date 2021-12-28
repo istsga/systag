@@ -128,8 +128,8 @@
         @yield('content')
 
         <footer class="c-footer">
-          <div><a href="https://sangabrielriobamba.edu.ec" target="_top"> Instituto Tecnológico SAN GABRIEL</a> &copy; 2021</div>
-          <div class="ml-auto">Desarrollado por &nbsp;<a href="#">Diego Karina Marco</a></div>
+          <div ><a href="https://sangabrielriobamba.edu.ec" target="_top"> Instituto Superior Tecnológico SAN GABRIEL</a> <span class="font-weight-bold text-muted"> &copy; 2022 </span> </div>
+          <div class="ml-auto">Desarrollado por &nbsp;<a href="#"> <span class="font-weight-bold text-muted">Diego Karina Marco</span> </a></div>
         </footer>
       </div>
     </div>

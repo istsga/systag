@@ -28,15 +28,12 @@ class HorarioController extends Controller
         $periodacademicos = Periodacademico::get();
         $query=trim($request->get('periodacademico_id'));
         $queryAsignacione=trim($request->get('asignacione_id'));
-        //dd($query,$queryAsignacione);
+
         $horarios = Horario::
-            // join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','horarios.asignacione_id')
-            // ->join('asignacione_carrera','asignacione_carrera.asignacione_id','=','horarios.asignacione_id')
             join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
             ->join('asignaturas','asignaturas.id','=','horarios.asignatura_id')
             ->join('asignatura_docente',function($join){
                 $join->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
-                    //->on('asignatura_docente.asignatura_id','=','detalle_horarios.asignatura_id');
             })
             ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
             ->groupBy('horarios.id','horarios.asignacione_id','horarios.fecha_inicio','horarios.fecha_final', 'horarios.fecha_examen', 'horarios.fecha_suspension', 'asignaturas.nombre', 'horarios.asignatura_id', 'docentes.nombre', 'docentes.apellido')
@@ -44,7 +41,6 @@ class HorarioController extends Controller
             ->select('horarios.id','horarios.asignacione_id','horarios.fecha_inicio','horarios.fecha_final', 'horarios.fecha_examen', 'horarios.fecha_suspension',  'asignaturas.nombre as nombreasignatura','docentes.nombre as nombredocente','docentes.apellido as apellidodocente', 'horarios.asignatura_id')
             ->get();
 
-           //dd($horarios);
 
         $asignaciones = Asignacione::
         join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','asignaciones.id')
@@ -112,7 +108,6 @@ class HorarioController extends Controller
             $detalle_horario->dia_semana=$dia_semana[$i];
             $detalle_horario->hora_inicio=$hora_inicio[$i];
             $detalle_horario->hora_final=$hora_final[$i];
-            //dd($detalle_horario);
             $detalle_horario->save();
             $i++;
         }
@@ -185,16 +180,13 @@ class HorarioController extends Controller
      */
     public function destroy($dato)
     {
-
+        //$this->authorize('delete', $horario);
 
         $datoNuevo=explode("_",$dato);
         $horario_id=$datoNuevo[0];
         $asignatura_id=$datoNuevo[1];
 
         $horario=Horario::findOrFail($horario_id);
-        //$this->authorize('delete', $horario);
-
-        //dd($horario_id,$asignatura_id);
         Detallehorario::where('horario_id',$horario_id)->where('asignatura_id',$asignatura_id)->delete();
         $deta=Detallehorario::where('horario_id',$horario_id)->get();
         if(count($deta)==0){

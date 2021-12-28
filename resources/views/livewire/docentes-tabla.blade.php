@@ -54,7 +54,7 @@
                          <a class=" btn btn-sm   btn-primary mr-3 mt-2 " href="{{route('docentes.edit', $docente)}}"><i class="fas fa-pencil-alt"></i></a>
                         @endcan
 
-                        <a class=" btn  btn-sm  btn-dark mr-3  mt-2 " href="{{route('docentes.show', $docente)}}"><i class="fas fa-eye"></i></a>
+                        {{-- <a class=" btn  btn-sm  btn-dark mr-3  mt-2 " href="{{route('docentes.show', $docente)}}"><i class="fas fa-eye"></i></a> --}}
 
                         @can('delete', $docente)
                             <form class="mr-3 mt-2  " method="POST"

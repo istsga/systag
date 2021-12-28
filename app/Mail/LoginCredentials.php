@@ -9,10 +9,10 @@ use Illuminate\Queue\SerializesModels;
 
 class LoginCredentials extends Mailable
 {
+    use Queueable, SerializesModels;
+
     public $user;
     public $password;
-
-    use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.

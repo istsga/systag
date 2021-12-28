@@ -51,6 +51,17 @@ class CarreraController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Carrera  $carrera
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Carrera $carrera)
+    {
+        dd($carrera->id);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Carrera  $carrera
