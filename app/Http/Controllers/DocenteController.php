@@ -59,7 +59,7 @@ class DocenteController extends Controller
      */
     public function show(Docente $docente)
     {
-        //return view('errors.404');
+        return view('errors.404');
 
     }
 

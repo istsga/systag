@@ -76,7 +76,7 @@ class ConvalidacioneController extends Controller
      */
     public function show(Convalidacione $convalidacione)
     {
-        //
+        return view('errors.404');
     }
 
     /**

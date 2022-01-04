@@ -48,6 +48,18 @@ class PeriodoController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Periodo  $periodo
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Periodo $periodo)
+    {
+
+        return view('errors.404');
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Periodo  $periodo

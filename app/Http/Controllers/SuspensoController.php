@@ -223,7 +223,7 @@ class SuspensoController extends Controller
      */
     public function show(Suspenso $suspenso)
     {
-        //
+        return view('errors.404');
     }
 
     /**

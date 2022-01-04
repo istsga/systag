@@ -22,12 +22,12 @@
                                         <div class="input-group">
                                             <select name="periodacademicos" id="periodacademicos" class="form-control @error('periodacademicos') is-invalid @enderror"  onchange="cambia_carreras(this)">
                                                 <option value="" class="form-control "> == Seleccionar == </option>
-                                                @foreach ($periodacademicos as $periodacademico)
+                                                {{-- @foreach ($periodacademicos as $periodacademico) --}}
                                                     <option {{collect(old('periodacademicos', $asignacione->periodacademicos->pluck('id')))
-                                                            ->contains($periodacademico->id) ? 'selected' :  ''}}
-                                                            value="{{$periodacademico->id}}">{{$periodacademico->periodo}}
+                                                            ->contains($periodacademicos->id) ? 'selected' :  ''}}
+                                                            value="{{$periodacademicos->id}}">{{$periodacademicos->periodo}}
                                                     </option>
-                                                @endforeach
+                                                {{-- @endforeach --}}
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-table"></i></span></div>
@@ -41,12 +41,7 @@
                                         <div class="input-group">
                                             <select  name="carreras" id="carrera_id" class="form-control @error('carreras') is-invalid @enderror" onchange="editar_periodo(this)">
                                                 <option value="" class="form-control "> == Seleccionar == </option>
-                                                {{-- @foreach ($carreras as $carrera)
-                                                    <option {{collect(old('carreras', $asignacione->carreras->pluck('id')))
-                                                        ->contains($carrera->id) ? 'selected' :  ''}}
-                                                        value="{{$carrera->id}}">{{$carrera->nombre}}
-                                                    </option>
-                                                @endforeach --}}
+                                                {{-- data --}}
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-graduation-cap"></i></span></div>

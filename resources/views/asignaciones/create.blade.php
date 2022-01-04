@@ -23,11 +23,11 @@
                                         <div class="input-group">
                                             <select name="periodacademicos" id="periodacademico_id" class="form-control @error('periodacademicos') is-invalid @enderror"  onchange="cambia_carreras(this)">
                                                 <option value="" class="form-control "> == Seleccionar ­­­­­­== </option>
-                                                @foreach ($periodacademicos as $periodacademico)
-                                                    <option  value="{{$periodacademico->id}}"
-                                                        {{old('periodacademicos')==$periodacademico->id ? 'selected' : '' }}
-                                                        >{{$periodacademico->periodo}}</option>
-                                                @endforeach
+                                                {{-- @foreach ($periodacademicos as $periodacademico) --}}
+                                                    <option  value="{{$periodacademicos->id}}"
+                                                        {{old('periodacademicos')==$periodacademicos->id ? 'selected' : '' }}
+                                                        >{{$periodacademicos->periodo}}</option>
+                                                {{-- @endforeach --}}
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class="text-primary fas fa-table"></i></span></div>

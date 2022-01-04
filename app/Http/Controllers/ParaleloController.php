@@ -46,6 +46,18 @@ class ParaleloController extends Controller
         return redirect()->route('paralelos.index')->with('status', 'Agregado con éxito');
     }
 
+     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Paralelo  $paralelo
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Paralelo $paralelo)
+    {
+
+        return view('errors.404');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

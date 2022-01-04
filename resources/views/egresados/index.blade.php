@@ -15,7 +15,7 @@
                     <div class="row m-2">
                         <div class="card col-lg-5 bg-light m-2 shadow-sm">
                         <div class="form-group p-2">
-                            <label for="periodacademicos" class="col-form-label font-weight-bold text-dark text-muted">Periodo Académico
+                            <label for="periodacademicos" class="col-form-label font-weight-bold text-dark text-muted small">PERIODO ACADÉMICO
                             </label>
                             <div class="input-group">
                                 <div class="input-group-prepend "><span class=" input-group-text">

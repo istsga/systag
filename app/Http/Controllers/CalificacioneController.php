@@ -299,7 +299,7 @@ class CalificacioneController extends Controller
      */
     public function show(Calificacione $calificacione)
     {
-        //
+        return view('errors.404');
     }
 
     /**

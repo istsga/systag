@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
         $administrador  =   Role::create(['name'=>'Administrador']);
         $estudiante     =   Role::create(['name'=>'Estudiante']);
         $docente        =   Role::create(['name'=>'Docente']);
+        $faker          =   Role::create(['name'=>'Faker']);
 
         //Usuarios predeterminados SYSTAG
         $UserAdmin = new User;

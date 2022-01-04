@@ -24,12 +24,18 @@ class HorarioclaseController extends Controller
         $periodacademicos = Periodacademico::all();
         $query=trim($request->get('periodacademico_id'));
         $queryAsignacione=trim($request->get('asignacione_id'));
+        $queryOrden=trim($request->get('orden'));
 
         $dni=auth()->user()->dni;
-
         $estudiante=Estudiante::where('dni',$dni)->first();
-        if(!$estudiante){
 
+        if($estudiante){
+            $asinaturas_mat=Asignatura_matricula::
+                join('matriculas','matriculas.id','=','asignatura_matricula.matricula_id')
+
+               ->where('matriculas.estudiante_id',$estudiante->id)
+               ->select('asignatura_matricula.asignatura_id')
+               ->pluck('asignatura_matricula.asignatura_id');
 
             $horarios0 = Horario::join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
             ->join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','horarios.asignacione_id')
@@ -40,8 +46,9 @@ class HorarioclaseController extends Controller
             ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
             ->join('asignaturas','asignaturas.id','=','horarios.asignatura_id')
             ->where('horarios.asignacione_id',$queryAsignacione)
-
              ->where('asignacione_periodacademico.periodacademico_id',$query)
+             ->where('horarios.orden',$queryOrden)
+             ->whereIn('asignaturas.id',$asinaturas_mat)
              ->selectRaw("detalle_horarios.hora_inicio,detalle_horarios.hora_final,detalle_horarios.dia_semana,asignaturas.nombre as nombrea,docentes.nombre as nombred,docentes.apellido")->get();
             $horarios1 = Horario::join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
                 ->join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','horarios.asignacione_id')
@@ -52,13 +59,48 @@ class HorarioclaseController extends Controller
                 ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
                 ->join('asignaturas','asignaturas.id','=','horarios.asignatura_id')
                 ->where('horarios.asignacione_id',$queryAsignacione)
-
                  ->where('asignacione_periodacademico.periodacademico_id',$query)
+                 ->where('horarios.orden',$queryOrden)
+                 ->whereIn('asignaturas.id',$asinaturas_mat)
                  ->selectRaw("detalle_horarios.hora_inicio,detalle_horarios.hora_final,'' as lunesnombreasignatura, '' as lunesnombredocente, ''as lunesapellidodocente,
                             '' as martesnombreasignatura, '' as martesnombredocente, '' as martesapellidodocente, '' as miercolesnombreasignatura, '' as miercolesnombredocente, '' as miercolesapellidodocente,
                             '' as juevesnombreasignatura, '' as juevesnombredocente, '' as juevesapellidodocente, '' as viernesnombreasignatura, '' as viernesnombredocente, '' as viernesapellidodocente ")
                  ->groupBy('detalle_horarios.hora_inicio','detalle_horarios.hora_final')
                     ->get();
+
+            //dd($estudiante, $asinaturas_mat);
+        }else
+            $horarios0 = Horario::join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
+            ->join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','horarios.asignacione_id')
+            ->join('asignatura_docente',function($join){
+                $join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
+                    ->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
+            })
+            ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
+            ->join('asignaturas','asignaturas.id','=','horarios.asignatura_id')
+            ->where('horarios.asignacione_id',$queryAsignacione)
+             ->where('asignacione_periodacademico.periodacademico_id',$query)
+             ->where('horarios.orden',$queryOrden)
+             //->whereIn('asignaturas.id',$asinaturas_mat)
+             ->selectRaw("detalle_horarios.hora_inicio,detalle_horarios.hora_final,detalle_horarios.dia_semana,asignaturas.nombre as nombrea,docentes.nombre as nombred,docentes.apellido")->get();
+            $horarios1 = Horario::join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
+                ->join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','horarios.asignacione_id')
+                ->join('asignatura_docente',function($join){
+                    $join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
+                        ->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
+                })
+                ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
+                ->join('asignaturas','asignaturas.id','=','horarios.asignatura_id')
+                ->where('horarios.asignacione_id',$queryAsignacione)
+                ->where('asignacione_periodacademico.periodacademico_id',$query)
+                ->where('horarios.orden',$queryOrden)
+                 //->whereIn('asignaturas.id',$asinaturas_mat)
+                ->selectRaw("detalle_horarios.hora_inicio,detalle_horarios.hora_final,'' as lunesnombreasignatura, '' as lunesnombredocente, ''as lunesapellidodocente,
+                        '' as martesnombreasignatura, '' as martesnombredocente, '' as martesapellidodocente, '' as miercolesnombreasignatura, '' as miercolesnombredocente, '' as miercolesapellidodocente,
+                        '' as juevesnombreasignatura, '' as juevesnombredocente, '' as juevesapellidodocente, '' as viernesnombreasignatura, '' as viernesnombredocente, '' as viernesapellidodocente ")
+                ->groupBy('detalle_horarios.hora_inicio','detalle_horarios.hora_final')
+                ->get();
+
             foreach($horarios0 as $horario0){
                 foreach($horarios1 as $horario1){
                     if($horario0->hora_inicio==$horario1->hora_inicio){
@@ -90,50 +132,22 @@ class HorarioclaseController extends Controller
                     }
                 }
             }
-           //dd($horarios1);
-
-             $horarios = Horario::join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
-            ->join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','horarios.asignacione_id')
-            ->join('asignatura_docente',function($join){
-                $join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
-                    ->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
-            })
-            ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
-            ->join('asignaturas','asignaturas.id','=','horarios.asignatura_id')
-
-            ->where('horarios.asignacione_id',$queryAsignacione)
-             ->where('asignacione_periodacademico.periodacademico_id',$query)
-             ->selectRaw('detalle_horarios.hora_inicio,detalle_horarios.hora_final')
-
-                ->groupBy('detalle_horarios.hora_inicio','detalle_horarios.hora_final')
-        //->allowed()
-             ->get();
 
 
-        }else{
-            // Tomamos el horario de todas asignaturas a la cual esta matriculado el estudiante
-            //$estudiante_id=5;
-            $asinaturas_mat=Asignatura_matricula::
-                join('matriculas','matriculas.id','=','asignatura_matricula.matricula_id')
+        $horarios = Horario::join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
+        ->join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','horarios.asignacione_id')
+        ->join('asignatura_docente',function($join){
+            $join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
+                ->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
+        })
+        ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
+        ->join('asignaturas','asignaturas.id','=','horarios.asignatura_id')
 
-               ->where('matriculas.estudiante_id',$estudiante->id)
-               ->select('asignatura_matricula.asignatura_id');
-            $horarios = Horario::
-                join('matriculas',function($join){
-                    $join->on('horarios.asignacione_id','=','matriculas.asignacione_id');
-                        //->on('horarios.asignatura_id','=','asignatura_matricula.asignatura_id');
-                })
-
-            ->join('asignatura_docente',function($join){
-                //$join->on('asignatura_docente.asignatura_id','=','horarios.asignatura_id')
-                $join->on('asignatura_docente.asignacione_id','=','horarios.asignacione_id');
-            })
-            ->join('docentes','docentes.id','=','asignatura_docente.docente_id')
-            ->allowed2()
-            ->select('horarios.*', 'docentes.nombre as nombredocente','docentes.apellido as apellidodocente','matriculas.id as matricula_id')
-            ->get();
-        }
-
+        ->where('horarios.asignacione_id',$queryAsignacione)
+        ->where('asignacione_periodacademico.periodacademico_id',$query)
+        ->selectRaw('detalle_horarios.hora_inicio,detalle_horarios.hora_final')
+        ->groupBy('detalle_horarios.hora_inicio','detalle_horarios.hora_final')
+        ->get();
 
         $asignaciones = Asignacione::
         join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','asignaciones.id')
@@ -141,7 +155,7 @@ class HorarioclaseController extends Controller
         ->select('asignaciones.*')
         ->get();
 
-        return view('horarioclases.index', compact('horarios', 'horarios1', 'asignaciones', 'periodacademicos',  'query','estudiante', 'queryAsignacione' ));
+        return view('horarioclases.index', compact('horarios', 'horarios1', 'asignaciones', 'periodacademicos',  'query','estudiante', 'queryAsignacione', 'queryOrden' ));
 
     }
 

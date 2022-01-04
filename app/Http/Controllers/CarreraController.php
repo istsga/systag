@@ -58,7 +58,8 @@ class CarreraController extends Controller
      */
     public function show(Carrera $carrera)
     {
-        dd($carrera->id);
+
+        return view('errors.404');
     }
 
     /**

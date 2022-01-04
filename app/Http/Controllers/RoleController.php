@@ -17,7 +17,8 @@ class RoleController extends Controller
     public function index()
     {
         $this->authorize('view', new Role);
-        $roles = Role::all();
+        $roles = //Role::all();
+                 Role::whereNotIn('name', ['Administrador', 'Docente', 'Estudiante'])->get();
         return view('roles.index', compact('roles'));
     }
 

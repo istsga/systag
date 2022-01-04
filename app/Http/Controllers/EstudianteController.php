@@ -71,7 +71,7 @@ class EstudianteController extends Controller
      */
     public function show(Estudiante $estudiante)
     {
-        //
+        return view('errors.404');
     }
 
     /**

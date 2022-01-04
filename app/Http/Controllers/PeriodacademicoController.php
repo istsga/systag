@@ -53,6 +53,18 @@ class PeriodacademicoController extends Controller
         return redirect()->route('periodacademicos.index', $periodacademico)->with('status', 'Agregado con éxito');
     }
 
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Periodacademico  $periodacademico
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Periodacademico $periodacademico)
+    {
+
+        return view('errors.404');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

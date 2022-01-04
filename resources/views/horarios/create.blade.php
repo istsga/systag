@@ -18,6 +18,30 @@
                             <div class="card p-4">
                                 <div class="card p-3">
                                     <div class="row">
+                                        <div class="form-group col-lg-8">
+                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN | PARALELO
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="asignaturaHorario(this)">
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    @foreach ($asignaciones as $asignacione)
+                                                        <option  value="{{$asignacione->id}}"
+                                                            {{old('asignacione_id')==$asignacione->id ? 'selected' : '' }}
+                                                            >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} |
+                                                            {{$asignacione->carreras->pluck('nombre')->implode(', ')}} |
+                                                            {{$asignacione->periodo->nombre}} |
+                                                            {{$asignacione->seccione->nombre}} |
+                                                            {{$asignacione->paralelo->nombre}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-check"></i></span></div>
+                                                @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            </div>
+                                        </div>
+
                                         <div class="form-group col-lg-4">
                                             <label for="fecha_inicio" class="col-form-label font-weight-bold text-muted">Fecha de inicio
                                                 <span class="text-primary">*</span>
@@ -70,39 +94,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-lg-8">
-                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN | PARALELO
-                                                <span class="text-primary">*</span>
-                                            </label>
-                                            <div class="input-group">
-                                                <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="asignaturaHorario(this)">
-                                                    <option class="form-control" value=""> == Seleccionar == </option>
-                                                    @foreach ($asignaciones as $asignacione)
-                                                        <option  value="{{$asignacione->id}}"
-                                                            {{old('asignacione_id')==$asignacione->id ? 'selected' : '' }}
-                                                            >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} |
-                                                            {{$asignacione->carreras->pluck('nombre')->implode(', ')}} |
-                                                            {{$asignacione->periodo->nombre}} |
-                                                            {{$asignacione->seccione->nombre}} |
-                                                            {{$asignacione->paralelo->nombre}}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-check"></i></span></div>
-                                                @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                                            </div>
-                                        </div>
-
                                         <div class="form-group col-lg-4 ">
                                             <label for="orden" class="col-form-label font-weight-bold text-muted">Orden
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
                                                 <select  name="orden" id="orden" class="form-control @error('orden') is-invalid @enderror  ">
-                                                    <option class="form-control "> == Seleccionar == </option>
-                                                    <option value="1" class="form-control">1</option>
-                                                    <option value="2" class="form-control">2</option>
-                                                    <option value="3" class="form-control">3</option>
+                                                    {{-- data--}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-sort-amount-up-alt"></i></span></div>
@@ -115,12 +112,7 @@
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
                                                 <select  name="asignatura_id" id="asignatura_id" class="form-control @error('asignatura_id') is-invalid @enderror  ">
-                                                    {{-- <option value="" class="form-control "> == Seleccionar == </option>
-                                                    @foreach ($asignaturas as $asignatura)
-                                                        <option  value="{{$asignatura->id}}"
-                                                        {{old('asignatura_id')==$asignatura->id ? 'selected' : '' }}
-                                                        >{{$asignatura->nombre}}</option>
-                                                    @endforeach --}}
+                                                    {{-- data--}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-folder"></i></span></div>
@@ -246,6 +238,7 @@
             asignaturas.options[0].value = ""
             asignaturas.options[0].text = " == Selecionar == "
         }
+        cambiaOrden();
     }
 
  //Select estaticos
@@ -287,6 +280,40 @@ function agregarHorario(){
 function eliminar(index){
   cont--;
   $("#fila" + index).remove();
+}
+
+
+function cambiaOrden(select){
+
+var orden = document.getElementById("orden");
+for (let i = orden.options.length; i >= 0; i--) {
+    orden.remove(i);
+}
+
+var id = document.getElementById('asignacione_id').value;
+//console.log( id);
+if(id){
+
+    axios.get('/getOrden/'+id)
+    .then((resp)=>{
+        var orden = document.getElementById("orden");
+        //console.log(Object.keys(resp.data).length);
+        console.log(resp.data);
+        for (i = 0; i < Object.keys(resp.data).length; i++) {
+            if(resp.data[i]!==0){
+                var option = document.createElement('option');
+                option.value = resp.data[i];
+                option.text = resp.data[i];
+                orden.append(option);
+            }
+        }
+    })
+    .catch(function (error) {console.log(error);})
+}else{
+    document.getElementById("orden").length  = 1
+    orden.options[0].value = ""
+    orden.options[0].text = " == Selecionar == "
+}
 }
 
 </script>

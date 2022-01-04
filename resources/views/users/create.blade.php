@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
 
-                                    <em class="m-3 text-info"> SYSTAG  enviará una contraseña al correo electrónico registrado</em>
+                                    <font class="m-3 text-muted font-weight-bold"> SYSTAG envía credenciales de acceso al email registrado</font>
 
                                     <div class="card-footer bg-light">
                                             <button class=" col-4 btn btn-primary" type="submit">Guardar</button>
@@ -99,8 +99,6 @@
 
 @push('scripts')
 <script src="{{asset('js/axios.min.js')}}"></script>
-@endpush()
-
 <script>
     function verUsuario(){
     document.getElementById('nombre').value='';
@@ -119,4 +117,5 @@
       .catch(function (error) {console.log(error);})
 }
 </script>
+@endpush()
 

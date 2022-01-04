@@ -39,7 +39,8 @@ class UserController extends Controller
         $user = new User;
         $this->authorize('create', User::class);
 
-        $roles = Role::with('permissions')->get();
+        $roles = //Role::with('permissions')->get();
+                 Role::whereNotIn('name', ['Docente', 'Estudiante'])->get();
         $permissions = Permission::orderBy('id' )->pluck('name', 'id');
         return view('users.create', compact('user', 'roles', 'permissions'));
     }

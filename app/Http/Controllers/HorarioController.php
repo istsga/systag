@@ -15,6 +15,7 @@ use App\Models\Estudiante;
 use App\Models\Horario;
 use App\Models\Periodacademico;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HorarioController extends Controller
 {
@@ -61,9 +62,33 @@ class HorarioController extends Controller
         $horario = new Horario;
         $this->authorize('create', $horario);
         $horarios = Horario::all();
-        $asignaciones = Asignacione::all();
+        //definir asignciones que pertenezcan al ultimo periodo academico
+        $periodAcademico=Periodacademico::orderBy('id','desc')->first();
+        $asignaciones=Asignacione::
+            join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','asignaciones.id')
+            ->where('asignacione_periodacademico.periodacademico_id',$periodAcademico->id)
+            ->get();
+
         $asignaturas = [];
         return view('horarios.create', compact('horarios', 'asignaciones', 'asignaturas'));
+    }
+
+    public function getOrden($id)
+    {
+        $orden=[1,2,3];
+        $horariOrden = Horario::select('asignacione_id','orden',DB::raw('count(*) as conteo'))
+            ->where('asignacione_id',$id)
+            ->groupBy('asignacione_id')->groupBy('orden')-> get();
+        foreach ($horariOrden as $value) {
+            if($value->orden==$orden[2] and $value->conteo>=2)
+                $orden[2]=0;
+            if($value->orden==$orden[1] and $value->conteo>=2)
+                $orden[1]=0;
+            if($value->orden==$orden[0] and $value->conteo>=2)
+                $orden[0]=0;
+        }
+
+        return $orden;
     }
 
 
@@ -122,7 +147,7 @@ class HorarioController extends Controller
      */
     public function show(Horario $horario)
     {
-        //
+        return view('errors.404');
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Models\Asignacione_periodo;
 use App\Models\Asignatura;
 use App\Models\Asignaturadocente;
 use App\Models\Docente;
+use App\Models\Periodacademico;
 use Illuminate\Http\Request;
 
 class AsignaturadocenteController extends Controller
@@ -34,7 +35,13 @@ class AsignaturadocenteController extends Controller
         $this->authorize('create', $asignaturadocente);
 
         $asignaturadocentes = Asignaturadocente::all();
-        $asignaciones=Asignacione::all();
+        //definir asignciones que pertenezcan al ultimo periodo academico
+        $per_aca=Periodacademico::orderBy('id','desc')->first();
+        $asignaciones=Asignacione::
+            join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','asignaciones.id')
+            ->where('asignacione_periodacademico.periodacademico_id',$per_aca->id)
+            ->get();
+        //dd($asignaciones);
         $asignaturas = [];
         $docentes = Docente::all();
         return view('asignaturadocentes.create', compact('asignaturadocentes', 'asignaciones', 'asignaturas', 'docentes'));
@@ -61,6 +68,7 @@ class AsignaturadocenteController extends Controller
             ->where('periodo_id',$asignacion->periodo_id)
             ->whereNotIn('id',$asignaturaYaAsignada)
             ->get();
+
         return $asignaturas;
     }
 
@@ -91,7 +99,7 @@ class AsignaturadocenteController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('errors.404');
     }
 
     /**

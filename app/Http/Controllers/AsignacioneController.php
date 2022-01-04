@@ -35,7 +35,10 @@ class AsignacioneController extends Controller
     {
         $this->authorize('create', Asignacione::class);
 
-        $periodacademicos = Periodacademico::where('estado', 1)->get();
+        $periodacademicos = Periodacademico::orderBy('id','desc')
+        ->where('estado', 1)
+        ->first();
+
         $carreras =Carrera_periodacademico::
            join('carreras','carreras.id','=','carrera_periodacademico.carrera_id')
            ->select('carrera_periodacademico.carrera_id','carreras.nombre','carrera_periodacademico.periodacademico_id', 'carreras.numero_periodo')
@@ -43,6 +46,7 @@ class AsignacioneController extends Controller
         $periodos = Periodo::all();
         $secciones = Seccione::all();
         $paralelos = Paralelo::all();
+
         $asignaciones = Asignacione::all();
         return view('asignaciones.create', compact('asignaciones', 'periodacademicos', 'carreras', 'periodos', 'secciones', 'paralelos'));
 
@@ -67,6 +71,19 @@ class AsignacioneController extends Controller
         return redirect()->route('asignaciones.index')->with('status', 'Agregado con éxito');
     }
 
+
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Asignacione  $asignacione
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Asignacione $asignacione)
+    {
+
+        return view('errors.404');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -76,7 +93,13 @@ class AsignacioneController extends Controller
     public function edit(Asignacione $asignacione)
     {
         $this->authorize('update', $asignacione);
-        $periodacademicos = Periodacademico::where('estado', 1)->get();
+
+        $periodacademicos = Periodacademico::orderBy('id','desc')
+            ->where('estado', 1)
+            ->first();
+
+            //dd($periodacademicos);
+
         $carreras =Carrera_periodacademico::
            join('carreras','carreras.id','=','carrera_periodacademico.carrera_id')
            ->select('carrera_periodacademico.carrera_id','carreras.nombre','carrera_periodacademico.periodacademico_id', 'carreras.numero_periodo')

@@ -58,8 +58,31 @@
                                                     @endforeach
 
                                                 </select>
-                                                <button class=" btn   btn-primary ml-1 " type="submit"> <i class="fas fa-eye-slash"> </i> Ver </button>
+                                                <button class=" btn   btn-primary ml-1 " type="submit"> <i class="fas fa-search"> </i> </button>
                                             </div>
+                                    </div>
+                                </div>
+
+                                <div class=" card col-lg-4 shadow-sm bg-light">
+                                    <div class="form-group p-2">
+                                        <label for="orden" class="col-form-label font-weight-bold text-muted small">ORDEN</label>
+                                        <div class="input-group">
+                                            <select  name="orden" id="orden" class="form-control">
+                                                <option value="" > == Seleccionar == </option>
+                                                @foreach ($horarios as $horario)
+                                                    <option  value="{{$horario->id}}"
+                                                        {{$queryOrden==$horario->id ? 'selected' : '' }}
+                                                        >{{$horario->orden}}</option>
+
+                                                @endforeach
+
+
+                                                {{-- <option value="1" {{ old('orden') == 1 ? 'selected' : '' }} class="form-control">1</option>
+                                                <option value="2" {{ old('orden') == 2 ? 'selected' : '' }} class="form-control">2</option>
+                                                <option value="3" {{ old('orden') == 3 ? 'selected' : '' }} class="form-control">3</option> --}}
+                                            </select>
+                                                <button class=" btn   btn-primary ml-1 " type="submit"> <i class="fas fa-eye-slash"> </i> Ver </button>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -141,4 +164,30 @@
     </div>
 </div>
 </main>
+
+<script>
+
+    //select con opciones estaticos
+    // var orden = null;
+    // console.log(orden);
+    //     for(var i=0; i!=document.querySelector("#orden").querySelectorAll("option").length; i++)
+    //     {
+    //         orden = document.querySelector("#orden").querySelectorAll("option")[i];
+    //         if(orden.getAttribute("value") == "{{ old("orden") }}")
+    //         {
+    //             orden.setAttribute("selected", "selected");
+    //         }
+    //     }
+        var orden = null;
+        for(var i=0; i!=document.querySelector("#orden").querySelectorAll("option").length; i++)
+        {
+            orden = document.querySelector("#orden").querySelectorAll("option")[i];
+            if(orden.getAttribute("value") == "{{ old("orden") }}")
+            {
+                orden.setAttribute("selected", "selected");
+            }
+        }
+    </script>
 @endsection
+
+

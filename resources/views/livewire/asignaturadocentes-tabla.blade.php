@@ -44,14 +44,11 @@
                 <td class="align-middle">{{$asignaturadocente->nombre}} {{$asignaturadocente->apellido}}</td>
                 <td class="align-middle">{{$asignaturadocente->asignatura_nombre}}</td>
 
-
                 <td class="align-middle">
                     <div class=" form-inline justify-content-center">
                         @can('update', $asignaturadocente)
                             <a class=" btn btn-sm  btn-primary mr-3 mt-2 " href="{{route('asignaturadocentes.edit', $asignaturadocente)}}"><i class="fas fa-pencil-alt"></i></a>
                         @endcan
-
-                        <a class=" btn  btn-sm  btn-dark mr-3 mt-2" href="{{route('asignaturadocentes.show', $asignaturadocente)}}"><i class="fas fa-eye"></i></a>
 
                         @can('delete', $asignaturadocente)
                             <form class="mr-3 mt-2 " method="POST"

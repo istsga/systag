@@ -47,6 +47,18 @@ class SeccioneController extends Controller
         return redirect()->route('secciones.index')->with('status', 'Agregado con éxito');
     }
 
+     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Seccione  $seccione
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Seccione $seccione)
+    {
+
+        return view('errors.404');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

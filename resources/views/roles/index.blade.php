@@ -12,10 +12,11 @@
 
                     <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                         <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-user-shield mr-3"></i> ROLES </font>
-                        @can('create', $roles->first())
+                        @can('create', new Spatie\Permission\Models\Role)
                             <a class=" btn btn-primary " href="{{route('roles.create')}}"> <i class=" font-weight-bold  fas fa-plus mr-1"></i>Agregar</a>
                         @endcan
                     </div>
+                    @if (count($roles) > 0)
                     <div class="card-table  table-responsive">
                         <table class="table table-hover  table-bordered align-middle">
                             <thead class="thead-light">
@@ -61,6 +62,9 @@
                             </tbody>
                         </table>
                     </div>
+                    @else
+                        <em class=" mt-2 mb-2 ml-3 text-muted">Roles no disponibles.</em>
+                    @endif
                 </div>
             </div>
         </div>

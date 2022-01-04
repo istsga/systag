@@ -33,11 +33,10 @@ class AsignacioneStoreRequest extends FormRequest
             'paralelo_id' => ['required', 'exists:paralelos,id'],
 
             // 'paralelo_id'=>Rule::unique('asignaciones')->where(function ($query) {
-            //     return $query->where('periodacademicos', $this->periodacademicos)
+            //     return $query->where('periodacademicos', $this->periodacademicos);
             //                  //->where('carreras', $this->carreras)
-            //                  ->where('periodo_id', $this->periodo_id)
-            //                  ->where('seccione_id', $this->seccione_id);
-            //                 //  $asignacione->periodacademicos()->sync($request->get('periodacademicos')
+            //                  //->where('periodo_id', $this->periodo_id)
+            //                  //->where('seccione_id', $this->seccione_id);
             // }),
         ];
         return $rules;

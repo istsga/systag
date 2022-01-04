@@ -106,7 +106,7 @@
     <table style="page-break-inside: auto; text-transform: uppercase; font-size: 12px; ">
         <tr>
             <th style=" text-align: left; padding-top:65px">{{$docente->abreviatura}} {{$docente->nombre}} {{$docente->apellido}} <br>
-                DNI {{$docente->dni}}  <br> PROFESOR
+                    C.I {{$docente->dni}}  <br> PROFESOR
             </th>
         </tr>
     </table>
