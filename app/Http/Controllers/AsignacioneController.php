@@ -62,13 +62,27 @@ class AsignacioneController extends Controller
     {
         $this->authorize('create', Asignacione::class);
 
-        $asignacione = Asignacione::create($request->validated());
-        $asignacione->periodacademicos()->sync($request->get('periodacademicos'));
-        $asignacione->carreras()->sync($request->get('carreras'));
+        $asignacion=Asignacione::join('asignacione_periodacademico','asignacione_periodacademico.asignacione_id','=','asignaciones.id')
+            ->join('asignacione_carrera','asignacione_carrera.asignacione_id','=','asignaciones.id')
+            ->select('periodo_id','seccione_id','paralelo_id','asignacione_periodacademico.periodacademico_id as periodacademico_id','asignacione_carrera.carrera_id as carrera_id')
+            ->where('periodo_id',$request->get('periodo_id'))
+            ->where('seccione_id',$request->get('seccione_id'))
+            ->where('paralelo_id',$request->get('paralelo_id'))
+            ->where('asignacione_periodacademico.periodacademico_id',$request->get('periodacademicos'))
+            ->where('asignacione_carrera.carrera_id',$request->get('carreras'))
+            ->get();
+        //dd(count($asignacion));
+        if(count($asignacion)==0){ // No hay la hay asignacion que deseo grabar
+            $asignacione = Asignacione::create($request->validated());
+            $asignacione->periodacademicos()->sync($request->get('periodacademicos'));
+            $asignacione->carreras()->sync($request->get('carreras'));
 
-        //dd( $asignacione->carreras()->sync($request->get('carreras[]')));
+            return redirect()->route('asignaciones.index')->with('status', 'Agregado con éxito');
+        } else{
 
-        return redirect()->route('asignaciones.index')->with('status', 'Agregado con éxito');
+            //$errors = 'Datos invalidos';
+            return redirect()->route('asignaciones.create')->with('status', 'Datos ya ha sido registrado, intentar con datos nuevos');
+        }
     }
 
 

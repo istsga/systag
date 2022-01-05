@@ -11,12 +11,6 @@
 <main class="c-main">
 <div class="container-fluid">
     <div class="fade-in">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-
         <div class="card c-callout c-callout-primary bg-light shadow-lg ">
             <div class="card-header bg-primary">
                 <font class=" text-light font-weight-bold "> <i class="font-weight-bold  fas fa-user  mr-3"></i> ESTUDIANTE </font>
@@ -29,7 +23,7 @@
                             <div class="form-group ">
                                 <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted  small">PERIODO ACADÉMICO</label>
                                 <div class="input-group">
-                                    <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademicos') is-invalid @enderror"  onchange="suspensoAsignaciones();">
+                                    <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror"  onchange="suspensoAsignaciones();">
                                         <option value="" class="form-control  "> == Seleccionar == </option>
                                         @foreach ($periodacademicos as $periodacademico)
                                         <option  value="{{$periodacademico->id}}"
@@ -37,7 +31,7 @@
                                             >{{$query.''.$periodacademico->periodo}}</option>
                                             @endforeach
                                     </select>
-                                    @error ('periodacademicos') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
+                                    @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-calendar-check"></i></span></div>
                                 </div>
@@ -49,12 +43,13 @@
                                 <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">CARRERA | PERIODO | SECCIÓN | PARALELO
                                 </label>
                                 <div class="input-group ">
-                                    <select name="asignacione_id" id="asignacione_id" class=" form-control" onchange="suspensoAsignaturas();">
+                                    <select name="asignacione_id" id="asignacione_id" class="form-control  @error('asignacione_id') is-invalid @enderror" onchange="suspensoAsignaturas();">
                                         <option class="form-control" value=""> == Seleccionar == </option>
                                         {{-- Data --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-layer-group"></i></span></div>
+                                        @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                 </div>
                             </div>
                         </div>
@@ -64,12 +59,13 @@
                                 <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS
                                 </label>
                                 <div class="input-group ">
-                                    <select name="asignatura_id" id="asignatura_id" class=" form-control" onchange="suspensoEstudiantes();">
+                                    <select name="asignatura_id" id="asignatura_id" class="form-control  @error('asignatura_id') is-invalid @enderror" onchange="suspensoEstudiantes();">
                                         <option class="form-control" value=""> == Seleccionar == </option>
                                             {{-- Data --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-book"></i></span></div>
+                                        @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                 </div>
                             </div>
                         </div>
@@ -85,9 +81,9 @@
                                         <option class="form-control" value=""> == Seleccionar == </option>
                                         {{-- Data --}}
                                     </select>
-                                    @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-user"></i></span></div>
+                                        @error ('estudiante_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                 </div>
                             </div>
                         </div>
@@ -114,7 +110,7 @@
 
                         <div class="col-lg-4">
                             <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">EXAMEN DE SUSPENSIÓN</font>
-                                <div class="text-value-lg"><input type="number" value="0"  name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" oninput="calcular()"  >
+                                <div class="text-value-lg"><input type="number" value="{{old('examen_suspenso')}}" name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" oninput="calcular()"  >
                                 @error ('examen_suspenso') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                             </div>
                             </div>
@@ -122,7 +118,7 @@
 
                         <div class="col-lg-4">
                             <div class="c-callout c-callout-info"><font class="text-muted small font-weight-bold">SUMA</font>
-                                <div class="text-value-lg"> <input type="number" value="0" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light" readonly>
+                                <div class="text-value-lg"> <input type="number" value="{{old('suma')}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light" readonly>
                                     @error ('suma') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                             </div>
@@ -142,7 +138,7 @@
 
                         <div class="col-lg-4">
                             <div class="c-callout c-callout-info"><font class="text-muted small font-weight-bold">PROMEDIO EN LETRAS</font>
-                                    <div class="text-value-lg"><input type="text" name="promedio_letra" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light" readonly>
+                                    <div class="text-value-lg"><input type="text" value="{{old('promedio_letra')}}" name="promedio_letra" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light" readonly>
                                     @error ('promedio_letra') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                             </div>
@@ -150,7 +146,7 @@
 
                         <div class="col-lg-4">
                             <div class="c-callout c-callout-info"><font class="text-muted small font-weight-bold">OBSERVACIÓN</font>
-                                <div class="text-value-lg"><input class="form-control @error('observacion') is-invalid @enderror" type="text"  name="observacion" id="observacion" readonly>
+                                <div class="text-value-lg"><input type="text"  name="observacion" id="observacion" value="{{old('observacion')}}" class="form-control @error('observacion') is-invalid @enderror"  readonly>
                                 @error ('observacion') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                             </div>
                             </div>

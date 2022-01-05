@@ -132,7 +132,7 @@
                                             @endcan
                                         @endrole
 
-                                        @can('delete', $calificacione)
+                                        {{-- @can('delete', $calificacione)
                                             <form method="POST"
                                              action="{{route('calificaciones.destroy', $calificacione )}}">
                                                 @csrf @method('DELETE')
@@ -141,7 +141,7 @@
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </form>
-                                        @endcan
+                                        @endcan --}}
                                     </div>
                                 </td>
                             </tr>

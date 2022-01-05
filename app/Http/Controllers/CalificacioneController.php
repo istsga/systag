@@ -336,8 +336,9 @@ class CalificacioneController extends Controller
      */
     public function destroy(Calificacione $calificacione)
     {
-        $this->authorize('delete', $calificacione);
-        $calificacione->delete();
-        return redirect()->route('calificaciones.index')->with('status', 'Eliminado con éxito');
+        return view('errors.404');
+        // $this->authorize('delete', $calificacione);
+        // $calificacione->delete();
+        // return redirect()->route('calificaciones.index')->with('status', 'Eliminado con éxito');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CalificacioneStoreRequest extends FormRequest
 {
@@ -23,15 +24,17 @@ class CalificacioneStoreRequest extends FormRequest
      */
     public function rules()
     {
-        $asignacione_id = $this->asignacione_id;
-        //dd($estudiante_id);
+
 
        return [
             'asignacione_id' => ['required' ],
             'asignatura_id' => ['required' ],
-            //'firstName' => 'unique:people,firstName,NULL,id,lastName,' . $request->lastName,
-            'estudiante_id' => ['required'],
-            //'estudiante_id'=>'required|unique:calificaciones,estudiante_id,NULL,id,asignacione_id,'.$asignacione_id,
+
+            'estudiante_id'=>Rule::unique('calificaciones')->where(function ($query) {
+                return $query->where('asignacione_id', $this->asignacione_id)
+                             ->where('asignatura_id', $this->asignatura_id);
+            }),
+
             'docencia'                  => ['required', 'numeric','between:0,10'],
             'experimento_aplicacion'    => ['required', 'numeric','between:0,10'],
             'trabajo_autonomo'          => ['required', 'numeric','between:0,10'],
@@ -45,5 +48,12 @@ class CalificacioneStoreRequest extends FormRequest
             'observacion'               => ['required'],
         ];
 
+    }
+
+    public function messages()
+    {
+        return [
+            'estudiante_id.unique' => 'Estudiante ya ha sido registrado en la asignatura.',
+        ];
     }
 }

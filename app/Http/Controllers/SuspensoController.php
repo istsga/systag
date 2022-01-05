@@ -260,8 +260,9 @@ class SuspensoController extends Controller
      */
     public function destroy(Suspenso $suspenso)
     {
-        $this->authorize('delete', $suspenso);
-        $suspenso->delete();
-        return redirect()->route('suspensos.index')->with('status', 'Eliminado con éxito');
+        return view('errors.404');
+        // $this->authorize('delete', $suspenso);
+        // $suspenso->delete();
+        // return redirect()->route('suspensos.index')->with('status', 'Eliminado con éxito');
     }
 }

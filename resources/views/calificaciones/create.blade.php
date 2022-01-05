@@ -159,7 +159,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO FINAL (entero)</font>
                                     <div class="text-value-lg">
-                                        <input type="number" name="promedio_final" id="promedio_final" class="form-control @error('promedio_final') is-invalid @enderror text-info bg-light" readonly step="0.01">
+                                        <input type="number" value="{{old('promedio_final')}}"   name="promedio_final" id="promedio_final" class="form-control @error('promedio_final') is-invalid @enderror text-info bg-light" readonly step="0.01">
                                     @error ('promedio_final') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                     </div>
                             </div>
@@ -168,7 +168,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">PROMEDIO EN LETRAS</font>
                                     <div class="text-value-lg">
-                                        <input type="text" name="promedio_letra" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light " readonly>
+                                        <input type="text" value="{{old('promedio_letra')}}" name="promedio_letra" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light " readonly>
                                     @error ('promedio_letra') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                     </div>
                             </div>
@@ -180,7 +180,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">NÚMERO ASISTENCIA</font>
                                 <div class="text-value-lg">
-                                    <input type="text" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
+                                    <input type="text" value="{{old('numero_asistencia')}}" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
                                 @error ('numero_asistencia') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">PORCENTAJE ASISTENCIA</font>
                                 <div class="text-value-lg">
-                                    <input type="text" name="porcentaje_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
+                                    <input type="text" value="{{old('porcentaje_asistencia')}}" name="porcentaje_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
                                 @error ('porcentaje_asistencia') <span class="invalid-feedback" role="alert"><em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -198,7 +198,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">OBSERVACIÓN</font>
                                 <div class="text-value-lg">
-                                    <input class="form-control @error('observacion') is-invalid @enderror text-info bg-light" type="text"  name="observacion" id="observacion"  readonly>
+                                    <input type="text" value="{{old('observacion')}}"  name="observacion" id="observacion"   class="form-control @error('observacion') is-invalid @enderror text-info bg-light" readonly>
                                 @error ('observacion') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>

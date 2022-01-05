@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SuspensoStoreRequest extends FormRequest
 {
@@ -26,7 +27,12 @@ class SuspensoStoreRequest extends FormRequest
         return [
             'asignacione_id'              => ['required' ],
             'asignatura_id'               => ['required' ],
-            'estudiante_id'               => ['required'],
+
+            'estudiante_id'=>Rule::unique('suspensos')->where(function ($query) {
+                return $query->where('asignacione_id', $this->asignacione_id)
+                             ->where('asignatura_id', $this->asignatura_id);
+            }),
+
             'promedio_final'              => ['required', 'numeric','between:0,6'],
             'examen_suspenso'             => ['required', 'numeric','between:0,10'],
             'suma'                        => ['required', 'numeric','between:0,16'],

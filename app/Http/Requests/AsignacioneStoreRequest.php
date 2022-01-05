@@ -32,12 +32,6 @@ class AsignacioneStoreRequest extends FormRequest
             'seccione_id' => ['required', 'exists:secciones,id'],
             'paralelo_id' => ['required', 'exists:paralelos,id'],
 
-            // 'paralelo_id'=>Rule::unique('asignaciones')->where(function ($query) {
-            //     return $query->where('periodacademicos', $this->periodacademicos);
-            //                  //->where('carreras', $this->carreras)
-            //                  //->where('periodo_id', $this->periodo_id)
-            //                  //->where('seccione_id', $this->seccione_id);
-            // }),
         ];
         return $rules;
     }
@@ -45,7 +39,7 @@ class AsignacioneStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'paralelo_id.unique' => 'datos ya ha sido registrado.',
+            'paralelo_id.unique' => 'Periodo, sección, paralelo ya ha sido registrado.',
         ];
     }
 }

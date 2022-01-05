@@ -7,6 +7,7 @@
     <div class="fade-in">
         <div class="row justify-content-center ">
               <div class="col-lg-9">
+                @include('partials.success')
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary">
                         <h4 class=" text-light"><i class="fas fa-clone mr-3"></i> <span class="text-value">ASIGNACIÓN</span> </h4>

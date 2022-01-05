@@ -125,7 +125,7 @@
                                     @endcan
                                 @endrole
 
-                                    @can('delete', $suspenso)
+                                    {{-- @can('delete', $suspenso)
                                         <form class="mr-3 mt-2 " method="POST"
                                             action="{{route('suspensos.destroy', $suspenso )}}">
                                             @csrf @method('DELETE')
@@ -135,7 +135,7 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </form>
-                                    @endcan
+                                    @endcan --}}
                                 </div>
                             </td>
                             </tr>
@@ -148,7 +148,6 @@
                         <em class=" mt-2 mb-2 ml-3 text-muted">No tienes registros.</em>
                 @endif
             </div>
-
         </div>
     </div>
 </div>
