@@ -47,7 +47,7 @@
                                         <option class="form-control" value=""> == Seleccionar == </option>
                                         @foreach ($periodos as $periodo)
                                             <option  value="{{$periodo->id}}"
-                                                >{{$periodo->id}} {{$periodo->nombre}}</option>
+                                                >{{$periodo->nombre}}</option>
                                         @endforeach
                                     </select>
                                     <button class=" btn ml-1 btn-primary" type="submit" formtarget="_blank"> <i class="fas fa-print"></i> Imprimir </button>

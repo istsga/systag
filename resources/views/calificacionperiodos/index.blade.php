@@ -68,8 +68,9 @@
             <div class="card shadow-lg ">
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                 <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-star  mr-3"></i> NOTAS CONSOLIDADO POR PERIODO </font>
-
-                    <a class=" btn btn-primary " href="{{route('reporteCalificacionperiodo', $estudiante_id.'_'.$periodo_id)}}"> <i class=" font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
+                    @can('create', new App\Models\Calificacionperiodo)
+                        <a class=" btn btn-primary " href="{{route('reporteCalificacionperiodo', $estudiante_id.'_'.$periodo_id)}}"> <i class=" font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
+                    @endcan
 
             </div>
 
@@ -98,7 +99,7 @@
 
                             <tr>
                                 <td class="text-center align-middle">{{$index+1}}</td>
-                                <td colspan="2" class="text-uppercase">{{$calificacione->asignatura->periodo_id.'-'.$calificacione->asignatura->nombre}}</td>
+                                <td colspan="2" class="text-uppercase">{{$calificacione->asignatura->nombre}}</td>
                                 <td class="text-center align-middle">{{$calificacione->docencia}}</td>
                                 <td class="text-center align-middle">{{$calificacione->experimento_aplicacion}}</td>
                                 <td class="text-center align-middle">{{$calificacione->trabajo_autonomo}}</td>
@@ -114,7 +115,10 @@
                                     <span class="badge-primary p-1">APROBADO</span></td>
                                     @endif
                                     @if ($calificacione->observacion == 'SUSPENSO')
-                                        <span class="badge-warning p-1"> SUSPENSO</span>
+                                    <span class="badge-warning p-1">SUSPENSO</span></td>
+                                    @endif
+                                    @if ($calificacione->observacion == 'REPROBADO')
+                                        <span class="badge-danger p-1"> REPROBADO</span>
                                     @endif
                                     @if ($calificacione->observacion == 'EXONERADO')
                                         <span class="badge-info p-1"> EXONERADO</span>

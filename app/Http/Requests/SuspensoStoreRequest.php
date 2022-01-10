@@ -24,21 +24,43 @@ class SuspensoStoreRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'asignacione_id'              => ['required' ],
             'asignatura_id'               => ['required' ],
 
-            'estudiante_id'=>Rule::unique('suspensos')->where(function ($query) {
-                return $query->where('asignacione_id', $this->asignacione_id)
-                             ->where('asignatura_id', $this->asignatura_id);
-            }),
+            // 'estudiante_id'=>Rule::unique('suspensos')
+            //     ->where(function ($query) {
+            //     return $query->where('asignacione_id', $this->asignacione_id)
+            //                  ->where('asignatura_id', $this->asignatura_id);
+            // }),
 
             'promedio_final'              => ['required', 'numeric','between:0,6'],
-            'examen_suspenso'             => ['required', 'numeric','between:0,10'],
+            //'examen_suspenso'             => ['required', 'numeric','between:0,10'],
             'suma'                        => ['required', 'numeric','between:0,16'],
             'promedio_numero'             => ['required', 'numeric','between:0,8'],
             'promedio_letra'              => ['required'],
             'observacion'                 => ['required'],
         ];
+
+                // verificar existencia calificaciones
+                if($this->examen_suspenso==null)
+                {
+                    dd('examen_suspenso', 'Paso 1');
+                    $rules['estudiante_id'] = ['required'];
+
+                }else
+                //dd('Paso 2');
+                {
+
+                    $rules ['estudiante_id']= [
+                        'required',
+                        Rule::unique('suspensos')
+                            ->where(function ($query) {
+                            return $query->where('asignacione_id', $this->asignacione_id)
+                                        ->where('asignatura_id', $this->asignatura_id);
+                            }),
+                        ];
+                }
+        return $rules;
     }
 }

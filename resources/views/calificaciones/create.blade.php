@@ -178,7 +178,7 @@
                 <div class="card shadow-sm">
                     <div class="row m-2">
                         <div class="col-lg-3">
-                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">NÚMERO ASISTENCIA</font>
+                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">NÚMERO DE HORAS</font>
                                 <div class="text-value-lg">
                                     <input type="text" value="{{old('numero_asistencia')}}" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
                                 @error ('numero_asistencia') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror

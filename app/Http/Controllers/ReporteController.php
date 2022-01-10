@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asignatura;
 use App\Models\Calificacione;
+use App\Models\Calificacionperiodo;
 use App\Models\Carrera;
 use App\Models\Convalidacione;
 use App\Models\Docente;
@@ -12,6 +13,7 @@ use App\Models\Horario;
 use App\Models\Matricula;
 use App\Models\Periodacademico;
 use App\Models\Suspenso;
+use App\Models\Egresado;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
@@ -115,34 +117,36 @@ class ReporteController extends Controller
         // REPORTE DE CALIFICACION X PERIODO
         public function reporteCalificacionperiodo($id)
         {
+            $this->authorize('create', new Calificacionperiodo);
+
             $datoNuevo=explode("_",$id);
-        $estudiante_id=$datoNuevo[0];
-        $periodo_id=$datoNuevo[1];
+            $estudiante_id=$datoNuevo[0];
+            $periodo_id=$datoNuevo[1];
 
-
-        $suspensos = Suspenso::where('suspensos.estudiante_id',$estudiante_id)
-        ->join('asignaturas','asignaturas.id','=','suspensos.asignatura_id')
-        ->where('asignaturas.periodo_id',$periodo_id)
-        ->select('asignatura_id','examen_suspenso', 'observacion');
-
-        $calificaciones=Calificacione::
-            join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
-            ->leftjoinSub($suspensos,'suspensos',function($join){
-                $join->on('calificaciones.asignatura_id','=','suspensos.asignatura_id');
-            })
-            ->where('calificaciones.estudiante_id',$estudiante_id)
+            $suspensos = Suspenso::where('suspensos.estudiante_id',$estudiante_id)
+            ->join('asignaturas','asignaturas.id','=','suspensos.asignatura_id')
             ->where('asignaturas.periodo_id',$periodo_id)
-            ->select('calificaciones.*','suspensos.examen_suspenso as suspensoNota', 'suspensos.observacion as observacionSuspenso' )
-            ->get();
+            ->select('asignatura_id','examen_suspenso', 'observacion');
 
-        $pdf = PDF::loadView('reportes.reporteCalificacionperiodo', ['calificaciones'=>$calificaciones])
-            ->setPaper('a4', 'landscape');
-        return $pdf->stream('Calificación por periodo', compact('calificaciones'));
+            $calificaciones=Calificacione::
+                join('asignaturas','asignaturas.id','=','calificaciones.asignatura_id')
+                ->leftjoinSub($suspensos,'suspensos',function($join){
+                    $join->on('calificaciones.asignatura_id','=','suspensos.asignatura_id');
+                })
+                ->where('calificaciones.estudiante_id',$estudiante_id)
+                ->where('asignaturas.periodo_id',$periodo_id)
+                ->select('calificaciones.*','suspensos.examen_suspenso as suspensoNota', 'suspensos.observacion as observacionSuspenso' )
+                ->get();
+
+            $pdf = PDF::loadView('reportes.reporteCalificacionperiodo', ['calificaciones'=>$calificaciones])
+                ->setPaper('a4', 'landscape');
+            return $pdf->stream('Calificación por periodo', compact('calificaciones'));
         }
 
         // REPORTE DE EGRESADOS
         public function reporteEgresado($dato)
         {
+            $this->authorize('view', new Egresado);
             $datoNuevo=explode("_",$dato);
             $query_peraca=$datoNuevo[0];
             $queryCarrera=$datoNuevo[1];

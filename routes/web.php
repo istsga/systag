@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware('role:Administrador')
     ->put('users/{user}/roles', [UserRoleController::class, 'update'])->name('users.roles.update');
 
-    Route::resource('roles', RoleController::class)->except(['show']);
+    Route::resource('roles', RoleController::class);
     Route::resource('permisos', PermisoController::class)->only(['index']);
     Route::resource('carreras', CarreraController::class);
     Route::resource('periodos', PeriodoController::class);
@@ -124,6 +124,7 @@ Route::middleware(['auth'])->group(function () {
     //PETICIONES ASINCRONAS
     //Usuarios
     Route::get('/getUsuarios/{id}', [UserController::class,'getUsuarios'])->name('getUsuarios');
+            //->middleware('role:Administrador');
     //Horarios
     Route::get('/getAsignaturashor/{id}', [HorarioController::class,'getAsignaturashor'])->name('getAsignaturashor');
     //Carga Horaria y Distributivo
@@ -136,6 +137,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/getAsignacionessus/{id}', [SuspensoController::class,'getAsignacionessus'])->name('getAsignacionessus');
     Route::get('/getAsignaturassus/{id}', [SuspensoController::class, 'getAsignaturassus'])->name('getAsignaturassus');
     Route::get('/getEstudiantessus/{id}', [SuspensoController::class, 'getEstudiantessus'])->name('getEstudiantessus');
+    Route::get('/getPromediosus/{id}', [SuspensoController::class, 'getPromediosus'])->name('getPromediosus');
 
 });
 

@@ -25,7 +25,7 @@
                                     @foreach ($periodacademicos as $periodacademico)
                                         <option  value="{{$periodacademico->id}}"
                                             {{$query_peraca==$periodacademico->id ? 'selected' : '' }}
-                                            >{{$query_peraca.'+'.$periodacademico->periodo}}</option>
+                                            >{{$periodacademico->periodo}}</option>
                                     @endforeach
                                 </select>
                                     <button class=" btn  btn-sm btn-primary ml-1 " type="submit"> <i class="fas fa-search"></i></button>
@@ -47,7 +47,7 @@
                                             @foreach ($carreras as $carrera)
                                                 <option  value="{{$carrera->id}}"
                                                 {{$queryCarrera==$carrera->id ? 'selected' : '' }}
-                                                >{{$carrera->id}} {{$carrera->nombre}}</option>
+                                                >{{$carrera->nombre}}</option>
                                             @endforeach
                                     </select>
                                     <button class=" btn  btn-primary ml-1 " type="submit"> <i class="fas fa-eye"></i> Ver </button>

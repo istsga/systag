@@ -130,6 +130,7 @@ class PermissionSeeder extends Seeder
 
         //calificaciones por periodo
         $notasperiodos =  Permission::create(['name'=> 'Ver calificaciones por periodo' ]);
+        $notasperiodos =  Permission::create(['name'=> 'Imprimir calificaciones por periodo' ]);
 
         //calificaciones por periodo
         $certificadosperiodos =  Permission::create(['name'=> 'Ver certificados por periodo' ]);

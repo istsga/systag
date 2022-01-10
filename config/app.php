@@ -181,9 +181,10 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         //Debugbar
         Barryvdh\Debugbar\ServiceProvider::class,
-
         //Avatar
         Intervention\Image\ImageServiceProvider::class,
+        //laravel permision
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 
@@ -242,6 +243,7 @@ return [
 
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+
 
     ],
 

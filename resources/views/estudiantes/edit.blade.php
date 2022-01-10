@@ -310,7 +310,7 @@
                                     <div class="card shadow-sm m-3 p-3">
                                         <div class="row">
                                             <div class="form-group col-lg-4">
-                                                <label for="miembro_hogar" class="col-form-label font-weight-bold text-muted">Miembros del Hogar
+                                                <label for="miembro_hogar" class="col-form-label font-weight-bold text-muted"> Nro. de miembros
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('miembro_hogar') is-invalid @enderror"
@@ -322,7 +322,7 @@
                                             </div>
 
                                             <div class="form-group col-lg-4">
-                                                <label for="ingreso_ec" class="col-form-label font-weight-bold text-muted">Ingreso Económico
+                                                <label for="ingreso_ec" class="col-form-label font-weight-bold text-muted">Ingreso económico familiar
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('ingreso_ec') is-invalid @enderror"
@@ -590,7 +590,7 @@
                                     <div class="card shadow-sm m-3 p-3">
                                         <div class="row">
                                             <div class="form-group col-lg-6">
-                                                <label for="estado" class=" col-form-label font-weight-bold text-muted">Estado
+                                                <label for="estado" class=" col-form-label font-weight-bold text-muted">Estado del estudiante
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <select name="estado" id="estado"  class="form-control @error('estado') is-invalid @enderror">

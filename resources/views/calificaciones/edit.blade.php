@@ -89,7 +89,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">EXPERIMENTO APLICACIÓN</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'experimento_aplicacion', $calificacione->experimento_aplicacion)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror" >
+                                    <input type="number" value="{{old( 'experimento_aplicacion', $calificacione->experimento_aplicacion)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror" step="0.01" >
                                 @error ('experimento_aplicacion') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">TRABAJO AUTÓNOMO</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'trabajo_autonomo', $calificacione->trabajo_autonomo)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" >
+                                    <input type="number" value="{{old( 'trabajo_autonomo', $calificacione->trabajo_autonomo)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" step="0.01" >
                                 @error ('trabajo_autonomo') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">EXAMEN PRINCIPAL</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old('examen_principal', $calificacione->examen_principal)}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " >
+                                    <input type="number" value="{{old('examen_principal', $calificacione->examen_principal)}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " step="0.01">
                                 @error ('examen_principal') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                 <div class="card shadow-sm">
                     <div class="row m-2">
                         <div class="col-lg-3">
-                            <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">NÚMERO ASISTENCIA</font>
+                            <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">NÚMERO DE HORAS</font>
                                 <div class="text-value-lg">
                                     <input type="text" value="{{old('numero_asistencia',$calificacione->numero_asistencia)}}" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
                                 @error ('numero_asistencia') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
@@ -198,7 +198,7 @@
     </div>
 </div>
 </main>
-
+@endsection
 
 @push('scripts')
 <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -216,33 +216,34 @@ function calcular(){
     examen_principal=document.getElementById('examen_principal').value;
 
     var total=parseFloat(docencia)+parseFloat(experimento_aplicacion)+parseFloat(trabajo_autonomo);
-  document.getElementById("suma").value = total;
+    total=parseFloat(total).toFixed(2)
+    document.getElementById("suma").value = total;
 
-  promedio=parseFloat(total).toFixed(2) / 3;
-  promedio=parseFloat(promedio).toFixed(2)
-  document.getElementById("promedio_decimal").value = promedio;
-
-
-  promedio_final=(Number(promedio)+Number(examen_principal))/2;
-  promedio_final=parseFloat(promedio_final).toFixed(0);
-
-  if (total>0){
-    document.getElementById("promedio_final").value = promedio_final;
-    document.getElementById("promedio_letra").value = Unidades(parseInt(promedio_final));
+    promedio=parseFloat(total).toFixed(2) / 3;
+    promedio=parseFloat(promedio).toFixed(2)
+    document.getElementById("promedio_decimal").value = promedio;
 
 
-  }
+    promedio_final=(Number(promedio)+Number(examen_principal))/2;
+    promedio_final=parseFloat(promedio_final).toFixed(0);
 
-  if (promedio_final<6.5){
-    document.getElementById("observacion").value='REPROBADO';
-  }else{
-   document.getElementById("observacion").value="APROBADO";
-  }
-  if(examen_principal<=0){
-    document.getElementById("observacion").value="EN CURSO";
-  }
+    if (total>0){
+        document.getElementById("promedio_final").value = parseFloat(promedio_final).toFixed(2);
+        document.getElementById("promedio_letra").value = Unidades(parseInt(promedio_final));
+    }
 
+    if (promedio_final<7){
+    document.getElementById("observacion").value='SUSPENSO';
+    }else{
+    document.getElementById("observacion").value="APROBADO";
+    }
+    if(promedio_final==10){
+        document.getElementById("observacion").value="EXONERADO";
+    }
 
+    if(promedio_final<=2){
+        document.getElementById("observacion").value="REPROBADO";
+    }
 }
 
 function eligeEstudiante(){
@@ -273,4 +274,4 @@ function Unidades(num){
 
 </script>
 @endpush
-@endsection
+

@@ -51,6 +51,17 @@ class RoleController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return view ('errors.404');
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

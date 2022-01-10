@@ -65,21 +65,13 @@
 
                                 <div class=" card col-lg-4 shadow-sm bg-light">
                                     <div class="form-group p-2">
-                                        <label for="orden" class="col-form-label font-weight-bold text-muted small">ORDEN</label>
+                                        <label for="orden" class="col-form-label font-weight-bold text-muted small">ORDEN DE ASIGNATURAS</label>
                                         <div class="input-group">
                                             <select  name="orden" id="orden" class="form-control">
                                                 <option value="" > == Seleccionar == </option>
-                                                @foreach ($horarios as $horario)
-                                                    <option  value="{{$horario->id}}"
-                                                        {{$queryOrden==$horario->id ? 'selected' : '' }}
-                                                        >{{$horario->orden}}</option>
-
-                                                @endforeach
-
-
-                                                {{-- <option value="1" {{ old('orden') == 1 ? 'selected' : '' }} class="form-control">1</option>
-                                                <option value="2" {{ old('orden') == 2 ? 'selected' : '' }} class="form-control">2</option>
-                                                <option value="3" {{ old('orden') == 3 ? 'selected' : '' }} class="form-control">3</option> --}}
+                                                <option value="1" {{$queryOrden== 1 ? 'selected' : '' }} class="form-control">1</option>
+                                                <option value="2" {{$queryOrden== 2 ? 'selected' : '' }}  class="form-control">2</option>
+                                                <option value="3" {{$queryOrden== 3 ? 'selected' : '' }} class="form-control">3</option>
                                             </select>
                                                 <button class=" btn   btn-primary ml-1 " type="submit"> <i class="fas fa-eye-slash"> </i> Ver </button>
                                         </div>
@@ -97,7 +89,6 @@
                 @if (count($horarios) > 0)
                 <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                     <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-calendar-alt mr-3"></i> HORARIO DE CLASE </font>
-                        {{-- <a class=" btn btn-primary " href="{{route('reporteHorarioE', $query.'_'.$queryCarrera)}}"> <i class=" font-weight-bold fas fa-file-pdf mr-1"></i>Reporte PDF</a> --}}
                 </div>
                 <div class="card-table  table-responsive">
                     <table class="table table-hover  table-bordered align-middle">
@@ -109,25 +100,24 @@
                                 <th class="text-center align-middle"><font >Miércoles</font></th>
                                 <th class="text-center align-middle"><font >Jueves</font></th>
                                 <th class="text-center align-middle"><font >Viernes</font></th>
+                                <th class="text-center align-middle"><font >FECHAS</font></th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach ($horarios1 as $horarios )
                             <tr>
-                                <td class="align-middle">{{$horarios->hora_inicio}} - {{$horarios->hora_final}} </td>
+                                <td class="align-middle small">{{$horarios->hora_inicio}} - {{$horarios->hora_final}} </td>
 
-                                <td class="align-middle">{{$horarios->lunesnombreasignatura}} <hr class=" mt-2 mb-1 bg-primary"><span class="text-muted small">Profesor: {{$horarios->lunesnombredocente}} {{$horarios->lunesapellidodocente}}</span> </td>
+                                <td class="align-middle small">{{$horarios->lunesnombreasignatura}} <hr class=" mt-2 mb-1 bg-primary"><span class="text-muted small">Profesor: {{$horarios->lunesnombredocente}} {{$horarios->lunesapellidodocente}}</span> </td>
 
-                                <td class="align-middle">{{$horarios->martesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor: {{$horarios->martesnombredocente}} {{$horarios->martesapellidodocente}}</span> </td>
+                                <td class="align-middle small">{{$horarios->martesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"><span class=" text-muted small">Profesor: {{$horarios->martesnombredocente}} {{$horarios->martesapellidodocente}}</span> </td>
 
-                                {{-- @if ($horarios->miercolesnombreasignatura!= 0) --}}
-                                <td class="align-middle">{{$horarios->miercolesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horarios->miercolesnombredocente}} {{$horarios->miercolesapellidodocente}}</span> </td>
-                                {{-- @else
-                                <p>datos</p>
-                                @endif --}}
-                                <td class="align-middle">{{$horarios->juevesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horarios->juevesnombredocente}} {{$horarios->juevesapellidodocente}}</span> </td>
-                                <td class="align-middle">{{$horarios->viernesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor: {{$horarios->viernesnombredocente}} {{$horarios->viernesapellidodocente}}</span> </td>
+                                <td class="align-middle small">{{$horarios->miercolesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horarios->miercolesnombredocente}} {{$horarios->miercolesapellidodocente}}</span> </td>
+
+                                <td class="align-middle small">{{$horarios->juevesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class=" text-muted small">Profesor: {{$horarios->juevesnombredocente}} {{$horarios->juevesapellidodocente}}</span> </td>
+                                <td class="align-middle small">{{$horarios->viernesnombreasignatura}} <hr class=" bg-primary mt-2 mb-1"> <span class="text-muted small"> Profesor: {{$horarios->viernesnombredocente}} {{$horarios->viernesapellidodocente}}</span> </td>
+                                <td class="align-middle small text-muted"> <span class="font-weight-bold">FI: &nbsp; </span>  {{$horarios->fecha_inicio}} <br> <span class="font-weight-bold"> FF: &nbsp; </span> {{$horarios->fecha_final}} <br> <span class="font-weight-bold"> FEP: &nbsp; </span>  {{$horarios->fecha_examen}} <br> <span class="font-weight-bold"> FEX: &nbsp; </span>  {{$horarios->fecha_suspension}} </td>
                             </tr>
                             @endforeach
 
@@ -135,23 +125,21 @@
                     </table>
                 </div>
                 <div class="col-lg-12">
-                    {{-- <p class="font-weight-bold text-muted">FECHA DE ACTIVIDADES ACADÉMICAS</p> --}}
+                    <p class="font-weight-bold text-muted small">ABREVIATURAS  <span class="text-primary">*</span> </p>
                     <div class="row small font-weight-bold ">
-                        <div class="form-group col-lg-3 align-middle">
-                            @foreach ($horarios1 as $horario)
-                                {{$horario->fecha_inicio}}
-                                {{$horario->fecha_final}}
-                            @endforeach
-                            <p class="font-weight-bold text-muted"> FI = Fecha Inicio</p>
+                        <div class="form-group col-lg-3 align-middle ">
+                            <font class="font-weight-bold small text-muted "> FI = Fecha Inicio</font> <br>
+                            <font class="font-weight-bold small text-muted "> FF = Fecha Final </font> <br>
+                            <font class="font-weight-bold small text-muted "> FEP = Fecha Examen Principal </font> <br>
+                            <font class="font-weight-bold small text-muted ">FEX = Fecha Examen Suspensión </font>
                         </div>
                         <div class="form-group col-lg-3 align-middle">
-                            <p class="font-weight-bold text-muted"> FF = Fecha Final </p>
                         </div>
                         <div class="form-group col-lg-3 align-middle">
-                            <p class="font-weight-bold text-muted"> FEP = Fecha Examen Principal </p>
+
                         </div>
                         <div class="form-group col-lg-3 ">
-                            <p class="font-weight-bold text-muted">FEX = Fecha Examen Suspensión </p>
+
                         </div>
                     </div>
                 </div>
@@ -178,15 +166,15 @@
     //             orden.setAttribute("selected", "selected");
     //         }
     //     }
-        var orden = null;
-        for(var i=0; i!=document.querySelector("#orden").querySelectorAll("option").length; i++)
-        {
-            orden = document.querySelector("#orden").querySelectorAll("option")[i];
-            if(orden.getAttribute("value") == "{{ old("orden") }}")
-            {
-                orden.setAttribute("selected", "selected");
-            }
-        }
+        // var orden = null;
+        // for(var i=0; i!=document.querySelector("#orden").querySelectorAll("option").length; i++)
+        // {
+        //     orden = document.querySelector("#orden").querySelectorAll("option")[i];
+        //     if(orden.getAttribute("value") == "{{ old("orden") }}")
+        //     {
+        //         orden.setAttribute("selected", "selected");
+        //     }
+        // }
     </script>
 @endsection
 

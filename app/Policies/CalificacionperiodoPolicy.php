@@ -50,7 +50,7 @@ class CalificacionperiodoPolicy
      */
     public function create(User $user)
     {
-        //
+        return  $user->hasPermissionTo('Imprimir calificaciones por periodo');
     }
 
     /**

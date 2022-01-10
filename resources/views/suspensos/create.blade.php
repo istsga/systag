@@ -77,7 +77,7 @@
                                 <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small">ESTUDIANTES
                                 </label>
                                 <div class="input-group ">
-                                    <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror">
+                                    <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror" onchange="promedioSuspenso();" >
                                         <option class="form-control" value=""> == Seleccionar == </option>
                                         {{-- Data --}}
                                     </select>
@@ -230,6 +230,7 @@ function Unidades(num){
 }
 
 
+
 function suspensoAsignaciones(){
     var asignaturas = document.getElementById("asignacione_id");
     for (let i = asignaturas.options.length; i >= 0; i--) {
@@ -248,13 +249,17 @@ function suspensoAsignaciones(){
             option.text = resp.data[i].nombre +' | '+resp.data[i].nombrePeriodo +' | '+resp.data[i].nombreSeccion +' | '+resp.data[i].nombreParalelo;
             asignaturas.appendChild(option);
             }
+            suspensoAsignaturas();
         })
       .catch(function (error) {console.log(error);})
     }else{
         document.getElementById("asignacione_id").length  = 1
         asignaturas.options[0].value = ""
         asignaturas.options[0].text = " == Selecionar == "
+
+        suspensoAsignaturas();
     }
+
 }
 
 
@@ -265,10 +270,10 @@ function suspensoAsignaturas(){
     }
     //var periodo_id = document.getElementById('periodacademico_id').value;
     var id = document.getElementById('asignacione_id').value;
+    console.log(id);
     axios.get('/getAsignaturassus/'+id)
       .then((resp)=>{
         var asignaturas = document.getElementById("asignatura_id");
-        console.log(id);
         console.log(Object.keys(resp.data).length);
         for (i = 0; i < Object.keys(resp.data).length; i++) {
           var option = document.createElement('option');
@@ -276,6 +281,7 @@ function suspensoAsignaturas(){
           option.text = resp.data[i].nombre;
           asignaturas.appendChild(option);
         }
+        suspensoEstudiantes();
       })
       .catch(function (error) {console.log(error);})
 }
@@ -286,19 +292,37 @@ function suspensoEstudiantes(){
     for (let i = estudiantes.options.length; i >= 0; i--) {
         estudiantes.remove(i);
     }
-
     var asignacion_id = document.getElementById('asignacione_id').value;
     var asignatura_id = document.getElementById('asignatura_id').value;
-    //console.log('/getEstudiantessus/'+asignacion_id+'_'+asignatura_id);
     axios.get('/getEstudiantessus/'+asignacion_id+'_'+asignatura_id)
       .then((resp)=>{
         var estudiantes = document.getElementById("matricula_id");
         for (i = 0; i < Object.keys(resp.data).length; i++) {
+            console.log('prueba2');
           var option = document.createElement('option');
           console.log(resp.data[i].estudiante_id,resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni);
           option.value = resp.data[i].estudiante_id;
           option.text = resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni;
           estudiantes.appendChild(option);
+        }
+        promedioSuspenso();
+      })
+      .catch(function (error) {console.log(error);})
+}
+
+function promedioSuspenso()
+{
+    var asignacion_id = document.getElementById('asignacione_id').value;
+    var asignatura_id = document.getElementById('asignatura_id').value;
+    var estudiante_id = document.getElementById("matricula_id").value;
+    console.log( asignacion_id, asignatura_id, estudiante_id)
+    axios.get('/getPromediosus/'+asignacion_id+'_'+asignatura_id+'_'+estudiante_id)
+      .then((resp)=>{
+
+        console.log('prueba1');
+        for (i = 0; i < Object.keys(resp.data).length; i++) {
+          console.log(resp.data);
+          document.getElementById("promedio_final").value=resp.data[i].promedio_final;
         }
       })
       .catch(function (error) {console.log(error);})

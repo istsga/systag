@@ -9,6 +9,7 @@ use App\Models\Convalidacione;
 use App\Models\Matricula;
 use App\Models\Periodacademico;
 use App\Models\Suspenso;
+use App\Models\Egresado;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -21,7 +22,7 @@ class EgresadoController extends Controller
      */
     public function index(Request $request)
     {
-        //$this->authorize('view', new egresado);
+        $this->authorize('view', new egresado);
 
         $periodacademicos = Periodacademico::all();
         $query_peraca=trim($request->get('periodacademico_id'));
@@ -39,8 +40,7 @@ class EgresadoController extends Controller
                 ->where('asignacione_carrera.asignacione_id',$alumno->asignacione_id)
                 ->select('asignaturas.*')
                 ->get();
-            // if($alumno->estudiante_id==1)
-            //     dd($periodo_academico->fecha_final);
+
             $alumno->egresado=$this->esEgresado($alumno->estudiante_id,$malla,$periodo_academico->fecha_final);
         }
 

@@ -8,6 +8,7 @@ use App\Models\Convalidacione;
 use App\Models\Estudiante;
 use App\Models\Matricula;
 use App\Models\Periodacademico;
+use App\Models\Recordacademico;
 use App\Models\Periodo;
 use App\Models\Suspenso;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -54,6 +55,8 @@ class RecordacademicoController extends Controller
             $periodacademicos = Periodacademico::all();
             $periodos = Periodo::all();
 
+
+            $this->authorize('view', new recordacademico);
             $pdf = PDF::loadView('reportes.reporteRecordacademicos', ['estudiante'=>$estudiante, 'matricula'=>$matricula, 'asignaturas'=>$asignaturas, 'calificaciones'=>$calificaciones,
             'periodacademicos'=>$periodacademicos, 'periodos'=>$periodos, 'convalidaciones'=>$convalidaciones, 'suspensos'=>$suspensos ]);
             return $pdf->stream('Reporte Record Academico.pdf', compact('pdf'));

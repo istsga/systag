@@ -29,7 +29,7 @@
                                                 @foreach ($periodacademicos as $periodacademico)
                                                     <option  value="{{$periodacademico->id}}"
                                                         {{$query==$periodacademico->id ? 'selected' : '' }}
-                                                        >{{$query.''.$periodacademico->periodo}}</option>
+                                                        >{{$periodacademico->periodo}}</option>
                                                 @endforeach
                                             </select>
                                             @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
@@ -50,9 +50,9 @@
                                                     @foreach ($asignaciones as $asignacione)
                                                         <option  value="{{$asignacione->id}}"
                                                             {{$queryAsignacione==$asignacione->id ? 'selected' : '' }}
-                                                            >{{$asignacione->id}} {{$asignacione->carreras->pluck('nombre')->implode(', ')}}
-                                                            {{$asignacione->periodo->nombre}}
-                                                            {{$asignacione->seccione->nombre}} -
+                                                            >{{$asignacione->carreras->pluck('nombre')->implode(', ')}} |
+                                                            {{$asignacione->periodo->nombre}} |
+                                                            {{$asignacione->seccione->nombre}} |
                                                             {{$asignacione->paralelo->nombre}}
                                                         </option>
                                                     @endforeach
@@ -73,7 +73,7 @@
                                                     @foreach ($asignaturas as $asignatura)
                                                         <option  value="{{$asignatura->asignatura_id}}"
                                                             {{$queryAsignatura==$asignatura->asignatura_id ? 'selected' : '' }}
-                                                            >{{$queryAsignacione.'-'.$asignatura->nombre}}</option>
+                                                            >{{$asignatura->nombre}}</option>
                                                     @endforeach
                                                 </select>
                                                 <button class="btn btn-primary ml-1 " type="submit"> <i class="fas fa-eye-slash"> </i>  Ver </button>
@@ -112,16 +112,13 @@
                                 <td class="align-middle">
 
                                         @role('Administrador')
-
-                                        {{-- <input type="text" onchange="actualizarEstado(this);"> --}}
                                             <div class="px-4 mt-1 justify-content-center form-inline">
                                                 <select name="" id="" class="form-control col-lg-4 bg-light" onchange="actualizarEstado(this,{{$calificacione->estudiante->id}});">
                                                     <option class="form-control" > == Seleccionar  == </option>
-                                                    <option class="form-control" value="0"> == No Autorizado  == </option>
-                                                    <option class="form-control" value="1"> == Autorizado == </option>
+                                                    <option value="0" class="form-control"  > == No Autorizado  == </option>
+                                                    <option value="1" class="form-control" > == Autorizado == </option>
                                                 </select>
                                             </div>
-
                                         @else
 
                                             <div class=" form-inline justify-content-center px-4 ">
@@ -171,10 +168,6 @@ function actualizarEstado(valor,estudiante_id){
     var asignacione_id = document.getElementById('asignacione_id').value;
     var asignatura_id = document.getElementById('asignatura_id').value;
 
-    //var estudiante_id = document.getElementById('asignatura_id').value;
-    // var asignacione_id ='14'
-    // var estudiante_id = '101';
-    // var asignatura_id = '103';
 
     axios.post('/habilitarEstado/'+asignacione_id+'_'+estudiante_id+'_'+asignatura_id)
         .then((respuesta)=>{

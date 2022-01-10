@@ -47,6 +47,9 @@ class UserController extends Controller
 
     public function getUsuarios($id)
     {
+        $user = new User;
+        $this->authorize('create', User::class);
+
         $user = Estudiante::where('dni',$id)->get();
         if(count($user)==0){
             $user = Docente::where('dni',$id)->get();

@@ -89,6 +89,7 @@ class SuspensoController extends Controller
         // ->get();
 
         $query=trim($request->get('asignacione_id'));
+
         $suspensos=Suspenso::all();
 
         $estudiantes = Estudiante::all();
@@ -97,6 +98,8 @@ class SuspensoController extends Controller
 
         $queryAsignatura=trim($request->get('asignatura_id'));
         $matriculas=[];
+
+        //dd($matriculas[0]->promedio_final);
 
         return view('suspensos.create', compact(
             'suspensos', 'asignaturas', 'estudiantes', 'asignaciones','matriculas','query',
@@ -142,7 +145,7 @@ class SuspensoController extends Controller
         $datoNuevo=explode("_",$dato);
         $asignacione_id=$datoNuevo[0];
         $queryAsignatura=$datoNuevo[1];
-
+        //dd($asignacione_id,$queryAsignatura);
         $matriculas=Matricula::
             join('asignatura_matricula','asignatura_matricula.matricula_id','=','matriculas.id')
             ->join('estudiantes','estudiantes.id','=','matriculas.estudiante_id')
@@ -153,10 +156,31 @@ class SuspensoController extends Controller
             })
             ->where('matriculas.asignacione_id',$asignacione_id)
             ->where('asignatura_matricula.asignatura_id',$queryAsignatura)
-            ->where('calificaciones.observacion','REPROBADO')
+            ->where('calificaciones.observacion','SUSPENSO')
             ->select('matriculas.*','calificaciones.promedio_final','estudiantes.nombre','estudiantes.apellido','estudiantes.dni')
             ->get();
+            //dd($matriculas);
         return $matriculas;
+    }
+
+    public function getPromediosus($dato)
+    {
+        $datoNuevo=explode("_",$dato);
+        $asignacione_id=$datoNuevo[0];
+        $asignatura_id=$datoNuevo[1];
+        $estudiante_id=$datoNuevo[2];
+
+        $suspenso = Suspenso::
+            where('suspensos.asignacione_id', $asignacione_id)
+            ->where('suspensos.asignatura_id', $asignatura_id)
+            ->where('suspensos.estudiante_id', $estudiante_id)
+            ->select('suspensos.asignacione_id','suspensos.asignatura_id','suspensos.estudiante_id', 'suspensos.promedio_final')
+            ->groupBy('suspensos.asignacione_id','suspensos.asignatura_id','suspensos.estudiante_id', 'suspensos.promedio_final')
+            ->get();
+
+        return $suspenso;
+
+
     }
 
     //Habilitar edicion de suspensiones

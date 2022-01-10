@@ -101,7 +101,7 @@
                                     <div class="row">
 
                                         <div class="form-group col-lg-4 ">
-                                            <label for="orden" class="col-form-label font-weight-bold text-muted">Orden
+                                            <label for="orden" class="col-form-label font-weight-bold text-muted">Orden de asignaturas
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
                                                 <select  name="orden" id="orden" class="form-control @error('orden') is-invalid @enderror  ">
