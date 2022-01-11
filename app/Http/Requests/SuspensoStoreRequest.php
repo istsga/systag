@@ -27,6 +27,7 @@ class SuspensoStoreRequest extends FormRequest
         $rules = [
             'asignacione_id'              => ['required' ],
             'asignatura_id'               => ['required' ],
+            'estudiante_id'               => ['required' ],
 
             // 'estudiante_id'=>Rule::unique('suspensos')
             //     ->where(function ($query) {
@@ -35,7 +36,7 @@ class SuspensoStoreRequest extends FormRequest
             // }),
 
             'promedio_final'              => ['required', 'numeric','between:0,6'],
-            //'examen_suspenso'             => ['required', 'numeric','between:0,10'],
+            'examen_suspenso'             => ['required', 'numeric','between:0,10'],
             'suma'                        => ['required', 'numeric','between:0,16'],
             'promedio_numero'             => ['required', 'numeric','between:0,8'],
             'promedio_letra'              => ['required'],
@@ -43,24 +44,24 @@ class SuspensoStoreRequest extends FormRequest
         ];
 
                 // verificar existencia calificaciones
-                if($this->examen_suspenso==null)
-                {
-                    dd('examen_suspenso', 'Paso 1');
-                    $rules['estudiante_id'] = ['required'];
+                // if($this->examen_suspenso==null)
+                // {
+                //     dd('examen_suspenso', 'Paso 1');
+                //     $rules['estudiante_id'] = ['required'];
 
-                }else
-                //dd('Paso 2');
-                {
+                // }else
+                // //dd('Paso 2');
+                // {
 
-                    $rules ['estudiante_id']= [
-                        'required',
-                        Rule::unique('suspensos')
-                            ->where(function ($query) {
-                            return $query->where('asignacione_id', $this->asignacione_id)
-                                        ->where('asignatura_id', $this->asignatura_id);
-                            }),
-                        ];
-                }
+                //     $rules ['estudiante_id']= [
+                //         'required',
+                //         Rule::unique('suspensos')
+                //             ->where(function ($query) {
+                //             return $query->where('asignacione_id', $this->asignacione_id)
+                //                         ->where('asignatura_id', $this->asignatura_id);
+                //             }),
+                //         ];
+                // }
         return $rules;
     }
 }
