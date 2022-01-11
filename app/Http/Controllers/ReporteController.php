@@ -42,7 +42,8 @@ class ReporteController extends Controller
 
             //dd($convalidacion->asignatura->nombre);
 
-            $pdf = PDF::loadView('reportes.reporteMatricula',['matricula'=>$matricula, 'convalidacion'=>$convalidacion]);
+            $pdf = PDF::loadView('reportes.reporteMatricula',['matricula'=>$matricula, 'convalidacion'=>$convalidacion])
+            ->setPaper('a4');
             return $pdf->stream('Reporte Matricula.pdf',compact('matricula'));
         }
 

@@ -18,8 +18,7 @@
       </li>
 
       <li class="c-sidebar-nav-title">COMPONENTES ACADÉMICOS</li>
-      @if(auth()->user()->canAny(['Ver docentes', 'Crear docentes', 'Actualizar docentes', 'Eliminar docentes',
-                                  'Ver distributivos', 'Crear distributivos', 'Actualizar distributivos', 'Eliminar distributivos'])
+      @if(auth()->user()->canAny(['Ver docentes', 'Crear docentes', 'Actualizar docentes', 'Eliminar docentes'])
          or auth()->user()->hasRole('Administrador'))
       <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
           <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
@@ -35,13 +34,6 @@
                 </li>
             @endcan
 
-            @can('view', new App\Models\Asignaturadocente)
-                <li class="c-sidebar-nav-item ">
-                <a class="c-sidebar-nav-link" href="{{route('asignaturadocentes.index')}}">
-                    <span class=" c-sidebar-nav-icon fas fa-business-time ml-n4"></span> Distributivos y Horarios
-                </a>
-                </li>
-            @endcan
             </ul>
         @endif
       </li>
@@ -69,6 +61,7 @@
       </li>
       <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
         @if (auth()->user()->canAny(['Ver horarios', 'Crear horarios', 'Actualizar horarios', 'Eliminar horarios',
+                                     'Ver distributivos', 'Crear distributivos', 'Actualizar distributivos', 'Eliminar distributivos',
                                      'Ver horario de clases'])
                                      or auth()->user()->hasAnyRole(['Administrador', 'Docente', 'Estudiante']))
         <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
@@ -83,6 +76,14 @@
               </a>
             </li>
           @endcan
+
+          @can('view', new App\Models\Asignaturadocente)
+                <li class="c-sidebar-nav-item ">
+                <a class="c-sidebar-nav-link" href="{{route('asignaturadocentes.index')}}">
+                    <span class=" c-sidebar-nav-icon fas fa-business-time ml-n4"></span> Distributivos y Horarios
+                </a>
+                </li>
+            @endcan
 
           @can('view', new App\Models\Horarioclase)
             <li class="c-sidebar-nav-item">

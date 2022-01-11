@@ -98,7 +98,7 @@ class CalificacioneController extends Controller
 
         return view('calificaciones.create', compact(
             'calificaciones', 'periodacademicos', 'asignaturas', 'estudiantes', 'asignaciones','matriculas',
-            'query','queryAsignatura', 'matricula_detalle'
+            'query','queryAsignatura'
         ));
     }
 

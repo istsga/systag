@@ -179,8 +179,6 @@ class SuspensoController extends Controller
             ->get();
 
         return $suspenso;
-
-
     }
 
     //Habilitar edicion de suspensiones

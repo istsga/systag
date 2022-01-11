@@ -27,7 +27,7 @@
                     <div class="float-right">
                       <ul class="d-flex  text-dark">
                         <li class="header-link-item d-flex align-items-center active"> <i class="fas fa-home ml-4 mr-2 d-none d-md-block"></i> <a class=" mr-2  text-dark" href="{{route('users.show', auth()->user())}}">Inicio</a> </li>
-                        <li class="header-link-item border-left d-flex align-items-center"> <i class=" fas fa-user ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="#">Friends</a> </li>
+                        {{-- <li class="header-link-item border-left d-flex align-items-center"> <i class=" fas fa-user ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="#">Friends</a> </li> --}}
                         <li class="header-link-item border-left d-flex align-items-center"> <i class="fas fa-star ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="#">Asignaturas</a> </li>
                         <li class="header-link-item border-left d-flex align-items-center"> <i class="fas fa-calendar ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="{{route('horarioclases.index', auth()->user())}}">Mi horario</a> </li>
                         <li class="header-link-item border-left d-flex align-items-center"> <i class="fas fa-user-circle ml-4 mr-2 d-none d-md-block"></i> <a class="mr-2  text-dark" href="/profile">Avatar</a> </li>
