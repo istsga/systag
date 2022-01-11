@@ -170,7 +170,7 @@
                 <div class="wrap-m">{{$matricula->asignaturas->pluck('nombre')->implode(' | ')}}</div>
             </td>
         </tr>
-        <tr>
+        {{-- <tr>
             <th colspan="3"> Asignaturas Convalidadas</th>
         </tr>
         <tr>
@@ -181,7 +181,7 @@
                     Ninguno
                 @endforelse
             </td>
-        </tr>
+        </tr> --}}
       </table>
 
     </div>
