@@ -88,7 +88,11 @@
         </tr>
 
         <tr>
-          <td colspan="4"> Discapacidad: &nbsp; <span> {{$matricula->estudiante->discapacidad}}  {{$matricula->estudiante->tipo_discapacidad}} {{$matricula->estudiante->porcentaje_discapacidad}}  </span> </td>
+          <td colspan="4"> Discapacidad: &nbsp; <span> @if($matricula->estudiante->discapacidad ==0)
+                                                         Ninguno
+                                                        @else
+                                                        {{$matricula->estudiante->tipo_discapacidad}} | Porcentaje: {{$matricula->estudiante->porcentaje_discapacidad}}% </span> </td>
+                                                        @endif
         </tr>
 
       </table>
@@ -170,7 +174,7 @@
                 <div class="wrap-m">{{$matricula->asignaturas->pluck('nombre')->implode(' | ')}}</div>
             </td>
         </tr>
-        {{-- <tr>
+        <tr>
             <th colspan="3"> Asignaturas Convalidadas</th>
         </tr>
         <tr>
@@ -181,7 +185,7 @@
                     Ninguno
                 @endforelse
             </td>
-        </tr> --}}
+        </tr>
       </table>
 
     </div>
