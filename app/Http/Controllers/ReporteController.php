@@ -22,7 +22,8 @@ class ReporteController extends Controller
         //REPORTE DE MATRICULAS
         public function reporteMatricula($id)
         {
-            $this->authorize('view', new Matricula);
+            //$this->authorize('view', new Matricula);
+            //$this->authorize('create', Matricula::class);
 
             $matricula = Matricula::
                 join('asignaciones','asignaciones.id','=','matriculas.asignacione_id')

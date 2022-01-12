@@ -63,7 +63,7 @@
             @if (count($alumnos) > 0)
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                 <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold far fa-user mr-3"></i> ALUMNOS </font>
-                    <a class=" btn btn-primary " href="{{route('reporteEgresado',  $query_peraca.'_'.$queryCarrera)}}"> <i class="fas fa-print font-weight-bold mr-1"></i>Imprimir</a>
+                    <a class=" btn btn-primary"  href="{{route('reporteEgresado',  $query_peraca.'_'.$queryCarrera)}}" target="_blank"> <i class="fas fa-print font-weight-bold mr-1"></i>Imprimir</a>
             </div>
             <div class="card-table table-responsive">
                 <table class="table table-hover  table-bordered align-middle">

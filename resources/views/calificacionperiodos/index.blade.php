@@ -69,7 +69,7 @@
             <div class="card-header bg-primary  d-flex justify-content-between aling-items-end ">
                 <font class=" text-light align-self-center text-black vertical-align-inherit "> <i class="font-weight-bold fas fa-star  mr-3"></i> NOTAS CONSOLIDADO POR PERIODO </font>
                     @can('create', new App\Models\Calificacionperiodo)
-                        <a class=" btn btn-primary " href="{{route('reporteCalificacionperiodo', $estudiante_id.'_'.$periodo_id)}}"> <i class=" font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
+                        <a class=" btn btn-primary " target="_blank" href="{{route('reporteCalificacionperiodo', $estudiante_id.'_'.$periodo_id)}}" > <i class=" font-weight-bold fas fa-print mr-1"></i>Imprimir</a>
                     @endcan
 
             </div>

@@ -75,7 +75,7 @@
         </div>
         <div class="firma">
             <p>  Ing. Olga Villagran C. <br>
-            <span>SECRETARIA GENERAL </span> </p>
+            <span style="margin-top: 10px">SECRETARIA GENERAL </span> </p>
         </div>
         </div>
     </div>

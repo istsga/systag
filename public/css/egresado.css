@@ -58,6 +58,16 @@ text-align: justify;
   text-align: justify;
 }
 
+.firma {
+    font-size: 12px;
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.firma span{
+    font-weight: bold;
+}
+
 
 
 
