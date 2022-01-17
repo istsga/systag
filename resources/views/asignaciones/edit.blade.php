@@ -120,19 +120,18 @@ function cambia_carreras(select){
     const carreras = @json($carreras);
     periodacademico = document.getElementById('periodacademicos').value;
     const result = carreras.filter(carreras => carreras.periodacademico_id === Number(periodacademico));
-    console.log(result);
+
     if (periodacademico != 0) {
         num_carreras = result.length;
         document.getElementById("carrera_id").length = num_carreras;
-        console.log(num_carreras);
         for(i=0;i<num_carreras;i++){
             carrera_id.options[i].value=result[i].carrera_id;
             carrera_id.options[i].text=result[i].nombre;
         }
+        editar_periodo();
     }else{
         document.getElementById("carrera_id").length  = 1;
-
-        carrera_id.options[0].value = "Seleccionar";
+        carrera_id.options[0].value = " == Seleccionar ==";
         carrera_id.options[0].text = " == Seleccionar == ";
     }
 
@@ -152,5 +151,4 @@ function editar_periodo(){
         }
 }
 </script>
-
- @endsection
+@endsection

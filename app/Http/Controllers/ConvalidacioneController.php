@@ -41,6 +41,8 @@ class ConvalidacioneController extends Controller
 
     public function getConvalidaciones($id)
     {
+
+        //$this->authorize( 'create', new Convalidacione);
         $convalidacion = Asignatura::where('carrera_id', $id)->get();
         return $convalidacion;
     }

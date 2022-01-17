@@ -27,9 +27,9 @@
                                         <option value="" class="form-control  "> == Seleccionar == </option>
                                         @foreach ($periodacademicos as $periodacademico)
                                         <option  value="{{$periodacademico->id}}"
-                                            {{$query==$periodacademico->id ? 'selected' : '' }}
+                                            {{old('periodacademico_id')==$periodacademico->id ? 'selected' : ''}}
                                             >{{$query.''.$periodacademico->periodo}}</option>
-                                            @endforeach
+                                        @endforeach
                                     </select>
                                     @error ('periodacademico_id') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror
                                     <div class="input-group-prepend "><span class=" input-group-text">
@@ -44,8 +44,7 @@
                                 </label>
                                 <div class="input-group ">
                                     <select name="asignacione_id" id="asignacione_id" class="form-control  @error('asignacione_id') is-invalid @enderror" onchange="suspensoAsignaturas();">
-                                        <option class="form-control" value=""> == Seleccionar == </option>
-                                        {{-- Data --}}
+                                        {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-layer-group"></i></span></div>
@@ -60,7 +59,7 @@
                                 </label>
                                 <div class="input-group ">
                                     <select name="asignatura_id" id="asignatura_id" class="form-control  @error('asignatura_id') is-invalid @enderror" onchange="suspensoEstudiantes();">
-                                        <option class="form-control" value=""> == Seleccionar == </option>
+                                        {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                             {{-- Data --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
@@ -78,7 +77,7 @@
                                 </label>
                                 <div class="input-group ">
                                     <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror" onchange="promedioSuspenso();" >
-                                        <option class="form-control" value=""> == Seleccionar == </option>
+                                        {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                         {{-- Data --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
@@ -229,34 +228,32 @@ function Unidades(num){
  return "";
 }
 
-
+suspensoAsignaciones();
 
 function suspensoAsignaciones(){
-    var asignaturas = document.getElementById("asignacione_id");
-    for (let i = asignaturas.options.length; i >= 0; i--) {
-        asignaturas.remove(i);
+    var asignaciones = document.getElementById("asignacione_id");
+    for (let i = asignaciones.options.length; i >= 0; i--) {
+        asignaciones.remove(i);
     }
     var id = document.getElementById('periodacademico_id').value;
     if(id){
         axios.get('/getAsignacionessus/'+id)
         .then((resp)=>{
-            var asignaturas = document.getElementById("asignacione_id");
-            console.log(id);
-            console.log(Object.keys(resp.data).length);
+            var asignaciones = document.getElementById("asignacione_id");
+
             for (i = 0; i < Object.keys(resp.data).length; i++) {
             var option = document.createElement('option');
             option.value = resp.data[i].id;
             option.text = resp.data[i].nombre +' | '+resp.data[i].nombrePeriodo +' | '+resp.data[i].nombreSeccion +' | '+resp.data[i].nombreParalelo;
-            asignaturas.appendChild(option);
+            asignaciones.appendChild(option);
             }
             suspensoAsignaturas();
         })
       .catch(function (error) {console.log(error);})
     }else{
         document.getElementById("asignacione_id").length  = 1
-        asignaturas.options[0].value = ""
-        asignaturas.options[0].text = " == Selecionar == "
-
+        asignaciones.options[0].value = ""
+        asignaciones.options[0].text = " == Selecionar == "
         suspensoAsignaturas();
     }
 
@@ -270,20 +267,27 @@ function suspensoAsignaturas(){
     }
     //var periodo_id = document.getElementById('periodacademico_id').value;
     var id = document.getElementById('asignacione_id').value;
-    console.log(id);
-    axios.get('/getAsignaturassus/'+id)
-      .then((resp)=>{
-        var asignaturas = document.getElementById("asignatura_id");
-        console.log(Object.keys(resp.data).length);
-        for (i = 0; i < Object.keys(resp.data).length; i++) {
-          var option = document.createElement('option');
-          option.value = resp.data[i].asignatura_id;
-          option.text = resp.data[i].nombre;
-          asignaturas.appendChild(option);
-        }
+
+    if(id){
+        axios.get('/getAsignaturassus/'+id)
+        .then((resp)=>{
+            var asignaturas = document.getElementById("asignatura_id");
+            //console.log(Object.keys(resp.data).length);
+            for (i = 0; i < Object.keys(resp.data).length; i++) {
+            var option = document.createElement('option');
+            option.value = resp.data[i].asignatura_id;
+            option.text = resp.data[i].nombre;
+            asignaturas.appendChild(option);
+            }
+            suspensoEstudiantes();
+        })
+        .catch(function (error) {console.log(error);})
+    }else{
+        document.getElementById("asignatura_id").length  = 1
+        asignaturas.options[0].value = ""
+        asignaturas.options[0].text = " == Selecionar == "
         suspensoEstudiantes();
-      })
-      .catch(function (error) {console.log(error);})
+    }
 }
 
 //Estudiantes correspondientes a una asignatura
@@ -294,20 +298,27 @@ function suspensoEstudiantes(){
     }
     var asignacion_id = document.getElementById('asignacione_id').value;
     var asignatura_id = document.getElementById('asignatura_id').value;
-    axios.get('/getEstudiantessus/'+asignacion_id+'_'+asignatura_id)
-      .then((resp)=>{
-        var estudiantes = document.getElementById("matricula_id");
-        for (i = 0; i < Object.keys(resp.data).length; i++) {
-            console.log('prueba2');
-          var option = document.createElement('option');
-          console.log(resp.data[i].estudiante_id,resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni);
-          option.value = resp.data[i].estudiante_id;
-          option.text = resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni;
-          estudiantes.appendChild(option);
-        }
+
+    if (asignatura_id){
+        axios.get('/getEstudiantessus/'+asignacion_id+'_'+asignatura_id)
+        .then((resp)=>{
+            var estudiantes = document.getElementById("matricula_id");
+            for (i = 0; i < Object.keys(resp.data).length; i++) {
+            var option = document.createElement('option');
+            //console.log(resp.data[i].estudiante_id,resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni);
+            option.value = resp.data[i].estudiante_id;
+            option.text = resp.data[i].nombre + ' '+ resp.data[i].apellido + ' '+ resp.data[i].dni;
+            estudiantes.appendChild(option);
+            }
+            promedioSuspenso();
+        })
+        .catch(function (error) {console.log(error);})
+     }else{
+        document.getElementById("matricula_id").length  = 1
+        estudiantes.options[0].value = ""
+        estudiantes.options[0].text = " == Selecionar == "
         promedioSuspenso();
-      })
-      .catch(function (error) {console.log(error);})
+     }
 }
 
 function promedioSuspenso()
@@ -315,13 +326,9 @@ function promedioSuspenso()
     var asignacion_id = document.getElementById('asignacione_id').value;
     var asignatura_id = document.getElementById('asignatura_id').value;
     var estudiante_id = document.getElementById("matricula_id").value;
-    console.log( asignacion_id, asignatura_id, estudiante_id)
     axios.get('/getPromediosus/'+asignacion_id+'_'+asignatura_id+'_'+estudiante_id)
       .then((resp)=>{
-
-        console.log('prueba1');
         for (i = 0; i < Object.keys(resp.data).length; i++) {
-          console.log(resp.data);
           document.getElementById("promedio_final").value=resp.data[i].promedio_final;
         }
       })

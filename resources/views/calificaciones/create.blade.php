@@ -28,7 +28,6 @@
                                         <option value="" class="form-control  "> == Seleccionar == </option>
                                         @foreach ($periodacademicos as $periodacademico)
                                         <option  value="{{$periodacademico->id}}"
-                                            {{-- {{old('estudiante_id')==$estudiante->id ? 'selected' : '' }} --}}
                                             {{old('periodacademico_id')==$periodacademico->id ? 'selected' : '' }}
                                             >{{$query.''.$periodacademico->periodo}}</option>
                                         @endforeach

@@ -7,6 +7,7 @@ use App\Http\Requests\SuspensoUpdateRequest;
 use App\Models\Asignacione;
 use App\Models\Asignacione_carrera;
 use App\Models\Asignatura_matricula;
+use App\Models\Calificacione;
 use App\Models\Estudiante;
 use App\Models\Matricula;
 use App\Models\Periodacademico;
@@ -170,12 +171,12 @@ class SuspensoController extends Controller
         $asignatura_id=$datoNuevo[1];
         $estudiante_id=$datoNuevo[2];
 
-        $suspenso = Suspenso::
-            where('suspensos.asignacione_id', $asignacione_id)
-            ->where('suspensos.asignatura_id', $asignatura_id)
-            ->where('suspensos.estudiante_id', $estudiante_id)
-            ->select('suspensos.asignacione_id','suspensos.asignatura_id','suspensos.estudiante_id', 'suspensos.promedio_final')
-            ->groupBy('suspensos.asignacione_id','suspensos.asignatura_id','suspensos.estudiante_id', 'suspensos.promedio_final')
+        $suspenso = Calificacione::
+            where('calificaciones.asignacione_id', $asignacione_id)
+            ->where('calificaciones.asignatura_id', $asignatura_id)
+            ->where('calificaciones.estudiante_id', $estudiante_id)
+            ->select('calificaciones.asignacione_id','calificaciones.asignatura_id','calificaciones.estudiante_id', 'calificaciones.promedio_final')
+            ->groupBy('calificaciones.asignacione_id','calificaciones.asignatura_id','calificaciones.estudiante_id', 'calificaciones.promedio_final')
             ->get();
 
         return $suspenso;
@@ -234,7 +235,70 @@ class SuspensoController extends Controller
         $suspensos->promedio_letra = $promedio_letras;
         $suspensos->observacion =  $descripcion;
         $suspensos->save();
-        return redirect()->route('suspensos.create', $suspensos)->with('status', 'Agregado con éxito');
+        return redirect()->route('suspensos.index')->with('status', 'Agregado con éxito');
+    }
+
+
+    private function unidad($numero){
+        switch ($numero)
+        {
+            case 10:
+            {
+                $letter = "DIEZ";
+                break;
+            }
+            case 9:
+            {
+                $letter = "NUEVE";
+                break;
+            }
+            case 8:
+            {
+                $letter = "OCHO";
+                break;
+            }
+            case 7:
+            {
+                $letter = "SIETE";
+                break;
+            }
+            case 6:
+            {
+                $letter = "SEIS";
+                break;
+            }
+            case 5:
+            {
+                $letter = "CINCO";
+                break;
+            }
+            case 4:
+            {
+                $letter = "CUATRO";
+                break;
+            }
+            case 3:
+            {
+                $letter = "TRES";
+                break;
+            }
+            case 2:
+            {
+                $letter = "DOS";
+                break;
+            }
+            case 1:
+            {
+                $letter = "UNO";
+                break;
+            }
+            case 0:
+            {
+                $letter = "CERO";
+                break;
+            }
+        }
+        return $letter;
     }
 
     /**

@@ -101,6 +101,7 @@
                                                 <i class=" text-primary fas fa-folder-open"></i></span></div>
                                             @error ('asignaturas') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                             </div>
+                                            <em class="text-muted small">Pulsar Ctrl para seleccionar varias opciones</em>
                                     </div>
                                 </div>
 

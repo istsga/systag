@@ -119,7 +119,7 @@ $(function () {
 
         var id = document.getElementById('asigperiodo').value;
         if(id){
-            axios.get('/getAsignaturasdis/'+id)
+            axios.post('/getAsignaturasdis/'+id)
             .then((resp)=>{
                 var asignaturas = document.getElementById("asignaturatrans");
                 for (i = 0; i < Object.keys(resp.data).length; i++) {
@@ -143,7 +143,6 @@ $(function () {
             asignaturas.options[0].value =""
             asignaturas.options[0].text = " == Selecionar carrera == "
         }
-
     }
 </script>
 @endpush

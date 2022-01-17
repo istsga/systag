@@ -206,14 +206,6 @@ class CalificacioneController extends Controller
             }else{
                 if(round($promedio_final)>=2){ //<7
                     $descripcion = 'SUSPENSO';
-                    //suspensos -graba automaicamente caundo esta reprobado
-                    $suspensos = new Suspenso;
-                    $suspensos->asignacione_id =  $request->get('asignacione_id');
-                    $suspensos->estudiante_id  =  $request->get('estudiante_id');
-                    $suspensos->asignatura_id  =  $request->get('asignatura_id');
-                    $suspensos->promedio_final = $promedio_final;
-                    $suspensos->promedio_letra = $promedio_letras;
-                    $suspensos->save();
                 }else{ //<2
                     $descripcion = 'REPROBADO';
                 }
@@ -334,7 +326,7 @@ class CalificacioneController extends Controller
         $examen=$request->get('examen_principal');
         $promedio = $suma / 3;
         $promedio_final =  round(($examen + $promedio) /2);
-        $promedio_letras = $this->unidad($promedio_final);
+        //$promedio_letras = $this->unidad($promedio_final);
 
         if($examen){
             if(round($promedio_final) >=7){
@@ -343,38 +335,12 @@ class CalificacioneController extends Controller
                 }else{
                     $descripcion = 'APROBADO';
                 }
-                $suspenso = Suspenso::where('asignacione_id',$request->get('asignacione_id'))
-                        ->where('estudiante_id',$request->get('estudiante_id'))
-                        ->where('asignatura_id',$request->get('asignatura_id'))
-                        ->delete();
             }else {
                 if(round($promedio_final)>=2){ //<7
                     $descripcion = 'SUSPENSO';
-                    //suspensos -graba automaicamente caundo esta reprobado
-                    $suspenso = Suspenso::where('asignacione_id',$request->get('asignacione_id'))
-                        ->where('estudiante_id',$request->get('estudiante_id'))
-                        ->where('asignatura_id',$request->get('asignatura_id'))
-                        ->first();
 
-                    if($suspenso){
-                        $suspenso->promedio_final = $promedio_final;
-                        $suspenso->promedio_letra = $promedio_letras;
-                        $suspenso->update();
-                    }else{
-                        $suspensos = new Suspenso;
-                        $suspensos->asignacione_id =  $request->get('asignacione_id');
-                        $suspensos->estudiante_id  =  $request->get('estudiante_id');
-                        $suspensos->asignatura_id  =  $request->get('asignatura_id');
-                        $suspensos->promedio_final = $promedio_final;
-                        $suspensos->promedio_letra = $promedio_letras;
-                        $suspensos->save();
-                    }
                 }else{ //<2
                     $descripcion = 'REPROBADO';
-                    $suspenso = Suspenso::where('asignacione_id',$request->get('asignacione_id'))
-                        ->where('estudiante_id',$request->get('estudiante_id'))
-                        ->where('asignatura_id',$request->get('asignatura_id'))
-                        ->delete();
                 }
             }
         }

@@ -221,7 +221,7 @@
 
         var id = document.getElementById('asignacione_id').value;
         if(id){
-            axios.get('/getAsignaturashor/'+id)
+            axios.post('/getAsignaturashor/'+id)
             .then((resp)=>{
                 var asignaturas = document.getElementById("asignatura_id");
                 for (i = 0; i < Object.keys(resp.data).length; i++) {
@@ -291,14 +291,10 @@ for (let i = orden.options.length; i >= 0; i--) {
 }
 
 var id = document.getElementById('asignacione_id').value;
-//console.log( id);
 if(id){
-
-    axios.get('/getOrden/'+id)
+    axios.post('/getOrden/'+id)
     .then((resp)=>{
         var orden = document.getElementById("orden");
-        //console.log(Object.keys(resp.data).length);
-        console.log(resp.data);
         for (i = 0; i < Object.keys(resp.data).length; i++) {
             if(resp.data[i]!==0){
                 var option = document.createElement('option');

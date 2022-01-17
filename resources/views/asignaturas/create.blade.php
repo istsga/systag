@@ -157,10 +157,9 @@
         }
         var id = document.getElementById('carrera_id').value;
         if (id){
-        axios.get('/getPrerequisitos/'+id)
+        axios.post('/getPrerequisitos/'+id)
         .then((resp)=>{
                 var asignaturas = document.getElementById("preasignatura_id");
-                console.log(resp.data);
                 for (i = 0; i < Object.keys(resp.data).length; i++) {
                 var option = document.createElement('option');
                 option.value = resp.data[i].id;

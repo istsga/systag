@@ -74,13 +74,14 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('secciones', SeccioneController::class);
     Route::resource('paralelos', ParaleloController::class);
     Route::resource('asignaturas', AsignaturaController::class);
-    Route::get('/getPrerequisitos/{id}', [AsignaturaController::class, 'getPrerequisitos'])
+    Route::post('/getPrerequisitos/{id}', [AsignaturaController::class, 'getPrerequisitos'])
         ->name('getPrerequisitos');
     Route::resource('periodacademicos', PeriodacademicoController::class);
     Route::resource('asignaciones', AsignacioneController::class);
     Route::resource('convalidaciones', ConvalidacioneController::class);
     Route::resource('estudiantes', EstudianteController::class);
-    Route::get('/getConvalidaciones/{id}', [ConvalidacioneController::class, 'getConvalidaciones'])
+
+    Route::post('/getConvalidaciones/{id}', [ConvalidacioneController::class, 'getConvalidaciones'])
     ->name('getConvalidaciones');
 
     Route::resource('matriculas', MatriculaController::class);
@@ -94,7 +95,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('calificaciones', CalificacioneController::class);
     Route::resource('suspensos', SuspensoController::class);
     Route::resource('horarios', HorarioController::class);
-    Route::get('getOrden/{id}', [ HorarioController::class, 'getOrden'])
+    Route::post('getOrden/{id}', [ HorarioController::class, 'getOrden'])
         ->name('getOrden');
 
     //REPORTES PDF
@@ -123,12 +124,11 @@ Route::middleware(['auth'])->group(function () {
 
     //PETICIONES ASINCRONAS
     //Usuarios
-    Route::get('/getUsuarios/{id}', [UserController::class,'getUsuarios'])->name('getUsuarios');
-            //->middleware('role:Administrador');
+    Route::post('/getUsuarios/{id}', [UserController::class,'getUsuarios'])->name('getUsuarios');
     //Horarios
-    Route::get('/getAsignaturashor/{id}', [HorarioController::class,'getAsignaturashor'])->name('getAsignaturashor');
+    Route::post('/getAsignaturashor/{id}', [HorarioController::class,'getAsignaturashor'])->name('getAsignaturashor');
     //Carga Horaria y Distributivo
-    Route::get('/getAsignaturasdis/{id}', [AsignaturadocenteController::class,'getAsignaturasdis'])->name('getAsignaturasdis');
+    Route::post('/getAsignaturasdis/{id}', [AsignaturadocenteController::class,'getAsignaturasdis'])->name('getAsignaturasdis');
     //Calificacion
     Route::get('/getAsignacionescal/{id}', [CalificacioneController::class,'getAsignacionescal'])->name('getAsignacionescal');
     Route::get('/getAsignaturascal/{id}', [CalificacioneController::class, 'getAsignaturascal'])->name('getAsignaturascal');

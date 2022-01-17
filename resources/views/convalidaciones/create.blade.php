@@ -131,28 +131,26 @@
 
 @push('scripts')
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/axios.min.js')}}"></script>
     <script src="{{asset('js/select2.full.min.js')}}"></script>
+    <script src="{{asset('js/axios.min.js')}}"></script>
 
 <script>
-
-    filtroAsignaturas();
     $(function () {
-
-        $('#estudiante_id').select2({
-        theme: 'bootstrap4'
-        });
-
+    $('#estudianteConvalidar').select2({
+      theme: 'bootstrap4'
     });
 
+});
+
+filtroAsignaturas();
 
 function filtroAsignaturas(select){
     $dato=[];
     for(var i=1;i<document.getElementById("detalles").rows.length;i++){
         $dato[i]=document.getElementById('detalles').rows[i].cells[1].innerText;
-              console.log($dato);
+
     }
-    console.log($dato);
+
     var asignaturas = document.getElementById("asignatura_id");
     for (let i = asignaturas.options.length; i >= 0; i--) {
         asignaturas.remove(i);
@@ -160,7 +158,7 @@ function filtroAsignaturas(select){
 
     var id = document.getElementById('carrera_id').value;
     if(id){
-        axios.get('/getConvalidaciones/'+id)
+        axios.post('/getConvalidaciones/'+id)
         .then((resp)=>{
             var asignaturas = document.getElementById("asignatura_id");
             for (i = 0; i < Object.keys(resp.data).length; i++) {
@@ -191,12 +189,10 @@ function agregarAsignatura(){
       Asignatura=$("#asignatura_id option:selected").text();
       Promedio=$("#nota_final").val();
       //var id = document.getElementById('nota_final').value;
-      console.log(Asignatura);
       if(Asignatura!=""){
             var fila='</tr><tr class="selected" id="fila'+cont+'"><td class="text-center"><input type="hidden" name="cont" value="'+cont+'">'+cont+'</td><td><input type="hidden" name="Asignatura[]" value="'+Asignatura_id+'">'+Asignatura+'</td><td class="text-center"><input type="hidden" name="Promedio[]" value="'+Promedio+'">'+Promedio+'</td><td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');">X</button></td>';
             cont++;
-            //limpiar();
-            //evaluar();
+
             $('#detalles').append(fila);
       }else{
             alert("Error al ingresar el detalle de Asignatura, revise los datos");
@@ -214,9 +210,6 @@ function validar(){
 function eliminar(index){
   cont--;
   $("#fila" + index).remove();
-  //evaluar();
-  filtroAsignaturas();
-
 }
 
 </script>

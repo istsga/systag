@@ -70,8 +70,12 @@
                                             </label>
                                             <div class="input-group">
                                                 <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror">
-                                                    <option class="form-control" value=""> == Seleccionar carrera para editar asignatura == </option>
-                                                    {{-- Lista de asignaturas --}}
+                                                    <option class="form-control" value=""> == Seleccionar == </option>
+                                                    @foreach ($asignaturas as $asignatura)
+                                                        <option  value="{{$asignatura->id}}"
+                                                        {{old('asignatura_id', $convalidacione->asignatura_id)==$asignatura->id ? 'selected' : '' }}
+                                                        >{{$asignatura->nombre}} </option>
+                                                    @endforeach
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-folder"></i></span></div>
@@ -135,7 +139,7 @@ function filtroAsignaturas(select){
 
     var id = document.getElementById('carrera_id').value;
     if(id){
-        axios.get('/getConvalidaciones/'+id)
+        axios.post('/getConvalidaciones/'+id)
         .then((resp)=>{
             var asignaturas = document.getElementById("asignatura_id");
             for (i = 0; i < Object.keys(resp.data).length; i++) {

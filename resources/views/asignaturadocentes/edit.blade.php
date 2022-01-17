@@ -121,15 +121,13 @@ $(function () {
 
         var id = document.getElementById('asigperiodo').value;
         if(id){
-            axios.get('/getAsignaturasdis/'+id)
+            axios.post('/getAsignaturasdis/'+id)
             .then((resp)=>{
                 var asignaturas = document.getElementById("asignaturatrans");
                 for (i = 0; i < Object.keys(resp.data).length; i++) {
                 var option = document.createElement('option');
                 option.value = resp.data[i].id;
                 option.text = resp.data[i].nombre;
-
-                //resp.data[i].id.selected= (resp.data[i].id == asignaturas) ? true : false;
 
                 if(resp.data[i].id == "{{ old("asignatura_id") }}")
                     {

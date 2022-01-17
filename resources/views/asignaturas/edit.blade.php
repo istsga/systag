@@ -92,7 +92,7 @@
                                         <div class="form-group ">
                                             <label for="preasignatura_id" class="col-form-label font-weight-bold small text-muted">PREREQUISITOS</label>
                                                 <div class="input-group">
-                                                    <select name="preasignatura_id[]" id="preasignatura_id" class=" form-control @error('asignaturas') is-invalid @enderror" multiple>
+                                                    <select name="preasignatura_id[]" id="preasignatura_id" class=" form-control @error('preasignatura_id') is-invalid @enderror" multiple>
                                                         {{-- Lista de asignaturas --}}
                                                     </select>
                                                     <div class="input-group-prepend "><span class=" input-group-text">
@@ -152,31 +152,11 @@
 
 function Prerequisitos(){
         var asignaturas = document.getElementById("preasignatura_id");
-        for (let i = asignaturas.options.length; i >= 0; i--) {
-        asignaturas.remove(i);
-    }
-    var id = document.getElementById('carrera_id').value;
-    axios.get('/getPrerequisitos/'+id)
-    .then((resp)=>{
-        var asignaturas = document.getElementById("preasignatura_id");
-        console.log(resp.data);
-        for (i = 0; i < Object.keys(resp.data).length; i++) {
-        var option = document.createElement('option');
-        option.value = resp.data[i].id;
-        option.text = resp.data[i].nombre;
-        asignaturas.appendChild(option);
-        }
-    })
-    .catch(function (error) {console.log(error);})
-}
-
-function Prerequisitos(){
-        var asignaturas = document.getElementById("preasignatura_id");
         for (let i = asignaturas.options.length; i >= 0; i--) {asignaturas.remove(i);}
 
         var id = document.getElementById('carrera_id').value;
         if (id){
-        axios.get('/getPrerequisitos/'+id)
+        axios.post('/getPrerequisitos/'+id)
         .then((resp)=>{
                 var asignaturas = document.getElementById("preasignatura_id");
                 for (i = 0; i < Object.keys(resp.data).length; i++) {

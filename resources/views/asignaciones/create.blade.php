@@ -124,11 +124,10 @@ function cambia_carreras(select){
 
         num_carreras = result.length;
         document.getElementById("carrera_id").length = num_carreras;
-        console.log(num_carreras);
         for(i=0;i<num_carreras;i++){
             carrera_id.options[i].value=result[i].carrera_id;
             carrera_id.options[i].text=result[i].nombre;
-            //console.log(carrera_id.options[i].value, "{{ old("carrera_id") }}");
+
             if(carrera_id.options[i].value == "{{ old("carrera_id") }}")
             {
                 carrera_id.options[i].value.selected= true;
@@ -147,8 +146,6 @@ function cambia_carreras(select){
         periodo_id.options[0].text = "== Seleccionar ==";
     }
 
-    //cambia_periodo();
-    //carrera_id.options[0].selected = true;
 }
 
 function cambia_periodo(){

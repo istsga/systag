@@ -106,6 +106,16 @@ class AsignaturaController extends Controller
     {
         $this->authorize('update', $asignatura);
         $asignatura->update($request->validated());
+
+        $pre=Prerequisito::where('asignatura_id',$asignatura->id)->delete();
+        $preasignatura=$request->get('preasignatura_id');
+        if($preasignatura)
+            for ($i=0; $i < count($preasignatura); $i++) {
+                $pre  = new Prerequisito();
+                $pre->asignatura_id = $asignatura->id;
+                $pre->preasignatura_id = $preasignatura[$i];
+                $pre->save();
+            }
         return redirect()->route('asignaturas.index')->with('status', 'Actualizado con éxito');
 
     }

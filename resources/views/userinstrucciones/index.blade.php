@@ -83,7 +83,7 @@
                     </div>
                     </div>
                     <div class="card-footer bg-primary content-center">
-                    <a href="#" class="btn btn-block btn-primary font-weight-bold">VER MANUAL</a>
+                    <a target="_blank" href="https://drive.google.com/file/d/1lcDMNUqo0iF9WSGK97uxYh6dHc-IBJ1f/view?usp=sharing" class="btn btn-block btn-primary font-weight-bold">VER MANUAL</a>
                     </div>
                 </div>
             </div>
@@ -103,8 +103,8 @@
                             <div class="text-value-xl">Estudiante</div>
                         </div>
                         </div>
-                        <div class="card-footer bg-primary content-center ">
-                        <a href="#" class="btn btn-block btn-primary font-weight-bold ">VER MANUAL</a>
+                        <div class="card-footer bg-primary content-center">
+                        <a target="_blank" href="https://drive.google.com/file/d/1Q7OnrgKIWNIW4ez-4RertEmEdfxSolEM/view" class="btn btn-block btn-primary font-weight-bold ">VER MANUAL</a>
                         </div>
                     </div>
                 </div>

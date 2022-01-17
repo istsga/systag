@@ -105,10 +105,9 @@
             document.getElementById('apellido').value='';
             document.getElementById('email').value='';
     var id = document.getElementById('dni').value;
-    axios.get('/getUsuarios/'+id)
+    axios.post('/getUsuarios/'+id)
       .then((resp)=>{
         for (i = 0; i < Object.keys(resp.data).length; i++) {
-            //console.log(resp.data[i].nombre);
             document.getElementById('nombre').value=resp.data[i].nombre;
             document.getElementById('apellido').value=resp.data[i].apellido;
             document.getElementById('email').value=resp.data[i].email;

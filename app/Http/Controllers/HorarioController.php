@@ -159,10 +159,9 @@ class HorarioController extends Controller
     public function edit(Horario $horario)
     {
         $this->authorize('update', $horario);
-        $horarios = Horario::all();
         $asignaciones = Asignacione::all();
         $asignaturas = Asignatura::all();
-        $detallehorarios = Detallehorario::get();
+        $detallehorarios = Detallehorario::where('horario_id',$horario->id)->get();
         return view('horarios.edit', compact('horario', 'asignaciones', 'asignaturas', 'detallehorarios'));
     }
 

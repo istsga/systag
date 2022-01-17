@@ -23,7 +23,6 @@ class ReporteController extends Controller
         public function reporteMatricula($id)
         {
             $this->authorize('view', new Matricula);
-            //$this->authorize('create', Matricula::class);
 
             $matricula = Matricula::
                 join('asignaciones','asignaciones.id','=','matriculas.asignacione_id')
@@ -39,9 +38,6 @@ class ReporteController extends Controller
                 ->where('convalidaciones.estudiante_id',$estudiante)
                 ->where('asignaturas.periodo_id',$matricula->periodo_id)
                 ->get();
-            //dd($convalidacion);
-
-            //dd($convalidacion->asignatura->nombre);
 
             $pdf = PDF::loadView('reportes.reporteMatricula',['matricula'=>$matricula, 'convalidacion'=>$convalidacion])
             ->setPaper('a4');
