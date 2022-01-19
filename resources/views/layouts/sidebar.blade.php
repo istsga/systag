@@ -2,7 +2,7 @@
     <div class="c-sidebar-brand d-lg-down-none ">
         <div class="c-sidebar-brand-full ">
             <div class="form-group text-center m-2">
-                <img height="42"  src="{{asset('assets/brand/logo3.png')}}" alt="ITSGA Logo">
+                <img height="60"  src="{{asset('assets/brand/logoSG.png')}}" alt="ITSGA Logo">
                 <h3 class="text-light  font-weight-bold mt-1 ">SISTEMA</h3>
                 <span class="font-weight-bold text-light ">ACADÉMICO</span>
             </div>

@@ -43,7 +43,7 @@
                                         </div>
 
                                         <div class="form-group col-lg-4">
-                                            <label for="fecha_inicio" class="col-form-label font-weight-bold text-muted">Fecha de inicio
+                                            <label for="fecha_inicio" class="col-form-label font-weight-bold text-muted">Fecha inicio asignatura
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
@@ -56,7 +56,7 @@
                                         </div>
 
                                         <div class="form-group col-lg-4">
-                                            <label for="fecha_final" class="col-form-label font-weight-bold text-muted">Fecha final
+                                            <label for="fecha_final" class="col-form-label font-weight-bold text-muted">Fecha final  asignatura
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
@@ -69,7 +69,7 @@
                                         </div>
 
                                         <div class="form-group col-lg-4">
-                                            <label for="fecha_examen" class="col-form-label font-weight-bold text-muted">Fecha  examen principal
+                                            <label for="fecha_examen" class="col-form-label font-weight-bold text-muted">Fecha  examen principal asignatura
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
@@ -82,7 +82,7 @@
                                         </div>
 
                                         <div class="form-group col-lg-4">
-                                            <label for="fecha_suspension" class="col-form-label font-weight-bold text-muted">Fecha  examen suspensión
+                                            <label for="fecha_suspension" class="col-form-label font-weight-bold text-muted">Fecha  examen suspensión asignatura
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">

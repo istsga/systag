@@ -23,7 +23,7 @@ class SuspensoController extends Controller
      */
     public function index(Request $request)
     {
-        //$this->authorize('view', Suspenso::class);
+        $this->authorize('view', new Suspenso);
 
         $query=trim($request->get('periodacademico_id'));
         $queryAsignatura=trim($request->get('asignatura_id'));
@@ -31,13 +31,6 @@ class SuspensoController extends Controller
 
         $periodacademicos = Periodacademico::get();
             // allowed()
-            // ->get();
-        //Verificar solo trae 3 en vez de 4
-        // $suspensos = Suspenso::
-        //     where('asignacione_id', $queryAsignacione)
-        //     ->where('asignatura_id', $queryAsignatura)
-        //     ->get();
-
         $suspensos = Suspenso::join('matriculas',function($join){
             $join->on('matriculas.asignacione_id','=','suspensos.asignacione_id')
                 ->on('matriculas.estudiante_id','=','suspensos.estudiante_id');

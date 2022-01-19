@@ -4,6 +4,16 @@
 @push('styles')
 <link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+    input[type=number] { -moz-appearance:textfield; }
+</style>
+
 @endpush
 
 @section('content')
@@ -12,11 +22,6 @@
 <div class="container-fluid">
     <div class="fade-in">
 
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
         <div class="card c-callout c-callout-primary bg-light shadow-lg ">
             <div class="card-header bg-primary">
                 <font class=" text-light font-weight-bold "> <i class="font-weight-bold  fas fa-user  mr-3"></i> ESTUDIANTE </font>
@@ -85,8 +90,8 @@
                     <div class="card shadow-sm">
                         <div class="row m-2">
                             <div class="col-lg-4">
-                                <div class="c-callout c-callout-primary"> <small class="text-muted"><font style="vertical-align: inherit;">NOTA FINAL</font></small>
-                                    <div class="text-value-lg"><input type="number" value="{{old('promedio_final', $suspenso->promedio_final)}}"  name="promedio_final" id="promedio_final"  class="form-control @error('promedio_final') is-invalid @enderror"  step="0.01" oninput="calcular()">
+                                <div class="c-callout c-callout-info"> <small class="text-muted"><font style="vertical-align: inherit;">NOTA FINAL</font></small>
+                                    <div class="text-value-lg"><input type="number" value="{{old('promedio_final', $suspenso->promedio_final)}}"  name="promedio_final" id="promedio_final"  class="form-control @error('promedio_final') is-invalid @enderror"  step="0.01" oninput="calcular()" readonly>
                                     @error ('promedio_final') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                                 </div>
@@ -94,7 +99,7 @@
 
                             <div class="col-lg-4">
                                 <div class="c-callout c-callout-primary"><small class="text-muted"><font style="vertical-align: inherit;">EXAMEN DE SUSPENSIÓN</font></small>
-                                    <div class="text-value-lg"><input type="number" value="{{old( 'examen_suspenso', $suspenso->examen_suspenso)}}"  name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" >
+                                    <div class="text-value-lg"><input type="number" value="{{old( 'examen_suspenso', $suspenso->examen_suspenso)}}"  name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" oninput="calcular()" step="0.01"  >
                                     @error ('examen_suspenso') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                                 </div>
@@ -103,7 +108,7 @@
 
                             <div class="col-lg-4">
                                 <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">SUMA</font></small>
-                                    <div class="text-value-lg"> <input type="number" value="{{old('suma', $suspenso->suma)}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light">
+                                    <div class="text-value-lg"> <input type="number" value="{{old('suma', $suspenso->suma)}}" name="suma" id="suma" class="form-control @error('suma') is-invalid @enderror text-info bg-light" readonly>
                                         @error ('suma') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                     </div>
                                 </div>
@@ -116,7 +121,7 @@
                         <div class="row m-2">
                             <div class="col-lg-4">
                                 <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">PROMEDIO EN DECIMALES</font></small>
-                                    <div class="text-value-lg"><input type="decimal" value="{{old('promedio_numero', $suspenso->promedio_numero)}}"  name="promedio_numero" id="promedio_numero" class="form-control @error('promedio_numero') is-invalid @enderror text-info bg-light">
+                                    <div class="text-value-lg"><input type="decimal" value="{{old('promedio_numero', $suspenso->promedio_numero)}}"  name="promedio_numero" id="promedio_numero" class="form-control @error('promedio_numero') is-invalid @enderror text-info bg-light" readonly>
                                         @error ('promedio_numero') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                     </div>
                                 </div>
@@ -124,15 +129,15 @@
 
                             <div class="col-lg-4">
                                 <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">PROMEDIO EN LETRAS</font></small>
-                                        <div class="text-value-lg"><input type="text" name="promedio_letra" value="{{old('promedio_letra', $suspenso->promedio_letra)}}" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light ">
+                                        <div class="text-value-lg"><input type="text" name="promedio_letra" value="{{old('promedio_letra', $suspenso->promedio_letra)}}" id="promedio_letra" class="form-control @error('promedio_letra') is-invalid @enderror text-info bg-light" readonly>
                                         @error ('promedio_letra') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
-                                <div class="c-callout c-callout-primary"><small class="text-muted"><font style="vertical-align: inherit;">OBSERVACIÓN</font></small>
-                                    <div class="text-value-lg"><input class="form-control @error('observacion') is-invalid @enderror" type="text" value="{{old('observacion', $suspenso->observacion)}}"  name="observacion" id="observacion" >
+                                <div class="c-callout c-callout-info"><small class="text-muted"><font style="vertical-align: inherit;">OBSERVACIÓN</font></small>
+                                    <div class="text-value-lg"><input class="form-control @error('observacion') is-invalid @enderror" type="text" value="{{old('observacion', $suspenso->observacion)}}"  name="observacion" id="observacion" readonly>
                                     @error ('observacion') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                                 </div>
@@ -162,43 +167,37 @@
 
 
 // calcula el promedio de notas
+calcular();
 
-    function calcular(){
+function calcular(){
 
-        docencia=document.getElementById('docencia').value;
-        experimento_aplicacion=document.getElementById('experimento_aplicacion').value;
-        trabajo_autonomo=document.getElementById('trabajo_autonomo').value;
-        examen_principal=document.getElementById('examen_principal').value;
+    promedio_final=document.getElementById('promedio_final').value;
+    examen_suspenso=document.getElementById('examen_suspenso').value;
 
-        var total=parseFloat(docencia)+parseFloat(experimento_aplicacion)+parseFloat(trabajo_autonomo);
-        document.getElementById("suma").value = total;
-        promedio=parseFloat(total).toFixed(2) / 3;
-        promedio=parseFloat(promedio).toFixed(2)
-        document.getElementById("promedio_decimal").value = promedio;
-        promedio_final=(Number(promedio)+Number(examen_principal))/2;
-        promedio_final=parseFloat(promedio_final).toFixed(0);
+    var total=parseFloat(promedio_final)+parseFloat(examen_suspenso);
+    //total=parseFloat(total).toFixed(2)
+    document.getElementById("suma").value = total;
 
-        if (total>0){
-            document.getElementById("promedio_final").value = promedio_final;
-            document.getElementById("promedio_letra").value = Unidades(parseInt(promedio_final));
-        }
+    promedio=parseFloat(total).toFixed(2) / 2;
+    promedio=parseFloat(promedio).toFixed(2)
+    document.getElementById("promedio_numero").value = promedio;
 
-        if (promedio_final<6.5){
-            document.getElementById("observacion").value='REPROBADO';
-        }else{
-        document.getElementById("observacion").value="APROBADO";
-        }
-        if(examen_principal<=0){
-            document.getElementById("observacion").value="EN CURSO";
-        }
+    promedio_numero=(Number(promedio));
+    promedio_numero=parseFloat(promedio_numero).toFixed(2);
 
+    if (total>0){
+        document.getElementById("promedio_numero").value = promedio_numero;
+        document.getElementById("promedio_letra").value = Unidades(parseInt(promedio_numero));
     }
 
-    function eligeEstudiante(){
-        var combo = document.getElementById("matricula_id");
-        var selected = combo.options[combo.selectedIndex].text;
-        $("#estudiante_id").val(selected);
+    if (promedio_numero <6.5){
+    document.getElementById("observacion").value='REPROBADO';
+    }else{
+    document.getElementById("observacion").value="APROBADO";
     }
+
+}
+
 
     //números a letras
     function Unidades(num){
@@ -219,6 +218,18 @@
 
     return "";
     }
+
+// Disable keyboard scrolling
+$('input[type=number]').on('mousewheel',function(e){ $(this).blur(); });
+$('input[type=number]').on('keydown',function(e) {
+    var key = e.charCode || e.keyCode;
+    // Disable Up and Down Arrows on Keyboard
+    if(key == 38 || key == 40 ) {
+	e.preventDefault();
+    } else {
+	return;
+    }
+});
 
 </script>
 @endpush

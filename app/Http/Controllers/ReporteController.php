@@ -95,15 +95,21 @@ class ReporteController extends Controller
         }
 
         //REPORTE DE SUSPENSO
-        public function reporteSuspenso($id)
+        public function reporteSuspenso($dato)
         {
             $this->authorize('view', new suspenso);
-            $asignacione_id=$id;
+            $datoNuevo=explode("_",$dato);
+            $asignacione_id=$datoNuevo[0];
+            $queryAsignatura=$datoNuevo[1];
+            //$asignacione_id=$id;
+
             $suspensos = Suspenso::
                 where('asignacione_id',$asignacione_id)
+                ->where('asignatura_id', $queryAsignatura)
                 ->get();
                 $docente = Docente::join('asignatura_docente','asignatura_docente.docente_id','=','docentes.id')
                 ->where('asignatura_docente.asignacione_id',$asignacione_id)
+                ->where('asignatura_docente.asignatura_id',$queryAsignatura)
                 ->first();
 
                 //dd($docente);

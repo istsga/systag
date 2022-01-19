@@ -17,61 +17,8 @@
                             @csrf @method('PUT')
                             @csrf
                             <div class="card p-4">
-                                {{-- <div class="row"> --}}
                                 <div class="card p-3">
                                     <div class="row">
-                                        <div class="form-group col-lg-4">
-                                            <label for="fecha_inicio" class="col-form-label font-weight-bold text-muted">Fecha de inicio
-                                                <span class="text-primary">*</span>
-                                            </label>
-                                            <div class="input-group">
-                                                <input type="date" class="form-control @error('fecha_inicio') is-invalid @enderror"
-                                                name="fecha_inicio" value="{{old('fecha_inicio', $horario->fecha_inicio)}}">
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-calendar-day"></i></span></div>
-                                                @error ('fecha_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-lg-4">
-                                            <label for="fecha_final" class="col-form-label font-weight-bold text-muted">Fecha final
-                                                <span class="text-primary">*</span>
-                                            </label>
-                                            <div class="input-group">
-                                                <input type="date" class="form-control @error('fecha_final') is-invalid @enderror"
-                                                name="fecha_final" value="{{old('fecha_final', $horario->fecha_final)}}">
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-calendar-day"></i></span></div>
-                                                @error ('fecha_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-lg-4">
-                                            <label for="fecha_examen" class="col-form-label font-weight-bold text-muted">Fecha examen principal
-                                                <span class="text-primary">*</span>
-                                            </label>
-                                            <div class="input-group">
-                                                <input type="date" class="form-control @error('fecha_examen') is-invalid @enderror"
-                                                name="fecha_examen" value="{{old('fecha_examen', $horario->fecha_examen)}}">
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-calendar-day"></i></span></div>
-                                                @error ('fecha_examen') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-lg-4">
-                                            <label for="fecha_suspension" class="col-form-label font-weight-bold text-muted">Fecha examen suspensión
-                                                <span class="text-primary">*</span>
-                                            </label>
-                                            <div class="input-group">
-                                                <input type="date" class="form-control @error('fecha_suspension') is-invalid @enderror"
-                                                name="fecha_suspension" value="{{old('fecha_suspension', $horario->fecha_suspension)}}">
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-calendar-day"></i></span></div>
-                                                @error ('fecha_suspension') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
-                                            </div>
-                                        </div>
-
                                         <div class="form-group col-lg-8">
                                             <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN
                                                 <span class="text-primary">*</span>
@@ -95,6 +42,59 @@
                                                 @error ('asignacione_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                             </div>
                                         </div>
+
+                                        <div class="form-group col-lg-4">
+                                            <label for="fecha_inicio" class="col-form-label font-weight-bold text-muted">Fecha inicio asignatura
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control @error('fecha_inicio') is-invalid @enderror"
+                                                name="fecha_inicio" value="{{old('fecha_inicio', $horario->fecha_inicio)}}">
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-calendar-day"></i></span></div>
+                                                @error ('fecha_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-4">
+                                            <label for="fecha_final" class="col-form-label font-weight-bold text-muted">Fecha final asignatura
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control @error('fecha_final') is-invalid @enderror"
+                                                name="fecha_final" value="{{old('fecha_final', $horario->fecha_final)}}">
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-calendar-day"></i></span></div>
+                                                @error ('fecha_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-4">
+                                            <label for="fecha_examen" class="col-form-label font-weight-bold text-muted">Fecha examen principal asignatura
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control @error('fecha_examen') is-invalid @enderror"
+                                                name="fecha_examen" value="{{old('fecha_examen', $horario->fecha_examen)}}">
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-calendar-day"></i></span></div>
+                                                @error ('fecha_examen') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-4">
+                                            <label for="fecha_suspension" class="col-form-label font-weight-bold text-muted">Fecha examen suspensión asignatura
+                                                <span class="text-primary">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <input type="date" class="form-control @error('fecha_suspension') is-invalid @enderror"
+                                                name="fecha_suspension" value="{{old('fecha_suspension', $horario->fecha_suspension)}}">
+                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                    <i class=" text-primary fas fa-calendar-day"></i></span></div>
+                                                @error ('fecha_suspension') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="card p-3">
@@ -105,10 +105,10 @@
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
                                                 <select  name="orden" id="orden" class="form-control @error('orden') is-invalid @enderror  ">
-                                                    <option value="" class="form-control "> == Seleccionar == </option>
+                                                    {{-- <option value="" class="form-control "> == Seleccionar == </option>
                                                     <option value="1" class="form-control ">Primeras</option>
                                                     <option value="2" class="form-control ">Segundas</option>
-                                                    <option value="3" class="form-control ">Terceras</option>
+                                                    <option value="3" class="form-control ">Terceras</option> --}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-sort-amount-up-alt"></i></span></div>
@@ -129,7 +129,7 @@
                                                     @endforeach --}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary far fa-folder"></i></span></div>
+                                                    <i class=" text-primary fas fa-folder"></i></span></div>
                                                 @error ('asignatura_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
                                             </div>
                                         </div>
@@ -232,6 +232,7 @@
 <script>
 
     asignaturaHorario();
+
     function asignaturaHorario(select){
         var asignaturas = document.getElementById("asignatura_id");
         for (let i = asignaturas.options.length; i >= 0; i--) {
@@ -240,7 +241,7 @@
 
         var id = document.getElementById('asignacione_id').value;
         if(id){
-            axios.get('/getAsignaturashor/'+id)
+            axios.post('/getAsignaturashor/'+id)
             .then((resp)=>{
                 var asignaturas = document.getElementById("asignatura_id");
                 for (i = 0; i < Object.keys(resp.data).length; i++) {
@@ -256,6 +257,7 @@
             asignaturas.options[0].value = ""
             asignaturas.options[0].text = " == Selecionar == "
         }
+        cambiaOrden();
     }
 
 //AGREGAR ASIGNATURAS
@@ -284,10 +286,50 @@ function agregarHorario(){
 
 }
 
-
 function eliminar(index){
   cont--;
   $("#fila" + index).remove();
 }
+
+function cambiaOrden(select){
+
+var orden = document.getElementById("orden");
+for (let i = orden.options.length; i >= 0; i--) {
+    orden.remove(i);
+}
+
+var id = document.getElementById('asignacione_id').value;
+if(id){
+    axios.post('/getOrden/'+id)
+    .then((resp)=>{
+        var orden = document.getElementById("orden");
+        for (i = 0; i < Object.keys(resp.data).length; i++) {
+            if(resp.data[i]!==0){
+                var option = document.createElement('option');
+                option.value = resp.data[i];
+                option.text = resp.data[i];
+                orden.append(option);
+            }
+        }
+    })
+    .catch(function (error) {console.log(error);})
+}else{
+    document.getElementById("orden").length  = 1
+    orden.options[0].value = ""
+    orden.options[0].text = " == Selecionar == "
+}
+}
+
+ //Select estaticos
+ var dia_semana = null;
+    for(var i=0; i!=document.querySelector("#dia_semana").querySelectorAll("option").length; i++)
+    {
+        dia_semana = document.querySelector("#dia_semana").querySelectorAll("option")[i];
+        if(dia_semana.getAttribute("value") == "{{ old("dia_semana") }}")
+        {
+            dia_semana.setAttribute("selected", "selected");
+        }
+    }
+
 </script>
 @endpush

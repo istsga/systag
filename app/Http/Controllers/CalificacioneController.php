@@ -23,6 +23,7 @@ class CalificacioneController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('view', new Calificacione);
 
         $query=trim($request->get('periodacademico_id'));
         $queryAsignatura=trim($request->get('asignatura_id'));
@@ -193,7 +194,11 @@ class CalificacioneController extends Controller
         $suma=$request->get('docencia')+$request->get('experimento_aplicacion')+$request->get('trabajo_autonomo');
         $examen=$request->get('examen_principal');
         $promedio = $suma / 3;
+        $promedio = round($promedio, 2);
+
         $promedio_final =  round(($examen + $promedio) /2);
+        $promedio_final = round($promedio_final, 2);
+
         $promedio_letras = $this->unidad($promedio_final);
 
         if($examen){
@@ -204,9 +209,9 @@ class CalificacioneController extends Controller
                     $descripcion = 'APROBADO';
                 }
             }else{
-                if(round($promedio_final)>=2){ //<7
+                if(round($promedio_final)>=3){ //<7
                     $descripcion = 'SUSPENSO';
-                }else{ //<2
+                }else{ //<3
                     $descripcion = 'REPROBADO';
                 }
             }
@@ -220,6 +225,7 @@ class CalificacioneController extends Controller
         $calificacion->promedio_final = $promedio_final;
         $calificacion->promedio_letra = $promedio_letras;
         $calificacion->observacion =  $descripcion;
+        //dd($calificacion);
         $calificacion->save();
 
         return redirect()->route('calificaciones.index', $calificacion)->with('status', 'Agregado con éxito');
@@ -308,6 +314,10 @@ class CalificacioneController extends Controller
     public function edit(Calificacione $calificacione)
     {
         $this->authorize('update', $calificacione);
+
+        //$calificacion = Calificacione::allowed()->get();
+        //dd($calificacion);
+
         return view('calificaciones.edit', compact('calificacione'));
     }
 
@@ -336,16 +346,16 @@ class CalificacioneController extends Controller
                     $descripcion = 'APROBADO';
                 }
             }else {
-                if(round($promedio_final)>=2){ //<7
+                if(round($promedio_final)>=3){ //<7
                     $descripcion = 'SUSPENSO';
 
-                }else{ //<2
+                }else{ //<3
                     $descripcion = 'REPROBADO';
                 }
             }
         }
 
-        $request->observacion =  $descripcion;  // se actualiza la descripcion  !no esta ejecutando al momento de acurtalizar
+        $request->observacion =  $descripcion;
         $calificacione->update($request->validated());
         return redirect()->route('calificaciones.index', $calificacione)->with('status', 'Actualizado con éxito');
     }

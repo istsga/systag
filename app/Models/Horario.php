@@ -34,18 +34,11 @@ class Horario extends Model
          }
          $dni=auth()->user()->dni;
          $docente=Docente::where('dni',$dni)->first();
-         return $query->where('docente_id', $docente->id);
-     }
-
-
-     public function scopeAllowed2($query)
-     {
-         if( auth()->user()->can('view', $this))
-         {
-            return $query;
-         }
-         $dni=auth()->user()->dni;
+        if($docente)
+            return $query->where('docente_id', $docente->id);
          $estudiante=Estudiante::where('dni',$dni)->first();
-         return $query->where('estudiante_id', $estudiante->id);
+        if($estudiante)
+            return $query->where('estudiante_id', $estudiante->id);
+        //return $query
      }
 }

@@ -4,6 +4,14 @@
 @push('styles')
 <link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+    input[type=number] { -moz-appearance:textfield; }
+</style>
 @endpush
 
 @section('content')
@@ -109,7 +117,7 @@
 
                         <div class="col-lg-4">
                             <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">EXAMEN DE SUSPENSIÓN</font>
-                                <div class="text-value-lg"><input type="number" value="{{old('examen_suspenso')}}" name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" oninput="calcular()"  >
+                                <div class="text-value-lg"><input type="number" value="{{old('examen_suspenso')}}" name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" oninput="calcular()" step="0.01" >
                                 @error ('examen_suspenso') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                             </div>
                             </div>
@@ -185,6 +193,7 @@ function calcular(){
     examen_suspenso=document.getElementById('examen_suspenso').value;
 
     var total=parseFloat(promedio_final)+parseFloat(examen_suspenso);
+    total=parseFloat(total).toFixed(2)
     document.getElementById("suma").value = total;
 
     promedio=parseFloat(total).toFixed(2) / 2;
@@ -192,14 +201,14 @@ function calcular(){
     document.getElementById("promedio_numero").value = promedio;
 
     promedio_numero=(Number(promedio));
-    promedio_numero=parseFloat(promedio_numero).toFixed(0);
+    promedio_numero=parseFloat(promedio_numero).toFixed(2);
 
     if (total>0){
         document.getElementById("promedio_numero").value = promedio_numero;
         document.getElementById("promedio_letra").value = Unidades(parseInt(promedio_numero));
     }
 
-  if (promedio_numero<7){
+  if (promedio_numero <6.5){
     document.getElementById("observacion").value='REPROBADO';
   }else{
    document.getElementById("observacion").value="APROBADO";
@@ -334,6 +343,18 @@ function promedioSuspenso()
       })
       .catch(function (error) {console.log(error);})
 }
+
+// Disable keyboard scrolling
+$('input[type=number]').on('mousewheel',function(e){ $(this).blur(); });
+$('input[type=number]').on('keydown',function(e) {
+    var key = e.charCode || e.keyCode;
+    // Disable Up and Down Arrows on Keyboard
+    if(key == 38 || key == 40 ) {
+	e.preventDefault();
+    } else {
+	return;
+    }
+});
 
 </script>
 @endpush

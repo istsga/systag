@@ -4,6 +4,15 @@
 @push('styles')
 <link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+    input[type=number] { -moz-appearance:textfield; }
+</style>
 @endpush
 
 @section('content')
@@ -406,6 +415,17 @@ function calificacionEstudiante(){
     }
 }
 
+// Disable keyboard scrolling
+$('input[type=number]').on('mousewheel',function(e){ $(this).blur(); });
+$('input[type=number]').on('keydown',function(e) {
+    var key = e.charCode || e.keyCode;
+    // Disable Up and Down Arrows on Keyboard
+    if(key == 38 || key == 40 ) {
+	e.preventDefault();
+    } else {
+	return;
+    }
+});
 </script>
 @endpush
 @endsection

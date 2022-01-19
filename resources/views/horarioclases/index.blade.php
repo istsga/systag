@@ -155,27 +155,7 @@
 
 <script>
 
-    //select con opciones estaticos
-    // var orden = null;
-    // console.log(orden);
-    //     for(var i=0; i!=document.querySelector("#orden").querySelectorAll("option").length; i++)
-    //     {
-    //         orden = document.querySelector("#orden").querySelectorAll("option")[i];
-    //         if(orden.getAttribute("value") == "{{ old("orden") }}")
-    //         {
-    //             orden.setAttribute("selected", "selected");
-    //         }
-    //     }
-        // var orden = null;
-        // for(var i=0; i!=document.querySelector("#orden").querySelectorAll("option").length; i++)
-        // {
-        //     orden = document.querySelector("#orden").querySelectorAll("option")[i];
-        //     if(orden.getAttribute("value") == "{{ old("orden") }}")
-        //     {
-        //         orden.setAttribute("selected", "selected");
-        //     }
-        // }
-    </script>
+</script>
 @endsection
 
 

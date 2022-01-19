@@ -38,11 +38,7 @@ class CalificacionePolicy
      */
     public function view(User $user, Calificacione $calificacione)
     {
-        //return $user->id === $user->id || $user->hasPermissionTo('Ver calificaciones');
-
         return $user->hasRole('Administrador') ||$user->hasPermissionTo('Ver calificaciones');
-
-        //return $user->dni === $calificacione->docente_id  || $user->hasPermissionTo('Ver calificaciones');
     }
 
     /**
