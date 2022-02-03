@@ -17,7 +17,8 @@ class CreateAsignaturaMatriculaTable extends Migration
             $table->id();
             $table->foreignId('asignatura_id')->constrained()->cascadeOnDelete();
             $table->foreignId('matricula_id')->constrained()->cascadeOnDelete();
-            $table->boolean('estado_calificacion')->default(false)->nullable();
+            $table->boolean('estado_calificacion')->default(false);
+            $table->boolean('estado_suspenso')->default(false);
             $table->timestamps();
         });
     }

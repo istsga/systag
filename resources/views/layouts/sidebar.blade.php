@@ -1,13 +1,13 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-lg-down-none ">
         <div class="c-sidebar-brand-full ">
-            <div class="form-group text-center m-2">
-                <img height="60"  src="{{asset('assets/brand/logoSG.png')}}" alt="ITSGA Logo">
-                <h3 class="text-light  font-weight-bold mt-1 ">SISTEMA</h3>
-                <span class="font-weight-bold text-light ">ACADÉMICO</span>
+            <div class="form-group text-center mt-2">
+                <img height="110"  src="{{asset('assets/brand/SGlogo.svg')}}" alt="IUSGA Logo">
+                <h4 class=" font-weight-bold mt-1 text-ligth ">ACADÉMICO</h4>
+                <span class="font-weight-bold text-light ">SYSTAG</span>
             </div>
         </div>
-      <img class="c-sidebar-brand-minimized" width="40" height="46" src="{{asset('assets/brand/logo3.png')}}" alt="ITSGA Logo">
+      <img class="c-sidebar-brand-minimized" width="45" height="51" src="{{asset('assets/brand/SGlogo.svg')}}" alt="IUSGA Logo">
     </div>
     <ul class="c-sidebar-nav">
       <li class="c-sidebar-nav-item">

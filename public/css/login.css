@@ -1,21 +1,31 @@
-main {
-    background: url(../assets/img/fondo-login.jpg) no-repeat center;
-    /* opacity: 0.8; */
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100vh;
 
-
-}
-
- img
+.fondo-2
 {
-    max-width: 100%;
+    position: relative;
 }
 
-.fixed-bottom{
-    opacity: 0.7;
+.container-1
+{
+    width: 100%;
+    position: absolute;
+    top: 0%;
 }
+
+.container-1 .row
+{
+    margin: auto;
+}
+
+.c-sidebar-brand-full img
+{
+    margin-top: -15%;
+    width: 88%;
+}
+
+
+/* .fixed-bottom{
+    opacity: 0.7;
+}  */
 
 
 

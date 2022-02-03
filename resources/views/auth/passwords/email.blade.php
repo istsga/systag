@@ -8,7 +8,7 @@
     <meta name="description" content="Sistema Académico - Instituto San Gabriel">
     <meta name="author" content="Diego Guapi">
     <meta name="keyword" content="Sistema Académico - Instituto San Gabriel">
-    <title> Recuperar contraseña | ITSGA </title>
+    <title> Recuperar contraseña | IUSGA </title>
     <link rel="apple-touch-icon" sizes="57x57" href=" {{asset('assets/favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href=" {{asset('assets/favicon/apple-icon-60x60.png')}} ">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset('assets/favicon/apple-icon-72x72.png')}} ">
@@ -33,14 +33,13 @@
   </head>
   <body>
 
-<div class="container">
-    <div class="col-lg-6 col-md-6 mx-auto col-md-12 min-vh-100 d-flex flex-column justify-content-center">
-        <div class="col-md-12">
+    <div class="col-lg-4 col-md-6 mx-auto col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+        <div class="col-md-11">
             <div class="card border-0">
                 <div class="card-header border-0 bg-primary">
-                    <img class="rounded mx-auto d-block " src="{{asset('assets/img/logo4.png')}}" alt="San Gabriel Logo">
+                    <img class="rounded mx-auto d-block " width="35%" src="{{asset('assets/brand/SGlogo.svg')}}" alt="San Gabriel Logo">
                 </div>
-                <div class="card-body bg-white shadow-lg rounded py-5 px-4">
+                <div class=" card-body bg-white shadow-lg rounded py-5 px-4">
                     <h5 class="text-center mb-4">Restablecer  contraseña</h5>
                     <div class="form-group">
                         <div class="col-md-12 mb-4">
@@ -83,7 +82,5 @@
             </div>
         </div>
     </div>
-</div>
-
 </body>
 </html>

@@ -31,7 +31,7 @@
                                                 @foreach ($periodacademicos as $periodacademico)
                                                     <option  value="{{$periodacademico->id}}"
                                                         {{$query==$periodacademico->id ? 'selected' : '' }}
-                                                        >{{$query.'+'.$periodacademico->periodo}}</option>
+                                                        >{{$periodacademico->periodo}}</option>
                                                 @endforeach
                                             </select>
                                             @error ('periodacademicos') <span class="invalid-feedback" role="alert"> <strong>{{$message}}</strong></span> @enderror

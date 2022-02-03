@@ -11,10 +11,10 @@
 <body>
   <header>
         <div class="logo">
-            <img src="{{ public_path('assets/brand/logo3.png') }}">
+            <img src="{{ public_path('assets/brand/logoSG.png') }}">
         </div>
         <div class="title">
-            <h3>INSTITUTO SUPERIOR TECNOLÓGICO "SAN GABRIEL"</h3>
+            <h3>INSTITUTO SUPERIOR UNIVERSITARIO "SAN GABRIEL"</h3>
             <h4>Registro Institucional 224 SENESCYT</h4>
         </div>
   </header>

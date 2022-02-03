@@ -30,5 +30,17 @@ class Suspenso extends Model
         return $this->belongsTo(Estudiante:: class);
     }
 
+    public function scopeAllowed($query)
+    {
+        // if( auth()->user()->can('view', $this))
+        // {
+        //    return $query;
+        // }
+        $dni=auth()->user()->dni;
+        $docente=Docente::where('dni',$dni)->first();
+        //dd($docente->id);
+        return $query->where('docente_id', $docente->id);
+    }
+
 
 }

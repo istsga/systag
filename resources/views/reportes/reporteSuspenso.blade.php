@@ -11,10 +11,10 @@
 <body>
     <header>
           <div class="logo">
-              <img src="{{ public_path('assets/brand/logo3.png') }}">
+              <img src="{{ public_path('assets/brand/logoSG.png') }}">
           </div>
           <div class="title">
-              <h3>INSTITUTO SUPERIOR TECNOLÓGICO <br> "SAN GABRIEL"</h3>
+              <h3>INSTITUTO SUPERIOR UNIVERSITARIO <br> "SAN GABRIEL"</h3>
               <p>Carrera de {{$suspensos[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}</p>
           </div>
           <div class="logo-carrera">

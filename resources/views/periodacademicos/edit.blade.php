@@ -21,11 +21,11 @@
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
+                                            <input type="text" class="form-control @error('periodo') is-invalid @enderror"
+                                            name="periodo" value="{{old('periodo', $periodacademico->periodo)}}" placeholder="Periodo Académico">
+                                            @error ('periodo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-stopwatch"></i></span></div>
-                                            <input type="text" class="form-control @error('periodo') is-invalid @enderror"
-                                                name="periodo" value="{{old('periodo', $periodacademico->periodo)}}" placeholder="Periodo Académico">
-                                            @error ('periodo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                         </div>
                                     </div>
 
@@ -34,14 +34,14 @@
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
-                                            <div class="input-group-prepend "><span class=" input-group-text">
-                                            <i class=" text-primary fas fa-lock"></i></span></div>
-                                            <select name="estado" class="form-control ">
+                                            <select name="estado" class="form-control @error('estado') is-invalid @enderror">
                                                 <option value=""> == Seleccione == </option>
-                                                <option value="Nuevo" {{ old('estado', $periodacademico->estado) == 'Nuevo' ? 'selected' : '' }}>Nuevo</option>
                                                 <option value="En Curso" {{ old('estado', $periodacademico->estado) == 'En Curso' ? 'selected' : '' }}>En Curso</option>
                                                 <option value="Finalizado" {{ old('estado', $periodacademico->estado) == 'Finalizado' ? 'selected' : '' }}>Finalizado</option>
                                             </select>
+                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                            <i class=" text-primary fas fa-lock"></i></span></div>
+                                            @error ('estado') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                         </div>
                                     </div>
 
@@ -50,11 +50,11 @@
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
+                                            <input type="date" class="form-control @error('fecha_inicio') is-invalid @enderror"
+                                            name="fecha_inicio" value="{{old('fecha_inicio', $periodacademico->fecha_inicio)}}">
+                                            @error ('fecha_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-alt"></i></span></div>
-                                            <input type="date" class="form-control @error('fecha_inicio') is-invalid @enderror"
-                                                name="fecha_inicio" value="{{old('fecha_inicio', $periodacademico->fecha_inicio)}}">
-                                            @error ('fecha_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                         </div>
                                     </div>
 
@@ -63,11 +63,11 @@
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group ">
+                                            <input type="date" class="form-control @error('fecha_final') is-invalid @enderror"
+                                            name="fecha_final" value="{{old('fecha_final', $periodacademico->fecha_final)}}">
+                                            @error ('fecha_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-alt"></i></span></div>
-                                            <input type="date" class="form-control @error('fecha_final') is-invalid @enderror"
-                                                name="fecha_final" value="{{old('fecha_final', $periodacademico->fecha_final)}}">
-                                            @error ('fecha_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                         </div>
                                     </div>
                                     <div class="card col-lg-11 shadow-sm  m-3 ">

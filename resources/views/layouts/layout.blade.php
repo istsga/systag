@@ -61,7 +61,7 @@
         </button>
 
         <a class="c-header-brand d-lg-none" href="{{route('home')}}">
-          <img  width="40" height="46" src="{{asset('assets/brand/logo3.png')}}" alt="ITSGA Logo">
+          <img  width="45" height="51" src="{{asset('assets/brand/SGlogo.svg')}}" alt="IUSGA Logo">
         </a>
 
 

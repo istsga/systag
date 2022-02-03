@@ -4,6 +4,16 @@
 @push('styles')
 <link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+    input[type=number] { -moz-appearance:textfield; }
+</style>
+
 @endpush
 
 @section('content')
@@ -16,7 +26,7 @@
                 <font class=" text-light font-weight-bold "> <i class="font-weight-bold  fas fa-user  mr-3"></i> ESTUDIANTE </font>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" method="POST"  action="{{ route('calificaciones.update', $calificacione)}} ">
+                <form class="form-horizontal" method="POST"  action="{{ route('calificaciones.update',  $calificacione)}} ">
                 @csrf @method('PUT')
                 <div class="row">
                     <div class="card col-lg-12 shadow-sm bg-light">
@@ -271,6 +281,19 @@ function Unidades(num){
 
  return "";
 }
+
+
+// Disable keyboard scrolling
+$('input[type=number]').on('mousewheel',function(e){ $(this).blur(); });
+$('input[type=number]').on('keydown',function(e) {
+    var key = e.charCode || e.keyCode;
+    // Disable Up and Down Arrows on Keyboard
+    if(key == 38 || key == 40 ) {
+	e.preventDefault();
+    } else {
+	return;
+    }
+});
 
 </script>
 @endpush

@@ -30,7 +30,10 @@ class PeriodacademicoUpdateRequest extends FormRequest
        $date = $date->format('Y-m-d');
 
         $rules = [
-            'estado' => ['required'],
+            'estado' => ['required',
+                        Rule::unique('periodacademicos')->where(function ($query) {
+                            return $query->where('estado','En Curso');
+                        })->ignore( $this->route('periodacademico')->id )],
             'periodo'=> [
                 'required','min:3', 'max:50', 'string',
                 Rule::unique('periodacademicos')->ignore( $this->route('periodacademico')->id )],
@@ -40,6 +43,13 @@ class PeriodacademicoUpdateRequest extends FormRequest
                 Rule::unique('periodacademicos')->ignore( $this->route('periodacademico')->id )],
             'carreras'=>['required', 'exists:carreras,id'],
         ];
+
+        // if($this->estado=='En Curso')
+        // {
+        //     $rules['estado'] = Rule::unique('periodacademicos')->where(function ($query) {
+        //        return $query->where('estado','En Curso');
+        //    })->ignore( $this->route('periodacademico')->id );
+        // }
 
         return $rules;
     }

@@ -39,7 +39,7 @@ class SuspensoController extends Controller
                 $join->on('asignatura_matricula.matricula_id','=','matriculas.id')
                     ->on('asignatura_matricula.asignatura_id','=','suspensos.asignatura_id');
             })
-            ->select('suspensos.*','asignatura_matricula.estado_calificacion')
+            ->select('suspensos.*','asignatura_matricula.estado_suspenso')
             ->where('suspensos.asignacione_id', $queryAsignacione)
             ->where('suspensos.asignatura_id', $queryAsignatura)
             //->allowed()
@@ -190,7 +190,7 @@ class SuspensoController extends Controller
             $matricula_detalle=Asignatura_matricula::where('matricula_id',$matricula->id)
                 ->where('asignatura_id',$asignatura_id)->first();
             if($matricula_detalle){
-                $matricula_detalle->estado_calificacion = !$matricula_detalle->estado_calificacion;
+                $matricula_detalle->estado_suspenso = !$matricula_detalle->estado_suspenso;
                 $matricula_detalle->update();
             }
         }
@@ -314,7 +314,38 @@ class SuspensoController extends Controller
     public function edit(Suspenso $suspenso)
     {
         $this->authorize('update', $suspenso);
-        return view('suspensos.edit', compact('suspenso'));
+
+        $matricula=Matricula::where('asignacione_id',$suspenso->asignacione_id)
+        ->where('estudiante_id',$suspenso->estudiante_id)->first();
+    if($matricula){
+        $matricula_detalle=Asignatura_matricula::where('matricula_id',$matricula->id)
+            ->where('asignatura_id',$suspenso->asignatura_id)->first();
+        if($matricula_detalle){
+            if($matricula_detalle->estado_suspenso==0){
+                throw new \Illuminate\Auth\Access\AuthorizationException('La URL solicitada no válida.');
+            }
+        }else{
+            throw new \Illuminate\Auth\Access\AuthorizationException('No esta matriculado en la asignatura.');
+        }
+    }else{
+        throw new \Illuminate\Auth\Access\AuthorizationException('No tiene matrícula.');
+    }
+
+        $suspenso = Suspenso::join('asignatura_docente',function($join){
+            $join->on('asignatura_docente.asignacione_id','=','suspensos.asignacione_id')
+                ->on('asignatura_docente.asignatura_id','=','suspensos.asignatura_id');
+            })
+        ->where('suspensos.id',$suspenso->id)
+        ->select('suspensos.*', 'asignatura_docente.docente_id')
+        ->allowed()
+        ->first();
+
+        if($suspenso)
+            return view('suspensos.edit', compact('suspenso'));
+        else
+        throw new \Illuminate\Auth\Access\AuthorizationException('La URL solicitada no válida.');
+
+        //return view('suspensos.edit', compact('suspenso'));
     }
 
     /**

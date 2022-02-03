@@ -39,8 +39,6 @@
                                             <select name="estado" id="estado"  class="form-control @error('estado') is-invalid @enderror">
                                                 <option  class="form-control" value=""> == Seleccione == </option>
                                                 <option value="Nuevo">Nuevo</option>
-                                                <option value="En Curso">En Curso</option>
-                                                <option value="Finalizado">Finalizado</option>
                                             </select>
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-lock"></i></span></div>

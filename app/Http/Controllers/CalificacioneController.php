@@ -315,10 +315,36 @@ class CalificacioneController extends Controller
     {
         $this->authorize('update', $calificacione);
 
-        //$calificacion = Calificacione::allowed()->get();
-        //dd($calificacion);
+        $matricula=Matricula::where('asignacione_id',$calificacione->asignacione_id)
+            ->where('estudiante_id',$calificacione->estudiante_id)->first();
+        if($matricula){
+            $matricula_detalle=Asignatura_matricula::where('matricula_id',$matricula->id)
+                ->where('asignatura_id',$calificacione->asignatura_id)->first();
 
-        return view('calificaciones.edit', compact('calificacione'));
+            if($matricula_detalle){
+                    if($matricula_detalle->estado_calificacion==0){
+                        throw new \Illuminate\Auth\Access\AuthorizationException('La URL solicitada no válida.');
+                    }
+            }else{
+                throw new \Illuminate\Auth\Access\AuthorizationException('No está matriculado en la asignatura.');
+            }
+
+        }else{
+            throw new \Illuminate\Auth\Access\AuthorizationException('No tiene matrícula.');
+        }
+
+            $calificacione = Calificacione::join('asignatura_docente',function($join){
+                $join->on('asignatura_docente.asignacione_id','=','calificaciones.asignacione_id')
+                    ->on('asignatura_docente.asignatura_id','=','calificaciones.asignatura_id');
+                })
+            ->where('calificaciones.id',$calificacione->id)
+            ->select('calificaciones.*', 'asignatura_docente.docente_id')
+            ->allowed()
+            ->first();
+        if($calificacione)
+            return view('calificaciones.edit', compact('calificacione'));
+        else
+            throw new \Illuminate\Auth\Access\AuthorizationException('La URL solicitada no válida.');
     }
 
     /**

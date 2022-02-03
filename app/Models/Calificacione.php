@@ -45,7 +45,7 @@ class Calificacione extends Model
         }
         $dni=auth()->user()->dni;
         $docente=Docente::where('dni',$dni)->first();
-        //dd($estudiante->id);
+        //dd($docente->id);
         return $query->where('docente_id', $docente->id);
     }
 

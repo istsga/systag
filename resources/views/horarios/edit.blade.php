@@ -25,17 +25,17 @@
                                             </label>
                                             <div class="input-group">
                                                 <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="asignaturaHorario(this)">
-                                                    <option class="form-control" value=""> == Seleccionar == </option>
-                                                    @foreach ($asignaciones as $asignacione)
-                                                        <option  value="{{$asignacione->id}}"
-                                                            {{old('asignacione_id', $horario->asignacione_id)==$asignacione->id ? 'selected' : '' }}
-                                                            >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} ,
-                                                            {{$asignacione->carreras->pluck('nombre')->implode(', ')}},
-                                                            {{$asignacione->periodo->nombre}},
-                                                            {{$asignacione->seccione->nombre}},
-                                                            {{$asignacione->paralelo->nombre}}
+                                                    {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
+                                                    {{-- @foreach ($asignaciones as $asignacione) --}}
+                                                        <option  value="{{$horario->asignacione_id}}"
+                                                            {{old('asignacione_id', $horario->asignacione_id)==$horario->asignacione_id ? 'selected' : '' }}
+                                                            >{{$horario->asignacione->periodacademicos->pluck('periodo')->implode(', ') }} ,
+                                                            {{$horario->asignacione->carreras->pluck('nombre')->implode(', ')}},
+                                                            {{$horario->asignacione->periodo->nombre}},
+                                                            {{$horario->asignacione->seccione->nombre}},
+                                                            {{$horario->asignacione->paralelo->nombre}}
                                                         </option>
-                                                    @endforeach
+                                                    {{-- @endforeach --}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-check"></i></span></div>
@@ -121,12 +121,12 @@
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
                                                 <select  name="asignatura_id" id="asignatura_id" class="form-control @error('asignatura_id') is-invalid @enderror  ">
-                                                    {{-- <option value="" class="form-control "> == Seleccionar == </option>
-                                                    @foreach ($asignaturas as $asignatura)
-                                                        <option  value="{{$asignatura->id}}"
-                                                        {{old('asignatura_id')==$asignatura->id ? 'selected' : '' }}
-                                                        >{{$asignatura->nombre}}</option>
-                                                    @endforeach --}}
+                                                    {{-- <option value="" class="form-control "> == Seleccionar == </option> --}}
+                                                    {{-- @foreach ($asignaturas as $asignatura) --}}
+                                                        <option  value="{{$horario->asignatura_id}}"
+                                                        {{old('asignatura_id')==$horario->asignatura_id ? 'selected' : '' }}
+                                                        >{{$horario->asignatura->nombre}}</option>
+                                                    {{-- @endforeach --}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-folder"></i></span></div>
@@ -189,7 +189,7 @@
                                                 <tr>
                                                     <th class="text-center"><font style="vertical-align: inherit;">Nro</font></th>
                                                     <th><font style="vertical-align: inherit;">DÍA</font></font></th>
-                                                    <th><font style="vertical-align: inherit;">ASIGNATURA</font></font></th>
+                                                    {{-- <th><font style="vertical-align: inherit;">ASIGNATURA</font></font></th> --}}
                                                     <th class="text-center"><font style="vertical-align: inherit;">Hora de Inicio</font></font></th>
                                                     <th class="text-center"><font style="vertical-align: inherit;">Hora Final</font></font></th>
                                                     <th class="text-center"><font style="vertical-align: inherit;">Acción</font></font></th>
@@ -200,7 +200,7 @@
                                                 <tr id="fila{{$cont+1}}">
                                                     <td class="text-center">{{$cont+1}}</td>
                                                     <td class="text-center"><input type="hidden" name="Dia_semana[]" value="{{$detallehorario->dia_semana}}">{{$detallehorario->dia_semana}}</td>
-                                                    <td><input type="hidden" name="Asignatura_id[]" value="{{$detallehorario->asignatura_id}}">{{$detallehorario->asignatura_id}}</td>
+                                                    {{-- <td><input type="hidden" name="Asignatura_id[]" value="{{$detallehorario->asignatura_id}}">{{$detallehorario->asignatura_id}}</td> --}}
                                                     <td class="text-center"><input type="hidden" name="Hora_inicio[]" value="{{$detallehorario->hora_inicio}}">{{$detallehorario->hora_inicio}}</td>
                                                     <td class="text-center"><input type="hidden" name="Hora_final[]" value="{{$detallehorario->hora_final}}">{{$detallehorario->hora_final}}</td>
                                                     <td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar({{$cont+1}});">X</button></td>
@@ -231,34 +231,34 @@
 <script src="{{asset('js/select2.full.min.js')}}"></script>
 <script>
 
-    asignaturaHorario();
+    // asignaturaHorario();
 
-    function asignaturaHorario(select){
-        var asignaturas = document.getElementById("asignatura_id");
-        for (let i = asignaturas.options.length; i >= 0; i--) {
-            asignaturas.remove(i);
-        }
+    // function asignaturaHorario(select){
+    //     var asignaturas = document.getElementById("asignatura_id");
+    //     for (let i = asignaturas.options.length; i >= 0; i--) {
+    //         asignaturas.remove(i);
+    //     }
 
-        var id = document.getElementById('asignacione_id').value;
-        if(id){
-            axios.post('/getAsignaturashor/'+id)
-            .then((resp)=>{
-                var asignaturas = document.getElementById("asignatura_id");
-                for (i = 0; i < Object.keys(resp.data).length; i++) {
-                var option = document.createElement('option');
-                option.value = resp.data[i].id;
-                option.text = resp.data[i].nombre;
-                asignaturas.append(option);
-                }
-            })
-            .catch(function (error) {console.log(error);})
-        } else{
-            document.getElementById("asignatura_id").length  = 1
-            asignaturas.options[0].value = ""
-            asignaturas.options[0].text = " == Selecionar == "
-        }
-        cambiaOrden();
-    }
+    //     var id = document.getElementById('asignacione_id').value;
+    //     if(id){
+    //         axios.post('/getAsignaturashor/'+id)
+    //         .then((resp)=>{
+    //             var asignaturas = document.getElementById("asignatura_id");
+    //             for (i = 0; i < Object.keys(resp.data).length; i++) {
+    //             var option = document.createElement('option');
+    //             option.value = resp.data[i].id;
+    //             option.text = resp.data[i].nombre;
+    //             asignaturas.append(option);
+    //             }
+    //         })
+    //         .catch(function (error) {console.log(error);})
+    //     } else{
+    //         document.getElementById("asignatura_id").length  = 1
+    //         asignaturas.options[0].value = ""
+    //         asignaturas.options[0].text = " == Selecionar == "
+    //     }
+    //     cambiaOrden();
+    // }
 
 //AGREGAR ASIGNATURAS
 var cont=1;
@@ -290,6 +290,8 @@ function eliminar(index){
   cont--;
   $("#fila" + index).remove();
 }
+
+cambiaOrden();
 
 function cambiaOrden(select){
 

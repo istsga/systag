@@ -163,6 +163,7 @@ class HorarioController extends Controller
         $this->authorize('update', $horario);
         $asignaciones = Asignacione::all();
         $asignaturas = Asignatura::all();
+
         $detallehorarios = Detallehorario::where('horario_id',$horario->id)->get();
         return view('horarios.edit', compact('horario', 'asignaciones', 'asignaturas', 'detallehorarios'));
     }

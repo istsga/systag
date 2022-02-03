@@ -119,7 +119,7 @@
                                 @else
                                     <div class=" form-inline justify-content-center px-4 ">
                                     @can('update', $suspenso)
-                                        @if($suspenso->estado_calificacion == 1)
+                                        @if($suspenso->estado_suspenso == 1)
                                             <a class=" btn btn-sm  btn-primary mr-3 mt-2 " href="{{route('suspensos.edit', $suspenso)}}"><i class="fas fa-pencil-alt"></i></a>
                                         @endif
                                     @endcan
