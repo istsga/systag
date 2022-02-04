@@ -47,76 +47,24 @@
                     <div class="row">
                         <div class="container-1">
                             <div class="row ml-2 mr-2 mt-2">
-                                <div class="col-lg-6 card-1" >
-                                    <div class="d-block d-sm-none">
-                                        <div class=" text-center font-weight-bold">
-                                            <h1 class="mt-5 mb-5 text-primary  font-weight-bold ">Sistema de <br> Control <br> Académico</h1>
+                                <div class="col-lg-6" >
+                                    <div class="col-lg-9 col-sm-12 card-borde-1">
+                                        <div class="d-block d-sm-none m-5">
+                                            <div class=" text-center font-weight-bold">
+                                                <h1 class="text-primary  font-weight-bold ">Sistema de <br> Control <br> Académico</h1>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="d-none d-sm-block m-5 p-5">
-                                        <div class=" font-weight-bold ">
-                                            <h1 class=" mt-4 pt-5  display-4 text-primary  font-weight-bold text-right">Sistema de <br> Control Académico</h1>
+                                        <div class="d-none d-sm-block ">
+                                            <div class=" font-weight-bold ">
+                                                <h1 class="  display-4 text-primary  font-weight-bold text-right">Sistema de <br> Control Académico</h1>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6  mt-2">
-                                    {{-- <div class="d-block d-sm-none">
-                                        <div class="card border-0 ">
-                                            <div class="card-body bg-white shadow-lg rounded py-5 px-4  ">
-                                                <h5 class="text-center mb-4">Iniciar sesión</h5>
-
-                                                <form method="POST" action="{{ route('login') }}">
-                                                    @csrf
-
-                                                    <div class="form-group ">
-                                                        <div class="col-md-12">
-                                                            <input id="email" type="email" class="form-control bg-light shadow-sm @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Correo Electrónico" autofocus>
-
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <input id="password" type="password" class="form-control bg-light shadow-sm @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Introduce tu contraseña">
-
-                                                            @error('password')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row ">
-                                                        <div class="col-md-12 mb-2">
-                                                            @if (Route::has('password.request'))
-                                                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                                    {{ __('Olvidé mi contraseña?') }}
-                                                                </a>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group  mb-2">
-                                                        <div class="col-md-12 ">
-                                                            <button type="submit" class="btn btn-primary btn-block justify-content-center  px-4">
-                                                                {{ __('Iniciar sesión') }}
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
-                                    <div class=" m-5 p-5">
-                                        <div class="card border-0 mt-4 ">
+                                <div class="col-lg-6">
+                                    <div class="col-lg-10 col-sm-12 card-borde-2 ">
+                                        <div class="card border-0">
                                             <div class="card-body bg-white shadow-lg rounded py-5 px-4  ">
                                                 <h5 class="text-center mb-4">Iniciar sesión</h5>
 
@@ -170,8 +118,8 @@
                                     </div>
 
                                 </div>
-                                <div class="col-lg-12 text-center p-3">
-                                    <div class="">
+                                <div class="col-lg-12 text-center">
+                                    <div class="pl-3 pr-3">
                                         <img width="9%" src="{{asset('assets/brand/emergencias.svg')}}" alt="Emergencias Medicas">
                                         <img width="13%" src="{{asset('assets/brand/desarrollo.svg')}}" alt="Desarrollo Software">
                                         <img width="12%" src="{{asset('assets/brand/canino.svg')}}" alt="Cuidado Canino">
