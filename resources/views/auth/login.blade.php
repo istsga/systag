@@ -25,8 +25,8 @@
     <meta name="msapplication-TileImage" content=" {{asset('assets/favicon/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#ffffff">
 
-    <link href="{{asset('css/login.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/login.css')}}" rel="stylesheet">
 
   </head>
   <body>
