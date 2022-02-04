@@ -79,9 +79,9 @@ class AsignacioneController extends Controller
 
             return redirect()->route('asignaciones.index')->with('status', 'Agregado con éxito');
         } else{
-
+                throw new \Illuminate\Auth\Access\AuthorizationException('Datos ya ha sido registrado, intentar con datos nuevos.');
             //$errors = 'Datos invalidos';
-            return redirect()->route('asignaciones.create')->with('status', 'Datos ya ha sido registrado, intentar con datos nuevos');
+           // return redirect()->route('asignaciones.create')->with('status', 'Datos ya ha sido registrado, intentar con datos nuevos');
         }
     }
 

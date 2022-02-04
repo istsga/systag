@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="col-lg-6  mt-2">
-                                    <div class="d-block d-sm-none">
+                                    {{-- <div class="d-block d-sm-none">
                                         <div class="card border-0 ">
                                             <div class="card-body bg-white shadow-lg rounded py-5 px-4  ">
                                                 <h5 class="text-center mb-4">Iniciar sesión</h5>
@@ -113,9 +113,9 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="d-none d-sm-block m-5 p-5">
+                                    <div class=" m-5 p-5">
                                         <div class="card border-0 mt-4 ">
                                             <div class="card-body bg-white shadow-lg rounded py-5 px-4  ">
                                                 <h5 class="text-center mb-4">Iniciar sesión</h5>
@@ -168,9 +168,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
 
                                 </div>
                                 <div class="col-lg-12 text-center p-3">
