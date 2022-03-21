@@ -1021,7 +1021,7 @@ class MatriculaSeeder extends Seeder
         $matricula->fecha_matricula    = '2022-03-10';
         $matricula->condicion          = '1';
         $matricula->save();
-        $matricula->asignaturas()->attach([19,20,21,22,23]);
+        $matricula->asignaturas()->attach([19,20,21,22,23,24]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '12';
@@ -1060,14 +1060,14 @@ class MatriculaSeeder extends Seeder
         $matricula->asignaturas()->attach([19,20,21,22,23]);
 
         //QUINTO PERIODO
-        $matricula = new matricula;
-        $matricula->asignacione_id     = '13';
-        $matricula->estudiante_id      = '1';
-        $matricula->tipo   = rand(1,3);
-        $matricula->fecha_matricula    = '2022-08-10';
-        $matricula->condicion          = '1';
-        $matricula->save();
-        $matricula->asignaturas()->attach([24,25,26,27,28]);
+            // $matricula = new matricula;
+            // $matricula->asignacione_id     = '13';
+            // $matricula->estudiante_id      = '1';
+            // $matricula->tipo   = rand(1,3);
+            // $matricula->fecha_matricula    = '2022-08-10';
+            // $matricula->condicion          = '1';
+            // $matricula->save();
+            // $matricula->asignaturas()->attach([24,25,26,27,28]);
 
         $matricula = new matricula;
         $matricula->asignacione_id     = '13';

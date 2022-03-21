@@ -133,6 +133,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/getAsignacionescal/{id}', [CalificacioneController::class,'getAsignacionescal'])->name('getAsignacionescal');
     Route::get('/getAsignaturascal/{id}', [CalificacioneController::class, 'getAsignaturascal'])->name('getAsignaturascal');
     Route::get('/getEstudiantescal/{id}', [CalificacioneController::class, 'getEstudiantescal'])->name('getEstudiantescal');
+
+    Route::get('/getNumeroHoras/{id}', [CalificacioneController::class, 'getNumeroHoras'])->name('getNumeroHoras');
     //Suspensos
     Route::get('/getAsignacionessus/{id}', [SuspensoController::class,'getAsignacionessus'])->name('getAsignacionessus');
     Route::get('/getAsignaturassus/{id}', [SuspensoController::class, 'getAsignaturassus'])->name('getAsignaturassus');

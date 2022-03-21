@@ -95,20 +95,13 @@
                                             </div>
                                         </div>
 
-                                    </div>
-                                </div>
-                                <div class="card p-3">
-                                    <div class="row">
-
                                         <div class="form-group col-lg-4 ">
                                             <label for="orden" class="col-form-label font-weight-bold text-muted">Orden de asignaturas
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
                                                 <select  name="orden" id="orden" class="form-control @error('orden') is-invalid @enderror  ">
-                                                    {{-- <option value="" class="form-control "> == Seleccionar == </option>
-                                                    <option value="1" class="form-control ">Primeras</option>
-                                                    <option value="2" class="form-control ">Segundas</option>
-                                                    <option value="3" class="form-control ">Terceras</option> --}}
+                                                    {{-- <option value="" class="form-control "> == Seleccionar == </option> --}}
+
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-sort-amount-up-alt"></i></span></div>
@@ -134,6 +127,10 @@
                                             </div>
                                         </div>
 
+                                    </div>
+                                </div>
+                                <div class="card p-3">
+                                    <div class="row">
                                         <div class="form-group col-lg-4">
                                             <label for="dia_semana" class="col-form-label font-weight-bold text-muted small mt-1">DÍAS
                                                 <span class="text-primary">*</span>
@@ -264,15 +261,12 @@
 var cont=1;
 function agregarHorario(){
       Dia_semana=$("#dia_semana option:selected").text();
-      Asignatura_id=$("#asignatura_id").val();
-      Asignatura=$("#asignatura_id option:selected").text();
       Hora_inicio=$("#hora_inicio").val();
       Hora_final=$("#hora_final").val();
       console.log(Dia_semana , Hora_inicio, Hora_final );
       if(Dia_semana!=""){
             var fila='</tr><tr class="selected" id="fila'+cont+'"><td class="text-center"><input type="hidden" name="cont" value="'+cont+'">'+cont+
                 '</td><td><input type="hidden" name="Dia_semana[]" value="'+Dia_semana+'">'+Dia_semana+
-                '</td><td><input type="hidden" name="Asignatura_id[]" value="'+Asignatura_id+'">'+Asignatura+
                 '</td><td class="text-center"><input type="hidden" name="Hora_inicio[]" value="'+Hora_inicio+'">'+Hora_inicio+
                 '</td><td class="text-center"><input type="hidden" name="Hora_final[]" value="'+Hora_final+'">'+Hora_final+
                 '</td><td class="text-center"><button type="button" class="btn btn-danger" onclick="eliminar('+cont+');">X</button></td>';

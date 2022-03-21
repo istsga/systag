@@ -115,8 +115,8 @@
                                             <div class="px-4 mt-1 justify-content-center form-inline">
                                                 <select name="" id="" class="form-control col-lg-4 bg-light" onchange="actualizarEstado(this,{{$calificacione->estudiante->id}});">
                                                     <option class="form-control" > == Seleccionar  == </option>
-                                                    <option value="0" class="form-control"  > == No Autorizado  == </option>
-                                                    <option value="1" class="form-control" > == Autorizado == </option>
+                                                    <option value="0" class="form-control" {{$calificacione->estado_calificacion==0 ? 'selected' : ''}}  > == No Autorizado  == </option>
+                                                    <option value="1" class="form-control" {{$calificacione->estado_calificacion==1 ? 'selected' : ''}} > == Autorizado == </option>
                                                 </select>
                                             </div>
                                         @else

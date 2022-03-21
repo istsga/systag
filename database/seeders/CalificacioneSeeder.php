@@ -4001,23 +4001,40 @@ class CalificacioneSeeder extends Seeder
         'observacion'            => 'APROBADO',
     ]);
 
+    Calificacione::create([
+        'asignacione_id'        => '12',
+        'asignatura_id'         => '24',
+        'estudiante_id'         => '1',
+        'docencia'              =>  '6',
+        'experimento_aplicacion' => '6',
+        'trabajo_autonomo'       => '6',
+        'suma'                   => '18',
+        'promedio_decimal'       =>  '6.00',
+        'examen_principal'       =>  '6',
+        'promedio_final'         =>   '6',
+        'promedio_letra'         =>  'SEIS',
+        'numero_asistencia'      => '70',
+        'porcentaje_asistencia'  => '70%',
+        'observacion'            => 'SUSPENSO',
+    ]);
+
     //QUINTO
-    Calificacione::create([
-        'asignacione_id'        => '13',
-        'asignatura_id'         => '24',
-        'estudiante_id'         => '1',
-        'docencia'              =>  '8',
-        'experimento_aplicacion' => '8',
-        'trabajo_autonomo'       => '8',
-        'suma'                   => '24',
-        'promedio_decimal'       =>  '8.00',
-        'examen_principal'       =>  '8',
-        'promedio_final'         =>   '8',
-        'promedio_letra'         =>  'OCHO',
-        'numero_asistencia'      => '70',
-        'porcentaje_asistencia'  => '70%',
-        'observacion'            => 'APROBADO',
-    ]);
+    // Calificacione::create([
+    //     'asignacione_id'        => '13',
+    //     'asignatura_id'         => '24',
+    //     'estudiante_id'         => '1',
+    //     'docencia'              =>  '8',
+    //     'experimento_aplicacion' => '8',
+    //     'trabajo_autonomo'       => '8',
+    //     'suma'                   => '24',
+    //     'promedio_decimal'       =>  '8.00',
+    //     'examen_principal'       =>  '8',
+    //     'promedio_final'         =>   '8',
+    //     'promedio_letra'         =>  'OCHO',
+    //     'numero_asistencia'      => '70',
+    //     'porcentaje_asistencia'  => '70%',
+    //     'observacion'            => 'APROBADO',
+    // ]);
     Calificacione::create([
         'asignacione_id'        => '13',
         'asignatura_id'         => '24',
@@ -4083,22 +4100,22 @@ class CalificacioneSeeder extends Seeder
         'observacion'            => 'APROBADO',
     ]);
 
-    Calificacione::create([
-        'asignacione_id'        => '13',
-        'asignatura_id'         => '25',
-        'estudiante_id'         => '1',
-        'docencia'              =>  '8',
-        'experimento_aplicacion' => '8',
-        'trabajo_autonomo'       => '8',
-        'suma'                   => '24',
-        'promedio_decimal'       =>  '8.00',
-        'examen_principal'       =>  '8',
-        'promedio_final'         =>   '8',
-        'promedio_letra'         =>  'OCHO',
-        'numero_asistencia'      => '70',
-        'porcentaje_asistencia'  => '70%',
-        'observacion'            => 'APROBADO',
-    ]);
+    // Calificacione::create([
+    //     'asignacione_id'        => '13',
+    //     'asignatura_id'         => '25',
+    //     'estudiante_id'         => '1',
+    //     'docencia'              =>  '8',
+    //     'experimento_aplicacion' => '8',
+    //     'trabajo_autonomo'       => '8',
+    //     'suma'                   => '24',
+    //     'promedio_decimal'       =>  '8.00',
+    //     'examen_principal'       =>  '8',
+    //     'promedio_final'         =>   '8',
+    //     'promedio_letra'         =>  'OCHO',
+    //     'numero_asistencia'      => '70',
+    //     'porcentaje_asistencia'  => '70%',
+    //     'observacion'            => 'APROBADO',
+    // ]);
     Calificacione::create([
         'asignacione_id'        => '13',
         'asignatura_id'         => '25',
@@ -4164,22 +4181,22 @@ class CalificacioneSeeder extends Seeder
         'observacion'            => 'APROBADO',
     ]);
 
-    Calificacione::create([
-        'asignacione_id'        => '13',
-        'asignatura_id'         => '26',
-        'estudiante_id'         => '1',
-        'docencia'              =>  '8',
-        'experimento_aplicacion' => '8',
-        'trabajo_autonomo'       => '8',
-        'suma'                   => '24',
-        'promedio_decimal'       =>  '8.00',
-        'examen_principal'       =>  '8',
-        'promedio_final'         =>   '8',
-        'promedio_letra'         =>  'OCHO',
-        'numero_asistencia'      => '70',
-        'porcentaje_asistencia'  => '70%',
-        'observacion'            => 'APROBADO',
-    ]);
+    // Calificacione::create([
+    //     'asignacione_id'        => '13',
+    //     'asignatura_id'         => '26',
+    //     'estudiante_id'         => '1',
+    //     'docencia'              =>  '8',
+    //     'experimento_aplicacion' => '8',
+    //     'trabajo_autonomo'       => '8',
+    //     'suma'                   => '24',
+    //     'promedio_decimal'       =>  '8.00',
+    //     'examen_principal'       =>  '8',
+    //     'promedio_final'         =>   '8',
+    //     'promedio_letra'         =>  'OCHO',
+    //     'numero_asistencia'      => '70',
+    //     'porcentaje_asistencia'  => '70%',
+    //     'observacion'            => 'APROBADO',
+    // ]);
     Calificacione::create([
         'asignacione_id'        => '13',
         'asignatura_id'         => '26',
@@ -4245,22 +4262,22 @@ class CalificacioneSeeder extends Seeder
         'observacion'            => 'APROBADO',
     ]);
 
-    Calificacione::create([
-        'asignacione_id'        => '13',
-        'asignatura_id'         => '27',
-        'estudiante_id'         => '1',
-        'docencia'              =>  '8',
-        'experimento_aplicacion' => '8',
-        'trabajo_autonomo'       => '8',
-        'suma'                   => '24',
-        'promedio_decimal'       =>  '8.00',
-        'examen_principal'       =>  '8',
-        'promedio_final'         =>   '8',
-        'promedio_letra'         =>  'OCHO',
-        'numero_asistencia'      => '70',
-        'porcentaje_asistencia'  => '70%',
-        'observacion'            => 'APROBADO',
-    ]);
+    // Calificacione::create([
+    //     'asignacione_id'        => '13',
+    //     'asignatura_id'         => '27',
+    //     'estudiante_id'         => '1',
+    //     'docencia'              =>  '8',
+    //     'experimento_aplicacion' => '8',
+    //     'trabajo_autonomo'       => '8',
+    //     'suma'                   => '24',
+    //     'promedio_decimal'       =>  '8.00',
+    //     'examen_principal'       =>  '8',
+    //     'promedio_final'         =>   '8',
+    //     'promedio_letra'         =>  'OCHO',
+    //     'numero_asistencia'      => '70',
+    //     'porcentaje_asistencia'  => '70%',
+    //     'observacion'            => 'APROBADO',
+    // ]);
     Calificacione::create([
         'asignacione_id'        => '13',
         'asignatura_id'         => '27',
@@ -4326,22 +4343,22 @@ class CalificacioneSeeder extends Seeder
         'observacion'            => 'APROBADO',
     ]);
 
-    Calificacione::create([
-        'asignacione_id'        => '13',
-        'asignatura_id'         => '28',
-        'estudiante_id'         => '1',
-        'docencia'              =>  '8',
-        'experimento_aplicacion' => '8',
-        'trabajo_autonomo'       => '8',
-        'suma'                   => '24',
-        'promedio_decimal'       =>  '8.00',
-        'examen_principal'       =>  '8',
-        'promedio_final'         =>   '8',
-        'promedio_letra'         =>  'OCHO',
-        'numero_asistencia'      => '70',
-        'porcentaje_asistencia'  => '70%',
-        'observacion'            => 'APROBADO',
-    ]);
+    // Calificacione::create([
+    //     'asignacione_id'        => '13',
+    //     'asignatura_id'         => '28',
+    //     'estudiante_id'         => '1',
+    //     'docencia'              =>  '8',
+    //     'experimento_aplicacion' => '8',
+    //     'trabajo_autonomo'       => '8',
+    //     'suma'                   => '24',
+    //     'promedio_decimal'       =>  '8.00',
+    //     'examen_principal'       =>  '8',
+    //     'promedio_final'         =>   '8',
+    //     'promedio_letra'         =>  'OCHO',
+    //     'numero_asistencia'      => '70',
+    //     'porcentaje_asistencia'  => '70%',
+    //     'observacion'            => 'APROBADO',
+    // ]);
     Calificacione::create([
         'asignacione_id'        => '13',
         'asignatura_id'         => '28',

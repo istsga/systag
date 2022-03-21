@@ -186,9 +186,9 @@
                 <div class="card shadow-sm">
                     <div class="row m-2">
                         <div class="col-lg-3">
-                            <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">NÚMERO DE HORAS</font>
+                            <div class="c-callout c-callout-info"><font class="small text-muted font-weight-bold">NÚMERO DE HORAS</font>
                                 <div class="text-value-lg">
-                                    <input type="text" value="{{old('numero_asistencia')}}" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
+                                    <input type="text" value="{{old('numero_asistencia')}}" name="numero_asistencia" id="numero_horas" class="form-control @error('numero_asistencia') is-invalid @enderror" readonly >
                                 @error ('numero_asistencia') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -197,7 +197,7 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">PORCENTAJE ASISTENCIA</font>
                                 <div class="text-value-lg">
-                                    <input type="text" value="{{old('porcentaje_asistencia')}}" name="porcentaje_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
+                                    <input type="text" value="{{old('porcentaje_asistencia')}}" name="porcentaje_asistencia" class="form-control @error('porcentaje_asistencia') is-invalid @enderror" >
                                 @error ('porcentaje_asistencia') <span class="invalid-feedback" role="alert"><em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                             </div>
@@ -312,7 +312,7 @@ function calificacionPeriodo(){
             for (i = 0; i < Object.keys(resp.data).length; i++) {
             var option = document.createElement('option');
             option.value = resp.data[i].id;
-            option.text = resp.data[i].id+' '+resp.data[i].nombre+' | '+resp.data[i].nombrePeriodo+' | '+resp.data[i].nombreSeccion+' | '+resp.data[i].nombreParalelo;
+            option.text = resp.data[i].nombre+' | '+resp.data[i].nombrePeriodo+' | '+resp.data[i].nombreSeccion+' | '+resp.data[i].nombreParalelo;
             if(resp.data[i].id == "{{ old("asignacione_id") }}")
             {
                 option.selected= true;
@@ -343,12 +343,12 @@ function calificacionAsignacion(){
         asignaturas.remove(i);
     }
     var id = document.getElementById('asignacione_id').value;
-    console.log(id);
+    //console.log(id);
     if(id){
         axios.get('/getAsignaturascal/'+id)
         .then((resp)=>{
             var asignaturas = document.getElementById("asignatura_id");
-            console.log(resp.data);
+            //console.log(resp.data);
 
             for (i = 0; i < Object.keys(resp.data).length; i++) {
             var option = document.createElement('option');
@@ -391,6 +391,15 @@ function calificacionEstudiante(){
     var asignatura_id = document.getElementById('asignatura_id').value;
     //console.log('/getEstudiantescal/'+periodos_id+'_'+asignacion_id+'_'+asignatura_id);
     if(asignatura_id){
+        // colocar el numero_horas
+        axios.get('/getNumeroHoras/'+asignatura_id)
+        .then((resp)=>{
+            //console.log(resp.data);
+            document.getElementById('numero_horas').value = resp.data;
+        })
+        .catch(function (error) {console.log(error);})
+
+        //Estudiante
         axios.get('/getEstudiantescal/'+asignacion_id+'_'+asignatura_id)
         .then((resp)=>{
             var estudiantes = document.getElementById("matricula_id");

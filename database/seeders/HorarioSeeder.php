@@ -15,95 +15,24 @@ class HorarioSeeder extends Seeder
     public function run()
     {
         Horario::create([
-            'asignacione_id' => '2',
-            'asignatura_id'  => '1',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
+            'asignacione_id' => '13',
+            'asignatura_id'  => '26',
+            'fecha_inicio'   => '2022-08-17',
+            'fecha_examen'   => '2022-08-19',
+            'fecha_suspension'  => '2022-08-22',
+            'fecha_final'     => '2022-08-25',
             'orden'           => '1',
         ]);
 
         Horario::create([
-            'asignacione_id' => '2',
-            'asignatura_id'  => '2',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
+            'asignacione_id' => '13',
+            'asignatura_id'  => '27',
+            'fecha_inicio'   => '2022-08-17',
+            'fecha_examen'   => '2022-08-19',
+            'fecha_suspension'  => '2022-08-28',
+            'fecha_final'     => '2022-08-30',
             'orden'           => '1',
         ]);
 
-        Horario::create([
-            'asignacione_id' => '1',
-            'asignatura_id'  => '3',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
-            'orden'           => '1',
-        ]);
-
-        Horario::create([
-            'asignacione_id' => '2',
-            'asignatura_id'  => '4',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
-            'orden'           => '1',
-        ]);
-
-        Horario::create([
-            'asignacione_id' => '2',
-            'asignatura_id'  => '5',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
-            'orden'           => '1',
-        ]);
-
-        Horario::create([
-            'asignacione_id' => '2',
-            'asignatura_id'  => '6',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
-            'orden'           => '1',
-        ]);
-
-
-        //ASIGNACIONE 2
-        Horario::create([
-            'asignacione_id' => '3',
-            'asignatura_id'  => '7',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
-            'orden'           => '1',
-        ]);
-
-        Horario::create([
-            'asignacione_id' => '2',
-            'asignatura_id'  => '11',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
-            'orden'           => '1',
-        ]);
-
-        Horario::create([
-            'asignacione_id' => '2',
-            'asignatura_id'  => '8',
-            'fecha_inicio'   => '2020-02-17',
-            'fecha_examen'   => '2020-02-19',
-            'fecha_suspension'  => '2020-02-22',
-            'fecha_final'     => '2020-02-25',
-            'orden'           => '1',
-        ]);
     }
 }

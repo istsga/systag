@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             MatriculaSeeder::class,
             AsignaturadocenteSeeder::class,
             HorarioSeeder::class,
+            DetallehorarioSeeder::class,
             CalificacioneSeeder::class,
             SuspensoSeeder::class,
         ]);

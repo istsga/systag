@@ -61,5 +61,11 @@ class PrerequisitoSeeder extends Seeder
             'preasignatura_id'  => '11',
         ]);
 
+        //DESARROLLO SOFTWARE V
+        Prerequisito::create([
+            'asignatura_id'     => '30',
+            'preasignatura_id'  => '24',
+        ]);
+
     }
 }

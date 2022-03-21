@@ -24,7 +24,10 @@ class HorarioclaseController extends Controller
     public function index( Request $request)
     {
 
-        $periodacademicos = Periodacademico::all();
+        $periodacademicos = Periodacademico::Estado()->get();
+
+        //dd($periodacademicos);
+
         $query=trim($request->get('periodacademico_id'));
         $queryAsignacione=trim($request->get('asignacione_id'));
         $queryOrden=trim($request->get('orden'));
@@ -58,7 +61,6 @@ class HorarioclaseController extends Controller
              ->where('horarios.orden',$queryOrden)
              ->whereIn('asignaturas.id',$asinaturas_mat)
              ->selectRaw("detalle_horarios.hora_inicio,detalle_horarios.hora_final,detalle_horarios.dia_semana,asignaturas.nombre as nombrea,docentes.nombre as nombred,docentes.apellido")
-             //->allowed()
              ->get();
 
             $horarios1 = Horario::join('detalle_horarios','detalle_horarios.horario_id','=','horarios.id')
@@ -75,9 +77,9 @@ class HorarioclaseController extends Controller
                  ->whereIn('asignaturas.id',$asinaturas_mat)
                  ->selectRaw("detalle_horarios.hora_inicio,detalle_horarios.hora_final,'' as lunesnombreasignatura, '' as lunesnombredocente, ''as lunesapellidodocente,
                             '' as martesnombreasignatura, '' as martesnombredocente, '' as martesapellidodocente, '' as miercolesnombreasignatura, '' as miercolesnombredocente, '' as miercolesapellidodocente,
-                            '' as juevesnombreasignatura, '' as juevesnombredocente, '' as juevesapellidodocente, '' as viernesnombreasignatura, '' as viernesnombredocente, '' as viernesapellidodocente ")
-                 ->groupBy('detalle_horarios.hora_inicio','detalle_horarios.hora_final')
-                 //->allowed()
+                            '' as juevesnombreasignatura, '' as juevesnombredocente, '' as juevesapellidodocente, '' as viernesnombreasignatura, '' as viernesnombredocente, '' as viernesapellidodocente,
+                                horarios.fecha_inicio, horarios.fecha_final, horarios.fecha_examen, horarios.fecha_suspension ")
+                 ->groupBy('detalle_horarios.hora_inicio','detalle_horarios.hora_final', 'horarios.fecha_inicio', 'horarios.fecha_final', 'horarios.fecha_examen', 'horarios.fecha_suspension')
                 ->get();
 
         }else{
@@ -105,14 +107,15 @@ class HorarioclaseController extends Controller
                 ->where('horarios.asignacione_id',$queryAsignacione)
                 ->where('asignacione_periodacademico.periodacademico_id',$query)
                 ->where('horarios.orden',$queryOrden)
-                 //->whereIn('asignaturas.id',$asinaturas_mat)
+                //->where('asignatura_docente.docente_id',$docente->id)
                 ->selectRaw("detalle_horarios.hora_inicio,detalle_horarios.hora_final,'' as lunesnombreasignatura, '' as lunesnombredocente, ''as lunesapellidodocente,
                         '' as martesnombreasignatura, '' as martesnombredocente, '' as martesapellidodocente, '' as miercolesnombreasignatura, '' as miercolesnombredocente, '' as miercolesapellidodocente,
                         '' as juevesnombreasignatura, '' as juevesnombredocente, '' as juevesapellidodocente, '' as viernesnombreasignatura, '' as viernesnombredocente, '' as viernesapellidodocente,
                             horarios.fecha_inicio, horarios.fecha_final, horarios.fecha_examen, horarios.fecha_suspension")
                 ->groupBy('detalle_horarios.hora_inicio','detalle_horarios.hora_final','horarios.fecha_inicio', 'horarios.fecha_final', 'horarios.fecha_examen', 'horarios.fecha_suspension')
-                //->allowed()
+                ->allowed()
                 ->get();
+            //dd($horarios1);
         }
 
             foreach($horarios0 as $horario0){
@@ -200,7 +203,9 @@ class HorarioclaseController extends Controller
                 ->get();
         }
 
-        //dd($asignaciones);
+        //parche
+        if(count($asignaciones)==0)
+            $queryOrden=0;
 
         return view('horarioclases.index', compact('horarios', 'horarios1', 'asignaciones', 'periodacademicos',  'query','estudiante', 'queryAsignacione', 'queryOrden' ));
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CalificacioneStoreRequest;
 use App\Http\Requests\CalificacioneUpdateRequest;
 use App\Models\Asignacione;
+use App\Models\Asignatura;
 use App\Models\Asignatura_matricula;
 use App\Models\Calificacione;
 use App\Models\Estudiante;
@@ -29,9 +30,8 @@ class CalificacioneController extends Controller
         $queryAsignatura=trim($request->get('asignatura_id'));
         $queryAsignacione=trim($request->get('asignacione_id'));
 
-        $periodacademicos = Periodacademico::get();
-            // allowed()
-            // ->get();
+        $periodacademicos = Periodacademico::Estado()->get();
+
 
         $calificaciones = Calificacione::join('matriculas',function($join){
             $join->on('matriculas.asignacione_id','=','calificaciones.asignacione_id')
@@ -46,6 +46,7 @@ class CalificacioneController extends Controller
             ->where('calificaciones.asignatura_id', $queryAsignatura)
             ->allowed()
             ->get();
+        //dd($calificaciones);
 
         $asignaturas = Asignatura_matricula::
             join('matriculas','matriculas.id','=','asignatura_matricula.matricula_id')
@@ -84,9 +85,7 @@ class CalificacioneController extends Controller
         $queryAsignatura=trim($request->get('asignatura_id'));
         $queryAsignacione=trim($request->get('asignacione_id'));
 
-        $periodacademicos = Periodacademico::get();
-            // allowed()
-            // ->get();
+        $periodacademicos = Periodacademico::Estado()->get();
 
         $asignaciones = [];
 
@@ -156,7 +155,9 @@ class CalificacioneController extends Controller
         ->where('asignacione_id',$asignacione_id)
         ->where('asignatura_matricula.asignatura_id',$queryAsignatura)
         ->get();
+
         //dd($matriculas);
+
         return ($matriculas);
     }
 
@@ -179,6 +180,13 @@ class CalificacioneController extends Controller
                 $matricula_detalle->update();
             }
         }
+    }
+
+    //llamar numero de horas por asignatura
+    public function getNumeroHoras($id)
+    {
+        $cantidad_hora=Asignatura::where('id',$id)->value('cantidad_hora');
+        return $cantidad_hora;
     }
 
     /**

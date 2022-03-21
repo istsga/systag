@@ -98,49 +98,49 @@ class MatriculaController extends Controller
     return $asignaciones;
   }
 
-
     public function getAsignaturas($id, $estudiante_id){
 
-        //dd($matriculas);
         $asignacion=Asignacione::find($id);
         $asignacion_carrera=Asignacione_carrera::
             join('asignaciones','asignaciones.id','=','asignacione_carrera.asignacione_id')
             ->where('asignacione_carrera.asignacione_id',$id)
             ->get();
 
-            //convalidaciones
+        //Asignaturas anteriores que no tengan prerequisitos y no aprobadas
+        $asignaturas_aprobadas = Calificacione:: select('asignatura_id')
+        ->where('estudiante_id',$estudiante_id)
+        ->where('observacion','APROBADO')
+        ->get()->toArray();
+
+        $asignaturas_aprobadas_en_suspenso = Suspenso:: select('asignatura_id')
+        ->where('estudiante_id',$estudiante_id)
+        ->where('observacion','APROBADO')
+        ->get()->toArray();
+
+        //convalidaciones
         $asig_convalidadas=Convalidacione::
             select('asignatura_id')
             ->where('estudiante_id',$estudiante_id)
             ->get()->toArray();
+
+        $asignaturasX = Asignatura::select('id')
+            ->where('carrera_id', $asignacion_carrera[0]->carrera_id)
+            ->where('periodo_id','<',$asignacion->periodo_id)
+            ->whereNotIn('id',$asignaturas_aprobadas)
+            ->whereNotIn('id',$asignaturas_aprobadas_en_suspenso)
+            ->whereNotIn('id',$asig_convalidadas)->get()->toArray();
+        //dd($asignaturasX);
 
         $asignaturas = Asignatura::
             where('carrera_id', $asignacion_carrera[0]->carrera_id)
             ->where('periodo_id',$asignacion->periodo_id)
             ->whereNotIn('id',$asig_convalidadas);
 
-        // //calificacion del estudiante de asignaturas con prerequisito
-        $calificacionesEstudiante = Calificacione::
-        where('estudiante_id',$estudiante_id);
-
-        //Prerequisito
-
-        $prerequisito=Prerequisito::
-            joinSub($asignaturas,'asignaturas',function($join){
-                $join->on('prerequisitos.asignatura_id','=','asignaturas.id');
-            })
-            ->leftjoinSub($calificacionesEstudiante,'calificacionesEstudiante',function($join){
-                $join->on('prerequisitos.preasignatura_id','=','calificacionesEstudiante.asignatura_id');
-            })
-            ->select('prerequisitos.id','prerequisitos.asignatura_id','prerequisitos.preasignatura_id','calificacionesEstudiante.observacion')
-            ->where('calificacionesEstudiante.observacion','=',null);
-
-        //dd($prerequisito);
-
         $asignaturas2 = Asignatura::
             where('carrera_id', $asignacion_carrera[0]->carrera_id)
             ->where('periodo_id',$asignacion->periodo_id)
             ->whereNotIn('asignaturas.id',$asig_convalidadas)
+            ->orWhereIn('id',$asignaturasX)
             ->select('asignaturas.*',DB::raw('0 as cumple'))
             ->get();
         foreach ($asignaturas2 as $asignatura)
@@ -149,14 +149,8 @@ class MatriculaController extends Controller
             }
         //dd($asignaturas2);
         // Asignaturas arrastres
-
-
-
         //asignaturas no matriculadas
-
         //perdida por 3ra matricula
-
-
         return $asignaturas2;
 
   }

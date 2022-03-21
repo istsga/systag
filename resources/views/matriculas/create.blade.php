@@ -184,11 +184,13 @@ function cambiaAsignaturas(select){
             var asignaturas = document.getElementById("asignaturas");
             console.log(Object.keys(resp.data).length);
             for (i = 0; i < Object.keys(resp.data).length; i++) {
-            var option = document.createElement('option');
-            option.value = resp.data[i].id;
-            console.log(resp.data[i].nombre);
-            option.text = resp.data[i].nombre;
-            asignaturas.append(option);
+                if(resp.data[i].cumple==true){
+                    var option = document.createElement('option');
+                    option.value = resp.data[i].id;
+                    console.log(resp.data[i].nombre);
+                    option.text = resp.data[i].nombre;
+                    asignaturas.append(option);
+                }
             }
         })
         .catch(function (error) {console.log(error);})

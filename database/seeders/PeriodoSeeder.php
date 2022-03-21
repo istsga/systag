@@ -33,5 +33,8 @@ class PeriodoSeeder extends Seeder
         Periodo::create([
             'nombre'            => 'V Periodo'
         ]);
+        Periodo::create([
+            'nombre'            => 'VI Periodo'
+        ]);
     }
 }

@@ -51,18 +51,18 @@
                                     <div class="col-lg-9 col-sm-12 card-borde-1">
                                         <div class="d-block d-sm-none m-5">
                                             <div class=" text-center font-weight-bold">
-                                                <h1 class="text-primary  font-weight-bold ">Sistema de <br> Control <br> Académico</h1>
+                                                <h1 class="text-primary  font-weight-bold  ">Sistema de <br> Control <br> Académico</h1>
                                             </div>
                                         </div>
                                         <div class="d-none d-sm-block ">
-                                            <div class=" font-weight-bold ">
-                                                <h1 class="  display-4 text-primary  font-weight-bold text-right">Sistema de <br> Control Académico</h1>
+                                            <div class=" font-weight-bold">
+                                                <h1 class=" display-4 text-primary  font-weight-bold text-right">Sistema de <br> Control Académico</h1>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 ">
                                     <div class="col-lg-10 col-sm-12 card-borde-2 ">
                                         <div class="card border-0">
                                             <div class="card-body bg-white shadow-lg rounded py-5 px-4  ">

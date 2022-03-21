@@ -31,12 +31,17 @@
 @media (min-width: 576px) {
     .card-borde-1
         {
-            margin: 10%;
-            /* //margin-bottom: 5%; */
+            width: 90%;
+            justify-content: center;
+            margin: auto;
+            margin-top: 5%;
+            margin-bottom: 5%;
         }
 
     .card-borde-2
         {
+            width: 95%;
+            margin: auto;
             margin-top: 2%;
             margin-bottom: 2%;
         }
@@ -45,12 +50,14 @@
 @media (min-width: 768px) {
     .card-borde-1
     {
-        margin-top: 10%;
-        margin-bottom: 10%;
+        width: 73%;
+        margin-top: 5%;
+        margin-bottom: 5%;
     }
 
     .card-borde-2
     {
+        width: 73%;
         margin-top: 2%;
         margin-bottom: 2%;
     }
@@ -59,21 +66,25 @@
 @media (min-width: 992px) {
     .card-borde-1
     {
-        margin-top: 10%;
-        margin-bottom: 10%;
+        /* width: 50%; */
+        margin-top: 20%;
+        margin-bottom: 15%;
+
     }
 
     .card-borde-2
     {
-        margin-top: 2%;
-        margin-bottom: 2%;
+
+        width: 100%;
+        margin-top: 15%;
+        margin-bottom: 15%;
     }
 }
 
 @media (min-width: 1200px) {
     .card-borde-1
     {
-        margin-top: 18%;
+        margin-top: 25%;
         margin-bottom: 18%;
     }
 

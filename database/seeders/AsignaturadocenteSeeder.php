@@ -227,6 +227,21 @@ class AsignaturadocenteSeeder extends Seeder
             'docente_id'     => '9',
          ]);
 
+
+         //HORARIO DEFINIDO
+         Asignaturadocente::create([
+            'asignacione_id' => '13',
+            'asignatura_id'  => '26',
+            'docente_id'     => '1',
+         ]);
+
+         Asignaturadocente::create([
+            'asignacione_id' => '13',
+            'asignatura_id'  => '27',
+            'docente_id'     => '2',
+         ]);
+
+
         //POR PROBAR
         // Asignaturadocente::create([
         //     'asignacione_id' => '7',
