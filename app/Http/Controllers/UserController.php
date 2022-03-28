@@ -72,7 +72,7 @@ class UserController extends Controller
                 'dni' => ['required', 'digits:10', 'unique:users'],
                 'nombre' => ['required', 'regex:/^[\pL\s\-]+$/u', 'string', 'max:255'],
                 'apellido' => ['required', 'regex:/^[\pL\s\-]+$/u',  'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'unique:users'],
             ]);
 
         //Configuracion roles

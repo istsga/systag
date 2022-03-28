@@ -52,37 +52,40 @@
                                             <label for="dni" class="col-form-label font-weight-bold text-muted">Cédula | Pasaporte
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control @error('dni') is-invalid @enderror"
+                                                <input type="text" id="dni" class="form-control @error('dni') is-invalid @enderror" onkeyup="validar()"
                                                 name="dni" value="{{old('dni')}}" placeholder="Nro. Cédula | Pasaporte" >
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-id-card"></i></span></div>
-                                                @error ('dni') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                @error ('dni') <span class="invalid-feedback" role="alert"> <em >{{$message}}</span></em> @enderror
                                             </div>
+                                            <em id="salida" class="text-danger small"></em>
                                         </div>
 
-                                        <div class="form-group col-lg-4">
-                                            <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombres
-                                                <span class="text-primary">*</span></label>
-                                            <div class="input-group">
-                                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                                name="nombre" value="{{old('nombre')}}" placeholder="Nombres">
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-user"></i></span></div>
-                                                @error ('nombre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                        {{-- <div id="Vnombre" style="display:none"> --}}
+                                            <div id="Vnombre" style="display:none" class="form-group col-lg-4">
+                                                <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombres
+                                                    <span class="text-primary">*</span></label>
+                                                <div class="input-group">
+                                                    <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror"
+                                                    name="nombre" value="{{old('nombre')}}" placeholder="Nombres">
+                                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                                        <i class=" text-primary fas fa-user"></i></span></div>
+                                                    @error ('nombre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group col-lg-4">
-                                            <label for="apellido" class="col-form-label font-weight-bold text-muted">Apellidos
-                                                <span class="text-primary">*</span></label>
-                                            <div class="input-group">
-                                                <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror"
-                                                name="apellido" value="{{old('apellido')}}" placeholder="Apellidos">
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-user"></i></span></div>
-                                                @error ('apellido') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            <div id="Vapellido" style="display:none"   class="form-group col-lg-4">
+                                                <label for="apellido" class="col-form-label font-weight-bold text-muted">Apellidos
+                                                    <span class="text-primary">*</span></label>
+                                                <div class="input-group">
+                                                    <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror"
+                                                    name="apellido" value="{{old('apellido')}}" placeholder="Apellidos">
+                                                    <div class="input-group-prepend "><span class=" input-group-text">
+                                                        <i class=" text-primary fas fa-user"></i></span></div>
+                                                    @error ('apellido') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                </div>
                                             </div>
-                                        </div>
+                                        {{-- </div> --}}
 
                                         <div class="form-group col-lg-8">
                                             <label for="titulo_academico" class="col-form-label font-weight-bold text-muted">Título Académico
@@ -324,6 +327,37 @@ function cambia_cantones(select){
                 estado.setAttribute("selected", "selected");
             }
         }
+
+//Validar numeros de cédula
+function validar() {
+    var vdate = document.getElementById("dni").value.trim();
+    var total = 0;
+    var longitud = vdate.length;
+    var longcheck = longitud - 1;
+
+    if (vdate !== "" && longitud === 10){
+        for(i = 0; i < longcheck; i++){
+        if (i%2 === 0) {
+            var aux = vdate.charAt(i) * 2;
+            if (aux > 9) aux -= 9;
+            total += aux;
+        } else {
+            total += parseInt(vdate.charAt(i)); // parseInt o concatenará en lugar de sumar
+            }
+        }
+        total = total % 10 ? 10 - total % 10 : 0;
+
+        if (vdate.charAt(longitud-1) == total) {
+        document.getElementById("salida").innerHTML = (" ");
+        Vnombre.style.display='';
+        Vapellido.style.display='';
+        }else{
+            document.getElementById("salida").innerHTML = ("Número de cédula  no válida");
+            Vnombre.style.display='none';
+            Vapellido.style.display='none';
+        }
+    }
+}
 
 </script>
 @endsection

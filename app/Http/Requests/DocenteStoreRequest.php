@@ -28,7 +28,7 @@ class DocenteStoreRequest extends FormRequest
             'tipo_identificacion' => ['required', 'boolean:1,0'],
             'nombre' => ['required', 'regex:/^[\pL\s\-]+$/u', 'string', 'min:3', 'max:30'],
             'apellido' => ['required', 'regex:/^[\pL\s\-]+$/u',  'string', 'min:3', 'max:30'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:docentes'],
+            'email' => ['required', 'string', 'email:rfc,dns', 'max:100', 'unique:docentes',],
             'titulo_academico' => ['required', 'regex:/^[\pL\s\-]+$/u',  'string', 'min:5', 'max:60'],
             'abreviatura' => ['required', 'regex:/^[\pL\s\.]+$/u', 'min:2', 'max:10'],
             'fecha_ingreso' => ['required', 'date', ],

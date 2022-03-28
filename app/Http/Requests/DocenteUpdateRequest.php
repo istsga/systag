@@ -29,7 +29,7 @@ class DocenteUpdateRequest extends FormRequest
             'nombre'            => ['required', 'regex:/^[\pL\s\-]+$/u', 'string', 'min:3', 'max:30'],
             'apellido'          => ['required', 'regex:/^[\pL\s\-]+$/u',  'string', 'min:3', 'max:30'],
             'email'             => [
-                'required', 'email',  'max:64',
+                'required', 'email:rfc,dns',  'max:64',
                 Rule::unique('docentes')->ignore( $this->route('docente')->id )],
             'titulo_academico'  => ['required', 'regex:/^[\pL\s\-]+$/u',  'string', 'min:5', 'max:60'],
             'abreviatura'       => ['required', 'regex:/^[\pL\s\.]+$/u', 'min:2', 'max:10'],

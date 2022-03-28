@@ -21,14 +21,15 @@
                                 <label for="dni" class="col-form-label font-weight-bold text-muted">Cédula | Pasaporte
                                     <span class="text-primary">*</span></label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control @error('dni') is-invalid @enderror"
+                                    <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" onkeyup="validar();"
                                     name="dni" value="{{old('dni', $user->dni)}}" placeholder="Identificación">
                                     <div class="input-group-prepend "><span class=" input-group-text">
                                         <i class=" text-primary fas fa-id-card"></i></span></div>
                                     @error ('dni') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                 </div>
+                                <em id="salida" class="text-danger small"></em>
                             </div>
-                            <div class="form-group ">
+                            <div id="VEnombre" class="form-group ">
                                 <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombres
                                     <span class="text-primary">*</span></label>
                                 <div class="input-group">
@@ -39,7 +40,7 @@
                                     @error ('nombre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div id="VEapellido" class="form-group">
                                 <label for="apellido" class="col-form-label font-weight-bold text-muted">Apellidos
                                     <span class="text-primary">*</span></label>
                                 <div class="input-group">
@@ -166,4 +167,37 @@
     </div>
 </div>
 </main>
+
+<script>
+    //Validar numeros de cédula
+function validar() {
+    var vdate = document.getElementById("dni").value.trim();
+    var total = 0;
+    var longitud = vdate.length;
+    var longcheck = longitud - 1;
+
+    if (vdate !== "" && longitud === 10){
+        for(i = 0; i < longcheck; i++){
+        if (i%2 === 0) {
+            var aux = vdate.charAt(i) * 2;
+            if (aux > 9) aux -= 9;
+            total += aux;
+        } else {
+            total += parseInt(vdate.charAt(i)); // parseInt o concatenará en lugar de sumar
+            }
+        }
+        total = total % 10 ? 10 - total % 10 : 0;
+
+        if (vdate.charAt(longitud-1) == total) {
+        document.getElementById("salida").innerHTML = (" ");
+        VEnombre.style.display='';
+        VEapellido.style.display='';
+        }else{
+            document.getElementById("salida").innerHTML = ("Número de cédula  no válida");
+            VEnombre.style.display='none';
+            VEapellido.style.display='none';
+        }
+    }
+}
+</script>
 @endsection
