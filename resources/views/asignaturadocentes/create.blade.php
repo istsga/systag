@@ -18,13 +18,13 @@
                         <h4 class=" text-light"><i class="fas fa-book  mr-3"></i> <span class="text-value">DISTRIBUTIVO Y CARGA HORARIA</span></h4>
                     </div>
                     <div class="card-body">
-                            <form method="POST"  action="{{ route('asignaturadocentes.store')}} ">
+                            <form method="POST"  action="{{ route('asignaturadocentes.store')}}" onsubmit="return checkSubmit();">
                                 @csrf
                             <div class=" card p-3">
                                 <div class="row">
 
                                     <div class="form-group col-lg-12 ">
-                                        <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> PERIODO ACADÉMICO | CARRERA |  PERIODO | SECCION | PARALELO
+                                        <label for="asigperiodo" class="col-form-label font-weight-bold text-muted small"> PERIODO ACADÉMICO | CARRERA |  PERIODO | SECCION | PARALELO
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
@@ -48,7 +48,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-6 ">
-                                        <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignaturas
+                                        <label for="asignaturatrans" class="col-form-label font-weight-bold text-muted">Asignaturas
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
                                             <select name="asignatura_id" id="asignaturatrans"  class="form-control @error('asignatura_id') is-invalid @enderror">
@@ -61,7 +61,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-6 ">
-                                        <label for="docentes" class="col-form-label font-weight-bold text-muted">Docentes
+                                        <label for="docente_id" class="col-form-label font-weight-bold text-muted">Docentes
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
                                             <select name="docente_id" id="docente_id"  class="form-control @error('docente_id') is-invalid @enderror ">
@@ -142,6 +142,17 @@ $(function () {
             document.getElementById("asignaturatrans").length  = 1
             asignaturas.options[0].value =""
             asignaturas.options[0].text = " == Selecionar carrera == "
+        }
+    }
+
+//deshabilitar doble clic
+login = false;
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            return false;
         }
     }
 </script>

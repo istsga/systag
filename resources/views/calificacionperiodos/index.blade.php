@@ -23,7 +23,7 @@
                             <div class="row m-2">
                                 <div class="card bg-light col-lg-7 m-2 shadow-sm">
                                     <div class="form-group p-2">
-                                        <h3 class="text-muted font-weight-bold small">ESTUDIANTE</h3>
+                                        <label for="nota_estudiante" class="text-muted font-weight-bold small">ESTUDIANTE</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-user"></i></span></div>
@@ -42,7 +42,7 @@
                                 <div class="col"></div>
                                 <div class="card bg-light col-lg-4 m-2 shadow-sm">
                                 <div class="form-group p-2">
-                                    <h3 class="text-muted font-weight-bold small">PERIODO</h3>
+                                    <label for="periodo_id" class="text-muted font-weight-bold small">PERIODO</label>
                                     <div class="input-group ">
                                         <div class="input-group-prepend  "><span class=" input-group-text bg-primary  text-light">
                                             Periodo</span></div>

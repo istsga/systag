@@ -229,7 +229,7 @@
                                             <label for="tipocontrato_id" class="col-form-label font-weight-bold text-muted">Tipo de Contrato
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
-                                                <select name="tipocontrato_id"  class="form-control @error('tipocontrato_id') is-invalid @enderror">
+                                                <select name="tipocontrato_id" id="tipocontrato_id"  class="form-control @error('tipocontrato_id') is-invalid @enderror">
                                                     <option class="form-control" value=""> == Seleccionar == </option>
                                                     @foreach ($tipocontratos as $tipocontrato)
                                                     <option  value="{{$tipocontrato->id}}"

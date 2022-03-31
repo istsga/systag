@@ -21,7 +21,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                            name="nombre" value="{{old('nombre',$paralelo->nombre)}}" placeholder="A">
+                                            name="nombre" id="nombre" value="{{old('nombre',$paralelo->nombre)}}" placeholder="A">
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-file"></i></span></div>
                                         @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror

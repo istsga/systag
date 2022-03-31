@@ -65,7 +65,7 @@
                                 <div class="card shadow-sm m-4">
                                     <div class="row m-1">
                                         <div class="form-group col-lg-7 ">
-                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Asignaturas
+                                            <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignaturas
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">

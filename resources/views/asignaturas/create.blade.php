@@ -12,7 +12,7 @@
                         <h4 class=" text-light"><i class="fas fa-book-open mr-3"></i> <span class="text-value">ASIGNATURA</span> </h4>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" method="POST"  action="{{ route('asignaturas.store')}} ">
+                        <form class="form-horizontal" method="POST"  action="{{ route('asignaturas.store')}}" onsubmit="return checkSubmit();">
                             @csrf
                             <div class="card shadow-sm">
                                 <div class="row m-2">
@@ -56,7 +56,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('cod_asignatura') is-invalid @enderror"
-                                                name="cod_asignatura" value="{{old('cod_asignatura')}}" placeholder="Código">
+                                                name="cod_asignatura" id="cod_asignatura" value="{{old('cod_asignatura')}}" placeholder="Código">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-qrcode"></i></span></div>
                                             @error ('cod_asignatura') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -69,7 +69,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('cantidad_hora') is-invalid @enderror"
-                                                name="cantidad_hora" value="{{old('cantidad_hora')}}" placeholder="Nro. horas">
+                                                name="cantidad_hora" id="cantidad_hora" value="{{old('cantidad_hora')}}" placeholder="Nro. horas">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-clock"></i></span></div>
                                             @error ('cantidad_hora') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -82,7 +82,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                                name="nombre" value="{{old('nombre')}}" placeholder="Asignatura">
+                                                name="nombre" id="nombre" value="{{old('nombre')}}" placeholder="Asignatura">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-file"></i></span></div>
                                             @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -172,6 +172,17 @@
             document.getElementById("preasignatura_id").length  = 1
             asignaturas.options[0].value =""
             asignaturas.options[0].text = " == Seleccionar carrera =="
+        }
+    }
+
+    //deshabilitar doble clic
+    login = false;
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            return false;
         }
     }
 

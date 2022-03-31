@@ -18,7 +18,7 @@
                     <div class="card-header bg-primary">
                         <h4 class=" text-light"><i class="fas fa-book  mr-3"></i> <span class="text-value">MATRÍCULA</span></h4>
                     </div>
-                    <form method="POST"  action="{{ route('matriculas.store')}} ">
+                    <form method="POST"  action="{{ route('matriculas.store')}}" onsubmit="return checkSubmit();">
                         @csrf
                     <div class="card-body">
                         <div class="card shadow-sm">
@@ -28,7 +28,7 @@
                                     <label for="tipo" class="col-form-label font-weight-bold text-muted">Tipo de Matrícula
                                         <span class="text-primary">*</span></label>
                                     <div class="input-group">
-                                        <select name="tipo"  class=" prueba form-control @error('tipo') is-invalid @enderror ">
+                                        <select name="tipo" id="tipo"  class=" prueba form-control @error('tipo') is-invalid @enderror ">
                                             <option class="form-control" value="" {{ old('estado') == 0 ? 'selected' : '' }}> == Seleccionar == </option>
                                             <option value="Ordinaria" {{ old('estado') == 1 ? 'selected' : '' }}>Ordinaria</option>
                                             <option value="Extraordinaria" {{ old('estado') == 2 ? 'selected' : '' }}>Extraordinaria</option>
@@ -46,7 +46,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input type="date" class="form-control @error('fecha_matricula') is-invalid @enderror"
-                                        name="fecha_matricula" value="{{old('fecha_matricula')}}">
+                                        name="fecha_matricula" id="fecha_matricula" value="{{old('fecha_matricula')}}">
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar"></i></span></div>
                                         @error ('fecha_matricula') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -73,7 +73,7 @@
                                 </div>
 
                                 <div class="form-group col-lg-12">
-                                    <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA | PERIODO | SECCIÓN | PARALELO</label>
+                                    <label for="xasignacione_id" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA | PERIODO | SECCIÓN | PARALELO</label>
                                     <div class="input-group">
                                         <select name="asignacione_id" id="xasignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="cambiaAsignaturas();">
                                             <option class="form-control" value=""> == Seleccionar == </option>
@@ -101,7 +101,7 @@
                                                 <i class=" text-primary fas fa-folder-open"></i></span></div>
                                             @error ('asignaturas') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                             </div>
-                                            <em class="text-muted small">Pulsar Ctrl para seleccionar varias opciones</em>
+                                            <em class="text-muted small font-weight-bold">Pulsar Ctrl para seleccionar varias opciones</em>
                                     </div>
                                 </div>
 
@@ -201,6 +201,16 @@ function cambiaAsignaturas(select){
     }
 }
 
+//deshabilitar doble clic
+login = false;
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 </script>
 @endpush

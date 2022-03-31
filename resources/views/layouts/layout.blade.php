@@ -93,12 +93,33 @@
                 <div class="c-avatar"><img class="c-avatar-img" src="/uploads/avatars/{{auth()->user()->avatar }}" alt=" Logo User"></div>
             @endif
             </a>
+
+            {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div> --}}
+
             <div style="width: 375px" class="dropdown-menu mt-2 dropdown-menu-right pt-0 border-top-0 shadow-sm">
               <div class="dropdown-header mt-2   py-2 d-flex justify-content-between aling-items-end ">
                 <h5 class="align-self-center vertical-align-inherit font-weight-bold">SYSTAG</h5>
-                <form action="{{ route('logout')}}" method="POST" >
+
+                <a class="btn btn-secondary  border-0 " href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Cerrar sesión') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout')}}" method="POST" style="display: none;" >
                     @csrf
-                    <button class="btn btn-secondary  border-0 "> Cerrar sesión</button>
+                    {{-- <button class="btn btn-secondary  border-0 "> Cerrar sesión</button> --}}
                  </form>
               </div>
 

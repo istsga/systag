@@ -14,12 +14,12 @@
                     </div>
 
                   <div class="card-body">
-                          <form class="form-horizontal" method="POST"  action="{{ route('asignaciones.store')}} ">
+                          <form class="form-horizontal" method="POST"  action="{{ route('asignaciones.store')}}" onsubmit="return checkSubmit();">
                               @csrf
                             <div class="card shadow-sm">
                                 <div class="row m-2">
                                     <div class="form-group col-lg-6">
-                                        <label for="periodacademicos" class="col-form-label font-weight-bold text-dark text-muted">Periodo Académico
+                                        <label for="periodacademico_id" class="col-form-label font-weight-bold text-dark text-muted">Periodo Académico
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
                                             <select name="periodacademicos" id="periodacademico_id" class="form-control @error('periodacademicos') is-invalid @enderror"  onchange="cambia_carreras(this)">
@@ -37,7 +37,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-6">
-                                        <label for="carreras" class="col-form-label font-weight-bold text-muted">Carrera
+                                        <label for="carrera_id" class="col-form-label font-weight-bold text-muted">Carrera
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
                                             <select  name="carreras" id="carrera_id" class="form-control @error('carreras') is-invalid @enderror" onchange="cambia_periodo(this)" >
@@ -67,7 +67,7 @@
                                         <label for="seccione_id" class="col-form-label font-weight-bold text-muted">Sección
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
-                                            <select  name="seccione_id"  class="form-control @error('seccione_id') is-invalid @enderror">
+                                            <select  name="seccione_id" id="seccione_id"  class="form-control @error('seccione_id') is-invalid @enderror">
                                                 <option value="" class="form-control "> == Seleccionar == </option>
                                                 @foreach ($secciones as $seccione)
                                                     <option  value="{{$seccione->id}}"
@@ -85,7 +85,7 @@
                                         <label for="paralelo_id" class="col-form-label font-weight-bold text-muted">Paralelo
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
-                                            <select  name="paralelo_id"  class="form-control @error('paralelo_id') is-invalid @enderror">
+                                            <select  name="paralelo_id" id="paralelo_id" class="form-control @error('paralelo_id') is-invalid @enderror">
                                                 <option value="" class="form-control "> == Seleccionar == </option>
                                                 @foreach ($paralelos as $paralelo)
                                                 <option  value="{{$paralelo->id}}"
@@ -164,6 +164,17 @@ function cambia_periodo(){
             }
         }
 }
+
+//deshabilitar doble clic
+login = false;
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 </script>
 @endsection

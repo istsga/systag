@@ -143,7 +143,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="date" class="form-control @error('fecha_nacimiento') is-invalid @enderror"
-                                                    name="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" placeholder="Fecha de Nacimiento" >
+                                                    name="fecha_nacimiento" id="fecha_nacimiento" value="{{old('fecha_nacimiento')}}" placeholder="Fecha de Nacimiento" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-calendar"></i></span></div>
                                                     @error ('fecha_nacimiento') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -188,7 +188,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('lugar_nacimiento') is-invalid @enderror"
-                                                    name="lugar_nacimiento" value="{{old('lugar_nacimiento')}}" placeholder="País , ciudad..." >
+                                                    name="lugar_nacimiento" id="lugar_nacimiento" value="{{old('lugar_nacimiento')}}" placeholder="País , ciudad..." >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-globe"></i></span></div>
                                                     @error ('lugar_nacimiento') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -199,7 +199,7 @@
                                                 <label for="estadocivile_id" class="col-form-label font-weight-bold text-muted ">Estado Civil
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
-                                                    <select name="estadocivile_id"  class="form-control @error('estadocivile_id') is-invalid @enderror  ">
+                                                    <select name="estadocivile_id"  id="estadocivile_id" class="form-control @error('estadocivile_id') is-invalid @enderror  ">
                                                         <option class="form-control" value=""> == Seleccionar == </option>
                                                         @foreach ($estadociviles as $estadocivile)
                                                         <option  value="{{$estadocivile->id}}"
@@ -218,7 +218,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input class="form-control @error('ocupacion') is-invalid @enderror"
-                                                    name="ocupacion" value="{{old('ocupacion')}}" placeholder="Ocupación" >
+                                                    name="ocupacion" id="ocupacion" value="{{old('ocupacion')}}" placeholder="Ocupación" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-user-alt"></i></span></div>
                                                     @error ('ocupacion') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -229,7 +229,7 @@
                                                 <label for="etnia_id" class="col-form-label font-weight-bold text-muted ">Etnia
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
-                                                    <select name="etnia_id"  class="form-control @error('etnia_id') is-invalid @enderror  ">
+                                                    <select name="etnia_id" id="etnia_id"  class="form-control @error('etnia_id') is-invalid @enderror  ">
                                                         <option class="form-control" value=""> == Seleccionar == </option>
                                                         @foreach ($etnias as $etnia)
                                                         <option  value="{{$etnia->id}}"
@@ -247,7 +247,7 @@
                                                 <label for="tiposangre_id" class="col-form-label font-weight-bold text-muted ">Tipo de sangre
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
-                                                    <select name="tiposangre_id"  class="form-control @error('tiposangre_id') is-invalid @enderror  ">
+                                                    <select name="tiposangre_id" id="tiposangre_id" class="form-control @error('tiposangre_id') is-invalid @enderror  ">
                                                         <option class="form-control" value=""> == Seleccionar == </option>
                                                         @foreach ($tiposangres as $tiposangre)
                                                         <option  value="{{$tiposangre->id}}"
@@ -316,7 +316,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('miembro_hogar') is-invalid @enderror"
-                                                    name="miembro_hogar" value="{{old('miembro_hogar')}}" placeholder="Miembros del Hogar" >
+                                                    name="miembro_hogar" id="miembro_hogar" value="{{old('miembro_hogar')}}" placeholder="Miembros del Hogar" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary  fas fa-user-friends"></i></span></div>
                                                     @error ('miembro_hogar') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -328,7 +328,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('ingreso_ec') is-invalid @enderror"
-                                                    name="ingreso_ec" value="{{old('ingreso_ec')}}" placeholder="Ingreso Económico" >
+                                                    name="ingreso_ec" id="ingreso_ec" value="{{old('ingreso_ec')}}" placeholder="Ingreso Económico" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-money-bill-alt"></i></span></div>
                                                     @error ('ingreso_ec') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -344,7 +344,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('nombre_padre') is-invalid @enderror"
-                                                    name="nombre_padre" value="{{old('nombre_padre')}}" placeholder="Nombres y apellidos del padre" >
+                                                    name="nombre_padre" id="nombre_padre" value="{{old('nombre_padre')}}" placeholder="Nombres y apellidos del padre" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-user"></i></span></div>
                                                     @error ('nombre_padre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -356,7 +356,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input class="form-control @error('ocupacion_padre') is-invalid @enderror"
-                                                    name="ocupacion_padre" value="{{old('ocupacion_padre')}}" placeholder="Ocupación" >
+                                                    name="ocupacion_padre" id="ocupacion_padre" value="{{old('ocupacion_padre')}}" placeholder="Ocupación" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-user"></i></span></div>
                                                     @error ('ocupacion_padre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -367,7 +367,7 @@
                                                 <label for="instruccione_id" class="col-form-label font-weight-bold text-muted">Instrucción
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
-                                                    <select name="instruccione_id"  class="form-control @error('instruccione_id') is-invalid @enderror ">
+                                                    <select name="instruccione_id" id="instruccione_id" class="form-control @error('instruccione_id') is-invalid @enderror ">
                                                         <option class="form-control " value=""> == Seleccionar == </option>
                                                         @foreach ($instrucciones as $instruccione)
                                                         <option  value="{{$instruccione->id}}"
@@ -386,7 +386,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('nombre_madre') is-invalid @enderror"
-                                                    name="nombre_madre" value="{{old('nombre_madre')}}" placeholder="Nombres y apellidos de la madre" >
+                                                    name="nombre_madre" id="nombre_madre" value="{{old('nombre_madre')}}" placeholder="Nombres y apellidos de la madre" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-female"></i></span></div>
                                                     @error ('nombre_madre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -398,7 +398,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input class="form-control @error('ocupacion_madre') is-invalid @enderror"
-                                                    name="ocupacion_madre" value="{{old('ocupacion_madre')}}" placeholder="Ocupación" >
+                                                    name="ocupacion_madre" id="ocupacion_madre" value="{{old('ocupacion_madre')}}" placeholder="Ocupación" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-female"></i></span></div>
                                                     @error ('ocupacion_madre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -409,7 +409,7 @@
                                                 <label for="madre_instruccione_id" class="col-form-label font-weight-bold text-muted ">Instrucción
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
-                                                    <select name="madre_instruccione_id"  class="form-control @error('madre_instruccione_id') is-invalid @enderror ">
+                                                    <select name="madre_instruccione_id" id="madre_instruccione_id"  class="form-control @error('madre_instruccione_id') is-invalid @enderror ">
                                                         <option class="form-control" value=""> == Seleccionar == </option>
                                                         @foreach ($instrucciones as $instruccione)
                                                         <option  value="{{$instruccione->id}}"
@@ -439,7 +439,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                                    name="email" value="{{old('email')}}" placeholder="Correo Electrónico" >
+                                                    name="email" id="email" value="{{old('email')}}" placeholder="Correo Electrónico" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary  fas fa-envelope"></i></span></div>
                                                     @error ('email') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -483,7 +483,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('calle') is-invalid @enderror"
-                                                    name="calle" value="{{old('calle')}}" placeholder="Calles" >
+                                                    name="calle" id="calle" value="{{old('calle')}}" placeholder="Calles" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-map-marker-alt"></i></span></div>
                                                     @error ('calle') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -494,7 +494,7 @@
                                                 <label for="telefono_fijo" class="col-form-label font-weight-bold text-muted">Teléfono fijo</label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('telefono_fijo') is-invalid @enderror"
-                                                    name="telefono_fijo" value="{{old('telefono_fijo')}}" placeholder="Teléfono fijo" >
+                                                    name="telefono_fijo" id="telefono_fijo" value="{{old('telefono_fijo')}}" placeholder="Teléfono fijo" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-phone-square"></i></span></div>
                                                     @error ('telefono_fijo') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -506,7 +506,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('telefono_movil') is-invalid @enderror"
-                                                    name="telefono_movil" value="{{old('telefono_movil')}}" placeholder="Teléfono celular" >
+                                                    name="telefono_movil" id="telefono_movil" value="{{old('telefono_movil')}}" placeholder="Teléfono celular" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-mobile"></i></span></div>
                                                     @error ('telefono_movil') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -518,7 +518,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('nombre_parentesco') is-invalid @enderror"
-                                                    name="nombre_parentesco" value="{{old('nombre_parentesco')}}" placeholder="Nombre de un familiar cercano " >
+                                                    name="nombre_parentesco" id="nombre_parentesco"  value="{{old('nombre_parentesco')}}" placeholder="Nombre de un familiar cercano " >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-user"></i></span></div>
                                                     @error ('nombre_parentesco') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -530,7 +530,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('telefono_parentesco') is-invalid @enderror"
-                                                    name="telefono_parentesco" value="{{old('telefono_parentesco')}}" placeholder="Número de contacto" >
+                                                    name="telefono_parentesco" id="telefono_parentesco" value="{{old('telefono_parentesco')}}" placeholder="Número de contacto" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-phone-square"></i></span></div>
                                                     @error ('telefono_parentesco') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
@@ -542,7 +542,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('parentesco') is-invalid @enderror"
-                                                    name="parentesco" value="{{old('parentesco')}}" placeholder="Parentesco" >
+                                                    name="parentesco" id="parentesco" value="{{old('parentesco')}}" placeholder="Parentesco" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-user"></i></span></div>
                                                     @error ('parentesco') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -565,7 +565,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('institucion_origen') is-invalid @enderror"
-                                                    name="institucion_origen" value="{{old('institucion_origen')}}" placeholder="Institución Educativa" >
+                                                    name="institucion_origen" id="institucion_origen" value="{{old('institucion_origen')}}" placeholder="Institución Educativa" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-university"></i></span></div>
                                                     @error ('institucion_origen') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
@@ -577,7 +577,7 @@
                                                     <span class="text-primary">*</span></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control @error('titulo_bachillerato') is-invalid @enderror"
-                                                    name="titulo_bachillerato" value="{{old('titulo_bachillerato')}}" placeholder="Título de bachillerato" >
+                                                    name="titulo_bachillerato" id="titulo_bachillerato" value="{{old('titulo_bachillerato')}}" placeholder="Título de bachillerato" >
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-user-graduate"></i></span></div>
                                                     @error ('titulo_bachillerato') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror

@@ -26,7 +26,7 @@
                 <font class=" text-light font-weight-bold "> <i class="font-weight-bold  fas fa-user  mr-3"></i> ESTUDIANTE </font>
             </div>
             <div class="card-body ">
-                <form class="form-horizontal" method="POST"  action="{{ route('calificaciones.store')}} ">
+                <form class="form-horizontal" method="POST"  action="{{ route('calificaciones.store')}}" onsubmit="return checkSubmit();">
                     @csrf
                     <div class="row">
                         <div class="card col-lg-5 shadow-sm bg-light shadow-sm">
@@ -435,6 +435,17 @@ $('input[type=number]').on('keydown',function(e) {
 	return;
     }
 });
+
+//deshabilitar doble clic
+login = false;
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
 @endpush
 @endsection

@@ -68,7 +68,7 @@
                                             <div class="card-body bg-white shadow-lg rounded py-5 px-4  ">
                                                 <h5 class="text-center mb-4">Iniciar sesión</h5>
 
-                                                <form method="POST" action="{{ route('login') }}">
+                                                <form method="POST"  action="{{ route('login') }}" onsubmit="return checkSubmit();">
                                                     @csrf
 
                                                     <div class="form-group ">
@@ -146,3 +146,17 @@
     </div>
 </body>
 </html>
+
+//Evitar doble clic.
+<script>
+    login = false; //Obligaremos entrar el if al primer submit
+    function checkSubmit() {
+        if (!login) {
+    		login= true;
+    		return true;
+        } else {
+            // pulsaron 2 veces el  submit
+            return false;
+        }
+    }
+</script>

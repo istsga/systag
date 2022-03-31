@@ -28,7 +28,7 @@
                                             <label for="tipo" class="col-form-label font-weight-bold text-muted">Tipo de Matrícula
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
-                                                <select name="tipo"  class=" prueba form-control @error('tipo') is-invalid @enderror ">
+                                                <select name="tipo" id="tipo" class=" prueba form-control @error('tipo') is-invalid @enderror ">
                                                     <option class="form-control" value=""> == Seleccionar == </option>
                                                     <option value="Ordinaria" {{ old('tipo', $matricula->tipo) == 'Ordinaria' ? 'selected' : '' }}>Ordinaria</option>
                                                     <option value="Extraordinaria" {{ old('tipo', $matricula->tipo) == 'Extraordinaria' ? 'selected' : '' }}>Extraordinaria</option>
@@ -46,7 +46,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_matricula') is-invalid @enderror"
-                                                name="fecha_matricula" value="{{old('fecha_matricula', $matricula->fecha_matricula)}}">
+                                                name="fecha_matricula" id="fecha_matricula" value="{{old('fecha_matricula', $matricula->fecha_matricula)}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-calendar"></i></span></div>
                                                 @error ('fecha_matricula') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -73,22 +73,13 @@
                                         </div>
 
                                         <div class="form-group col-lg-12 ">
-                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA | PERIODO | SECCIÓN | PARALELO
+                                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA | PERIODO | SECCIÓN | PARALELO
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
                                                 <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="cambia_asignatura(this)">
                                                     <option class="form-control" value=""> == Seleccionar == </option>
-                                                    {{-- @foreach ($asignaciones as $asignacione)
-                                                        <option  value="{{$asignacione->id}}"
-                                                            {{old('asignacione_id', $matricula->asignacione_id)==$asignacione->id ? 'selected' : '' }}
-                                                            >{{$asignacione->periodacademicos->pluck('periodo')->implode(', ') }} ,
-                                                            {{$asignacione->carreras->pluck('nombre')->implode(', ')}},
-                                                            {{$asignacione->periodo->nombre}},
-                                                            {{$asignacione->seccione->nombre}},
-                                                            {{$asignacione->paralelo->nombre}}
-                                                        </option>
-                                                    @endforeach --}}
+                                                    {{-- Data asignaciones --}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-check"></i></span></div>
@@ -105,17 +96,13 @@
                                                 <div class="input-group">
                                                     <select name="asignaturas[]" id="asignaturas_id"  class="form-control @error('asignaturas') is-invalid @enderror" multiple>
                                                         <option class="form-control" value=""> == Selecionar == </option>
-                                                        {{-- @foreach ($asignaturas as $asignatura)
-                                                        <option  value="{{$asignatura->id}}"
-                                                            {{old('asignaturas')==$asignatura->id ? 'selected' : '' }}
-                                                            >{{$asignatura->nombre}}</option>
-                                                            @endforeach --}}
+                                                        {{-- Data asiganturas--}}
                                                     </select>
                                                     <div class="input-group-prepend "><span class=" input-group-text">
                                                         <i class=" text-primary fas fa-folder-open"></i></span></div>
                                                 @error ('asignaturas') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
                                                 </div>
-                                                <em class="text-muted small">Pulsar Ctrl para seleccionar varias opciones</em>
+                                                <em class="text-muted small font-weight-bold">Pulsar Ctrl para seleccionar varias opciones</em>
                                             </div>
                                         </div>
                                     </div>

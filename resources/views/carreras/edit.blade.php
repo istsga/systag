@@ -22,7 +22,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('codigo') is-invalid @enderror"
-                                                name="codigo" value="{{old('codigo', $carrera->codigo)}}" placeholder="Nombre">
+                                                name="codigo" id="codigo" value="{{old('codigo', $carrera->codigo)}}" placeholder="Nombre">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-qrcode"></i></span></div>
                                             @error ('codigo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -35,7 +35,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                                name="nombre" value="{{old('nombre', $carrera->nombre)}}" placeholder="Nombre">
+                                                name="nombre" id="nombre" value="{{old('nombre', $carrera->nombre)}}" placeholder="Nombre">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-file"></i></span></div>
                                             @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -48,7 +48,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('titulo') is-invalid @enderror"
-                                                name="titulo" value="{{old('titulo', $carrera->titulo)}}" placeholder="Nombre título">
+                                                name="titulo" id="titulo" value="{{old('titulo', $carrera->titulo)}}" placeholder="Nombre título">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-file"></i></span></div>
                                             @error ('titulo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -61,7 +61,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="number" class="form-control @error('numero_periodo') is-invalid @enderror"
-                                                name="numero_periodo" value="{{old('numero_periodo', $carrera->numero_periodo )}}" placeholder="4">
+                                                name="numero_periodo" id="numero_periodo" value="{{old('numero_periodo', $carrera->numero_periodo )}}" placeholder="4">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-table"></i></span></div>
                                             @error ('numero_periodo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -73,7 +73,7 @@
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
-                                            <select name="condicion" class="form-control @error('condicion') is-invalid @enderror ">
+                                            <select name="condicion" id="condicion" class="form-control @error('condicion') is-invalid @enderror ">
                                                 <option value="1" {{ old('condicion', $carrera->condicion) == 1 ? 'selected' : '' }}>Activo</option>
                                                 <option value="0" {{ old('condicion', $carrera->condicion) == 0 ? 'selected' : '' }}>Cerrado</option>
                                             </select>

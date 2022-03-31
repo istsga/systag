@@ -12,7 +12,7 @@
                         <h4 class=" text-light"><i class="fas fa-calendar mr-3"></i> <span class="text-value">PERIODO ACADÉMICO</span> </h4>
                     </div>
                   <div class="card-body">
-                          <form class="form-horizontal" method="POST"  action="{{ route('periodacademicos.store')}} ">
+                          <form class="form-horizontal" method="POST"  action="{{ route('periodacademicos.store')}}" onsubmit="return checkSubmit();">
                             @csrf
                             <div class="card shadow-sm">
                                 <div class="row m-2">
@@ -23,7 +23,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('periodo') is-invalid @enderror"
-                                            name="periodo" value="{{old('periodo')}}" placeholder="Periodo Académico">
+                                            name="periodo" id="periodo" value="{{old('periodo')}}" placeholder="Periodo Académico">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-stopwatch"></i></span></div>
                                             @error ('periodo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -52,7 +52,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="date" class="form-control @error('fecha_inicio') is-invalid @enderror"
-                                            name="fecha_inicio" value="{{old('fecha_inicio')}}">
+                                            name="fecha_inicio" id="fecha_inicio" value="{{old('fecha_inicio')}}">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-alt"></i></span></div>
                                             @error ('fecha_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -65,7 +65,7 @@
                                         </label>
                                         <div class="input-group ">
                                             <input type="date" class="form-control @error('fecha_final') is-invalid @enderror"
-                                            name="fecha_final" value="{{old('fecha_final')}}">
+                                            name="fecha_final" id="fecha_final" value="{{old('fecha_final')}}">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-calendar-alt"></i></span></div>
                                             @error ('fecha_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -114,6 +114,17 @@
             if(estado.getAttribute("value") == "{{ old("estado") }}")
             {
                 estado.setAttribute("selected", "selected");
+            }
+        }
+
+    //deshabilitar doble clic
+    login = false;
+        function checkSubmit() {
+            if (!login) {
+                login= true;
+                return true;
+            } else {
+                return false;
             }
         }
 </script>

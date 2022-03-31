@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
         $administrador  =   Role::create(['name'=>'Administrador']);
         $estudiante     =   Role::create(['name'=>'Estudiante']);
         $docente        =   Role::create(['name'=>'Docente']);
-        $faker          =   Role::create(['name'=>'Faker']);
 
         //Usuarios predeterminados SYSTAG
         $UserAdmin = new User;
@@ -31,40 +30,40 @@ class UserSeeder extends Seeder
         $UserAdmin->save();
         $UserAdmin->assignRole($administrador);
 
-        $UserStudent = new User;
-        $UserStudent->dni = '0605082063';
-        $UserStudent->nombre = 'Estudiante';
-        $UserStudent->apellido = 'User';
-        $UserStudent->email = 'estudiante@gmail.com';
-        $UserStudent->password = '12345678';
-        $UserStudent->save();
-        $UserStudent->assignRole($estudiante);
+        // $UserStudent = new User;
+        // $UserStudent->dni = '0605082063';
+        // $UserStudent->nombre = 'Estudiante';
+        // $UserStudent->apellido = 'User';
+        // $UserStudent->email = 'estudiante@gmail.com';
+        // $UserStudent->password = '12345678';
+        // $UserStudent->save();
+        // $UserStudent->assignRole($estudiante);
 
-        $UserDocente = new User;
-        $UserDocente->dni = '0605082062';
-        $UserDocente->nombre = 'Docente';
-        $UserDocente->apellido = 'User';
-        $UserDocente->email = 'docente@gmail.com';
-        $UserDocente->password = '12345678';
-        $UserDocente->save();
-        $UserDocente->assignRole($docente);
+        // $UserDocente = new User;
+        // $UserDocente->dni = '0605082062';
+        // $UserDocente->nombre = 'Docente';
+        // $UserDocente->apellido = 'User';
+        // $UserDocente->email = 'docente@gmail.com';
+        // $UserDocente->password = '12345678';
+        // $UserDocente->save();
+        // $UserDocente->assignRole($docente);
 
-        $UserDocente = new User;
-        $UserDocente->dni = '0204002040';
-        $UserDocente->nombre = 'Angel ';
-        $UserDocente->apellido = 'Huilca';
-        $UserDocente->email = 'angelhuilca@gmail.com';
-        $UserDocente->password = '12345678';
-        $UserDocente->save();
-        $UserDocente->assignRole($docente);
+        // $UserDocente = new User;
+        // $UserDocente->dni = '0204002040';
+        // $UserDocente->nombre = 'Angel ';
+        // $UserDocente->apellido = 'Huilca';
+        // $UserDocente->email = 'angelhuilca@gmail.com';
+        // $UserDocente->password = '12345678';
+        // $UserDocente->save();
+        // $UserDocente->assignRole($docente);
 
-        $UserDocente = new User;
-        $UserDocente->dni = '0623429692';
-        $UserDocente->nombre = 'William ';
-        $UserDocente->apellido = 'Adriano';
-        $UserDocente->email = 'adriano@gmail.com';
-        $UserDocente->password = '12345678';
-        $UserDocente->save();
-        $UserDocente->assignRole($docente);
+        // $UserDocente = new User;
+        // $UserDocente->dni = '0623429692';
+        // $UserDocente->nombre = 'William ';
+        // $UserDocente->apellido = 'Adriano';
+        // $UserDocente->email = 'adriano@gmail.com';
+        // $UserDocente->password = '12345678';
+        // $UserDocente->save();
+        // $UserDocente->assignRole($docente);
     }
 }

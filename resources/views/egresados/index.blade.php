@@ -15,12 +15,12 @@
                     <div class="row m-2">
                         <div class="card col-lg-5 bg-light m-2 shadow-sm">
                         <div class="form-group p-2">
-                            <label for="periodacademicos" class="col-form-label font-weight-bold text-dark text-muted small">PERIODO ACADÉMICO
+                            <label for="periodacademico_id" class="col-form-label font-weight-bold text-dark text-muted small">PERIODO ACADÉMICO
                             </label>
                             <div class="input-group">
                                 <div class="input-group-prepend "><span class=" input-group-text">
                                     <i class=" text-primary fas fa-calendar-check"></i></span></div>
-                                <select name="periodacademico_id" class="form-control">
+                                <select name="periodacademico_id" id="periodacademico_id" class="form-control">
                                     <option value="" class="form-control "> == Seleccionar ­­­­­­== </option>
                                     @foreach ($periodacademicos as $periodacademico)
                                         <option  value="{{$periodacademico->id}}"
@@ -37,7 +37,7 @@
 
                         <div class="card col-lg-6 bg-light m-2 shadow-sm">
                             <div class="form-group p-2">
-                                <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA
+                                <label for="carrera_id" class="col-form-label font-weight-bold text-muted small"> CARRERA
                                 </label>
                                 <div class="input-group">
                                     <div class="input-group-prepend "><span class=" input-group-text">

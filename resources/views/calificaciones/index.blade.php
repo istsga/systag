@@ -64,7 +64,7 @@
 
                                 <div class=" card col-lg-5 bg-light m-2 shadow-sm">
                                     <div class="form-group p-2">
-                                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS </label>
+                                            <label for="asignatura_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS </label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-book"></i></span></div>

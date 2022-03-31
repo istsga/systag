@@ -9,7 +9,6 @@
 <main class="c-main">
 <div class="container-fluid">
     <div class="fade-in">
-        {{-- @include('partials.success') --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-accent-primary shadow-sm">
@@ -21,7 +20,7 @@
                             <div class="row m-2">
                                 <div class="card col-lg-7 m-2 bg-light shadow-sm">
                                     <div class="form-group p-2">
-                                        <h3 class="text-muted font-weight-bold  small">ESTUDIANTE</h3>
+                                        <label for="record_estudiante" class="text-muted font-weight-bold  small">ESTUDIANTE</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-user"></i></span></div>

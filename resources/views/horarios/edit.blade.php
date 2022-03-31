@@ -20,7 +20,7 @@
                                 <div class="card p-3">
                                     <div class="row">
                                         <div class="form-group col-lg-8">
-                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN
+                                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
@@ -49,7 +49,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_inicio') is-invalid @enderror"
-                                                name="fecha_inicio" value="{{old('fecha_inicio', $horario->fecha_inicio)}}">
+                                                name="fecha_inicio" id="fecha_inicio" value="{{old('fecha_inicio', $horario->fecha_inicio)}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -62,7 +62,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_final') is-invalid @enderror"
-                                                name="fecha_final" value="{{old('fecha_final', $horario->fecha_final)}}">
+                                                name="fecha_final" id="fecha_final" value="{{old('fecha_final', $horario->fecha_final)}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -75,7 +75,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_examen') is-invalid @enderror"
-                                                name="fecha_examen" value="{{old('fecha_examen', $horario->fecha_examen)}}">
+                                                name="fecha_examen" id="fecha_examen" value="{{old('fecha_examen', $horario->fecha_examen)}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_examen') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -88,7 +88,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_suspension') is-invalid @enderror"
-                                                name="fecha_suspension" value="{{old('fecha_suspension', $horario->fecha_suspension)}}">
+                                                name="fecha_suspension" id="fecha_suspension" value="{{old('fecha_suspension', $horario->fecha_suspension)}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_suspension') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror

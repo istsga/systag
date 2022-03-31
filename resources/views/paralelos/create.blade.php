@@ -12,16 +12,16 @@
                         <h4 class=" text-light"><i class="fas fa-window-restore  mr-3"></i> <span class="text-value">PARALELO</span> </h4>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" method="POST"  action="{{ route('paralelos.store')}} ">
+                        <form class="form-horizontal" method="POST"  action="{{ route('paralelos.store')}}" onsubmit="return checkSubmit();">
                             @csrf
                             <div class="card shadow-sm">
                                 <div class="form-group m-3">
-                                    <label for="paralelo" class="col-form-label font-weight-bold text-muted">Nombre
+                                    <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombre
                                         <span class="text-primary">*</span>
                                     </label>
                                     <div class="input-group">
                                         <input type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                            name="nombre" value="{{old('nombre')}}" placeholder="A">
+                                            name="nombre" id="nombre" value="{{old('nombre')}}" placeholder="A">
                                         <div class="input-group-prepend "><span class=" input-group-text">
                                             <i class=" text-primary fas fa-file"></i></span></div>
                                         @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -40,4 +40,17 @@
     </div>
 </div>
 </main>
+<script>
+    //deshabilitar doble clic
+    login = false; //Obligaremos entrar el if al primer submit
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            // pulsaron 2 veces el  submit
+            return false;
+        }
+    }
+</script>
 @endsection

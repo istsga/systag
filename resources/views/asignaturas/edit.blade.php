@@ -56,7 +56,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('cod_asignatura') is-invalid @enderror"
-                                                name="cod_asignatura" value="{{old('cod_asignatura', $asignatura->cod_asignatura)}}" placeholder="Código">
+                                                name="cod_asignatura" id="cod_asignatura" value="{{old('cod_asignatura', $asignatura->cod_asignatura)}}" placeholder="Código">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-qrcode"></i></span></div>
                                             @error ('cod_asignatura') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -69,7 +69,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('cantidad_hora') is-invalid @enderror"
-                                                name="cantidad_hora" value="{{old('cantidad_hora', $asignatura->cantidad_hora)}}" placeholder="Nro. horas">
+                                                name="cantidad_hora" id="cantidad_hora" value="{{old('cantidad_hora', $asignatura->cantidad_hora)}}" placeholder="Nro. horas">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-clock"></i></span></div>
                                             @error ('cantidad_hora') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -82,7 +82,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                                name="nombre" value="{{old('nombre', $asignatura->nombre)}}" placeholder="Asignatura">
+                                                name="nombre" id="nombre" value="{{old('nombre', $asignatura->nombre)}}" placeholder="Asignatura">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-file"></i></span></div>
                                             @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror

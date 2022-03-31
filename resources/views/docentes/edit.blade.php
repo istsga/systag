@@ -37,7 +37,7 @@
                                                     <span class="text-primary">*</span>
                                                 </label>
                                                 <div class="input-group">
-                                                    <select name="tipo_identificacion" class="form-control ">
+                                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control ">
                                                         <option value="1" {{ old('tipo_identificacion', $docente->tipo_identificacion) == 1 ? 'selected' : '' }}>Cédula</option>
                                                         <option value="0" {{ old('tipo_identificacion', $docente->tipo_identificacion) == 0 ? 'selected' : '' }}>Pasaporte</option>
                                                     </select>
@@ -222,7 +222,7 @@
                                             <label for="tipocontrato_id" class="col-form-label font-weight-bold text-muted">Tipo de Contrato
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
-                                                <select name="tipocontrato_id"  class="form-control @error('tipocontrato_id') is-invalid @enderror">
+                                                <select name="tipocontrato_id" id="tipocontrato_id"  class="form-control @error('tipocontrato_id') is-invalid @enderror">
                                                     <option class="form-control" value=""> == Seleccionar == </option>
                                                     @foreach ($tipocontratos as $tipocontrato)
                                                     <option  value="{{$tipocontrato->id}}"
@@ -246,7 +246,7 @@
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
-                                                <select name="estado" class="form-control ">
+                                                <select name="estado" id="estado" class="form-control ">
                                                     <option value="1" {{ old('estado', $docente->estado) == 1 ? 'selected' : '' }}>Activo</option>
                                                     <option value="0" {{ old('estado', $docente->estado) == 0 ? 'selected' : '' }}>Inactivo</option>
                                                 </select>

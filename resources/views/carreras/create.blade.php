@@ -12,7 +12,7 @@
                         <h4 class=" text-light"><i class="fas fa-graduation-cap  mr-3"></i> <span class="text-value">CARRERA</span> </h4>
                     </div>
                     <div class="card-body ">
-                        <form class="form-horizontal" method="POST"  action="{{ route('carreras.store')}} " enctype="multipart/form-data">
+                        <form class="form-horizontal" method="POST"  action="{{ route('carreras.store')}} " enctype="multipart/form-data" onsubmit="return checkSubmit();">
                             @csrf
                             <div class="card shadow-sm">
                                 <div class="row m-2">
@@ -22,7 +22,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('codigo') is-invalid @enderror"
-                                                name="codigo" value="{{old('codigo')}}" placeholder="SFD01">
+                                                name="codigo" id="codigo" value="{{old('codigo')}}" placeholder="SFD01">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-qrcode"></i></span></div>
                                             @error ('codigo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -34,7 +34,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                                name="nombre" value="{{old('nombre')}}" placeholder="Nombre">
+                                                name="nombre" id="nombre" value="{{old('nombre')}}" placeholder="Nombre">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-file"></i></span></div>
                                             @error ('nombre') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -47,7 +47,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="text" class="form-control @error('titulo') is-invalid @enderror"
-                                                name="titulo" value="{{old('titulo')}}" placeholder="Título de la carrera">
+                                                name="titulo" id="titulo" value="{{old('titulo')}}" placeholder="Título de la carrera">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-file"></i></span></div>
                                             @error ('titulo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -60,7 +60,7 @@
                                         </label>
                                         <div class="input-group">
                                             <input type="number" class="form-control @error('numero_periodo') is-invalid @enderror"
-                                                name="numero_periodo" value="{{old('numero_periodo')}}" placeholder="Ejemplo: 4">
+                                                name="numero_periodo" id="numero_periodo" value="{{old('numero_periodo')}}" placeholder="Ejemplo: 4">
                                             <div class="input-group-prepend "><span class=" input-group-text">
                                                 <i class=" text-primary fas fa-table"></i></span></div>
                                             @error ('numero_periodo') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -85,7 +85,7 @@
                                     <div class="card col-lg-5 m-3 shadow-sm">
                                         <div class="form-group m-3 ">
                                             <div class="card-header ">
-                                                <label for="condicion" class="col-form-label font-weight-bold text-muted small"> == SELECCIONAR LOGO ==
+                                                <label for="logo" class="col-form-label font-weight-bold text-muted small"> == SELECCIONAR LOGO ==
                                                     <span class="text-primary">*</span>
                                                 </label>
                                             </div>
@@ -143,5 +143,17 @@
                 condicion.setAttribute("selected", "selected");
             }
         }
+
+    //deshabilitar doble clic
+    login = false; //Obligaremos entrar el if al primer submit
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            // pulsaron 2 veces el  submit
+            return false;
+        }
+    }
 </script>
 @endsection

@@ -24,7 +24,7 @@
                                 <div class="row">
 
                                     <div class="form-group col-lg-12 ">
-                                        <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA |  PERIODO | SECCION | PARALELO
+                                        <label for="asigperiodo" class="col-form-label font-weight-bold text-muted small">PERIODO ACADÉMICO | CARRERA |  PERIODO | SECCION | PARALELO
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
@@ -49,7 +49,7 @@
                                     </div>
 
                                     <div class="form-group col-lg-6 ">
-                                        <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignaturas
+                                        <label for="asignaturatrans" class="col-form-label font-weight-bold text-muted">Asignaturas
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
                                             <select name="asignatura_id" id="asignaturatrans"  class="form-control @error('asignatura_id') is-invalid @enderror">
@@ -65,7 +65,7 @@
                                         <label for="docente_id" class="col-form-label font-weight-bold text-muted">Docentes
                                             <span class="text-primary">*</span></label>
                                         <div class="input-group">
-                                            <select name="docente_id" id="id_docente"  class="form-control @error('docente_id') is-invalid @enderror ">
+                                            <select name="docente_id" id="docente_id"  class="form-control @error('docente_id') is-invalid @enderror ">
                                                 <option class="form-control" value=""> == Seleccionar == </option>
                                                 @foreach ($docentes as $docente)
                                                 <option  value="{{$docente->id}}"

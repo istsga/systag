@@ -24,7 +24,7 @@
 
 </div>
 <div class="form-group">
-    <label for="name" class="col-form-label font-weight-bold text-muted">Identificador
+    <label for="display_name" class="col-form-label font-weight-bold text-muted">Identificador
         <span class="text-primary">*</span></label>
     <div class="input-group">
         <input id="display_name" type="text" class="form-control @error('display_name') is-invalid @enderror"

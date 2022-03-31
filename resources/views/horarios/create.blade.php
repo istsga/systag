@@ -13,13 +13,13 @@
                     </div>
                     <div class="card-body">
 
-                        <form class="form-horizontal" method="POST"  action="{{ route('horarios.store')}} ">
+                        <form class="form-horizontal" method="POST"  action="{{ route('horarios.store')}}" onsubmit="return checkSubmit();">
                             @csrf
                             <div class="card p-4">
                                 <div class="card p-3">
                                     <div class="row">
                                         <div class="form-group col-lg-8">
-                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN | PARALELO
+                                            <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small mt-1">CARRERA | PERIODO | SECCIÓN | PARALELO
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
@@ -61,7 +61,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_final') is-invalid @enderror"
-                                                name="fecha_final" value="{{old('fecha_final')}}">
+                                                name="fecha_final" id="fecha_final" value="{{old('fecha_final')}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -74,7 +74,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_examen') is-invalid @enderror"
-                                                name="fecha_examen" value="{{old('fecha_examen')}}">
+                                                name="fecha_examen" id="fecha_examen" value="{{old('fecha_examen')}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_examen') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -87,7 +87,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_suspension') is-invalid @enderror"
-                                                name="fecha_suspension" value="{{old('fecha_suspension')}}">
+                                                name="fecha_suspension" id="fecha_suspension" value="{{old('fecha_suspension')}}">
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_suspension') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -311,6 +311,17 @@ if(id){
     orden.options[0].text = " == Selecionar == "
 }
 }
+
+//deshabilitar doble clic
+login = false;
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 </script>
 @endpush

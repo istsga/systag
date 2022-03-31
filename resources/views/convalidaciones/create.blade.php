@@ -18,13 +18,13 @@
                         <h4 class=" text-light"><i class="fas fa-book  mr-3"></i> <span class="text-value">CONVALIDACIÓN</span></h4>
                     </div>
 
-                    <form method="POST"  action="{{ route('convalidaciones.store')}} ">
+                    <form method="POST"  action="{{ route('convalidaciones.store')}}" onsubmit="return checkSubmit();">
                         @csrf
                         <div class="card-body">
                             <div class="card shadow-sm">
                                 <div class="row m-2">
                                     <div class="form-group col-lg-12 ">
-                                        <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Estudiante
+                                        <label for="estudianteConvalidar" class="col-form-label font-weight-bold text-muted">Estudiante
                                             <span class="text-primary">*</span>
                                         </label>
                                         <div class="input-group">
@@ -65,7 +65,7 @@
                                 <div class="card shadow-sm m-4">
                                     <div class="row m-1">
                                         <div class="form-group col-lg-6 ">
-                                            <label for="estudiante_id" class="col-form-label font-weight-bold text-muted">Asignaturas
+                                            <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignaturas
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
@@ -211,6 +211,17 @@ function eliminar(index){
   cont--;
   $("#fila" + index).remove();
 }
+
+//deshabilitar doble clic
+login = false;
+    function checkSubmit() {
+        if (!login) {
+            login= true;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 </script>
 @endpush
