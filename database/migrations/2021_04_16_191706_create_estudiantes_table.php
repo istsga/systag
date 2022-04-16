@@ -19,7 +19,7 @@ class CreateEstudiantesTable extends Migration
             $table->string('dni')->unique();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->foreignId('estadocivile_id')->constrained()->cascadeOnDelete();
             $table->date('fecha_nacimiento');
             $table->string('nacionalidad');

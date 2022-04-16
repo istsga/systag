@@ -21,15 +21,15 @@
                     <div class="profile-header-container">
                         <div class="profile-header-img">
                             @if (auth()->user()->avatar == null)
-                            <div class="m-2"> <i class=" fas fa-user-circle fa-8x rounded-circle border" style="color: #375A64;"></i> </div>
+                            <div> <i class=" fas fa-user-circle fa-8x rounded-circle border" style="color: #375A64;"></i> </div>
                             @else
-                                <img class="rounded-circle" width="140" src="/uploads/avatars/{{auth()->user()->avatar }}"/>
+                                <img class="rounded-circle" width="120" src="/uploads/avatars/{{auth()->user()->avatar }}"/>
                             @endif
                             <!-- badge -->
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center mt-5">
+                <div class="row justify-content-center mt-1">
 
                     <form action="/profile" method="post" enctype="multipart/form-data">
                         @csrf
@@ -51,8 +51,8 @@
                     </form>
 
                 </div>
-            </div>
-        </div>
+          </div>
+      </div>
     </div>
 </main>
 @endsection

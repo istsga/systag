@@ -32,92 +32,137 @@
                                     </div>
                                     <div class="card m-3 shadow-sm">
                                         <div class="row m-2">
-                                            <div class="form-group col-lg-4">
-                                                <label for="tipo_identificacion" class="col-form-label font-weight-bold text-muted">Tipo Documento
-                                                    <span class="text-primary">*</span>
-                                                </label>
-                                                <div class="input-group">
-                                                    <select name="tipo_identificacion" id="tipo_identificacion" class="form-control ">
-                                                        <option value="1" {{ old('tipo_identificacion', $docente->tipo_identificacion) == 1 ? 'selected' : '' }}>Cédula</option>
-                                                        <option value="0" {{ old('tipo_identificacion', $docente->tipo_identificacion) == 0 ? 'selected' : '' }}>Pasaporte</option>
-                                                    </select>
-                                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-check"></i></span></div>
+                                            <div class="card col-lg-5 m-3 p-3">
+                                                <div class="form-group ">
+                                                    <label for="tipo_identificacion" class="col-form-label font-weight-bold text-muted">Tipo Documento
+                                                        <span class="text-primary">*</span>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <select name="tipo_identificacion" id="tipo_identificacion" class="form-control ">
+                                                            <option value="1" {{ old('tipo_identificacion', $docente->tipo_identificacion) == 1 ? 'selected' : '' }}>Cédula</option>
+                                                            <option value="0" {{ old('tipo_identificacion', $docente->tipo_identificacion) == 0 ? 'selected' : '' }}>Pasaporte</option>
+                                                        </select>
+                                                        <div class="input-group-prepend "><span class=" input-group-text">
+                                                        <i class=" text-primary fas fa-check"></i></span></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group ">
+                                                    <label for="dni" class="col-form-label font-weight-bold text-muted">Cédula | Pasaporte
+                                                        <span class="text-primary">*</span></label>
+                                                    <div class="input-group">
+                                                        <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" onkeyup="validar()"
+                                                        name="dni" value="{{old('dni', $docente->dni)}}" placeholder=" Nro. Cédula | Pasaporte" >
+                                                        <div class="input-group-prepend "><span class=" input-group-text">
+                                                            <i class=" text-primary fas fa-id-card"></i></span></div>
+                                                        @error ('dni') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                    </div>
+                                                    <em id="salida" class="text-danger small"></em>
+                                                </div>
+
+                                                <div id="VEnombre" class="form-group ">
+                                                    <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombres
+                                                        <span class="text-primary">*</span></label>
+                                                    <div class="input-group">
+                                                        <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror"
+                                                        name="nombre" value="{{old('nombre', $docente->nombre)}}" placeholder="Nombres">
+                                                        <div class="input-group-prepend "><span class=" input-group-text">
+                                                            <i class=" text-primary fas fa-user"></i></span></div>
+                                                        @error ('nombre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div id="VEapellido"  class="form-group">
+                                                    <label for="apellido" class="col-form-label font-weight-bold text-muted">Apellidos
+                                                        <span class="text-primary">*</span></label>
+                                                    <div class="input-group">
+                                                        <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror"
+                                                        name="apellido" value="{{old('apellido', $docente->apellido)}}" placeholder="Apellidos">
+                                                        <div class="input-group-prepend "><span class=" input-group-text">
+                                                            <i class=" text-primary fas fa-user"></i></span></div>
+                                                        @error ('apellido') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="titulo_academico" class="col-form-label font-weight-bold text-muted">Título Académico
+                                                        <span class="text-primary">*</span></label>
+                                                    <div class="input-group">
+                                                        <input id="titulo_academico" type="text" class="form-control @error('titulo_academico') is-invalid @enderror"
+                                                        name="titulo_academico" value="{{old('titulo_academico', $docente->titulo_academico)}}" placeholder="Título Académico" >
+                                                        <div class="input-group-prepend "><span class=" input-group-text">
+                                                            <i class=" text-primary fas fa-graduation-cap"></i></span></div>
+                                                        @error ('titulo_academico') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group col-lg-4">
-                                                <label for="dni" class="col-form-label font-weight-bold text-muted">Cédula | Pasaporte
-                                                    <span class="text-primary">*</span></label>
-                                                <div class="input-group">
-                                                    <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" onkeyup="validar()"
-                                                    name="dni" value="{{old('dni', $docente->dni)}}" placeholder=" Nro. Cédula | Pasaporte" >
-                                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                                        <i class=" text-primary fas fa-id-card"></i></span></div>
-                                                    @error ('dni') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                            <div class="col"></div>
+
+                                            <div class="card col-lg-6 m-3 p-3">
+                                                <div class="row">
+                                                    <div class="form-group col-lg-5">
+                                                        <label for="abreviatura" class="col-form-label font-weight-bold text-muted">Abreviatura
+                                                            <span class="text-primary">*</span></label>
+                                                        <div class="input-group">
+                                                            <input id="abreviatura" type="text" class="form-control @error('abreviatura') is-invalid @enderror"
+                                                            name="abreviatura" value="{{old('abreviatura', $docente->abreviatura)}}" placeholder="Título Académico" >
+                                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                                <i class=" text-primary fas fa-graduation-cap"></i></span></div>
+                                                            @error ('abreviatura') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-lg-7">
+                                                        <label for="fecha_ingreso" class="col-form-label font-weight-bold text-muted">Fecha de Ingreso
+                                                            <span class="text-primary">*</span></label>
+                                                        <div class="input-group">
+                                                            <input id="fecha_ingreso" type="date" class="form-control @error('fecha_ingreso') is-invalid @enderror"
+                                                            name="fecha_ingreso" value="{{old('fecha_ingreso', $docente->fecha_ingreso)}}" placeholder="Fecha de Ingreso" >
+                                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                                <i class=" text-primary fas fa-calendar"></i></span></div>
+                                                            @error ('fecha_ingreso') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <em id="salida" class="text-danger small"></em>
+
+                                                <div class="card shadow-sm ">
+                                                    <div class="form-group p-3 ">
+                                                        <label for="tipocontrato_id" class="col-form-label font-weight-bold text-muted"> TIPO DE CONTRATO
+                                                            <span class="text-primary">*</span></label>
+                                                        <div class="input-group">
+                                                            <select name="tipocontrato_id" id="tipocontrato_id"  class="form-control @error('tipocontrato_id') is-invalid @enderror">
+                                                                <option class="form-control" value=""> == Seleccionar == </option>
+                                                                @foreach ($tipocontratos as $tipocontrato)
+                                                                <option  value="{{$tipocontrato->id}}"
+                                                                    {{old('tipocontrato_id', $docente->tipocontrato_id)==$tipocontrato->id ? 'selected' : '' }}
+                                                                    >{{$tipocontrato->nombre}}</option>
+                                                                    @endforeach
+                                                            </select>
+                                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                                <i class=" text-primary fas fa-file-alt"></i></span></div>
+                                                            @error ('tipocontrato_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card shadow-sm p-3">
+                                                    <div class="form-group ">
+                                                        <label for="estado" class="col-form-label font-weight-bold text-muted"> ESTADO DEL DOCENTE
+                                                            <span class="text-primary">*</span>
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <select name="estado" id="estado" class="form-control ">
+                                                                <option value="1" {{ old('estado', $docente->estado) == 1 ? 'selected' : '' }}>Activo</option>
+                                                                <option value="0" {{ old('estado', $docente->estado) == 0 ? 'selected' : '' }}>Inactivo</option>
+                                                            </select>
+                                                            <div class="input-group-prepend "><span class=" input-group-text">
+                                                            <i class=" text-primary fas fa-lock"></i></span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            <div id="VEnombre" class="form-group col-lg-4">
-                                                <label for="nombre" class="col-form-label font-weight-bold text-muted">Nombres
-                                                    <span class="text-primary">*</span></label>
-                                                <div class="input-group">
-                                                    <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror"
-                                                    name="nombre" value="{{old('nombre', $docente->nombre)}}" placeholder="Nombres">
-                                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                                        <i class=" text-primary fas fa-user"></i></span></div>
-                                                    @error ('nombre') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                                                </div>
-                                            </div>
-
-                                            <div id="VEapellido"  class="form-group col-lg-4">
-                                                <label for="apellido" class="col-form-label font-weight-bold text-muted">Apellidos
-                                                    <span class="text-primary">*</span></label>
-                                                <div class="input-group">
-                                                    <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror"
-                                                    name="apellido" value="{{old('apellido', $docente->apellido)}}" placeholder="Apellidos">
-                                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                                        <i class=" text-primary fas fa-user"></i></span></div>
-                                                    @error ('apellido') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group col-lg-8">
-                                                <label for="titulo_academico" class="col-form-label font-weight-bold text-muted">Título Académico
-                                                    <span class="text-primary">*</span></label>
-                                                <div class="input-group">
-                                                    <input id="titulo_academico" type="text" class="form-control @error('titulo_academico') is-invalid @enderror"
-                                                    name="titulo_academico" value="{{old('titulo_academico', $docente->titulo_academico)}}" placeholder="Título Académico" >
-                                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                                        <i class=" text-primary fas fa-graduation-cap"></i></span></div>
-                                                    @error ('titulo_academico') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group col-lg-4">
-                                                <label for="abreviatura" class="col-form-label font-weight-bold text-muted">Abreviatura
-                                                    <span class="text-primary">*</span></label>
-                                                <div class="input-group">
-                                                    <input id="abreviatura" type="text" class="form-control @error('abreviatura') is-invalid @enderror"
-                                                    name="abreviatura" value="{{old('abreviatura', $docente->abreviatura)}}" placeholder="Título Académico" >
-                                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                                        <i class=" text-primary fas fa-graduation-cap"></i></span></div>
-                                                    @error ('abreviatura') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group col-lg-4">
-                                                <label for="fecha_ingreso" class="col-form-label font-weight-bold text-muted">Fecha de Ingreso
-                                                    <span class="text-primary">*</span></label>
-                                                <div class="input-group">
-                                                    <input id="fecha_ingreso" type="date" class="form-control @error('fecha_ingreso') is-invalid @enderror"
-                                                    name="fecha_ingreso" value="{{old('fecha_ingreso', $docente->fecha_ingreso)}}" placeholder="Fecha de Ingreso" >
-                                                    <div class="input-group-prepend "><span class=" input-group-text">
-                                                        <i class=" text-primary fas fa-calendar"></i></span></div>
-                                                    @error ('fecha_ingreso') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -211,59 +256,12 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="tab">
-                                <div class="row m-2">
-                                    <div class="card shadow-sm col-lg-5">
-                                        <div class="form-group ">
-                                            <div class="col-lg-12 d-flex justify-content-center mt-3" >
-                                                <h5 class="text-dark font-weight-bold"> TIPO DE CONTRATO </h5>
-                                            </div>
-                                            <label for="tipocontrato_id" class="col-form-label font-weight-bold text-muted">Tipo de Contrato
-                                                <span class="text-primary">*</span></label>
-                                            <div class="input-group">
-                                                <select name="tipocontrato_id" id="tipocontrato_id"  class="form-control @error('tipocontrato_id') is-invalid @enderror">
-                                                    <option class="form-control" value=""> == Seleccionar == </option>
-                                                    @foreach ($tipocontratos as $tipocontrato)
-                                                    <option  value="{{$tipocontrato->id}}"
-                                                        {{old('tipocontrato_id', $docente->tipocontrato_id)==$tipocontrato->id ? 'selected' : '' }}
-                                                        >{{$tipocontrato->nombre}}</option>
-                                                        @endforeach
-                                                </select>
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                    <i class=" text-primary fas fa-file-alt"></i></span></div>
-                                                @error ('tipocontrato_id') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span></em> @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                        <div class="col-lg-2"></div>
-                                    <div class="card shadow-sm col-lg-5">
-                                        <div class="form-group ">
-                                            <div class="col-lg-12 d-flex justify-content-center mt-3">
-                                                <h5 class="text-dark font-weight-bold"> ESTADO DEL DOCENTE </h5>
-                                            </div>
-                                            <label for="estado" class="col-form-label font-weight-bold text-muted">Estado
-                                                <span class="text-primary">*</span>
-                                            </label>
-                                            <div class="input-group">
-                                                <select name="estado" id="estado" class="form-control ">
-                                                    <option value="1" {{ old('estado', $docente->estado) == 1 ? 'selected' : '' }}>Activo</option>
-                                                    <option value="0" {{ old('estado', $docente->estado) == 0 ? 'selected' : '' }}>Inactivo</option>
-                                                </select>
-                                                <div class="input-group-prepend "><span class=" input-group-text">
-                                                <i class=" text-primary fas fa-lock"></i></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                     </div>
                     <div class="card-footer border-0 d-flex justify-content-between aling-items-end bg-light " >
 
                         <button class=" col-sm-2 btn border  btn-dark " type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
 
                         <div style="text-align:center; margin-top:8px">
-                            <span class="step"></span>
                             <span class="step"></span>
                             <span class="step"></span>
                         </div>
@@ -342,7 +340,6 @@ function validar() {
 
 </script>
 @endsection
-
 @push('scripts')
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/wizard-4/main.js')}}"></script>

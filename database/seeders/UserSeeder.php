@@ -57,13 +57,13 @@ class UserSeeder extends Seeder
         // $UserDocente->save();
         // $UserDocente->assignRole($docente);
 
-        // $UserDocente = new User;
-        // $UserDocente->dni = '0623429692';
-        // $UserDocente->nombre = 'William ';
-        // $UserDocente->apellido = 'Adriano';
-        // $UserDocente->email = 'adriano@gmail.com';
-        // $UserDocente->password = '12345678';
-        // $UserDocente->save();
-        // $UserDocente->assignRole($docente);
+        $UserDocente = new User;
+        $UserDocente->dni = '0623429692';
+        $UserDocente->nombre = 'William ';
+        $UserDocente->apellido = 'Adriano';
+        $UserDocente->email = 'adriano@gmail.com';
+        $UserDocente->password = '12345678';
+        $UserDocente->save();
+        $UserDocente->assignRole($docente);
     }
 }

@@ -327,7 +327,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862430',
             'nombre'                    => 'Lissbeth Yamileth',
             'apellido'                  => 'Vasquez Guerrero',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -365,7 +365,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862431',
             'nombre'                    => 'Ángel',
             'apellido'                  => 'Apo Cunalata',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -403,7 +403,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862433',
             'nombre'                    => 'Brayan Eliecer',
             'apellido'                  => 'Cocha Gahuin',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -442,7 +442,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862436',
             'nombre'                    => 'Evelyn Amarilis',
             'apellido'                  => 'Villacres Usca',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -480,7 +480,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862437',
             'nombre'                    => 'Martha Isabel',
             'apellido'                  => 'Tagua Pullay',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -518,7 +518,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862439',
             'nombre'                    => 'Doris Maribel',
             'apellido'                  => 'Sanchez Lunavictoria',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -556,7 +556,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862410',
             'nombre'                    => 'Mariano',
             'apellido'                  => 'Balboa Duchi',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -594,7 +594,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862411',
             'nombre'                    => 'Ana Lucia',
             'apellido'                  => 'Muñoz Molina',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -632,7 +632,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862412',
             'nombre'                    => 'Mariela Mercedes',
             'apellido'                  => 'Muñoz Molina',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -670,7 +670,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0709862413',
             'nombre'                    => 'Jeremy Nelson',
             'apellido'                  => 'Rojas Basantes',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -709,7 +709,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056871',
             'nombre'                    => 'Geovanna Mariela',
             'apellido'                  => 'Rodriguez Guilcapi',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -747,7 +747,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056872',
             'nombre'                    => 'Anderson Josue',
             'apellido'                  => 'Vendoval Cali',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -785,7 +785,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056873',
             'nombre'                    => 'Susana Marianela',
             'apellido'                  => 'Cuenca Ramos',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -823,7 +823,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056874',
             'nombre'                    => 'Dennys',
             'apellido'                  => 'Miranda',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -861,7 +861,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056875',
             'nombre'                    => 'Jacquelyn Jazmin',
             'apellido'                  => 'Juank Sando',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -899,7 +899,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056876',
             'nombre'                    => 'Nancy Elena',
             'apellido'                  => 'Kajekai Pitiur',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -937,7 +937,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056877',
             'nombre'                    => 'Nayelly Daniela',
             'apellido'                  => 'Urrutia Illicachi',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -975,7 +975,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056878',
             'nombre'                    => 'Lizandro Rafael',
             'apellido'                  => 'Pilco Nuñez',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1013,7 +1013,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056879',
             'nombre'                    => 'Cristian Paul',
             'apellido'                  => 'Samaniego Quito',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1051,7 +1051,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056810',
             'nombre'                    => 'Vanessa Abigail',
             'apellido'                  => 'Portalanza Gonzalez',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1089,7 +1089,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056811',
             'nombre'                    => 'Janela Beatriz',
             'apellido'                  => 'Diaz Pogo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1127,7 +1127,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0302056812',
             'nombre'                    => 'Gissela Belen',
             'apellido'                  => 'Alvaro Bravo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1166,7 +1166,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056811',
             'nombre'                    => 'Marina Alexandra',
             'apellido'                  => 'Ramirez Sanchez',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1204,7 +1204,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056812',
             'nombre'                    => 'Isabel Margarita',
             'apellido'                  => 'Logroño Llangari',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1242,7 +1242,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056813',
             'nombre'                    => 'Cristhian Sebastian',
             'apellido'                  => 'Moyota Moreno',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1280,7 +1280,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056814',
             'nombre'                    => 'Tatiana Abigail',
             'apellido'                  => 'Buenaño Silva',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1318,7 +1318,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056815',
             'nombre'                    => 'Maria Teresa',
             'apellido'                  => 'Yungan Yungan',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1356,7 +1356,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056816',
             'nombre'                    => 'Edwin Vinicio',
             'apellido'                  => 'Pilamunga Chávez',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1394,7 +1394,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056817',
             'nombre'                    => 'Josselin Johana',
             'apellido'                  => 'Granizo Silva',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1432,7 +1432,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056818',
             'nombre'                    => 'Elizabeth Pilar',
             'apellido'                  => 'Paredes Valdivieso',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1470,7 +1470,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056819',
             'nombre'                    => 'María Belen',
             'apellido'                  => 'Arévalo Montalvo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1508,7 +1508,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0402056800',
             'nombre'                    => 'Kerly Viviana',
             'apellido'                  => 'Vicuña Vimos',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1547,7 +1547,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056811',
             'nombre'                    => 'Jessica Maribel',
             'apellido'                  => 'Toapanta Cunalata',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1585,7 +1585,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056812',
             'nombre'                    => 'Lizbeth Maribel',
             'apellido'                  => 'Lema Yuquilema',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1623,7 +1623,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056813',
             'nombre'                    => 'Anderson Nelson',
             'apellido'                  => 'Padilla Chimbay',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1661,7 +1661,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056814',
             'nombre'                    => 'Alex Paúl',
             'apellido'                  => 'Rovalino Alarcon',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1699,7 +1699,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056815',
             'nombre'                    => 'Cecilia Alexandra',
             'apellido'                  => 'Caiza Murialdo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1737,7 +1737,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056816',
             'nombre'                    => 'Jason Rodrigo',
             'apellido'                  => 'Caiza Rojas',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1775,7 +1775,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056817',
             'nombre'                    => 'Erika Paola',
             'apellido'                  => 'Cajilema Granizo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1813,7 +1813,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056818',
             'nombre'                    => 'Paulina Abigail',
             'apellido'                  => 'Chipantiza Agualongo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1851,7 +1851,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056819',
             'nombre'                    => 'Gabriela Lisseth',
             'apellido'                  => 'Congo Aulestia',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1889,7 +1889,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056110',
             'nombre'                    => 'Maria Jose',
             'apellido'                  => 'Guilcapi Valdivieso',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1927,7 +1927,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056111',
             'nombre'                    => 'Jessica Elizabeth',
             'apellido'                  => 'Pérez Naula',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -1965,7 +1965,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056112',
             'nombre'                    => 'Marjorie Katherine',
             'apellido'                  => 'Ramos Machado',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2003,7 +2003,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056113',
             'nombre'                    => 'Mayra Alexandra',
             'apellido'                  => 'Romero Toapanta',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2041,7 +2041,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056114',
             'nombre'                    => 'Elva Rocio',
             'apellido'                  => 'Santillan Rea',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2079,7 +2079,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056115',
             'nombre'                    => 'Adriana Jamileth',
             'apellido'                  => 'Segarra Rosero',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2117,7 +2117,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056116',
             'nombre'                    => 'Joselyn Estefania',
             'apellido'                  => 'Tituaña Saquinga',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2155,7 +2155,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056117',
             'nombre'                    => 'Jocelyne Guadalupe',
             'apellido'                  => 'Arguello Pauchi',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2193,7 +2193,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056118',
             'nombre'                    => 'Maria Alejandra',
             'apellido'                  => 'Urdiales Nuela',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2231,7 +2231,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056119',
             'nombre'                    => 'Piedad del Rocío',
             'apellido'                  => 'Chimbo Pilco',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2269,7 +2269,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056120',
             'nombre'                    => 'Nelly Magaly',
             'apellido'                  => 'Chimbo Pilco',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2307,7 +2307,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056121',
             'nombre'                    => 'Katherine Lizbeth',
             'apellido'                  => 'Constante Guamani',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2345,7 +2345,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056122',
             'nombre'                    => 'Darío Edilson',
             'apellido'                  => 'Alarcon Cajamarca',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2383,7 +2383,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056123',
             'nombre'                    => 'Erika Vanessa',
             'apellido'                  => 'Farias Jacome',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2421,7 +2421,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056124',
             'nombre'                    => 'Nayeli Belen',
             'apellido'                  => 'Mañay Caisalitin',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2459,7 +2459,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056125',
             'nombre'                    => 'Marina Nathali',
             'apellido'                  => 'Chimbo Rochina',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2497,7 +2497,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056126',
             'nombre'                    => 'Nayelly Mishell',
             'apellido'                  => 'Grefa Grefa',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2535,7 +2535,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056127',
             'nombre'                    => 'Andrea',
             'apellido'                  => 'Wampach',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2573,7 +2573,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056128',
             'nombre'                    => 'Juan David',
             'apellido'                  => 'Chugñay Guerrero',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2611,7 +2611,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056129',
             'nombre'                    => 'Camila Maribel',
             'apellido'                  => 'Toapanta Zambrano',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2649,7 +2649,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056130',
             'nombre'                    => 'Jesus Wladimir',
             'apellido'                  => 'Orna Toapanta',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2687,7 +2687,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056131',
             'nombre'                    => 'Mayra Natividad',
             'apellido'                  => 'Inlasaca  Yungán',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2725,7 +2725,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056132',
             'nombre'                    => 'Diana Marisol',
             'apellido'                  => 'Colcha Guaman',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2763,7 +2763,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056133',
             'nombre'                    => 'Julisa Fernanda',
             'apellido'                  => 'Morocho Saez',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2801,7 +2801,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056134',
             'nombre'                    => 'Lizbeth Nicole',
             'apellido'                  => 'López Caguana',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2839,7 +2839,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056135',
             'nombre'                    => 'Carlos Daniel',
             'apellido'                  => 'Tixe Tibanquiza',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2877,7 +2877,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056136',
             'nombre'                    => 'Alex David',
             'apellido'                  => 'Allauca Sinaluisa',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2915,7 +2915,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056137',
             'nombre'                    => 'Betty',
             'apellido'                  => 'Ortiz Condo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2953,7 +2953,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056138',
             'nombre'                    => 'Jessica Micaela',
             'apellido'                  => 'Lamar Toapanta',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -2991,7 +2991,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056139',
             'nombre'                    => 'Maria Dolores',
             'apellido'                  => 'Chicaiza Chacazaguay',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3029,7 +3029,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056140',
             'nombre'                    => 'Mónica Alexandra',
             'apellido'                  => 'Moposita Romero',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3067,7 +3067,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056141',
             'nombre'                    => 'Vaneza Nataly',
             'apellido'                  => 'Ayala Navas',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3105,7 +3105,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056142',
             'nombre'                    => 'Alex Miguel',
             'apellido'                  => 'Guadalupe Lopez',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3143,7 +3143,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056143',
             'nombre'                    => 'Mayra Fernanda',
             'apellido'                  => 'Zurita Chicaiza',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3181,7 +3181,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056144',
             'nombre'                    => 'Adriana Mercedes',
             'apellido'                  => 'Saquinga Chiliquinga',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3219,7 +3219,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056145',
             'nombre'                    => 'Irene Aracely',
             'apellido'                  => 'Olivarez Cajas',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3257,7 +3257,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056146',
             'nombre'                    => 'Silvia Veronica',
             'apellido'                  => 'Cando Guato',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3295,7 +3295,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056147',
             'nombre'                    => 'Gladys Marina',
             'apellido'                  => 'Aguagallo Saquinga',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3333,7 +3333,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056148',
             'nombre'                    => 'Josue Mesia',
             'apellido'                  => 'Agualongo Agualongo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3371,7 +3371,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056149',
             'nombre'                    => 'María Belen',
             'apellido'                  => 'Arévalo Montalvo',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3409,7 +3409,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1702056150',
             'nombre'                    => 'Jessica Jacqueline',
             'apellido'                  => 'Toapanta Gualpa',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3448,7 +3448,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056101',
             'nombre'                    => 'Maria Fernanda',
             'apellido'                  => 'Chavez Arias',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3486,7 +3486,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056102',
             'nombre'                    => 'Karol Nicole',
             'apellido'                  => 'Vásconez Carrasco',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3524,7 +3524,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056103',
             'nombre'                    => 'Lorena Abigail',
             'apellido'                  => 'Mendoza Coronel',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3562,7 +3562,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056104',
             'nombre'                    => 'Catherine Michelle',
             'apellido'                  => 'Sanandrés Villacís',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3600,7 +3600,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056105',
             'nombre'                    => 'Oswaldo',
             'apellido'                  => 'Rodas',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3638,7 +3638,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056106',
             'nombre'                    => 'Michelle Angie',
             'apellido'                  => 'Maldonado Gomez',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3676,7 +3676,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056107',
             'nombre'                    => 'Carolina Alexandra',
             'apellido'                  => 'Pazmiño Mora',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3714,7 +3714,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056108',
             'nombre'                    => 'Dayana Gricelda',
             'apellido'                  => 'López Guanoluisa',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3752,7 +3752,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056109',
             'nombre'                    => 'Maria Cristina',
             'apellido'                  => 'Hidalgo Urresta',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3790,7 +3790,6 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '1902056110',
             'nombre'                    => 'Sthefanny Abigail',
             'apellido'                  => 'Aviles',
-            'foto'                      => 'default.png',
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '2001-12-29',
             'nacionalidad'              => 'Ecuatoriana',
@@ -3829,7 +3828,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       => '0604429696',
             'nombre'                    => 'Diego Armando',
             'apellido'                  => 'Guapi Cuji',
-            'foto'                      => 'default.png',
+
             'estadocivile_id'           => rand(1,4),
             'fecha_nacimiento'          => '1994-07-11',
             'nacionalidad'              => 'Ecuatoriana',

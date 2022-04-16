@@ -75,14 +75,21 @@
                                 </div>
                                 <div class="col"></div>
                                 <div class="card col-lg-4 shadow-sm m-2">
-                                    <div class="card-header mb-3"><label class="col-form-label font-weight-bold text-muted"> ROLES</label></div>
+                                    <div class="card-header mb-3 d-flex justify-content-between aling-items-end">
+                                        <label class="col-form-label font-weight-bold text-muted"> ROLES</label>
+                                        {{-- <a class="btn btn-outline-secondary "> Mostrar | Ocultar</a> --}}
+                                    </div>
                                     <div class="form-group">
                                         @include('users.partials.roleCheckbox')
                                     </div>
                                 </div>
                                 <div class="card col-lg-7 shadow-sm mt-4 ml-2 ">
-                                    <div class="card-header"><label class="col-form-label font-weight-bold text-muted"> PERMISOS</label></div>
-                                    <div class="form-group ">
+                                    <div class="card-header d-flex justify-content-between aling-items-end">
+                                        <label class="col-form-label font-weight-bold text-muted"> PERMISOS</label>
+                                        <a class="btn btn-outline-secondary" onclick="ver_permisos('permisos')"> Mostrar | Ocultar</a>
+                                    </div>
+
+                                    <div id="permisos" class="form-group ">
                                         @include('users.partials.permissionCheckbox', ['model'=>$user])
                                     </div>
                                 </div>
@@ -147,6 +154,17 @@ function validar() {
         }
     }
 }
+
+function ver_permisos(id){
+if (document.getElementById){ //se obtiene el id
+var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
+el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+}
+}
+window.onload = function(){/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
+    ver_permisos('permisos');/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
+}
+
 </script>
 @endpush()
 

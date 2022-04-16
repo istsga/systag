@@ -14,6 +14,7 @@ use App\Models\Detallehorario;
 use App\Models\Estudiante;
 use App\Models\Horario;
 use App\Models\Periodacademico;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -64,6 +65,8 @@ class HorarioController extends Controller
         $horario = new Horario;
         $this->authorize('create', $horario);
         $horarios = Horario::all();
+
+        $dia_semana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
         //definir asignciones que pertenezcan al ultimo periodo academico
         $periodAcademico=Periodacademico::orderBy('id','desc')->first();
         $asignaciones=Asignacione::
@@ -72,7 +75,9 @@ class HorarioController extends Controller
             ->get();
 
         $asignaturas = [];
-        return view('horarios.create', compact('horarios', 'asignaciones', 'asignaturas'));
+
+        //dd($detalle_horarios);
+        return view('horarios.create', compact('horarios', 'asignaciones', 'asignaturas', 'dia_semana'));
     }
 
     public function getOrden($id)
@@ -125,10 +130,15 @@ class HorarioController extends Controller
     {
         $this->authorize('create', new Horario);
         $horarios = Horario::create($request->validated());
-        $dia_semana=$request->get('Dia_semana');
-        $hora_inicio=$request->get('Hora_inicio');
-        $hora_final=$request->get('Hora_final');
+
+        $dia_semana=$request->get('dia_semana1');
+        $hora_inicio=$request->get('hora_inicio');
+        $hora_final=$request->get('hora_final');
+
         $i=0;
+
+        // dd($dia_semana, $hora_inicio, $hora_final );
+
         while($i<count($dia_semana)){
             $detalle_horario=new Detallehorario();
             $detalle_horario->horario_id=$horarios->id;
@@ -165,6 +175,7 @@ class HorarioController extends Controller
         $asignaturas = Asignatura::all();
 
         $detallehorarios = Detallehorario::where('horario_id',$horario->id)->get();
+        //dd($detallehorarios);
         return view('horarios.edit', compact('horario', 'asignaciones', 'asignaturas', 'detallehorarios'));
     }
 
@@ -181,9 +192,12 @@ class HorarioController extends Controller
 
         $horario->update($request->validated());
 
-        $dia_semana=$request->get('Dia_semana');
-        $hora_inicio=$request->get('Hora_inicio');
-        $hora_final=$request->get('Hora_final');
+        $dia_semana=$request->get('dia_semana');
+        $hora_inicio=$request->get('hora_inicio');
+        $hora_final=$request->get('hora_final');
+
+        //dd($horario, $dia_semana);
+
         $detalle_horario=Detallehorario::where('horario_id',$horario->id)->delete();
         $i=0;
 

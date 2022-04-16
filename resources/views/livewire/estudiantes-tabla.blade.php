@@ -40,11 +40,18 @@
                 <td class="text-center align-middle" >{{$estudiante->id}} </td>
                 <td class="align-middle" >{{$estudiante->dni}} </td>
                 <td class="align-middle">{{$estudiante->nombre}} {{$estudiante->apellido}}  </td>
+                @if ($estudiante->foto)
                 <td class="align-middle" >
                     <div class="profile-header-img d-flex justify-content-center ">
                         <img style="border: solid #3D9970  2px" class="rounded-circle  " width="60px" height="60px" src="/storage/{{$estudiante->foto}}" alt="No tiene Imagen">
                     </div>
                 </td>
+                @else
+                <td class=" text-center align-middle">
+                    <em class="text-muted">S/N  foto</em>
+                </td>
+                @endif
+
                 <td class="align-middle">{{$estudiante->email}} </td>
                 @if ($estudiante->estado=='Activo')
                     <td class="align-middle"> <span class="badge badge-primary">Activo</span> </td>

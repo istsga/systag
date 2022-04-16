@@ -4,6 +4,7 @@
 @push('styles')
 <link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/select2-bootstrap4.min.css')}}" rel="stylesheet">
+<link href="{{asset('css/invalidated.css')}}" rel="stylesheet">
 
 <style>
     input[type=number]::-webkit-inner-spin-button,
@@ -26,7 +27,7 @@
                 <font class=" text-light font-weight-bold "> <i class="font-weight-bold  fas fa-user  mr-3"></i> ESTUDIANTE </font>
             </div>
             <div class="card-body ">
-                <form class="form-horizontal" method="POST"  action="{{ route('calificaciones.store')}}" onsubmit="return checkSubmit();">
+                <form class="form-horizontal"  method="POST"  action="{{ route('calificaciones.store')}}" onsubmit="return checkSubmit();">
                     @csrf
                     <div class="row">
                         <div class="card col-lg-5 shadow-sm bg-light shadow-sm">
@@ -105,39 +106,47 @@
                 <div class="card-body ">
                 <div class="card shadow-sm">
                     <div class="row m-2">
-                        <div class="col-lg-3 ">
+                        <div class="col-lg-3 " >
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">DOCENCIA</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'docencia', 0)}}"  name="docencia" id="docencia"  class="form-control  @error('docencia') is-invalid @enderror"  step="0.01" oninput="calcular()">
+                                    <input type="number" value="{{old( 'docencia', 0)}}"  name="docencia" id="docencia"  class="form-control  @error('docencia') is-invalid @enderror "
+                                    step="0.01" oninput="calcular()" onkeyup="vDocencia();">
                                 @error ('docencia') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
+                                <em id="ms-docencia" class="text-danger small" > </em>
                             </div>
                         </div>
 
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXPERIMENTO APLICACIÓN</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'experimento_aplicacion', 0)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror" step="0.01">
+                                    <input type="number" value="{{old( 'experimento_aplicacion', 0)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror"
+                                    step="0.01" onkeyup="vExperiment();">
                                 @error ('experimento_aplicacion') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
+                                <em id="ms-experimento" class="text-danger small" > </em>
                             </div>
                         </div>
 
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">TRABAJO AUTÓNOMO</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'trabajo_autonomo', 0)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" step="0.01" >
+                                    <input type="number" value="{{old( 'trabajo_autonomo', 0)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" step="0.01"
+                                    onkeyup="vTrabajo();" >
                                 @error ('trabajo_autonomo') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
+                                <em id="ms-trabajo" class="text-danger small" > </em>
                             </div>
                         </div>
 
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXAMEN PRINCIPAL</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old('examen_principal')}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " step="0.01" >
+                                    <input type="number" value="{{old('examen_principal', 0)}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " step="0.01"
+                                    onkeyup="vExamen();" >
                                 @error ('examen_principal') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
+                                <em id="ms-examen" class="text-danger small" > </em>
                             </div>
                         </div>
 
@@ -197,9 +206,11 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">PORCENTAJE ASISTENCIA</font>
                                 <div class="text-value-lg">
-                                    <input type="text" value="{{old('porcentaje_asistencia')}}" name="porcentaje_asistencia" class="form-control @error('porcentaje_asistencia') is-invalid @enderror" >
+                                    <input type="text" value="{{old('porcentaje_asistencia', 0)}}" name="porcentaje_asistencia" id="porcentaje_asistencia" class="form-control @error('porcentaje_asistencia') is-invalid @enderror"
+                                    onkeyup="vPorcentaje();" >
                                 @error ('porcentaje_asistencia') <span class="invalid-feedback" role="alert"><em class="small">{{$message}}</span> </em> @enderror
                                 </div>
+                                <em id="ms-porcentaje" class="text-danger small" > </em>
                             </div>
                         </div>
 
@@ -231,6 +242,7 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/axios.min.js')}}"></script>
 <script src="{{asset('js/select2.full.min.js')}}"></script>
+<script src="{{asset('js/validateCalificacion.js')}}"></script>
 <script>
 
 

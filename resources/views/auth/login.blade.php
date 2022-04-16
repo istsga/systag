@@ -147,7 +147,7 @@
 </body>
 </html>
 
-//Evitar doble clic.
+{{-- Evitar doble clic. --}}
 <script>
     login = false; //Obligaremos entrar el if al primer submit
     function checkSubmit() {

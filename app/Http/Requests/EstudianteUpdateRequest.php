@@ -28,7 +28,7 @@ class EstudianteUpdateRequest extends FormRequest
             'tipo_identificacion'           => ['required:1,0'],
             'nombre'                        => ['required', 'regex:/^[\pL\s\-]+$/u',  'min:3', 'max:30'],
             'apellido'                      => ['required', 'regex:/^[\pL\s\-]+$/u',  'min:3', 'max:30'],
-            'foto'                          => 'required|image|mimes:jpg,jpeg,svg|max:1024',
+            'foto'                          => 'image|mimes:jpeg,png,jpg,svg|max:1024',
             'estadocivile_id'               => ['required'],
             'fecha_nacimiento'              => ['required', 'date'],
             'nacionalidad'                  => ['required', 'regex:/^[\pL\s\-]+$/u', 'min:3', 'max:30'],
