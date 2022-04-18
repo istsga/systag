@@ -22,10 +22,28 @@ class UserSeeder extends Seeder
 
         //Usuarios predeterminados SYSTAG
         $UserAdmin = new User;
-        $UserAdmin->dni = '0605080542';
-        $UserAdmin->nombre = 'Faker';
-        $UserAdmin->apellido = 'User';
-        $UserAdmin->email = 'admin@gmail.com';
+        $UserAdmin->dni = '0604429696';
+        $UserAdmin->nombre = 'Diego Armando';
+        $UserAdmin->apellido = 'Guapi Cuji';
+        $UserAdmin->email = 'diego_g11@hotmail.es';
+        $UserAdmin->password = '12345678';
+        $UserAdmin->save();
+        $UserAdmin->assignRole($administrador);
+
+        $UserAdmin = new User;
+        $UserAdmin->dni = '0602721516';
+        $UserAdmin->nombre = 'TANIA ELIZABETH';
+        $UserAdmin->apellido = 'GARZÓN CABEZAS';
+        $UserAdmin->email = 'taniagarzon73@hotmail.com';
+        $UserAdmin->password = '12345678';
+        $UserAdmin->save();
+        $UserAdmin->assignRole($administrador);
+
+        $UserAdmin = new User;
+        $UserAdmin->dni = '0603621780';
+        $UserAdmin->nombre = 'FERNANDA';
+        $UserAdmin->apellido = 'PALMA SALAZAR';
+        $UserAdmin->email = 'valeria-kaye@hotmail.com';
         $UserAdmin->password = '12345678';
         $UserAdmin->save();
         $UserAdmin->assignRole($administrador);

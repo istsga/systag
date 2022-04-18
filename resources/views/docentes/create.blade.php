@@ -181,7 +181,7 @@
                             <div class="tab">
                                 <div class="card shadow-sm">
                                     <div class="col-lg-12 d-flex justify-content-center mt-3">
-                                        <h5 class="text-dark font-weight-bold"> INFORMACIÓN DE CONTACTO PRUEBA</h5>
+                                        <h5 class="text-dark font-weight-bold"> INFORMACIÓN DE CONTACTO </h5>
                                     </div>
                                     <div class="card m-3 shadow-sm">
                                         <div class="row m-2">

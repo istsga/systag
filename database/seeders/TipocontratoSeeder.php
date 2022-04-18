@@ -14,8 +14,8 @@ class TipocontratoSeeder extends Seeder
      */
     public function run()
     {
-        Tipocontrato::create([ 'nombre' => 'OCACIONAL']);
-        Tipocontrato::create([ 'nombre' =>  'TIEMPO COMPLETO']);
+        Tipocontrato::create([ 'nombre' => 'CONTRATOS EVENTUALES']);
+        Tipocontrato::create([ 'nombre' =>  'CONTRATOS INDEFINIDOS']);
         Tipocontrato::create([ 'nombre' =>  'CONTRATO DE PRESTACION DE SERVICIOS PROFESIONALES']);
 
     }
