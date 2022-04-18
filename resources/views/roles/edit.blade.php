@@ -18,7 +18,7 @@
                           <div class=" card col-lg-11 ml-4 mt-2 shadow-sm">
 
                             <form method="POST"  action="{{ route('roles.update', $role)}} ">
-                                @method('PUT')
+                                @csrf @method('PUT')
                                 @include('roles.form')
 
                                 <div class="form-actions ml-3 mb-3">

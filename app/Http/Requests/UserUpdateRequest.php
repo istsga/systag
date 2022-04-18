@@ -31,7 +31,8 @@ class UserUpdateRequest extends FormRequest
                 Rule::unique('users')->ignore($this->route('user')->id)],
             'nombre' => ['required', 'regex:/^[\pL\s\-]+$/u',  'string', 'max:255'],
             'apellido' => ['required', 'regex:/^[\pL\s\-]+$/u',  'string', 'max:255'],
-            'email:rfc,dns' => [
+            'email' => [
+                'email:rfc,dns',
                 'required',
                 Rule::unique('users')->ignore( $this->route('user')->id)
             ]
@@ -48,7 +49,6 @@ class UserUpdateRequest extends FormRequest
                 ->uncompromised()
             ];
         }
-
         return $rules;
     }
 

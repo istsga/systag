@@ -137,8 +137,7 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request,  User $user)
     {
         $this->authorize('update', $user);
-
-        $user->update($request->validated() );
+        $user->update($request->validated());
         return redirect()->route('users.index', $user)->with('status', 'Actualizado con éxito');
     }
 
