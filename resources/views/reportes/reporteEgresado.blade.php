@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,21 +38,17 @@
                   &nbsp;
                 </p>
               </td>
-
             </tr>
           </table>
     </footer>
     <div class="container" >
-
         <div class="e-nombre">
             <p>EGRESADOS</p>
         </div>
-
         <div class="data-egresados">
             <p>Carrera: <span style="margin-left:62px">{{$carreras->nombre}} </span> </p>
             <p>Periodo Académico: <span style="margin-left:-10px">{{$periodo_academico}} </span> </p>
         </div>
-
         <div class="item-container">
             <table border="1">
                 <thead>

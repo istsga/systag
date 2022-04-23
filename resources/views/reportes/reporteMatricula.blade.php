@@ -9,7 +9,6 @@
     <link href="{{public_path('css/matricula.css')}}" rel="stylesheet">
 </head>
 <body>
-
   <header>
       <div class="logo">
         <img src="{{ public_path('assets/brand/logoSG.png') }}">
@@ -17,13 +16,11 @@
       <div class="title">
         <h3>INSTITUTO SUPERIOR UNIVERSITARIO<br> "SAN GABRIEL"</h3>
         <p> Carrera de {{$matricula->asignacione->carreras->pluck('nombre')->implode(', ')}}</p>
-        {{-- <em>Registro Institucional 224 SENESCYT</em> --}}
       </div>
       <div class="logo-carrera">
-        <img src="storage/{{$matricula->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
+            <img src="storage/{{$matricula->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
       </div>
   </header>
-
   <footer>
     <div class="firma">
         <p>ESTUDIANTE(A) <span>SECRETARÍA</p> </p>
@@ -62,7 +59,11 @@
           <td colspan="4"> Nombres y Apellidos: &nbsp; <span> {{$matricula->estudiante->nombre}} {{$matricula->estudiante->apellido}}</span></td>
           <td rowspan="7">
             <div style="text-align: center">
-              <img width="103px" height="141px" src="storage/{{$matricula->estudiante->foto}}">
+                @if ($matricula->estudiante->foto == null)
+                    <em> S/N foto </em>
+                @else
+                    <img width="103px" height="141px" src="storage/{{$matricula->estudiante->foto}}">
+                @endif
             </div>
           </td>
         </tr>
@@ -78,23 +79,19 @@
           <td colspan="2"> Etnia: &nbsp;  <span> {{$matricula->estudiante->etnia->nombre}} </span> </td>
           <td colspan="2"> Tipo de Sangre: &nbsp; <span> {{$matricula->estudiante->tiposangre->nombre}} </span> </td>
         </tr>
-
         <tr>
           <td colspan="4"> Fecha de Nacimiento: &nbsp; <span> {{$matricula->estudiante->fecha_nacimiento}}  </span> </td>
         </tr>
-
         <tr>
           <td colspan="4"> Lugar de Nacimiento: &nbsp; <span> {{$matricula->estudiante->provincia->provincia}}, {{$matricula->estudiante->cantone->canton}}  </span> </td>
         </tr>
-
         <tr>
           <td colspan="4"> Discapacidad: &nbsp; <span> @if($matricula->estudiante->discapacidad ==0)
-                                                         Ninguno
-                                                        @else
-                                                        {{$matricula->estudiante->tipo_discapacidad}} | Porcentaje: {{$matricula->estudiante->porcentaje_discapacidad}}% </span> </td>
-                                                        @endif
+            Ninguno
+            @else
+                {{$matricula->estudiante->tipo_discapacidad}} | Porcentaje: {{$matricula->estudiante->porcentaje_discapacidad}}% </span> </td>
+            @endif
         </tr>
-
       </table>
       <br>
       <table border="1">
@@ -117,7 +114,6 @@
         </tr>
       </table>
       <br>
-
       <table border="1">
         <tr>
           <th colspan="2">Información Familiar</th>
@@ -187,10 +183,7 @@
             </td>
         </tr>
       </table>
-
     </div>
   </div>
-
-
 </body>
 </html>

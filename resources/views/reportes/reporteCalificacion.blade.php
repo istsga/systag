@@ -65,7 +65,6 @@
             {{$docente->nombre}} {{$docente->apellido}} </span></p>
 
     </div>
-
     <table border = "1">
         <thead>
             <tr>
@@ -102,7 +101,6 @@
             @endforeach
         </tbody>
     </table>
-
     <table style="page-break-inside: auto; text-transform: uppercase; font-size: 12px; ">
         <tr>
             <th style=" text-align: left; padding-top:65px">{{$docente->abreviatura}} {{$docente->nombre}} {{$docente->apellido}} <br>
@@ -110,5 +108,5 @@
             </th>
         </tr>
     </table>
-
 </body>
+</html>

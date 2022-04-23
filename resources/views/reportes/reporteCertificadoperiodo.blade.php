@@ -47,20 +47,17 @@
             <p>INFORME DE APROBACIÓN DE PERIODO</p>
             <p>PERIODO ACADÉMICO MARZO 2018 - OCTUBRE 2020</p>
           </div>
-
           <div class="info-estudiante">
             La suscrita secretaria del Instituto Superior Tecnológico "San Gabriel" certifica que,
             <span >{{$estudiante->nombre}} {{$estudiante->apellido}}</span>  portador de la C.I. No.
             <span >{{$estudiante->dni}}</span>, obtuvo las siguientes
             calificaciones en la carrera de <span> {{$matricula->asignacione->carreras->pluck('nombre')->implode(', ')}}. </span>
          </div>
-
          <div class="p-estudiante">
              <p>PERIODO: <span>{{$matricula->asignacione->periodo->nombre}}</span></p>
              <p>SECCIÓN: <span>{{$matricula->asignacione->seccione->nombre}}</span></p>
              <p>PARALELO: <span style="margin-left: 20px">{{$matricula->asignacione->paralelo->nombre}}</span></p>
          </div>
-
          <table style="margin-top: 20px" border="1">
             <thead>
                 <tr>
@@ -77,7 +74,6 @@
                     <th  colspan="2">LETRAS</th>
                 </tr>
                 @foreach ($calificaciones as $calificacione)
-
                     <tr>
                         <td colspan="9" >
                         <div class="wrap-c">{{$calificacione->asignatura->nombre}}</div>
@@ -91,19 +87,15 @@
                 @endforeach
             </tbody>
         </table>
-
         <div class="promedio">
             <p>PROMEDIO DE MATERIAS APROBADAS: {{$promedio}} /10</p>
         </div>
-
         <div class="fecha">
             <p>Fecha: <span>Riobamba, {{now()->format('d-m-Y')}}</span></p>
         </div>
-
         <div class="firma-1">
             <p>Atentamente,</p>
         </div>
-
         <div class="firma">
             <p>Ing. Olga Villagran C.<br>
             <span>SECRETARIA GENERAL</span></p>
@@ -111,3 +103,4 @@
       </div>
     </div>
 </body>
+</html>

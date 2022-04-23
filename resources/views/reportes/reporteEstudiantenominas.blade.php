@@ -38,32 +38,26 @@
                   &nbsp;
                 </p>
               </td>
-
             </tr>
           </table>
     </footer>
     <div class="container" >
-
         <div class="e-nombre">
             <p>NÓMINA DE ESTUDIANTES</p>
         </div>
-
         <div class="informacion">
             <p style="padding-bottom: 10px;">CARRERA: <span style="padding-left: 85px">
                 {{$asignacion->carreras->pluck('nombre')->implode(', ')}} </span></p>
             <div class="informacion-1">
                 <p>PERIODO ACADÉMICO: <span style="padding-left: 12px">
                     {{$asignacion->periodacademicos->pluck('periodo')->implode(', ')}} </span></p>
-
                 <p>SECCIÓN:<span style="padding-left: 20px"> {{$asignacion->seccione->nombre}} </span></p>
             </div>
             <div class="informacion-2">
                 <p>PERIODO:<span style="padding-left: 20px"> {{$asignacion->periodo->nombre}} </span></p>
                 <p>PARALELO:<span style="padding-left: 10px"> {{$asignacion->paralelo->nombre}} </span></p>
             </div>
-
         </div>
-
         <div class="item-container">
             <table border="1">
                 <thead>
@@ -84,14 +78,11 @@
                 </tbody>
             </table>
         </div>
-
         <div class="firma">
             <p>  Ing. Olga Villagran C. <br>
             <span>SECRETARIA GENERAL </span> </p>
         </div>
-
         </div>
-
     </div>
 </body>
 </html>

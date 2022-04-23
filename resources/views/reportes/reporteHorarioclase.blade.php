@@ -21,7 +21,6 @@
           {{-- <img src="storage/{{$calificaciones[0]->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera"> --}}
         </div>
     </header>
-
     <footer>
       <table>
           <tr>
@@ -42,7 +41,6 @@
           </tr>
         </table>
     </footer>
-
     <table border="1" >
         <thead>
             <tr>
@@ -65,6 +63,5 @@
             </tr>
         </tbody>
     </table>
-
 </body>
 </html>

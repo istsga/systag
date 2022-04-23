@@ -52,9 +52,9 @@ class PeriodacademicoSeeder extends Seeder
 
         Periodacademico::create([
             'estado'            => '1',
-            'periodo'           => 'Agosto 2022 - Diciembre 2022',
-            'fecha_inicio'      => '2022_08_11',
-            'fecha_final'      => '2022_12_20',
+            'periodo'           => 'Mayo - Octubre 2022',
+            'fecha_inicio'      => '2022_05_01',
+            'fecha_final'      => '2022_09_20',
         ])->carreras()->attach(['1', '2', '3', '4']);
 
     }

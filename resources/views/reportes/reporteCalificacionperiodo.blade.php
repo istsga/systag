@@ -21,7 +21,6 @@
         <img src="storage/{{$calificaciones[0]->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
       </div>
   </header>
-
   <footer>
     <table>
         <tr>
@@ -42,12 +41,10 @@
         </tr>
       </table>
   </footer>
-
   <div class="cp-nombre">
     <p>CALIFICACIÓN CONSOLIDADO POR PERIODO</p>
     <p style="font-size:14px">Periodo Académico : {{$calificaciones[0]->asignacione->periodacademicos->pluck('periodo')->implode(', ')}}</p>
   </div>
-
   <div class="informacion">
       <div class="informacion-1">
         <p>CARRERA: <span style="padding-left: 23px">
@@ -60,7 +57,6 @@
         <p>C.I.: <span style="padding-left: 52px">{{$calificaciones[0]->estudiante->dni}}</span></p>
       </div>
   </div>
-
   <table style="margin-top: 10px" border="1" >
     <thead>
       <tr>
@@ -81,7 +77,6 @@
       </tr>
     </thead>
     <tbody>
-
         @foreach ($calificaciones as $index => $calificacione)
         <tr>
             <td>{{$index+1}}</td>
@@ -109,3 +104,4 @@
       <span>SECRETARIA GENERAL </span> </p>
   </div>
 </body>
+</html>

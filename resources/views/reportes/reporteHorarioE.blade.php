@@ -18,7 +18,6 @@
             <h4>Registro Institucional 224 SENESCYT</h4>
         </div>
   </header>
-
   <footer>
     <table>
         <tr>
@@ -39,7 +38,6 @@
         </tr>
       </table>
   </footer>
-
     <div class="informacion">
         <p style="font-size: 15px">HORARIO DE CLASES</p>
         <div class="informacion-1">
@@ -49,10 +47,8 @@
             {{-- <p>PERIODO ACADÉMICO: <span>{{$horarios[0]->asignacione->periodacademicos->pluck('periodo')->implode(', ')}}</span></p> --}}
         </div>
     </div>
-
     <table style="margin-top: 20px;" border="1" >
         <thead>
-
           <tr>
             <th >No</th>
             <th   >PERIODO</th>
@@ -64,11 +60,9 @@
             <th >FECHA <br> FINAL</th>
             <th >EXAMEN <br>FINAL</th>
             <th >EXAMEN <br>SUSPENSIÓN</th>
-
           </tr>
         </thead>
         <tbody>
-
           @foreach ($horarios as $index => $horario)
           <tr>
             <td >{{$index+1}}</td>
@@ -90,3 +84,4 @@
         </tbody>
       </table>
 </body>
+</html>

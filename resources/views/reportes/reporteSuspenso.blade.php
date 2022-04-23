@@ -21,7 +21,6 @@
             <img src="storage/{{$suspensos[0]->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
           </div>
     </header>
-
     <footer>
         <table>
             <tr>
@@ -63,7 +62,6 @@
             {{$suspensos[0]->asignatura->nombre}}</span></p>
         <p>PROFESOR: <span style="padding-left: 28px"> {{$docente->nombre}} {{$docente->apellido}}</span></p>
     </div>
-
     <table  border="1">
         <thead >
             <tr>
@@ -78,7 +76,6 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach ($suspensos as $index => $suspenso)
               <tr>
                 <td style=" font-size: 9px; text-align: center"> {{$index+1}} </td>
@@ -93,7 +90,6 @@
             @endforeach
         </tbody>
     </table>
-
     <table style="page-break-inside: auto; text-transform: uppercase; font-size: 12px; ">
         <tr>
             <th style=" text-align: left; padding-top:65px">{{$docente->abreviatura}} {{$docente->nombre}} {{$docente->apellido}} <br>
@@ -101,3 +97,4 @@
         </tr>
     </table>
 </body>
+</html>

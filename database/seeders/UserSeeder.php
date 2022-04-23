@@ -48,14 +48,14 @@ class UserSeeder extends Seeder
         $UserAdmin->save();
         $UserAdmin->assignRole($administrador);
 
-        // $UserStudent = new User;
-        // $UserStudent->dni = '0605082063';
-        // $UserStudent->nombre = 'Estudiante';
-        // $UserStudent->apellido = 'User';
-        // $UserStudent->email = 'estudiante@gmail.com';
-        // $UserStudent->password = '12345678';
-        // $UserStudent->save();
-        // $UserStudent->assignRole($estudiante);
+        $UserStudent = new User;
+        $UserStudent->dni = '0605312894';
+        $UserStudent->nombre = 'Juan Carlos';
+        $UserStudent->apellido = 'Rovalino Alarcon';
+        $UserStudent->email = 'jrobalino@gmail.com';
+        $UserStudent->password = '12345678';
+        $UserStudent->save();
+        $UserStudent->assignRole($estudiante);
 
         // $UserDocente = new User;
         // $UserDocente->dni = '0605082062';
@@ -77,9 +77,9 @@ class UserSeeder extends Seeder
 
         $UserDocente = new User;
         $UserDocente->dni = '0623429692';
-        $UserDocente->nombre = 'William ';
-        $UserDocente->apellido = 'Adriano';
-        $UserDocente->email = 'adriano@gmail.com';
+        $UserDocente->nombre = 'Diego Armando';
+        $UserDocente->apellido = 'Guapi Cuji';
+        $UserDocente->email = 'daguapi@gmail.com';
         $UserDocente->password = '12345678';
         $UserDocente->save();
         $UserDocente->assignRole($docente);
