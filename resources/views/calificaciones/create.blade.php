@@ -34,7 +34,7 @@
                             <div class="form-group ">
                                 <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted  small">PERIODO ACADÉMICO</label>
                                 <div class="input-group">
-                                    <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror"  onchange="calificacionPeriodo();">
+                                    <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror"  onchange="calificacionPeriodo();" required>
                                         <option value="" class="form-control  "> == Seleccionar == </option>
                                         @foreach ($periodacademicos as $periodacademico)
                                         <option  value="{{$periodacademico->id}}"
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small"> CARRERA | PERIODO | SECCIÓN | PARALELO  </label>
                                 <div class="input-group">
-                                    <select name="asignacione_id" id="asignacione_id" class=" form-control @error('asignacione_id') is-invalid @enderror" onchange="calificacionAsignacion();">
+                                    <select name="asignacione_id" id="asignacione_id" class=" form-control @error('asignacione_id') is-invalid @enderror" onchange="calificacionAsignacion();" required>
                                         {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
@@ -68,7 +68,7 @@
                                 <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS
                                 </label>
                                 <div class="input-group">
-                                    <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror" onchange="calificacionEstudiante();">
+                                    <select name="asignatura_id" id="asignatura_id" class=" form-control @error('asignatura_id') is-invalid @enderror" onchange="calificacionEstudiante();" required>
                                         {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
@@ -83,7 +83,7 @@
                                 <label for="matricula_id" class="col-form-label font-weight-bold text-muted small">ESTUDIANTES
                                 </label>
                                 <div class="input-group">
-                                    <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror">
+                                    <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror" required>
                                         {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
@@ -92,8 +92,8 @@
                                 </div>
                             </div>
                         </div>
+                        <em class="text-dark "> Registro de notas permitido hasta 15 posterior de la fecha de suspensión establecida en el horario</em>
                     </div>
-                    <em class="mt-2 "> Registro de notas permitido hasta 15 posterior de la fecha de suspensión establecida en el horario</em>
             </div>
         </div>
 
@@ -109,8 +109,8 @@
                         <div class="col-lg-3 " >
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">DOCENCIA</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'docencia', 0)}}"  name="docencia" id="docencia"  class="form-control  @error('docencia') is-invalid @enderror "
-                                    step="0.01" oninput="calcular()" onkeyup="vDocencia();">
+                                    <input type="number" value="{{old( 'docencia')}}"  name="docencia" id="docencia"  class="form-control  @error('docencia') is-invalid @enderror "
+                                    step="0.01" oninput="calcular()" onkeyup="vDocencia();" required min="0" max="10">
                                 @error ('docencia') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                                 <em id="ms-docencia" class="text-danger small" > </em>
@@ -120,8 +120,8 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXPERIMENTO APLICACIÓN</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'experimento_aplicacion', 0)}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror"
-                                    step="0.01" onkeyup="vExperiment();">
+                                    <input type="number" value="{{old( 'experimento_aplicacion')}}"  name="experimento_aplicacion" id="experimento_aplicacion" oninput="calcular()" class="form-control @error('experimento_aplicacion') is-invalid @enderror"
+                                    step="0.01" onkeyup="vExperiment();" required min="0" max="10">
                                 @error ('experimento_aplicacion') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                                 <em id="ms-experimento" class="text-danger small" > </em>
@@ -131,8 +131,8 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">TRABAJO AUTÓNOMO</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old( 'trabajo_autonomo', 0)}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" step="0.01"
-                                    onkeyup="vTrabajo();" >
+                                    <input type="number" value="{{old( 'trabajo_autonomo')}}"  name="trabajo_autonomo" id="trabajo_autonomo" oninput="calcular()" class="form-control @error('trabajo_autonomo') is-invalid @enderror" step="0.01"
+                                    onkeyup="vTrabajo();" required min="0" max="10">
                                 @error ('trabajo_autonomo') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                                 <em id="ms-trabajo" class="text-danger small" > </em>
@@ -142,8 +142,8 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">EXAMEN PRINCIPAL</font>
                                 <div class="text-value-lg">
-                                    <input type="number" value="{{old('examen_principal', 0)}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " step="0.01"
-                                    onkeyup="vExamen();" >
+                                    <input type="number" value="{{old('examen_principal')}}" name="examen_principal" id="examen_principal" oninput="calcular()" class="form-control @error('examen_principal') is-invalid @enderror " step="0.01"
+                                    onkeyup="vExamen();" required min="0" max="10">
                                 @error ('examen_principal') <span class="invalid-feedback" role="alert"> <em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                                 <em id="ms-examen" class="text-danger small" > </em>
@@ -206,8 +206,8 @@
                         <div class="col-lg-3">
                             <div class="c-callout c-callout-primary"><font class="small text-muted font-weight-bold">PORCENTAJE ASISTENCIA</font>
                                 <div class="text-value-lg">
-                                    <input type="text" value="{{old('porcentaje_asistencia', 0)}}" name="porcentaje_asistencia" id="porcentaje_asistencia" class="form-control @error('porcentaje_asistencia') is-invalid @enderror"
-                                    onkeyup="vPorcentaje();" >
+                                    <input type="number" value="{{old('porcentaje_asistencia')}}" name="porcentaje_asistencia" id="porcentaje_asistencia" class="form-control @error('porcentaje_asistencia') is-invalid @enderror"
+                                    onkeyup="vPorcentaje();" required min="0" max="100">
                                 @error ('porcentaje_asistencia') <span class="invalid-feedback" role="alert"><em class="small">{{$message}}</span> </em> @enderror
                                 </div>
                                 <em id="ms-porcentaje" class="text-danger small" > </em>

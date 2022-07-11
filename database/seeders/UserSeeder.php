@@ -22,18 +22,27 @@ class UserSeeder extends Seeder
 
         //Usuarios predeterminados SYSTAG
         $UserAdmin = new User;
+        $UserAdmin->dni = '0601817679';
+        $UserAdmin->nombre = 'Olga';
+        $UserAdmin->apellido = 'Villagran Caceres';
+        $UserAdmin->email = 'sangabrielriobamba@hotmail.com';
+        $UserAdmin->password = '12345678';
+        $UserAdmin->save();
+        $UserAdmin->assignRole($administrador);
+
+        $UserAdmin = new User;
         $UserAdmin->dni = '0604429696';
-        $UserAdmin->nombre = 'Diego Armando';
-        $UserAdmin->apellido = 'Guapi Cuji';
-        $UserAdmin->email = 'diego_g11@hotmail.es';
+        $UserAdmin->nombre = 'Administrator';
+        $UserAdmin->apellido = 'Faker';
+        $UserAdmin->email = 'fakeradmin@gmail.com';
         $UserAdmin->password = '12345678';
         $UserAdmin->save();
         $UserAdmin->assignRole($administrador);
 
         $UserAdmin = new User;
         $UserAdmin->dni = '0602721516';
-        $UserAdmin->nombre = 'TANIA ELIZABETH';
-        $UserAdmin->apellido = 'GARZÓN CABEZAS';
+        $UserAdmin->nombre = 'Tania Elizabeth';
+        $UserAdmin->apellido = 'Garzon Cabezas';
         $UserAdmin->email = 'taniagarzon73@hotmail.com';
         $UserAdmin->password = '12345678';
         $UserAdmin->save();
@@ -41,47 +50,29 @@ class UserSeeder extends Seeder
 
         $UserAdmin = new User;
         $UserAdmin->dni = '0603621780';
-        $UserAdmin->nombre = 'FERNANDA';
-        $UserAdmin->apellido = 'PALMA SALAZAR';
+        $UserAdmin->nombre = 'Fernanda';
+        $UserAdmin->apellido = 'Palma Salazar';
         $UserAdmin->email = 'valeria-kaye@hotmail.com';
         $UserAdmin->password = '12345678';
         $UserAdmin->save();
         $UserAdmin->assignRole($administrador);
 
-        $UserStudent = new User;
-        $UserStudent->dni = '0605312894';
-        $UserStudent->nombre = 'Juan Carlos';
-        $UserStudent->apellido = 'Rovalino Alarcon';
-        $UserStudent->email = 'jrobalino@gmail.com';
-        $UserStudent->password = '12345678';
-        $UserStudent->save();
-        $UserStudent->assignRole($estudiante);
+        // $UserStudent = new User;
+        // $UserStudent->dni = '0605312894';
+        // $UserStudent->nombre = 'Juan Carlos';
+        // $UserStudent->apellido = 'Rovalino Alarcon';
+        // $UserStudent->email = 'jrobalino@gmail.com';
+        // $UserStudent->password = '12345678';
+        // $UserStudent->save();
+        // $UserStudent->assignRole($estudiante);
 
         // $UserDocente = new User;
-        // $UserDocente->dni = '0605082062';
-        // $UserDocente->nombre = 'Docente';
-        // $UserDocente->apellido = 'User';
-        // $UserDocente->email = 'docente@gmail.com';
+        // $UserDocente->dni = '0623429692';
+        // $UserDocente->nombre = 'William';
+        // $UserDocente->apellido = 'Adriano';
+        // $UserDocente->email = 'adriano@gmail.com';
         // $UserDocente->password = '12345678';
         // $UserDocente->save();
         // $UserDocente->assignRole($docente);
-
-        // $UserDocente = new User;
-        // $UserDocente->dni = '0204002040';
-        // $UserDocente->nombre = 'Angel ';
-        // $UserDocente->apellido = 'Huilca';
-        // $UserDocente->email = 'angelhuilca@gmail.com';
-        // $UserDocente->password = '12345678';
-        // $UserDocente->save();
-        // $UserDocente->assignRole($docente);
-
-        $UserDocente = new User;
-        $UserDocente->dni = '0623429692';
-        $UserDocente->nombre = 'Diego Armando';
-        $UserDocente->apellido = 'Guapi Cuji';
-        $UserDocente->email = 'daguapi@gmail.com';
-        $UserDocente->password = '12345678';
-        $UserDocente->save();
-        $UserDocente->assignRole($docente);
     }
 }

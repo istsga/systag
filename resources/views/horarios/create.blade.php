@@ -13,6 +13,16 @@
                     </div>
                     <div class="card-body">
 
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form class="form-horizontal" method="POST"  action="{{ route('horarios.store')}}" onsubmit="return checkSubmit();">
                             @csrf
                             <div class="card p-4">
@@ -23,7 +33,7 @@
                                                 <span class="text-primary">*</span>
                                             </label>
                                             <div class="input-group">
-                                                <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="asignaturaHorario(this)">
+                                                <select name="asignacione_id" id="asignacione_id"  class="form-control @error('asignacione_id') is-invalid @enderror" onchange="asignaturaHorario(this)" required>
                                                     <option class="form-control" value=""> == Seleccionar == </option>
                                                     @foreach ($asignaciones as $asignacione)
                                                         <option  value="{{$asignacione->id}}"
@@ -46,7 +56,7 @@
                                             <label for="orden" class="col-form-label font-weight-bold text-muted">Orden de asignaturas
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
-                                                <select  name="orden" id="orden" class="form-control @error('orden') is-invalid @enderror  ">
+                                                <select  name="orden" id="orden" class="form-control @error('orden') is-invalid @enderror" required>
                                                     {{-- data--}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
@@ -59,7 +69,7 @@
                                             <label for="asignatura_id" class="col-form-label font-weight-bold text-muted">Asignatura
                                                 <span class="text-primary">*</span></label>
                                             <div class="input-group">
-                                                <select  name="asignatura_id" id="asignatura_id" class="form-control @error('asignatura_id') is-invalid @enderror  ">
+                                                <select  name="asignatura_id" id="asignatura_id" class="form-control @error('asignatura_id') is-invalid @enderror" required>
                                                     {{-- data--}}
                                                 </select>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
@@ -78,7 +88,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_inicio') is-invalid @enderror"
-                                                name="fecha_inicio" id="fecha_inicio" value="{{old('fecha_inicio')}}" onchange="validarFecha();">
+                                                name="fecha_inicio" id="fecha_inicio" value="{{old('fecha_inicio')}}" onchange="validarFecha();" required>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -91,7 +101,7 @@
                                             </label>
                                             <div class="input-group ">
                                                 <input type="date" class="form-control @error('fecha_final') is-invalid @enderror"
-                                                name="fecha_final" id="fecha_final" value="{{old('fecha_final')}}">
+                                                name="fecha_final" id="fecha_final" value="{{old('fecha_final')}}" required>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -104,7 +114,7 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_examen') is-invalid @enderror"
-                                                name="fecha_examen" id="fecha_examen" value="{{old('fecha_examen')}}">
+                                                name="fecha_examen" id="fecha_examen" value="{{old('fecha_examen')}}" required>
                                                 <div class="input-group-prepend "><span class=" input-group-text">
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_examen') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -118,7 +128,7 @@
                                             <div class="input-group">
                                                 <input type="date" class="form-control @error('fecha_suspension') is-invalid @enderror"
                                                 name="fecha_suspension" id="fecha_suspension" value="{{old('fecha_suspension')}}">
-                                                <div class="input-group-prepend "><span class=" input-group-text">
+                                                <div class="input-group-prepend "><span class=" input-group-text" required>
                                                     <i class=" text-primary fas fa-calendar-day"></i></span></div>
                                                 @error ('fecha_suspension') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
                                             </div>
@@ -141,18 +151,17 @@
 
                                         @for ($i=0;$i<5;$i++)
                                             <div class="row">
+
                                                 <div class="form-group col-lg-3  text-dark">
                                                     <br>
-                                                    <input name="dia_semana1[]" type="checkbox" class="mt-2 mr-2" value="{{$dia_semana[$i]}}"> {{$dia_semana[$i]}}
-                                                    {{-- <input  name="carreras[]" type="checkbox" class="mr-2"  {{ collect(old('carreras'))->contains($carrera->id) ? 'checked' :  '' }}
-                                                                value="{{$carrera->id}}">{{$carrera->nombre}} --}}
+                                                    <input name="dia_semana[]" type="checkbox" class="mt-2 mr-2" value="{{$dia_semana[$i]}}" required> {{$dia_semana[$i]}}
                                                 </div>
 
                                                 <div class="form-group col-lg-4 mt-3 ">
 
                                                     <div class="input-group">
                                                         <input type="time" id="hora_inicio" class="form-control @error('hora_inicio') is-invalid @enderror"
-                                                        name="hora_inicio[]" value="{{old('hora_inicio')}}" placeholder="8:00">
+                                                        name="hora_inicio[]" value="{{old('hora_inicio[]')}}"  required >
                                                         <div class="input-group-prepend "><span class=" input-group-text">
                                                             <i class=" text-primary fas fa-clock"></i></span></div>
                                                         @error ('hora_inicio') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror
@@ -163,7 +172,7 @@
 
                                                     <div class="input-group">
                                                         <input type="time" id="hora_final" class="form-control @error('hora_final') is-invalid @enderror"
-                                                        name="hora_final[]" value="{{old('hora_final')}}" placeholder="8:00">
+                                                        name="hora_final[]" value="{{old('hora_final[]')}}" required>
                                                         <div class="input-group-prepend "><span class=" input-group-text">
                                                             <i class=" text-primary fas fa-clock"></i></span></div>
                                                         @error ('hora_final') <span class="invalid-feedback" role="alert"> <em> {{$message}}</span> </em> @enderror

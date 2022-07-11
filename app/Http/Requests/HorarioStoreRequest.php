@@ -26,12 +26,13 @@ class HorarioStoreRequest extends FormRequest
     public function rules()
     {
 
-        $periodo=Periodacademico::
-            join('asignacione_periodacademico','asignacione_periodacademico.periodacademico_id','periodacademicos.id')
-            ->where('asignacione_periodacademico.asignacione_id',$this->asignacione_id)
-            ->first();
-        $inicio_periodo=$periodo->fecha_inicio;
-        $fin_periodo=$periodo->fecha_final;
+            $periodo=Periodacademico::
+                    join('asignacione_periodacademico','asignacione_periodacademico.periodacademico_id','periodacademicos.id')
+                    ->where('asignacione_periodacademico.asignacione_id',$this->asignacione_id)
+                    ->first();
+
+                $inicio_periodo=isset($periodo->fecha_inicio) ?  $periodo->fecha_inicio : null;
+                $fin_periodo=isset($periodo->fecha_final) ? $periodo->fecha_final : null;
 
         $rules = [
             'asignacione_id'        => ['required'],
@@ -41,6 +42,7 @@ class HorarioStoreRequest extends FormRequest
             'fecha_examen'          => ['required', 'date', 'after:fecha_final', 'after:' .$inicio_periodo,'before_or_equal:' .$fin_periodo],
             'fecha_suspension'      => ['required', 'date', 'after:fecha_examen', 'after:' .$inicio_periodo,'before_or_equal:' .$fin_periodo],
             'orden'                 => ['required'],
+
         ];
 
         return $rules;

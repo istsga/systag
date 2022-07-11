@@ -2,9 +2,9 @@
     <div class="c-sidebar-brand d-lg-down-none ">
         <div class="c-sidebar-brand-full ">
             <div class="form-group text-center mt-2">
-                <img height="110"  src="{{asset('assets/brand/SGlogo.svg')}}" alt="IUSGA Logo">
+                <img height="125"  src="{{asset('assets/brand/SGlogo.svg')}}" alt="IUSGA Logo">
                 <h4 class=" font-weight-bold mt-1 text-ligth ">ACADÉMICO</h4>
-                <span class="font-weight-bold text-light ">SYSTAG</span>
+                <span class="font-weight-bold text-light mt-1">SYSTAG</span>
             </div>
         </div>
       <img class="c-sidebar-brand-minimized" width="45" height="51" src="{{asset('assets/brand/SGlogo.svg')}}" alt="IUSGA Logo">

@@ -170,9 +170,9 @@
                 <div class="card shadow-sm">
                     <div class="row m-2">
                         <div class="col-lg-3">
-                            <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">NÚMERO DE HORAS</font>
+                            <div class="c-callout c-callout-info"><font class="text-muted small font-weight-bold">NÚMERO DE HORAS</font>
                                 <div class="text-value-lg">
-                                    <input type="text" value="{{old('numero_asistencia',$calificacione->numero_asistencia)}}" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" >
+                                    <input type="text" value="{{old('numero_asistencia',$calificacione->numero_asistencia)}}" name="numero_asistencia" class="form-control @error('numero_asistencia') is-invalid @enderror" readonly>
                                 @error ('numero_asistencia') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                         </div>
 
                         <div class="col-lg-3">
-                            <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">OBSERVACIÓN</font>
+                            <div class="c-callout c-callout-info"><font class="text-muted small font-weight-bold">OBSERVACIÓN</font>
                                 <div class="text-value-lg">
                                     <input class="form-control @error('observacion') is-invalid @enderror" type="text" value="{{old('observacion', $calificacione->observacion)}}"  name="observacion" id="observacion" readonly >
                                 @error ('observacion') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror

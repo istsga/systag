@@ -33,8 +33,8 @@
     <div class="d-flex  justify-content-center bg-primary">
         <div class="text-center">
             <div class="row ml-3 ">
-                    <img class="mt-2 " width="75px"  src="{{asset('assets/brand/SGlogo.svg')}}">
-                    <h1 class="font-weight-bold mt-4 display-4 text-light ml-4" width="120px" >IUSGA</h1>
+                    <img class="mt-2 " height="125"  src="{{asset('assets/brand/SGlogo.svg')}}">
+                    <h1 class="font-weight-bold mt-4 display-4 text-light ml-4" width="135px" >IUSGA</h1>
             </div>
         </div>
     </div>

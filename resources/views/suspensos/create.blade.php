@@ -31,7 +31,7 @@
                             <div class="form-group ">
                                 <label for="periodacademico_id" class="col-form-label font-weight-bold text-muted  small">PERIODO ACADÉMICO</label>
                                 <div class="input-group">
-                                    <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror"  onchange="suspensoAsignaciones();">
+                                    <select name="periodacademico_id" id="periodacademico_id" class="form-control  @error('periodacademico_id') is-invalid @enderror"  onchange="suspensoAsignaciones();" required>
                                         <option value="" class="form-control  "> == Seleccionar == </option>
                                         @foreach ($periodacademicos as $periodacademico)
                                         <option  value="{{$periodacademico->id}}"
@@ -51,7 +51,7 @@
                                 <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">CARRERA | PERIODO | SECCIÓN | PARALELO
                                 </label>
                                 <div class="input-group ">
-                                    <select name="asignacione_id" id="asignacione_id" class="form-control  @error('asignacione_id') is-invalid @enderror" onchange="suspensoAsignaturas();">
+                                    <select name="asignacione_id" id="asignacione_id" class="form-control  @error('asignacione_id') is-invalid @enderror" onchange="suspensoAsignaturas();" required>
                                         {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                     </select>
                                     <div class="input-group-prepend "><span class=" input-group-text">
@@ -66,7 +66,7 @@
                                 <label for="asignacione_id" class="col-form-label font-weight-bold text-muted small">ASIGNATURAS
                                 </label>
                                 <div class="input-group ">
-                                    <select name="asignatura_id" id="asignatura_id" class="form-control  @error('asignatura_id') is-invalid @enderror" onchange="suspensoEstudiantes();">
+                                    <select name="asignatura_id" id="asignatura_id" class="form-control  @error('asignatura_id') is-invalid @enderror" onchange="suspensoEstudiantes();" required>
                                         {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                             {{-- Data --}}
                                     </select>
@@ -84,7 +84,7 @@
                                 <label for="estudiante_id" class="col-form-label font-weight-bold text-muted small">ESTUDIANTES
                                 </label>
                                 <div class="input-group ">
-                                    <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror" onchange="promedioSuspenso();" >
+                                    <select name="estudiante_id" id="matricula_id" class=" form-control @error('estudiante_id') is-invalid @enderror" onchange="promedioSuspenso();" required>
                                         {{-- <option class="form-control" value=""> == Seleccionar == </option> --}}
                                         {{-- Data --}}
                                     </select>
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <em class="text-dark "> Registro permitido hasta 15 posterior de la fecha de suspensión establecida en el horario</em>
                     </div>
             </div>
         </div>
@@ -117,7 +117,8 @@
 
                         <div class="col-lg-4">
                             <div class="c-callout c-callout-primary"><font class="text-muted small font-weight-bold">EXAMEN DE SUSPENSIÓN</font>
-                                <div class="text-value-lg"><input type="number" value="{{old('examen_suspenso')}}" name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror" oninput="calcular()" step="0.01" >
+                                <div class="text-value-lg"><input type="number" value="{{old('examen_suspenso')}}" name="examen_suspenso" id="examen_suspenso"  class="form-control @error('examen_suspenso') is-invalid @enderror"
+                                     oninput="calcular()" step="0.01" required min="0" max="10">
                                 @error ('examen_suspenso') <span class="invalid-feedback" role="alert"> <small><em>{{$message}}</span> </em></small> @enderror
                             </div>
                             </div>

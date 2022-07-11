@@ -112,7 +112,7 @@
                                                         <span class="text-primary">*</span></label>
                                                     <div class="input-group">
                                                         <input id="abreviatura" type="text" class="form-control @error('abreviatura') is-invalid @enderror"
-                                                        name="abreviatura" value="{{old('abreviatura')}}" placeholder="Ing." >
+                                                        name="abreviatura" value="{{old('abreviatura')}}" placeholder="Ing.">
                                                         <div class="input-group-prepend "><span class=" input-group-text">
                                                             <i class=" text-primary  fas fa-user-graduate"></i></span></div>
                                                         @error ('abreviatura') <span class="invalid-feedback" role="alert"> <em>{{$message}}</span> </em> @enderror

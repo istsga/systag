@@ -150,6 +150,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $this->authorize('delete', $user);
+
+        if($user->id === 1)
+            {
+                throw new \Illuminate\Auth\Access\AuthorizationException
+                            ('No autorizado para eliminar.');
+            }
         $user->delete();
         return redirect()->route('users.index')->with('status', 'Eliminado con éxito');
     }

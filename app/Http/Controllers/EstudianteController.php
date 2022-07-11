@@ -58,7 +58,7 @@ class EstudianteController extends Controller
     {
         $this->authorize('create', Estudiante::class);
         $estudiante = new Estudiante($request->validated());
-        if($estudiante->foto == !null)
+        if($estudiante->foto !==null)
             $estudiante->foto = $request->file('foto')->store('images', 'public');
         $estudiante->save();
         return redirect()->route('estudiantes.index')->with('status', 'Agregado con éxito');

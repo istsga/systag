@@ -67,6 +67,7 @@ class HorarioController extends Controller
         $horarios = Horario::all();
 
         $dia_semana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+
         //definir asignciones que pertenezcan al ultimo periodo academico
         $periodAcademico=Periodacademico::orderBy('id','desc')->first();
         $asignaciones=Asignacione::
@@ -129,16 +130,16 @@ class HorarioController extends Controller
     public function store(HorarioStoreRequest $request)
     {
         $this->authorize('create', new Horario);
-        $horarios = Horario::create($request->validated());
 
-        $dia_semana=$request->get('dia_semana1');
+        $dia_semana=$request->get('dia_semana');
         $hora_inicio=$request->get('hora_inicio');
         $hora_final=$request->get('hora_final');
 
+        //dd($dia_semana, $hora_inicio, $hora_final);
+
         $i=0;
 
-        // dd($dia_semana, $hora_inicio, $hora_final );
-
+        $horarios = Horario::create($request->validated());
         while($i<count($dia_semana)){
             $detalle_horario=new Detallehorario();
             $detalle_horario->horario_id=$horarios->id;

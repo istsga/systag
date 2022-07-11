@@ -135,7 +135,7 @@ class CalificacioneController extends Controller
         ->where('matriculas.asignacione_id',$id)
         ->where('asignatura_docente.asignacione_id',$id)
          //restrincion ingreso de notas por fechas
-        ->where('horarios.fecha_suspension','>=',now()->addDays(-16)->format('Y-m-d'))
+        //->where('horarios.fecha_suspension','>=',now()->addDays(-16)->format('Y-m-d'))
         ->allowed()
         ->groupBy('matriculas.asignacione_id','asignatura_matricula.asignatura_id','asignaturas.nombre','horarios.fecha_suspension')
         ->get();
