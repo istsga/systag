@@ -16,7 +16,7 @@
     <meta name="description" content="Sistema Académico - Instituto San Gabriel">
     <meta name="author" content="Diego Guapi">
     <meta name="keyword" content="Sistema Académico - Instituto San Gabriel">
-    <title> @yield('title')  IUSGA - Académico</title>
+    <title> @yield('title')  ISTSGA - Académico</title>
     <link rel="apple-touch-icon" sizes="57x57" href=" {{asset('assets/favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href=" {{asset('assets/favicon/apple-icon-60x60.png')}} ">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset('assets/favicon/apple-icon-72x72.png')}} ">
@@ -149,7 +149,7 @@
         @yield('content')
 
         <footer class="c-footer">
-          <div class="font-weight-bold"><a href="https://sangabrielriobamba.edu.ec" target="_top"> Instituto Superior Universitario SAN GABRIEL</a> <span class="font-weight-bold text-muted"> &copy; 2022 </span> </div>
+          <div class="font-weight-bold"><a href="https://sangabrielriobamba.edu.ec" target="_top"> Instituto Superior Tecnológico SAN GABRIEL Condición Universitario</a> <span class="font-weight-bold text-muted"> &copy; 2022 </span> </div>
           <div class="ml-auto">Desarrollado por &nbsp;<a href="#"> <span class="font-weight-bold text-muted">Diego Karina Marco</span> </a></div>
         </footer>
       </div>

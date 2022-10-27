@@ -33,6 +33,6 @@ class LoginCredentials extends Mailable
     public function build()
     {
         return $this->markdown('emails.login-credentials')
-        ->subject('Tus credenciales de acceso a '. config('app.name'));
+        ->subject('Credenciales de acceso al Sistema Académico del ISTSGA - '. config('app.name'));
     }
 }

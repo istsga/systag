@@ -7,7 +7,7 @@
     <meta name="description" content="Sistema Académico - Instituto San Gabriel">
     <meta name="author" content="Diego Guapi">
     <meta name="keyword" content="Sistema Académico - Instituto San Gabriel">
-    <title> Iniciar sesión | IUSGA </title>
+    <title> Iniciar sesión | ISTSGA </title>
     <link rel="apple-touch-icon" sizes="57x57" href=" {{asset('assets/favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href=" {{asset('assets/favicon/apple-icon-60x60.png')}} ">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset('assets/favicon/apple-icon-72x72.png')}} ">
@@ -34,7 +34,7 @@
         <div class="text-center">
             <div class="row ml-3 ">
                     <img class="mt-2 " height="125"  src="{{asset('assets/brand/SGlogo.svg')}}">
-                    <h1 class="font-weight-bold mt-4 display-4 text-light ml-4" width="135px" >IUSGA</h1>
+                    <h1 class="font-weight-bold mt-4 display-4 text-light ml-4" width="135px" >ISTSGA</h1>
             </div>
         </div>
     </div>

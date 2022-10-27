@@ -14,8 +14,10 @@
             <img src="{{ public_path('assets/brand/logoSG.png') }}">
           </div>
           <div class="title">
-            <h3>INSTITUTO SUPERIOR UNIVERSITARIO <br> "SAN GABRIEL"</h3>
-            <p>Carrera de {{$carreras->nombre}} </p>
+            <h3>Instituto Superior Tecnológico</h3>
+            <h3 style="margin-top:-25px"> SAN GABRIEL </h3>
+            <p >Condición</p>
+            <p>UNIVERSITARIO</p>
           </div>
           <div class="logo-carrera">
             <img src="storage/{{$carreras->logo}}" alt="Logo Carrera">
@@ -44,9 +46,9 @@
     <div class="container" >
         <div class="e-nombre">
             <p>EGRESADOS</p>
+            <p style="margin-top: -10px">Carrera de {{$carreras->nombre}} </p>
         </div>
         <div class="data-egresados">
-            <p>Carrera: <span style="margin-left:62px">{{$carreras->nombre}} </span> </p>
             <p>Periodo Académico: <span style="margin-left:-10px">{{$periodo_academico}} </span> </p>
         </div>
         <div class="item-container">

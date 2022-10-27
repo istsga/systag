@@ -20,7 +20,7 @@ class EstudianteSeeder extends Seeder
             'dni'                       =>  '0605050892',
             'nombre'                    =>  'María Fernanda',
             'apellido'                  =>  'Patiño Allauca',
-            'foto'                      =>  'default.png',
+            // 'foto'                      =>  'default.png',
             'estadocivile_id'           =>  rand(1,4),
             'fecha_nacimiento'          =>  '2020-12-29',
             'nacionalidad'              =>  'Ecuatoriana',

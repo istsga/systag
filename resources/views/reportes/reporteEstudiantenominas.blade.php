@@ -14,8 +14,10 @@
             <img src="{{ public_path('assets/brand/logoSG.png') }}">
           </div>
           <div class="title">
-            <h3>INSTITUTO SUPERIOR UNIVERSITARIO <br> "SAN GABRIEL"</h3>
-            <p>Carrera de {{$asignacion->carreras->pluck('nombre')->implode(', ')}} </p>
+            <h3>Instituto Superior Tecnológico</h3>
+            <h3 style="margin-top:-25px"> SAN GABRIEL </h3>
+            <p >Condición</p>
+            <p>UNIVERSITARIO</p>
           </div>
           <div class="logo-carrera">
             <img src="storage/{{$asignacion->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
@@ -43,7 +45,8 @@
     </footer>
     <div class="container" >
         <div class="e-nombre">
-            <p>NÓMINA DE ESTUDIANTES</p>
+            <p>Carrera de {{$asignacion->carreras->pluck('nombre')->implode(', ')}} </p>
+            <p style="margin-top: -10px">NÓMINA DE ESTUDIANTES</p>
         </div>
         <div class="informacion">
             <p style="padding-bottom: 10px;">CARRERA: <span style="padding-left: 85px">

@@ -14,8 +14,10 @@
           <img src="{{ public_path('assets/brand/logoSG.png') }}">
       </div>
       <div class="title">
-          <h3>INSTITUTO SUPERIOR UNIVERSITARIO <br> "SAN GABRIEL"</h3>
-          <p> Carrera de {{$calificaciones[0]->asignacione->carreras->pluck('nombre')->implode(', ')}}</p>
+        <h3>Instituto Superior Tecnológico</h3>
+        <h3 style="margin-top:-25px"> SAN GABRIEL </h3>
+        <p >Condición</p>
+        <p>UNIVERSITARIO</p>
       </div>
       <div class="logo-carrera">
         <img src="storage/{{$calificaciones[0]->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
@@ -42,7 +44,7 @@
       </table>
   </footer>
   <div class="cp-nombre">
-    <p>CALIFICACIÓN CONSOLIDADO POR PERIODO</p>
+    <p>CALIFICACIÓN DE CONSOLIDADO POR PERIODO</p>
     <p style="font-size:14px">Periodo Académico : {{$calificaciones[0]->asignacione->periodacademicos->pluck('periodo')->implode(', ')}}</p>
   </div>
   <div class="informacion">

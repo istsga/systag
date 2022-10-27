@@ -7,7 +7,7 @@
     <meta name="description" content="Sistema Académico - Instituto San Gabriel">
     <meta name="author" content="Diego Guapi">
     <meta name="keyword" content="Sistema Académico - Instituto San Gabriel">
-    <title>  Restablecer Contraseña | ITSGA </title>
+    <title>  Restablecer Contraseña | ISTSGA </title>
     <link rel="apple-touch-icon" sizes="57x57" href=" {{asset('assets/favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href=" {{asset('assets/favicon/apple-icon-60x60.png')}} ">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset('assets/favicon/apple-icon-72x72.png')}} ">
@@ -36,7 +36,7 @@
             <div class="col-md-5 mx-auto min-vh-100 d-flex flex-column justify-content-center">
                 <div class="card border-0">
                     <div class="card-header border-0 bg-primary">
-                        <img class="rounded mx-auto d-block " src="{{asset('assets/img/logo4.png')}}" alt="San Gabriel Logo">
+                        <img class="rounded mx-auto d-block " height="320" src="{{asset('assets/brand/SGlogo.svg')}}" alt="San Gabriel Logo">
 
                     </div>
 

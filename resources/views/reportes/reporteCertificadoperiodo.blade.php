@@ -14,8 +14,10 @@
                 <img src="{{ public_path('assets/brand/logoSG.png') }}">
             </div>
             <div class="title">
-                <h3>INSTITUTO SUPERIOR UNIVERSITARIO <br>  "SAN GABRIEL"</h3>
-                <p>Carrera de {{$matricula->asignacione->carreras->pluck('nombre')->implode(', ')}}</p>
+                <h3>Instituto Superior Tecnológico</h3>
+                <h3 style="margin-top:-25px"> SAN GABRIEL </h3>
+                <p >Condición</p>
+                <p>UNIVERSITARIO</p>
             </div>
             <div class="logo-carrera">
                 <img src="storage/{{$matricula->asignacione->carreras->pluck('logo')->implode(', ')}}" alt="Logo Carrera">
@@ -44,8 +46,9 @@
       </footer>
       <div class="container">
           <div class="c-nombre">
-            <p>INFORME DE APROBACIÓN DE PERIODO</p>
-            <p>PERIODO ACADÉMICO MARZO 2018 - OCTUBRE 2020</p>
+              <p>INFORME DE APROBACIÓN DE PERIODO</p>
+              <p>Carrera de {{$matricula->asignacione->carreras->pluck('nombre')->implode(', ')}}</p>
+              <p>Periodo Académico {{$matricula->asignacione->periodacademicos->pluck('periodo')->implode(', ')}}</p>
           </div>
           <div class="info-estudiante">
             La suscrita secretaria del Instituto Superior Tecnológico "San Gabriel" certifica que,

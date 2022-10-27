@@ -1,7 +1,10 @@
 @component('mail::message')
-    # Tus credenciales para acceder al {{ config('app.name') }}
 
-    Utiliza estas credenciales para acceder al sistema.
+@component('mail::table')
+    | INSTITUTO SUPERIOR TECNOLÓGICO SAN GABRIEL|
+    |:----------:|
+@endcomponent
+      Tus credenciales de acceso al Sistema Académico del ISTSGA
 
 @component('mail::table')
     | Usuario | Contraseña |
