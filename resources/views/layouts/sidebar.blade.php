@@ -60,6 +60,53 @@
         @endif
       </li>
       <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+        @if (auth()->user()->canAny(['Ver periodos academicos', 'Crear periodos academicos', 'Actualizar periodos academicos', 'Eliminar periodos academicos',
+                                      'Ver asignaciones', 'Crear asignaciones', 'Actualizar asignaciones', 'Eliminar asignaciones',
+                                      'Ver convalidaciones', 'Crear convalidaciones', 'Actualizar convalidaciones', 'Eliminar convalidaciones',
+                                      'Ver matriculas', 'Crear matriculas', 'Actualizar matriculas', 'Eliminar matriculas',])
+                                      or auth()->user()->hasAnyRole(['Administrador']))
+          <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+              <i class="c-sidebar-nav-icon fas fa-box "></i>
+              Panel Académico
+          </a>
+
+          <ul class="c-sidebar-nav-dropdown-items">
+          @can('view', new App\Models\Periodacademico)
+              <li class="c-sidebar-nav-item">
+              <a class="c-sidebar-nav-link" href="{{route('periodacademicos.index')}}">
+                  <span class="c-sidebar-nav-icon fas fa-calendar-alt ml-n4"></span> Periodo Académico
+              </a>
+              </li>
+          @endcan
+
+          @can('view', new App\Models\Asignacione)
+              <li class="c-sidebar-nav-item ">
+              <a class="c-sidebar-nav-link" href="{{route('asignaciones.index')}}">
+                  <span class="c-sidebar-nav-icon text-muted small fas fa-file-signature ml-n4"></span> Asignaciones
+              </a>
+              </li>
+          @endcan
+
+          @can('view', new App\Models\Convalidacione)
+              <li class="c-sidebar-nav-item ">
+              <a class="c-sidebar-nav-link" href="{{route('convalidaciones.index')}}">
+                  <span class="c-sidebar-nav-icon text-muted small fas fa-folder ml-n4"></span> Convalidaciones
+              </a>
+              </li>
+          @endcan
+
+          @can('view', new App\Models\Matricula)
+              <li class="c-sidebar-nav-item ">
+              <a class="c-sidebar-nav-link" href="{{route('matriculas.index')}}">
+                  <span class="c-sidebar-nav-icon text-muted small fas fa-book ml-n4"></span> Matrículas
+              </a>
+              </li>
+          @endcan
+          </ul>
+        @endif
+      </li>
+
+      <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
         @if (auth()->user()->canAny(['Ver horarios', 'Crear horarios', 'Actualizar horarios', 'Eliminar horarios',
                                      'Ver distributivos', 'Crear distributivos', 'Actualizar distributivos', 'Eliminar distributivos',
                                      'Ver horario de clases'])
@@ -125,53 +172,6 @@
       </li>
 
       <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-          @if (auth()->user()->canAny(['Ver periodos academicos', 'Crear periodos academicos', 'Actualizar periodos academicos', 'Eliminar periodos academicos',
-                                        'Ver asignaciones', 'Crear asignaciones', 'Actualizar asignaciones', 'Eliminar asignaciones',
-                                        'Ver convalidaciones', 'Crear convalidaciones', 'Actualizar convalidaciones', 'Eliminar convalidaciones',
-                                        'Ver matriculas', 'Crear matriculas', 'Actualizar matriculas', 'Eliminar matriculas',])
-                                        or auth()->user()->hasAnyRole(['Administrador']))
-            <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-                <i class="c-sidebar-nav-icon fas fa-box "></i>
-                Panel Académico
-            </a>
-
-            <ul class="c-sidebar-nav-dropdown-items">
-            @can('view', new App\Models\Periodacademico)
-                <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="{{route('periodacademicos.index')}}">
-                    <span class="c-sidebar-nav-icon fas fa-calendar-alt ml-n4"></span> Periodo Académico
-                </a>
-                </li>
-            @endcan
-
-            @can('view', new App\Models\Asignacione)
-                <li class="c-sidebar-nav-item ">
-                <a class="c-sidebar-nav-link" href="{{route('asignaciones.index')}}">
-                    <span class="c-sidebar-nav-icon text-muted small fas fa-file-signature ml-n4"></span> Asignaciones
-                </a>
-                </li>
-            @endcan
-
-            @can('view', new App\Models\Convalidacione)
-                <li class="c-sidebar-nav-item ">
-                <a class="c-sidebar-nav-link" href="{{route('convalidaciones.index')}}">
-                    <span class="c-sidebar-nav-icon text-muted small fas fa-folder ml-n4"></span> Convalidaciones
-                </a>
-                </li>
-            @endcan
-
-            @can('view', new App\Models\Matricula)
-                <li class="c-sidebar-nav-item ">
-                <a class="c-sidebar-nav-link" href="{{route('matriculas.index')}}">
-                    <span class="c-sidebar-nav-icon text-muted small fas fa-book ml-n4"></span> Matrículas
-                </a>
-                </li>
-            @endcan
-            </ul>
-        @endif
-      </li>
-
-      <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
         @if (auth()->user()->canAny(['Ver nonima de estudiantes', 'Ver egresados', 'Ver record academico',
                                     'Ver calificaciones por periodo', 'Ver certificados por periodo'])
                                     or auth()->user()->hasAnyRole(['Administrador', 'Estudiante']))
@@ -227,6 +227,55 @@
         @endif
       </li>
 
+      <li class="c-sidebar-nav-title">ACCESO Y AUTENTICACIÓN</li>
+
+      <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+
+        <a class="c-sidebar-nav-dropdown-toggle" href="#">
+          <i class="c-sidebar-nav-icon fas fa-user-cog"></i>
+          @role('Administrador') Panel de Usuarios @else Mi Cuenta @endrole
+        </a>
+
+        <ul class="c-sidebar-nav-dropdown-items">
+          @can('view', new App\Models\User)
+            <li class="c-sidebar-nav-item">
+              <a class="c-sidebar-nav-link" href="{{route('users.index')}}" target="_top">
+                <i class="c-sidebar-nav-icon fas fa-user-friends ml-n4"></i>
+                Usuarios
+              </a>
+            </li>
+          @else
+            <li class="c-sidebar-nav-item">
+              <a class="c-sidebar-nav-link" href="{{route('users.show', auth()->user())}}" target="_top">
+                <i class="c-sidebar-nav-icon fas fa-user-friends ml-n4"></i>
+                 Ver mi perfil
+              </a>
+            </li>
+          @endcan
+
+          @can('view', new \Spatie\Permission\Models\Role)
+            <li class="c-sidebar-nav-item">
+              <a class="c-sidebar-nav-link" href="{{route('roles.index')}}" target="_top">
+                <i class="c-sidebar-nav-icon fas fa-user-lock ml-n4"></i>
+                Roles
+                </a>
+            </li>
+          @endcan
+
+          @can('view', new \Spatie\Permission\Models\Permission)
+            <li class="c-sidebar-nav-item">
+              <a class="c-sidebar-nav-link" href="{{route('permisos.index')}}" target="_top">
+              <i class="c-sidebar-nav-icon fas fa-unlock-alt ml-n4"></i>
+                Permisos
+              </a>
+            </li>
+          @endcan
+        </ul>
+      </li>
+
+      @if (auth()->user()->hasAnyRole(['Administrador']))
+        <li class="c-sidebar-nav-title">COMPONENTES INICIALES</li>
+      @endif
       <li class=" c-sidebar-nav-dropdown">
         @if (auth()->user()->canAny(['Ver carreras', 'Crear carreras', 'Actualizar carreras', '	Eliminar carreras',
                                     'Ver periodos', 'Crear periodos', 'Actualizar periodos', '	Eliminar periodos',
@@ -281,53 +330,6 @@
             @endcan
             </ul>
         @endif
-      </li>
-
-      <li class="c-sidebar-nav-divider"></li>
-      <li class="c-sidebar-nav-title">Extras</li>
-
-      <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-
-        <a class="c-sidebar-nav-dropdown-toggle" href="#">
-          <i class="c-sidebar-nav-icon fas fa-user-cog"></i>
-          @role('Administrador') Panel de Usuarios @else Mi Cuenta @endrole
-        </a>
-
-        <ul class="c-sidebar-nav-dropdown-items">
-          @can('view', new App\Models\User)
-            <li class="c-sidebar-nav-item">
-              <a class="c-sidebar-nav-link" href="{{route('users.index')}}" target="_top">
-                <i class="c-sidebar-nav-icon fas fa-user-friends ml-n4"></i>
-                Usuarios
-              </a>
-            </li>
-          @else
-            <li class="c-sidebar-nav-item">
-              <a class="c-sidebar-nav-link" href="{{route('users.show', auth()->user())}}" target="_top">
-                <i class="c-sidebar-nav-icon fas fa-user-friends ml-n4"></i>
-                 Ver mi perfil
-              </a>
-            </li>
-          @endcan
-
-          @can('view', new \Spatie\Permission\Models\Role)
-            <li class="c-sidebar-nav-item">
-              <a class="c-sidebar-nav-link" href="{{route('roles.index')}}" target="_top">
-                <i class="c-sidebar-nav-icon fas fa-user-lock ml-n4"></i>
-                Roles
-                </a>
-            </li>
-          @endcan
-
-          @can('view', new \Spatie\Permission\Models\Permission)
-            <li class="c-sidebar-nav-item">
-              <a class="c-sidebar-nav-link" href="{{route('permisos.index')}}" target="_top">
-              <i class="c-sidebar-nav-icon fas fa-unlock-alt ml-n4"></i>
-                Permisos
-              </a>
-            </li>
-          @endcan
-        </ul>
       </li>
 
       <li class="c-sidebar-nav-item">
